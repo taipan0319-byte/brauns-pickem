@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="navy" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0B162A"/><stop offset="1" stop-color="#132A4C"/></linearGradient>
+    <linearGradient id="green" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1F3D2B"/><stop offset="1" stop-color="#203731"/></linearGradient>
+    <clipPath id="left"><path d="M0 0 H640 L560 630 H0 Z"/></clipPath>
+    <clipPath id="right"><path d="M640 0 H1200 V630 H560 Z"/></clipPath>
+  </defs>
+  <rect width="1200" height="630" fill="url(#navy)"/>
+  <rect width="1200" height="630" fill="url(#green)" clip-path="url(#right)"/>
+  <path d="M640 0 L560 630" stroke="#F4F6F8" stroke-width="6" opacity=".9"/>
+  <!-- yard hash marks -->
+  <g stroke="#F4F6F8" stroke-opacity=".18" stroke-width="3">
+    <line x1="80" y1="560" x2="1120" y2="560"/><line x1="80" y1="70" x2="1120" y2="70"/>
+    <g id="h"><line x1="140" y1="548" x2="140" y2="572"/><line x1="140" y1="58" x2="140" y2="82"/></g>
+    <use href="#h" x="120"/><use href="#h" x="240"/><use href="#h" x="360"/><use href="#h" x="480"/><use href="#h" x="600"/><use href="#h" x="720"/><use href="#h" x="840"/><use href="#h" x="920"/>
+  </g>
+  <!-- football -->
+  <g transform="translate(600 315)">
+    <ellipse rx="118" ry="72" fill="#7A4A2B" stroke="#F4F6F8" stroke-width="5"/>
+    <path d="M-100 0 Q0 -18 100 0" fill="none" stroke="#F4F6F8" stroke-width="3" opacity=".5"/>
+    <line x1="-40" y1="0" x2="40" y2="0" stroke="#F4F6F8" stroke-width="6" stroke-linecap="round"/>
+    <g stroke="#F4F6F8" stroke-width="5" stroke-linecap="round"><line x1="-28" y1="-10" x2="-28" y2="10"/><line x1="-9" y1="-10" x2="-9" y2="10"/><line x1="9" y1="-10" x2="9" y2="10"/><line x1="28" y1="-10" x2="28" y2="10"/></g>
+  </g>
+  <!-- text -->
+  <text x="600" y="150" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="88" fill="#F4F6F8" letter-spacing="2">BRAUNS FAM</text>
+  <text x="600" y="205" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="40" fill="#F4F6F8" letter-spacing="10" opacity=".92">PICK'EM</text>
+  <text x="600" y="470" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="30" fill="#F4F6F8" opacity=".92">7 pickers · 1 champion · bragging rights only</text>
+  <text x="600" y="520" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="24" fill="#F4F6F8" opacity=".7">Market picks · pool strategy · every prediction logged before kickoff</text>
+  <text x="120" y="605" font-family="Helvetica, Arial, sans-serif" font-size="20" fill="#C83803" font-weight="700">BEARS SIDE</text>
+  <text x="1080" y="605" text-anchor="end" font-family="Helvetica, Arial, sans-serif" font-size="20" fill="#FFB612" font-weight="700">PACKERS SIDE</text>
+</svg>

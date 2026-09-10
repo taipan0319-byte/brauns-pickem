@@ -151,8 +151,36 @@ def main():
                                tie_rule="Ties split evenly (U1 approximation).", threshold=None))
     json.dump(data, open(os.path.join(D, "data.json"), "w"), indent=1)
     tpl = open(os.path.join(D, "template.html")).read()
-    html = tpl.replace("/*__DATA__*/null", json.dumps(data).replace("</", "<\\/"))
-    open(os.path.join(D, "index.html"), "w").write(html)
+    body = tpl.replace("/*__DATA__*/null", json.dumps(data).replace("</", "<\\/"))
+    site = "https://taipan0319-byte.github.io/brauns-pickem/"
+    picks = ", ".join(g["pick"] for g in out_games if g.get("pick")) or "not yet run"
+    desc = f"Week {a.week}, {a.season}: {picks}. Market picks, pool strategy, every prediction logged before kickoff."
+    head = f"""<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="{desc}">
+<meta name="theme-color" content="#0B162A">
+<link rel="icon" type="image/png" sizes="512x512" href="{site}icon.png">
+<link rel="apple-touch-icon" sizes="512x512" href="{site}icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Brauns Fam Pick'em">
+<meta property="og:title" content="Brauns Fam Pick'em · Week {a.week}">
+<meta property="og:description" content="{desc}">
+<meta property="og:url" content="{site}">
+<meta property="og:image" content="{site}og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Brauns Fam Pick'em: a football on a field split between Bears navy and Packers green">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Brauns Fam Pick'em · Week {a.week}">
+<meta name="twitter:description" content="{desc}">
+<meta name="twitter:image" content="{site}og.png">
+</head>
+<body>
+"""
+    open(os.path.join(D, "index.html"), "w").write(head + body + "\n</body>\n</html>\n")
     print(f"dashboard built: {len(out_games)} games, P(first)={p_first}, model {runs[-1] if runs else None}, market {market_asof}")
 
 if __name__ == "__main__":
