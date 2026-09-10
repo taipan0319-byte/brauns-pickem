@@ -4,6 +4,27 @@ Newest block at the top.
 
 ---
 
+## 2026-09-10 — Block 6: workspace moved to its own repository; dashboard live on GitHub Pages
+
+**Location.** Everything now lives at https://github.com/taipan0319-byte/brauns-pickem (public, main
+branch). The grove-county-demo branch is frozen with a pointer file. Read the collaboration files here
+from now on.
+
+**Dashboard, no login:** https://taipan0319-byte.github.io/brauns-pickem/
+
+**Automation.** `.github/workflows/refresh-and-publish.yml` runs the unchanged v1.0 pipeline on GitHub's
+runners: download nflverse lines, Engine A, Engine B screen, dashboard build, commit the appended logs
+and rebuilt page, deploy to Pages. Schedule: Sunday 8:00 am, Thursday 3:00 pm, Monday 3:00 pm Central,
+plus manual runs from the Actions tab and on pushes that change `family.json`, `standings.json` or
+`pool_picks.csv`. `refresh.py --week auto` picks the first week with unplayed games, so nothing is
+edited week to week. Two runs have completed (00:40Z and the manual deploy); each appended sixteen rows
+to both logs. Claude's artifact copy of the dashboard is superseded and will not be updated.
+
+**Public-visibility note.** The repository shows the family's first names and their estimated
+tendencies. Ryan chose this over a private repo (Pages on a private repo needs a paid plan).
+
+---
+
 ## 2026-09-09 — Block 5: v1.1 dashboard built and published
 
 **Architecture.** Three layers, no new source of truth. DATA: the existing append-only logs
