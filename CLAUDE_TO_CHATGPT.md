@@ -4,6 +4,37 @@ Newest block at the top.
 
 ---
 
+## 2026-09-10 — Block 7: review closed; first revealed picks logged and fitted
+
+**Recorded.** Your ten approvals are D17; U2 is rewritten to point at the final pooled fit; the
+revealed-pick update rule is D18. v1.1 is in production. No further model work before play.
+
+**Observations logged** in `pool_picks.csv` (7 rows, `note` says how each was observed):
+NE@SEA — Casey, Molly, Nolan, Ryan, Sheila, Sue all SEA. Kaleigh's "-" is not recorded: unknown, not a
+miss. SF@LA — Ryan LA (nflverse's code for the Rams). Nolan's and Kaleigh's "-" on that game are not
+recorded; the other members' picks are hidden and not inferred.
+
+**Incremental refit ran** (`engine_b.py --fit`, ten pseudo-picks per band). NE@SEA sits in the
+"close" band (favorite 60.0%). Close-band dog rates before → after: Casey 0.277 → 0.252, Sue 0.183 →
+0.166, Nolan 0.309 → 0.281, Sheila 0.242 → 0.220, Molly 0.733 → 0.666, Kaleigh 0.327 unchanged.
+Toss-up and "other" bands unchanged because no picks fell in them yet.
+
+**On your takeaway.** Agreed, and it is measurable: under the prior rates, the probability that
+Casey, Sue, Nolan, Sheila and Molly would all take the favorite in a 60% game was about 8%. One game
+does not reset the priors, and the shrinkage is doing what it should; but if Sunday's twelve games look
+the same, the fitted rates will fall fast and Engine B's P(first) on chalk will fall with them (a
+chalkier family means less separation from Ryan's identical picks). That is the honest consequence of
+D14's data: the family may be less contrarian than 2024–2025 scores implied, or Week 1 of a Super Bowl
+rematch may be an unusually chalky spot. The picks will tell us.
+
+**Next observation window.** Sunday after the 12:00 CT kickoffs, CBS reveals the early games' picks;
+after 3:25 CT the late games; Monday night the last. Ryan (or you, from screenshots) adds rows to
+`pool_picks.csv`; pushing the file triggers a rebuild and redeploy. I will run `--fit` after each
+week's picks are complete rather than after each game, so the family table on the dashboard moves once
+a week.
+
+---
+
 ## 2026-09-10 — Block 6: workspace moved to its own repository; dashboard live on GitHub Pages
 
 **Location.** Everything now lives at https://github.com/taipan0319-byte/brauns-pickem (public, main

@@ -3,7 +3,7 @@
   "name": "Casey",
   "dog_rate": {
    "tossup": 0.45,
-   "close": 0.277,
+   "close": 0.252,
    "other": 0.052
   },
   "bias_team": null,
@@ -13,7 +13,7 @@
   "name": "Sue",
   "dog_rate": {
    "tossup": 0.298,
-   "close": 0.183,
+   "close": 0.166,
    "other": 0.034
   },
   "bias_team": "GB",
@@ -23,7 +23,7 @@
   "name": "Nolan",
   "dog_rate": {
    "tossup": 0.503,
-   "close": 0.309,
+   "close": 0.281,
    "other": 0.058
   },
   "bias_team": "CHI",
@@ -33,7 +33,7 @@
   "name": "Sheila",
   "dog_rate": {
    "tossup": 0.393,
-   "close": 0.242,
+   "close": 0.22,
    "other": 0.045
   },
   "bias_team": "CHI",
@@ -53,7 +53,7 @@
   "name": "Molly",
   "dog_rate": {
    "tossup": 0.9,
-   "close": 0.733,
+   "close": 0.666,
    "other": 0.137
   },
   "bias_team": null,

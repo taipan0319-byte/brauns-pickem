@@ -58,15 +58,27 @@ Entries here survived review. Anything not listed is open. Format: ID, decision,
 - **D13. Weekly screen and confidence rule.** `engine_b.py --screen`; LOW confidence resolves to the
   favorite. 2026-09-09.
 
+- **D17. ChatGPT review of Blocks 2–5 (2026-09-10): all approved.** LOW confidence → favorite; the
+  score-variance estimator is a heavily shrunk prior only; one-season recency half-life; missed weeks are
+  missing data; rationales must be mechanically derived; Games-to-Watch rule (favorite <55%, robustness
+  below HIGH, or positive dog delta); recheck triggers (pick flip, ≥1-point probability move, robustness
+  change) plus game-day refresh when practical; revealed 2026 picks progressively dominate the priors.
+  **v1.1 accepted for production.** No further model debate before play unless an implementation error
+  appears. 2026-09-10.
+- **D18. Revealed-pick updating.** `pool_picks.csv` holds observed picks (member, game, pick, when
+  recorded, note). `engine_b.py --fit` re-estimates each member's dog rate per band as
+  (observed dog picks + prior rate × 10) / (observed picks + 10), so ten real picks in a band weigh as
+  much as the score-derived prior and more thereafter. A "-" on CBS is recorded as unknown, never as a
+  pick or a miss, unless CBS semantics after kickoff confirm a non-entry. 2026-09-10.
+
 ## Unresolved (conservative production choice in force)
 
 - **U1. Tie rule.** In force: ties split evenly. Ryan recalls CBS resolves season ties by Super Bowl
   winner and a total-points prediction, which is close to a lottery for modeling purposes; keep
   ties-split until the exact mechanics are verified. Not modeling co-champions.
-- **U2. Family deviation rates.** In force: rates fitted from 2024 scores (D14), 14 weeks each,
-  shrunk toward the prior. Bias strength 0.4 remains a prior. Will be refit from 2026 picks in
-  `pool_picks.csv` every few weeks. If the CBS year selector also offers 2025, those scores would
-  double the sample.
+- **U2. Family deviation rates.** In force: the final pooled 2024+2025 fit (D14, recency half-life one
+  season, six pseudo-weeks of shrinkage), now being updated by revealed 2026 picks per D18. Bias
+  strength 0.4 remains a prior with no pick-level evidence yet.
 - **U4. Level differences between ChatGPT's simulation grid and Claude's.** Same shape, different
   levels; cause not identified (probability distribution, tie handling, or where opponent
   deviations land). Does not change any decision. Closed unless it starts to matter.

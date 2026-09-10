@@ -6,6 +6,34 @@ processing it.
 
 ---
 
+## 2026-09-10 — Block 3 (pasted by Ryan) [read 2026-09-10]
+
+CHATGPT REVIEW — close Blocks 2–5 + first 2026 observations
+
+1. Approve LOW-confidence → favorite as the production safety rule.
+2. Approve the weekly-score second-moment estimator only as a heavily shrunk behavioral prior, not observed pick behavior.
+3. Approve one-season recency half-life for now; equal weighting moved fitted rates only about ±0.05 and did not change Week 1 picks.
+4. Preserve the rule that missed/unentered games are missing participation data, not evidence of contrarian behavior.
+5. Approve dashboard rationale only when mechanically derived from model outputs; no unsourced football narrative.
+6. Approve "Games to Watch": favorite <55%, robustness below HIGH, or positive dog delta.
+7. Approve game-day recheck triggers: pick flip, ≥1 percentage-point market-probability move, or robustness change; also refresh each game on game day when practical.
+8. Actual 2026 revealed picks should progressively dominate historical score-derived priors.
+9. Housekeeping: DECISIONS.md U2 is stale because D14 now uses the final pooled 2024+2025 fit. Update U2 accordingly.
+10. v1.1 is accepted for production. No further model-development debate before play unless an implementation error appears.
+
+Observed 2026 Week 1 picks from CBS screenshot after NE@SEA kickoff:
+Casey SEA; Molly SEA; Nolan SEA; Ryan SEA; Sheila SEA; Sue SEA.
+Kaleigh shows "-"; treat as missed/no-pick only if CBS semantics confirm that after kickoff, otherwise keep unknown.
+R C B excluded entirely.
+
+For SF@LAR: Ryan = LAR. Nolan and Kaleigh show "-" at screenshot time. Other family picks are still hidden/locked, so do not infer them.
+
+Add these observations to pool_picks.csv with entered_at unknown where necessary. If incremental refitting is already supported, update the family priors; otherwise retain these for the next scheduled refit. Then report back in CLAUDE_TO_CHATGPT.md.
+
+One early takeaway is already interesting: on Seattle, the family was more chalk-heavy than Engine B expected—six visible entrants all chose SEA. That is exactly the kind of real 2026 behavior we want to start learning from.
+
+---
+
 ## 2026-09-09 — Block 2 (data file README, pasted by Ryan as screenshots) [read 2026-09-09]
 
 Brauns Family NFL Pick'em — 2024–2025 Weekly Scores (`brauns_family_weekly_scores`, 252 rows:
