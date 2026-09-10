@@ -23,6 +23,21 @@ def save(page, name):
     open(f"{OUT}/{name}.html", "w").write(page.content())
     log(f"saved {name}: url={page.url} title={page.title()!r}")
 
+def describe(page, label):
+    """Structural summary of the current page, printed to the log (no values, no credentials)."""
+    inputs = page.eval_on_selector_all("input", "els => els.map(e => [e.type, e.name, e.id, e.placeholder, !!(e.offsetWidth||e.offsetHeight)].join('|'))")
+    buttons = page.eval_on_selector_all("button, input[type=submit], a[role=button]", "els => els.map(e => (e.innerText||e.value||'').trim().slice(0,30)).filter(Boolean)")
+    frames = page.eval_on_selector_all("iframe", "els => els.map(e => (e.src||'').split('/')[2]||'')")
+    text = page.inner_text("body")[:20000].lower()
+    hits = [w for w in ("incorrect", "invalid", "error", "verify", "verification", "code", "captcha", "robot", "try again", "locked", "two-step", "2-step") if w in text]
+    log(f"[{label}] inputs={inputs}")
+    log(f"[{label}] buttons={buttons[:15]}")
+    log(f"[{label}] iframes={frames[:10]}")
+    log(f"[{label}] keyword hits={hits}")
+    for w in ("incorrect", "invalid", "verify", "captcha", "robot", "code"):
+        i = text.find(w)
+        if i >= 0: log(f"[{label}] context '{w}': ...{text[max(0,i-120):i+120]!r}...")
+
 def login(page, user, pw):
     page.goto(f"{BASE}/standings", wait_until="domcontentloaded", timeout=60000)
     page.wait_for_timeout(3000)
@@ -32,6 +47,7 @@ def login(page, user, pw):
         for sel in ("text=Log In", "text=Sign In", "text=Log in", "text=Sign in", "a[href*='login']"):
             if page.locator(sel).count():
                 page.locator(sel).first.click(); page.wait_for_timeout(3000); log(f"clicked {sel} -> {page.url}"); break
+    describe(page, "login page")
     pwd = page.locator("input[type=password]")
     if pwd.count() == 0:
         log("no password field found; saving page for inspection"); save(page, "no_login_form"); return False
@@ -44,9 +60,18 @@ def login(page, user, pw):
             el.fill(user); filled = True; break
     if not filled: log("no username field found"); save(page, "no_username_field"); return False
     pwd.first.fill(pw)
-    pwd.first.press("Enter")
-    page.wait_for_timeout(6000)
+    submit = page.locator("button[type=submit], input[type=submit], button:has-text('Sign In'), button:has-text('Log In'), button:has-text('Continue')")
+    if submit.count():
+        log(f"clicking submit button ({submit.count()} candidates)"); submit.first.click()
+    else:
+        log("no submit button; pressing Enter"); pwd.first.press("Enter")
+    try:
+        page.wait_for_url(lambda u: "login" not in u.lower(), timeout=20000)
+    except Exception:
+        pass
+    page.wait_for_timeout(4000)
     log(f"after submit url={page.url}")
+    describe(page, "after submit")
     if page.locator("input[type=password]").count() and "login" in page.url.lower():
         log("still on a login page after submit (bad credentials, a challenge, or a code prompt)"); save(page, "login_failed"); return False
     return True
