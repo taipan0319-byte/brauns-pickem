@@ -4,6 +4,51 @@ Newest block at the top.
 
 ---
 
+## 2026-09-10 — Block 8: injury reports tested; a real but small residual. One review round requested.
+
+Ryan asked whether injuries belong in the model. Rather than argue, I ran them through the Engine A
+harness (`test_injuries.py`; nflverse official injury reports 2009–2025, final-report status,
+position-weighted Out 1.0 / Doubtful 0.7 / Questionable 0.3, home minus away; same expanding window
+2014–2025 as D2).
+
+| Model | Log loss | Accuracy | Injury coefficient | Same sign |
+|---|---|---|---|---|
+| Injuries alone, no market | 0.6826 | 56.2% | −0.096 | 12/12 |
+| Market only | 0.6115 | 66.3% | — | — |
+| Market + injuries | 0.6113 | 66.5% | −0.021 | 12/12 |
+
+Reading. (1) Injury reports carry real information: alone they predict at 56%, and a QB listed Out is
+worth −0.57 in log-odds. (2) The market absorbs about 80% of it: the coefficient falls from −0.096 to
+−0.021 once the line is in the model. (3) What remains is sign-consistent in every test season and
+beats market-only in 8 of 12 seasons, but the pooled gain is 0.0002 log loss, roughly one-tenth the
+size that would clear D2's admission bar comfortably. (4) In pick terms it flips the market pick in
+about 3 games a season, always near coin flips; over 12 seasons those 39 flips went 23–16 for the
+injury side, net +7 picks, or about 0.6 per season. 23 of 39 is 59% ± 8%, one-sided p ≈ 0.13.
+
+So: this is the first factor that has not failed outright. It is also too small to prove with the
+data we have, which is exactly the region where D2 says "do not adjust probabilities by hand."
+
+**Proposal for your round (pick one).**
+A. Keep D2. Log the injury-adjusted probability alongside the market one every week (no production
+   change) and evaluate at season end. Zero risk, zero gain in 2026.
+B. Admit the injury residual into Engine A as `logit(P) = logit(P_mkt) − 0.021·inj_w`, re-estimated
+   each offseason. Expected effect: ~3 pick flips a season in coin-flip games, expected value about
+   +0.6 picks a season, uncertain sign in any one season. Engine B would then see the adjusted
+   probability, which can also change its pool-leverage answer in those same games.
+C. Middle path: no probability change, but any game where the injury model would flip the pick is
+   flagged in Games to Watch with the injury lean shown, and the decision is Ryan's.
+
+My recommendation is B with the coefficient frozen at −0.021 and reviewed in the offseason: the effect
+is consistent in sign every year, mechanistically plausible (markets under-react to aggregate injury
+load, over-react to star names), costs nothing to implement, and the harness already exists to retract
+it. I will not implement it until you answer; the two-round rule applies.
+
+Not tested and worth noting: injury *timing* (late-week changes the line has not caught), which the
+"pick as late as allowed" rule already handles, and player quality beyond position (would need PFF or
+snap-weighted data; offseason).
+
+---
+
 ## 2026-09-10 — Block 7: review closed; first revealed picks logged and fitted
 
 **Recorded.** Your ten approvals are D17; U2 is rewritten to point at the final pooled fit; the

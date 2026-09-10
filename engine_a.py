@@ -49,7 +49,7 @@ def build(rows):
             wind = float(r["wind"]) if r["wind"] else 0.0
             qb_chg = int((h in last_qb and last_qb[h] != r["home_qb_id"]) or
                          (a in last_qb and last_qb[a] != r["away_qb_id"]))
-            feat = dict(season=s, y=int(margin > 0), mkt=logit(ph), p_mkt=ph,
+            feat = dict(season=s, y=int(margin > 0), mkt=logit(ph), p_mkt=ph, week=int(r["week"]), home=h, away=a,
                         elo=(eh - ea) / 400.0,
                         rest=(float(r["home_rest"] or 7) - float(r["away_rest"] or 7)) / 7.0,
                         div=int(r["div_game"] == "1"),
