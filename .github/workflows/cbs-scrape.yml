@@ -1,0 +1,31 @@
+name: Read CBS pool (discovery)
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "discover (save pages) or scrape (write data files)"
+        required: false
+        default: "discover"
+permissions:
+  contents: write
+jobs:
+  cbs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - run: pip install playwright && python -m playwright install --with-deps chromium
+      - name: Read the pool
+        env:
+          CBS_USERNAME: ${{ secrets.CBS_USERNAME }}
+          CBS_PASSWORD: ${{ secrets.CBS_PASSWORD }}
+        run: python3 scrape_cbs.py --mode ${{ github.event.inputs.mode || 'discover' }}
+      - name: Save pages for parser development (kept 1 day)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cbs-pages
+          path: out/
+          retention-days: 1
+          if-no-files-found: ignore
