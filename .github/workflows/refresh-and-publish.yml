@@ -1,0 +1,52 @@
+name: Refresh week and publish dashboard
+on:
+  workflow_dispatch:
+    inputs:
+      week:
+        description: "Week number (blank = auto: first week with unplayed games)"
+        required: false
+        default: "auto"
+  schedule:
+    - cron: "0 13 * * 0"   # Sunday 8:00 am CT (13:00 UTC)
+    - cron: "0 20 * * 4"   # Thursday 3:00 pm CT
+    - cron: "0 20 * * 1"   # Monday 3:00 pm CT
+  push:
+    branches: [main]
+    paths: ["dashboard/**", "family.json", "standings.json", "pool_picks.csv"]
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+concurrency:
+  group: refresh
+  cancel-in-progress: false
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - run: pip install numpy
+      - name: Run the v1.0 pipeline (Engine A, Engine B screen, dashboard build)
+        if: github.event_name != 'push'
+        run: |
+          ARGS="--week ${{ github.event.inputs.week || 'auto' }}"
+          if [ -f standings.json ]; then ARGS="$ARGS --standings standings.json"; fi
+          python3 refresh.py $ARGS
+      - name: Rebuild dashboard only (data files changed by hand)
+        if: github.event_name == 'push'
+        run: |
+          python3 refresh.py --offline --week auto || python3 refresh.py --week auto
+      - name: Commit appended logs and rebuilt dashboard
+        run: |
+          git config user.name "pickem-bot"; git config user.email "pickem-bot@users.noreply.github.com"
+          git add predictions_log.csv engine_b_log.csv dashboard/index.html dashboard/data.json
+          git diff --cached --quiet || git commit -m "Refresh: $(date -u +%Y-%m-%dT%H:%MZ)"
+          git push
+      - uses: actions/configure-pages@v5
+        with: { enablement: true }
+      - uses: actions/upload-pages-artifact@v3
+        with: { path: dashboard }
+      - id: deploy
+        uses: actions/deploy-pages@v4

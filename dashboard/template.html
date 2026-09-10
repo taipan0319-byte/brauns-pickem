@@ -1,0 +1,253 @@
+<title>Brauns Pick'em Desk</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{--bg:#F4F6F8;--surface:#FFFFFF;--surface2:#EAEEF2;--ink:#132030;--ink2:#4B5A69;--muted:#7C8896;--line:#D8DEE5;
+--accent:#1E5A86;--accent-ink:#FFFFFF;--pick-bg:#E4EEF6;--good:#1E7B4B;--good-bg:#E3F3E9;--warn:#9A6400;--warn-bg:#FBF0D6;--bad:#B23A2E;--bad-bg:#F9E3E0;
+--opp:#6B3FA0;--opp-bg:#EFE7F8;--meter:#1E5A86;--meter-track:#DDE4EB}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#0F151B;--surface:#171F27;--surface2:#1F2932;--ink:#E7ECF1;--ink2:#B6C0CA;--muted:#8A97A4;--line:#2C3742;
+--accent:#78B4E0;--accent-ink:#0F151B;--pick-bg:#1B2E3E;--good:#6CCB92;--good-bg:#173226;--warn:#E5B558;--warn-bg:#3A2E12;--bad:#F08A7E;--bad-bg:#3B1E1A;
+--opp:#C3A4EE;--opp-bg:#2B2140;--meter:#78B4E0;--meter-track:#2C3742}}
+:root[data-theme="dark"]{--bg:#0F151B;--surface:#171F27;--surface2:#1F2932;--ink:#E7ECF1;--ink2:#B6C0CA;--muted:#8A97A4;--line:#2C3742;
+--accent:#78B4E0;--accent-ink:#0F151B;--pick-bg:#1B2E3E;--good:#6CCB92;--good-bg:#173226;--warn:#E5B558;--warn-bg:#3A2E12;--bad:#F08A7E;--bad-bg:#3B1E1A;
+--opp:#C3A4EE;--opp-bg:#2B2140;--meter:#78B4E0;--meter-track:#2C3742}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"IBM Plex Sans",system-ui,-apple-system,Segoe UI,sans-serif;font-size:15px;line-height:1.45;padding-block:0 48px;padding-inline:16px}
+.cond{font-family:"IBM Plex Sans Condensed","IBM Plex Sans",system-ui,sans-serif}
+.mono{font-family:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;font-variant-numeric:tabular-nums}
+.wrap{max-width:760px;margin:0 auto}
+header.top{padding-block:18px 10px}
+.eyebrow{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600}
+h1{font-family:"IBM Plex Sans Condensed",sans-serif;font-weight:700;font-size:30px;line-height:1.05;margin:2px 0 6px;text-wrap:balance}
+.stamp{font-size:12.5px;color:var(--ink2);display:flex;flex-wrap:wrap;gap:4px 14px}
+.stamp b{font-weight:600;color:var(--ink)}
+nav.tabs{position:sticky;top:0;z-index:5;background:var(--bg);display:flex;gap:4px;padding-block:8px;border-bottom:1px solid var(--line);margin-bottom:14px}
+nav.tabs button{flex:1;background:transparent;border:1px solid transparent;border-radius:8px;padding:9px 6px;font:600 13px "IBM Plex Sans Condensed",sans-serif;letter-spacing:.04em;text-transform:uppercase;color:var(--ink2);cursor:pointer}
+nav.tabs button[aria-selected="true"]{background:var(--surface);color:var(--ink);border-color:var(--line)}
+nav.tabs button:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+section.tab[hidden]{display:none}
+.hero{display:grid;grid-template-columns:1fr;gap:10px;align-items:end;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:14px}
+.hero .big{font-family:"IBM Plex Mono",monospace;font-size:38px;font-weight:500;line-height:1;color:var(--accent);font-variant-numeric:tabular-nums}
+.hero .lbl{font-size:12px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;font-weight:600}
+.hero .sub{font-size:13px;color:var(--ink2);margin-top:4px}
+.banner{border-radius:10px;padding:10px 14px;font-size:13.5px;margin-bottom:12px;border:1px solid var(--line);background:var(--surface2)}
+.banner.bad{background:var(--bad-bg);color:var(--bad);border-color:transparent;font-weight:600}
+.banner.warn{background:var(--warn-bg);color:var(--warn);border-color:transparent}
+.banner.opp{background:var(--opp-bg);color:var(--opp);border-color:transparent;font-weight:600}
+h2{font-family:"IBM Plex Sans Condensed",sans-serif;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:22px 0 8px;font-weight:600}
+.watch{display:flex;flex-wrap:wrap;gap:8px}
+.watch a{text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:13px;display:inline-flex;gap:8px;align-items:center}
+.watch a .why{color:var(--muted);font-size:12px}
+.watch a:hover{border-color:var(--accent)}
+.games{display:flex;flex-direction:column;gap:10px}
+.game{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:grid;grid-template-columns:96px 1fr;gap:6px 14px;scroll-margin-top:70px}
+.game.opp{border-color:var(--opp);box-shadow:0 0 0 2px var(--opp-bg) inset}
+.game .pickcode{font-family:"IBM Plex Sans Condensed",sans-serif;font-weight:700;font-size:40px;line-height:.95;color:var(--accent);letter-spacing:-.01em;grid-row:1/span 2;align-self:start;padding-top:2px}
+.game .pickcode small{display:block;font-size:10.5px;letter-spacing:.12em;color:var(--muted);font-weight:600;margin-top:6px}
+.game .match{display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap}
+.game .teams{font-family:"IBM Plex Sans Condensed",sans-serif;font-weight:600;font-size:18px}
+.game .when{font-size:12px;color:var(--muted);letter-spacing:.04em;white-space:nowrap}
+.meter{height:8px;border-radius:4px;background:var(--meter-track);position:relative;overflow:hidden;margin:2px 0 4px}
+.meter i{position:absolute;left:0;top:0;bottom:0;background:var(--meter);border-radius:4px}
+.meter:after{content:"";position:absolute;left:50%;top:-2px;bottom:-2px;width:1px;background:var(--surface);opacity:.9}
+.facts{display:grid;grid-template-columns:repeat(2,1fr);gap:2px 12px;font-size:12.5px;color:var(--ink2)}
+.facts b{font-family:"IBM Plex Mono",monospace;font-weight:500;color:var(--ink);font-variant-numeric:tabular-nums}
+.pill{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.06em;border-radius:999px;padding:2px 8px;text-transform:uppercase;vertical-align:middle}
+.pill.HIGH{background:var(--good-bg);color:var(--good)}.pill.MEDIUM{background:var(--warn-bg);color:var(--warn)}.pill.LOW{background:var(--bad-bg);color:var(--bad)}
+.pill.opp{background:var(--opp-bg);color:var(--opp)}.pill.done{background:var(--surface2);color:var(--ink2)}
+.game .why{grid-column:1/-1;font-size:13px;color:var(--ink2);border-top:1px solid var(--line);padding-top:8px;margin-top:2px}
+.game .why.opp{color:var(--opp);font-weight:500}
+.result{grid-column:1/-1;font-size:12.5px;color:var(--ink2)}
+.result.ok{color:var(--good)}.result.miss{color:var(--bad)}
+.note{font-size:13px;color:var(--ink2);margin:6px 0 0}
+table{width:100%;border-collapse:collapse;font-size:13px;background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+th,td{padding:7px 9px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;background:var(--surface2)}
+td.num,th.num{text-align:right;font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums}
+tr:last-child td{border-bottom:0}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.tile{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.tile .v{font-family:"IBM Plex Mono",monospace;font-size:22px;font-weight:500;font-variant-numeric:tabular-nums}
+.tile .l{font-size:11px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;font-weight:600}
+details{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:0 14px;margin-top:10px}
+details summary{cursor:pointer;padding:11px 0;font-weight:600;font-family:"IBM Plex Sans Condensed",sans-serif;font-size:15px}
+details[open] summary{border-bottom:1px solid var(--line);margin-bottom:10px}
+details>*:not(summary){margin-bottom:12px}
+p{max-width:65ch}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:13px}
+.kv b{font-weight:600}
+code{font-family:"IBM Plex Mono",monospace;font-size:12.5px;background:var(--surface2);padding:1px 5px;border-radius:4px}
+.refresh{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-top:16px}
+.refresh .t{font-family:"IBM Plex Sans Condensed",sans-serif;font-weight:700;font-size:16px;letter-spacing:.04em}
+@media (max-width:420px){.game{grid-template-columns:84px 1fr}.game .pickcode{font-size:34px}.tiles{grid-template-columns:1fr 1fr}.hero .big{font-size:32px}}
+@media (min-width:640px){.facts{grid-template-columns:repeat(4,1fr)}.hero{grid-template-columns:1fr auto}.hero>div:last-child{text-align:right}}
+.hero>div,.game>*,.wrap{min-width:0}.game .why,.game .teams,.banner{overflow-wrap:anywhere}
+@media (prefers-reduced-motion:no-preference){nav.tabs button{transition:background .15s}}
+</style>
+
+<div class="wrap">
+<header class="top">
+  <div class="eyebrow">Brauns Fam · CBS Pick'em · straight-up</div>
+  <h1 id="h1">NFL Family Pick'em</h1>
+  <div class="stamp" id="stamps"></div>
+</header>
+<nav class="tabs" role="tablist">
+  <button role="tab" aria-selected="true" data-tab="week" id="tab-week">This week</button>
+  <button role="tab" aria-selected="false" data-tab="pool" id="tab-pool">Pool strategy</button>
+  <button role="tab" aria-selected="false" data-tab="model" id="tab-model">Model &amp; audit</button>
+</nav>
+
+<section class="tab" id="week">
+  <div id="banners"></div>
+  <div class="hero">
+    <div><div class="lbl">Ryan's modeled P(finish first)</div><div class="big" id="pfirst">—</div><div class="sub" id="pfirst-sub"></div></div>
+    <div><div class="lbl">Production rule</div><div class="sub" id="rule"></div></div>
+  </div>
+  <h2>Games to watch</h2>
+  <div class="watch" id="watch"></div>
+  <h2>Recommendations</h2>
+  <div class="games" id="games"></div>
+  <div class="refresh">
+    <div class="t">REFRESH WEEK</div>
+    <p class="note">This page is a snapshot of the model's last run. To refresh with the latest lines, run the pipeline and republish:</p>
+    <code id="refresh-cmd"></code>
+    <p class="note">Each refresh downloads fresh nflverse lines, reruns Engine A and Engine B, appends new timestamped rows to both logs (older rows are never edited), and rebuilds this page. Game-day plan: refresh Sunday morning, and again close to kickoff for any game in the watch list.</p>
+  </div>
+</section>
+
+<section class="tab" id="pool" hidden>
+  <h2>Standings</h2>
+  <div id="standings"></div>
+  <h2>Opponent model used by Engine B</h2>
+  <p class="note">These are <b>estimates</b>, not known picking behavior. They are fitted from 2024–2025 weekly scores, which show how far each member's week strayed from the all-favorites score but never which games they picked. Flagged zero-score weeks were treated as missed entries, not as contrarian picks. Actual 2026 picks, once logged in <code>pool_picks.csv</code>, progressively replace these priors.</p>
+  <div class="scroll"><table id="family"></table></div>
+  <h2>How the family did against the all-favorites picker</h2>
+  <div class="scroll"><table id="history"></table></div>
+  <p class="note">Descriptive only. Casey's +3 over two seasons is inside the noise of a 500-game sample and is not evidence of predictive skill.</p>
+  <h2>Scoreboard, 2026 season to date</h2>
+  <div class="tiles" id="scoreboard"></div>
+  <p class="note" id="scoreboard-note"></p>
+</section>
+
+<section class="tab" id="model" hidden>
+  <h2>Engine A · NFL win probability</h2>
+  <p>The production probability is the <b>no-vig consensus moneyline</b>. A challenger football model may adjust it only after showing chronological out-of-sample improvement over the market. None has.</p>
+  <div class="tiles" id="a-tiles"></div>
+  <details><summary>Market calibration, regular season 2007–2025</summary><div class="scroll"><table id="calib"></table></div></details>
+  <details><summary>Challenger ablation, expanding window 2014–2025</summary><p class="note">Each block adds features to <code>logit(P) = a·logit(P_market) + Σ b·x</code>. Test log loss must fall for a block to stay. It never does.</p><div class="scroll"><table id="ablation"></table></div></details>
+  <h2>Engine B · Pool strategy</h2>
+  <p>Objective: Ryan's probability of finishing first, not expected correct picks. Monte Carlo over the remaining schedule with common random numbers: game outcomes drawn from Engine A probabilities, each opponent's pick drawn from their fitted tendency and team lean, standings carried forward, ties split evenly. For every game this week the engine compares P(first) with the favorite against P(first) with the underdog, jointly across the week. Robustness re-runs the comparison with the family modeled half as contrarian and twice as contrarian; LOW means the sign flips or the effect is inside noise, and LOW resolves to the favorite.</p>
+  <details><summary>Family behavioral fit</summary><p class="note" id="fit-note"></p><div class="scroll"><table id="fit"></table></div></details>
+  <h2>Audit trail</h2>
+  <p class="note">Every Engine B run is a new set of timestamped rows. Nothing is edited after the fact; a later refresh adds rows.</p>
+  <div class="scroll"><table id="audit"></table></div>
+</section>
+</div>
+
+<script id="data" type="application/json">/*__DATA__*/null</script>
+<script>
+const D = JSON.parse(document.getElementById('data').textContent);
+const pct = (x, d=1) => (x*100).toFixed(d) + '%';
+const pts = x => (x>=0?'+':'') + (x*100).toFixed(1) + ' pts';
+const fmtT = iso => { if(!iso) return '—'; const t=new Date(iso); return t.toLocaleString('en-US',{timeZone:'America/Chicago',month:'short',day:'numeric',hour:'numeric',minute:'2-digit'}) + ' CT'; };
+const ageH = iso => iso ? (Date.now()-new Date(iso).getTime())/36e5 : null;
+
+// header + stamps
+document.getElementById('h1').textContent = `Week ${D.week} — ${D.season}`;
+const ma = ageH(D.market_asof), stale = ma!==null && ma > 24;
+document.getElementById('stamps').innerHTML =
+  `<span>Model refreshed <b>${fmtT(D.model_refreshed_at)}</b></span><span>Market lines as of <b>${fmtT(D.market_asof)}</b>${ma!==null?` (${ma<1?'under an hour':Math.round(ma)+' h'} ago)`:''}</span>`;
+document.getElementById('rule').textContent = D.decisions.production_rule;
+document.getElementById('refresh-cmd').textContent = `python3 refresh.py --season ${D.season} --week ${D.week}` + (D.standings?' --standings standings.json':'');
+
+// banners
+const B = [];
+if (stale) B.push(`<div class="banner bad">MARKET DATA STALE — lines are ${Math.round(ma)} hours old. Refresh before picking.</div>`);
+const passed = D.games.filter(g => g.kickoff_iso && new Date(g.kickoff_iso) < new Date(D.market_asof||0));
+if (D.games.some(g => !g.pick)) B.push(`<div class="banner bad">Some games have no model output. Run the refresh.</div>`);
+if (D.week >= 19) { const miss = D.games.filter(g=>!g.ryan_pick); if (miss.length) B.push(`<div class="banner bad">PLAYOFF RULE (D16): ${miss.length} game${miss.length>1?'s':''} without a logged Ryan pick. Enter a pick for every playoff game.</div>`); }
+const opp = D.games.filter(g => g.pick && g.pick !== g.fav);
+if (opp.length) B.push(`<div class="banner opp">POOL OPPORTUNITY — Engine B recommends the underdog in ${opp.map(g=>g.away+'@'+g.home).join(', ')}. See the highlighted card${opp.length>1?'s':''}.</div>`);
+if (D.changes_since_previous_refresh && D.changes_since_previous_refresh.length) B.push(`<div class="banner warn"><b>Changed since previous refresh (${fmtT(D.previous_refresh)}):</b> ${D.changes_since_previous_refresh.join(' · ')}</div>`);
+else if (D.previous_refresh) B.push(`<div class="banner">No pick, probability, or robustness changes since the previous refresh at ${fmtT(D.previous_refresh)}.</div>`);
+document.getElementById('banners').innerHTML = B.join('');
+
+// hero
+if (D.p_first!==null) { document.getElementById('pfirst').textContent = pct(D.p_first); document.getElementById('pfirst-sub').textContent = `with this week's recommended picks · 7-person pool · ${D.games_remaining} regular-season games left`; }
+
+// watch list
+const W = D.games.filter(g => g.watch && g.watch.length);
+document.getElementById('watch').innerHTML = W.length ? W.map(g => `<a href="#g-${g.game_id}"><b class="cond">${g.away}@${g.home}</b><span class="why">${g.watch.join(' · ')}</span></a>`).join('')
+  : '<span class="note">No close calls this week. Every recommendation is the favorite at HIGH robustness.</span>';
+
+// game cards
+document.getElementById('games').innerHTML = D.games.map(g => {
+  if (!g.pick) return `<article class="game" id="g-${g.game_id}"><div class="pickcode">—</div><div class="match"><span class="teams">${g.away} @ ${g.home}</span><span class="when">${g.weekday} ${g.kickoff_ct}</span></div><div class="why">${g.rationale}</div></article>`;
+  const isOpp = g.pick !== g.fav, done = g.result !== null;
+  const favPct = g.p_fav, homeIsFav = g.fav === g.home;
+  const res = done ? `<div class="result ${g.pick_correct?'ok':'miss'}">Final ${g.away} ${g.away_score} – ${g.home} ${g.home_score} · pick ${g.pick_correct?'correct':'missed'}</div>` : '';
+  return `<article class="game${isOpp?' opp':''}" id="g-${g.game_id}">
+    <div class="pickcode">${g.pick}<small>${isOpp?'UNDERDOG':'PICK'}</small></div>
+    <div class="match"><span class="teams">${g.away} @ ${g.home}</span><span class="when">${g.weekday} ${g.kickoff_ct}${done?' · FINAL':''}</span></div>
+    <div><div class="meter" title="market probability, favorite"><i style="width:${(favPct*100).toFixed(1)}%"></i></div>
+      <div class="facts">
+        <span>Market: <b>${g.fav} ${pct(g.p_fav)}</b></span>
+        <span>Family on ${g.fav}: <b>${pct(g.family_fav_rate,0)}</b></span>
+        <span>Dog ${g.dog}, ΔP(first): <b>${pts(g.dP_dog)}</b></span>
+        <span>Robustness: <span class="pill ${g.confidence}">${g.confidence}</span>${isOpp?' <span class="pill opp">strategic differentiation</span>':''}</span>
+      </div></div>
+    <div class="why${isOpp?' opp':''}">${g.rationale}${g.ryan_pick && g.ryan_pick!==g.pick?` <b>Ryan's logged pick: ${g.ryan_pick}.</b>`:''}</div>
+    ${res}</article>`;
+}).join('');
+
+// pool tab
+const S = D.standings;
+document.getElementById('standings').innerHTML = S ? (() => {
+  const rows = Object.entries(S).sort((a,b)=>b[1]-a[1]); const lead = rows[0][1]; const ryan = S.Ryan ?? 0;
+  return `<div class="tiles"><div class="tile"><div class="l">Ryan</div><div class="v">${ryan}</div></div><div class="tile"><div class="l">${ryan>=lead?'Lead over 2nd':'Behind leader'}</div><div class="v">${ryan>=lead?(ryan-(rows[1]?rows[1][1]:ryan)):(lead-ryan)}</div></div><div class="tile"><div class="l">Games left</div><div class="v">${D.games_remaining}</div></div></div>
+  <div class="scroll" style="margin-top:8px"><table><tr><th>#</th><th>Member</th><th class="num">Points</th><th class="num">vs Ryan</th></tr>${rows.map((r,i)=>`<tr><td>${i+1}</td><td>${r[0]}</td><td class="num">${r[1]}</td><td class="num">${(r[1]-ryan>=0?'+':'')+(r[1]-ryan)}</td></tr>`).join('')}</table></div>`;
+})() : `<p class="note">No standings entered yet (week 1). From week 2, put the CBS points in <code>standings.json</code> and pass it to the refresh; Engine B then optimizes from the actual position.</p><div class="tiles"><div class="tile"><div class="l">Games left</div><div class="v">${D.games_remaining}</div></div></div>`;
+
+const lean = {Sue:'Green Bay', Kaleigh:'Green Bay', Nolan:'Chicago', Sheila:'Chicago'};
+document.getElementById('family').innerHTML = `<tr><th>Opponent</th><th class="num">Dog rate, toss-ups<br>(fav &lt;55%)</th><th class="num">Close<br>(55–62%)</th><th class="num">Other</th><th>Team lean</th></tr>` +
+  D.family.map(m => `<tr><td><b>${m.name}</b></td><td class="num">${pct(m.dog_rate.tossup,0)}</td><td class="num">${pct(m.dog_rate.close,0)}</td><td class="num">${pct(m.dog_rate.other,0)}</td><td>${m.bias_team?`${lean[m.name]||m.bias_team} (${pct(m.bias_strength,0)} of their games)`:'neutral'}</td></tr>`).join('');
+
+document.getElementById('history').innerHTML = (() => {
+  const seasons = D.history; const names = [...new Set(seasons.flatMap(s=>Object.keys(s.members)))];
+  const tot = n => seasons.reduce((a,s)=>a+(s.members[n]||0),0), totC = seasons.reduce((a,s)=>a+(s.all_favorites||0),0);
+  const order = ['All-favorites', ...names.sort((a,b)=>tot(b)-tot(a))];
+  return `<tr><th>Picker</th>${seasons.map(s=>`<th class="num">${s.season}</th>`).join('')}<th class="num">Total</th><th class="num">vs chalk</th></tr>` +
+    order.map(n => { const isC = n==='All-favorites'; const vals = seasons.map(s => isC? s.all_favorites : (s.members[n]??'—')); const t = isC? totC : tot(n);
+      return `<tr><td>${isC?'<b>All-favorites</b>':n}</td>${vals.map(v=>`<td class="num">${v}</td>`).join('')}<td class="num">${t}</td><td class="num">${isC?'':(t-totC>=0?'+':'')+(isC?'':t-totC)}</td></tr>`; }).join('');
+})();
+
+const sb = D.scoreboard;
+document.getElementById('scoreboard').innerHTML = `<div class="tile"><div class="l">Ryan correct</div><div class="v">${sb.ryan_entered? sb.ryan_correct : '—'}</div></div><div class="tile"><div class="l">All-favorites</div><div class="v">${sb.engine_a_correct}</div></div><div class="tile"><div class="l">Engine B value</div><div class="v">${sb.engine_b_value>=0?'+':''}${sb.engine_b_value}</div></div>`;
+document.getElementById('scoreboard-note').textContent = sb.games_scored ? `${sb.games_scored} games scored so far. Engine B value = Engine B recommendations correct minus all-favorites correct; it is zero whenever Engine B recommends every favorite.` : 'No 2026 games are final yet. Ryan\'s actual picks come from pool_picks.csv once entered.';
+
+// model tab
+const C = D.engine_a.calibration, A = D.engine_a.ablation;
+document.getElementById('a-tiles').innerHTML = `<div class="tile"><div class="l">Favorite accuracy</div><div class="v">${pct(C.accuracy)}</div></div><div class="tile"><div class="l">Brier</div><div class="v">${C.brier.toFixed(4)}</div></div><div class="tile"><div class="l">Log loss</div><div class="v">${C.logloss.toFixed(4)}</div></div>`;
+document.getElementById('calib').innerHTML = `<tr><th>Market favorite</th><th class="num">Games</th><th class="num">Mean predicted</th><th class="num">Actually won</th><th class="num">Error</th></tr>` +
+  C.calibration.map(r=>`<tr><td>${r.bucket}%</td><td class="num">${r.n}</td><td class="num">${pct(r.mean_pred)}</td><td class="num">${pct(r.actual)}</td><td class="num">${((r.actual-r.mean_pred)*100>=0?'+':'')+((r.actual-r.mean_pred)*100).toFixed(1)}</td></tr>`).join('') +
+  `<tr><td colspan="5" class="note">${C.games} regular-season games ${C.seasons[0]}–${C.seasons[1]} with moneylines, ties dropped. Season accuracy standard error over 272 games ≈ ±${(C.se_272*100).toFixed(1)} points.</td></tr>`;
+document.getElementById('ablation').innerHTML = A ? `<tr><th>Model</th><th class="num">Log loss</th><th class="num">Brier</th><th class="num">Accuracy</th><th class="num">Flips vs market</th><th class="num">Flip accuracy</th><th>Better than previous</th></tr>` +
+  `<tr><td><b>Raw market (production)</b></td><td class="num">${A.raw.logloss.toFixed(4)}</td><td class="num">—</td><td class="num">${pct(A.raw.accuracy)}</td><td class="num">—</td><td class="num">—</td><td></td></tr>` +
+  A.models.map(m=>`<tr><td>${m.name}</td><td class="num">${m.logloss.toFixed(4)}</td><td class="num">${m.brier.toFixed(4)}</td><td class="num">${pct(m.accuracy)}</td><td class="num">${m.flips}</td><td class="num">${m.flip_acc===null?'—':pct(m.flip_acc)}</td><td>${m.better_than_prev||'—'} seasons</td></tr>`).join('') : '<tr><td>Not available</td></tr>';
+
+const F = D.family_fit;
+if (F) {
+  document.getElementById('fit-note').textContent = `Seasons ${F.seasons.join(', ')}; recency half-life ${F.halflife} season; ${F.prior_weeks} pseudo-weeks of shrinkage toward the prior. Dropped as missed entries: ${F.dropped.map(d=>`${d[0]} wk${d[1]} ${d[2]}`).join(', ')}. Method: each underdog pick adds one unit of variance to a member's weekly gap from the all-favorites score, so the spread of that gap identifies how often they deviate.`;
+  document.getElementById('fit').innerHTML = `<tr><th>Member</th><th class="num">Weeks</th><th class="num">Mean gap vs chalk</th><th class="num">SD</th><th class="num">Raw rate</th><th class="num">Shrunk rate</th></tr>` +
+    F.members.map(m=>`<tr><td>${m.name}${m.in_family?'':' (Ryan, not an opponent)'}</td><td class="num">${m.weeks}</td><td class="num">${m.mean_diff.toFixed(2)}</td><td class="num">${m.sd_diff.toFixed(2)}</td><td class="num">${m.r_raw.toFixed(3)}</td><td class="num">${m.r_shrunk.toFixed(3)}</td></tr>`).join('');
+}
+document.getElementById('audit').innerHTML = `<tr><th>Logged (CT)</th><th>Wk</th><th>Game</th><th>Fav</th><th class="num">P(fav)</th><th>Rec.</th><th class="num">ΔP dog</th><th>Rob.</th><th>Ryan</th><th>Winner</th><th class="num">P(first)</th></tr>` +
+  D.audit.slice().reverse().map(r=>`<tr><td class="mono" style="white-space:nowrap">${fmtT(r.logged_at)}</td><td>${r.week}</td><td>${r.game_id.slice(8)}</td><td>${r.fav}</td><td class="num">${pct(r.p_fav)}</td><td><b>${r.recommendation}</b></td><td class="num">${pts(r.dP_dog)}</td><td>${r.confidence}</td><td>${r.ryan_pick||'—'}</td><td>${r.winner||'—'}</td><td class="num">${pct(r.p_first)}</td></tr>`).join('');
+
+// tabs (remember last tab per viewer)
+const tabs = [...document.querySelectorAll('nav.tabs button')];
+function show(id){ tabs.forEach(b=>b.setAttribute('aria-selected', String(b.dataset.tab===id))); document.querySelectorAll('section.tab').forEach(s=>s.hidden = s.id!==id); try{localStorage.setItem('tab',id)}catch(e){} }
+tabs.forEach(b=>b.addEventListener('click',()=>show(b.dataset.tab)));
+let t0='week'; try{ t0 = localStorage.getItem('tab')||'week'; }catch(e){} if(location.hash.startsWith('#g-')) t0='week'; show(t0);
+</script>

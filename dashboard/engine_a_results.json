@@ -1,0 +1,206 @@
+{
+ "rows": 5051,
+ "tests": [
+  2014,
+  2025
+ ],
+ "raw": {
+  "logloss": 0.6115824567206994,
+  "accuracy": 0.6625524827720964
+ },
+ "models": [
+  {
+   "name": "M0 market",
+   "features": [
+    "mkt"
+   ],
+   "logloss": 0.6114683472398378,
+   "brier": 0.21187692881772216,
+   "accuracy": 0.6634609929994135,
+   "flips": 43,
+   "flip_acc": 0.5348837209302325,
+   "better_than_prev": null,
+   "coefficients": {
+    "mkt": {
+     "value": 1.0439953554820145,
+     "sign_consistency": 1.0
+    }
+   }
+  },
+  {
+   "name": "M1 +elo",
+   "features": [
+    "mkt",
+    "elo"
+   ],
+   "logloss": 0.6117299683870486,
+   "brier": 0.21198175375650105,
+   "accuracy": 0.662785963675642,
+   "flips": 45,
+   "flip_acc": 0.5111111111111111,
+   "better_than_prev": "4/12",
+   "coefficients": {
+    "mkt": {
+     "value": 0.9897968383995754,
+     "sign_consistency": 1.0
+    },
+    "elo": {
+     "value": 0.14972597638794444,
+     "sign_consistency": 0.9166666666666666
+    }
+   }
+  },
+  {
+   "name": "M2 +rest",
+   "features": [
+    "mkt",
+    "elo",
+    "rest"
+   ],
+   "logloss": 0.6123735207465913,
+   "brier": 0.21226192121813822,
+   "accuracy": 0.661558630228762,
+   "flips": 49,
+   "flip_acc": 0.46938775510204084,
+   "better_than_prev": "5/12",
+   "coefficients": {
+    "mkt": {
+     "value": 0.9825176094752418,
+     "sign_consistency": 1.0
+    },
+    "elo": {
+     "value": 0.1653646999248364,
+     "sign_consistency": 0.9166666666666666
+    },
+    "rest": {
+     "value": 0.10271231550130464,
+     "sign_consistency": 1.0
+    }
+   }
+  },
+  {
+   "name": "M3 +div",
+   "features": [
+    "mkt",
+    "elo",
+    "rest",
+    "div"
+   ],
+   "logloss": 0.6124091768556218,
+   "brier": 0.2122876778687273,
+   "accuracy": 0.6635320291005021,
+   "flips": 67,
+   "flip_acc": 0.5223880597014925,
+   "better_than_prev": "5/12",
+   "coefficients": {
+    "mkt": {
+     "value": 0.9806298641339168,
+     "sign_consistency": 1.0
+    },
+    "elo": {
+     "value": 0.16909846196828754,
+     "sign_consistency": 0.9166666666666666
+    },
+    "rest": {
+     "value": 0.10409982949559213,
+     "sign_consistency": 1.0
+    },
+    "div": {
+     "value": -0.10074924108610649,
+     "sign_consistency": 1.0
+    }
+   }
+  },
+  {
+   "name": "M4 +weather",
+   "features": [
+    "mkt",
+    "elo",
+    "rest",
+    "div",
+    "cold",
+    "windy"
+   ],
+   "logloss": 0.6128432467851327,
+   "brier": 0.21248157511312293,
+   "accuracy": 0.6619779033810089,
+   "flips": 86,
+   "flip_acc": 0.4883720930232558,
+   "better_than_prev": "6/12",
+   "coefficients": {
+    "mkt": {
+     "value": 0.9799081421521116,
+     "sign_consistency": 1.0
+    },
+    "elo": {
+     "value": 0.1695603515315835,
+     "sign_consistency": 0.9166666666666666
+    },
+    "rest": {
+     "value": 0.10410404183472798,
+     "sign_consistency": 1.0
+    },
+    "div": {
+     "value": -0.10263298190873447,
+     "sign_consistency": 1.0
+    },
+    "cold": {
+     "value": 0.14988862623080382,
+     "sign_consistency": 1.0
+    },
+    "windy": {
+     "value": 0.012887830029635793,
+     "sign_consistency": 0.25
+    }
+   }
+  },
+  {
+   "name": "M5 +qbchg",
+   "features": [
+    "mkt",
+    "elo",
+    "rest",
+    "div",
+    "cold",
+    "windy",
+    "qbchg"
+   ],
+   "logloss": 0.6128661564852053,
+   "brier": 0.2124878162477177,
+   "accuracy": 0.6635222876124031,
+   "flips": 89,
+   "flip_acc": 0.5168539325842697,
+   "better_than_prev": "8/12",
+   "coefficients": {
+    "mkt": {
+     "value": 0.977345088017475,
+     "sign_consistency": 1.0
+    },
+    "elo": {
+     "value": 0.1758059983647104,
+     "sign_consistency": 0.9166666666666666
+    },
+    "rest": {
+     "value": 0.10364096316265432,
+     "sign_consistency": 1.0
+    },
+    "div": {
+     "value": -0.10147616104692372,
+     "sign_consistency": 1.0
+    },
+    "cold": {
+     "value": 0.15057069948146767,
+     "sign_consistency": 1.0
+    },
+    "windy": {
+     "value": 0.012701414072842258,
+     "sign_consistency": 0.25
+    },
+    "qbchg": {
+     "value": -0.050828929693908106,
+     "sign_consistency": 1.0
+    }
+   }
+  }
+ ]
+}
