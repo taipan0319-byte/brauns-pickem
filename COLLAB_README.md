@@ -75,6 +75,15 @@ near kickoff for anything in the watch list. Each refresh appends rows to both l
   let real picks shrink the score-derived priors.
 - `weekly_scores.csv`: append each week's points per member (optional; keeps the historical file complete).
 
+## CBS automation: tried, blocked
+
+`scrape_cbs.py` / `cbs-scrape.yml` can sign in to CBS on the Actions runner using repository secrets, but
+CBS's login form is protected by Google reCAPTCHA and rejects the automated submission ("error during
+captcha validation"). We do not attempt to defeat CAPTCHAs. The workflow is left in place, manual-only,
+in case CBS changes its login; the working method for family picks and standings remains a screenshot
+of the CBS picks page after kickoff, transcribed into `pool_picks.csv` and `standings.json`.
+The two secrets are unused and should be deleted from the repository settings.
+
 ## Weekly routine during the season
 
 1. Before the first deadline of the week: `engine_b.py --season 2026 --week N --screen`
