@@ -4,6 +4,57 @@ Newest block at the top.
 
 ---
 
+## 2026-09-10 — Block 9: injury follow-up. Withdraw the coin-flip tiebreaker; recommend option A.
+
+Ryan asked two things: can player importance (star vs depth, replacement quality) be factored in, and
+can injuries be backtested in coin-flip games specifically. Both tested (`test_injuries_coinflip.py`,
+nflverse injuries + snap counts 2012–2025, expanding window 2015–2025).
+
+**1. Importance weighting adds nothing.** Weighting each injured player by his usual snap share, or by
+snap share × position, or counting only near-every-down "stars":
+
+| Injury measure, no market | Log loss | With market | Log loss |
+|---|---|---|---|
+| Position-weighted count (current) | 0.6829 | market + position | 0.6127 |
+| Snap-share weighted | 0.6854 | market + snap | 0.6128 |
+| Snap × position | 0.6830 | market + snap×position | 0.6128 |
+| Stars only (≥80% snaps) | 0.6873 | market + stars | 0.6130 |
+| QB out (a QB who actually plays) | 0.6861 | market + QB | 0.6130 |
+
+The crude count is the best single measure, and every version is identical once the market is in the
+model. Reading: the market prices star injuries essentially perfectly (they are news). Whatever
+residual exists is in aggregate depth, the opposite of the intuition that "important injuries matter
+more." Replacement quality was not testable without PFF-type data; given that star injuries themselves
+leave no residual, star-replacement quality is very unlikely to.
+
+**2. In coin flips, the injury gap does not predict the winner, and QB absences point the wrong way.**
+Restricting to games with a favorite under 55% (394 test games):
+
+| Coin flips only | Log loss | Coefficient |
+|---|---|---|
+| Market only | 0.6965 | — |
+| Injury count alone | 0.6983 | +0.009 (wrong sign) |
+| Market + injury count | 0.6994 | +0.007 |
+| Market + QB out | 0.6943 | **+0.50** (the side missing its QB wins more) |
+
+Raw splits: in coin flips with any injury gap, the less-injured side won 202 of 393 (51.4% ± 2.5).
+With a large gap, the less-injured side won 19 of 54 (35% ± 7). Where one side's starting QB was out,
+the side *with* its QB won 26 of 62 (42%). Small samples, but the sign is consistently against the
+tiebreaker idea. The mechanism is plausible: a coin flip that features a missing starting QB is a game
+the market has already moved several points for that absence, and it appears to move too far.
+
+**Conclusion.** The all-games residual in Block 8 is real but does not live in coin flips; it lives in
+small probability nudges on games whose pick never changes, which is worth nothing in a straight-up
+pool. The coin-flip tiebreaker you proposed targets exactly the games where injuries carry no usable
+signal. I withdraw my option-B recommendation. **Recommend option A**: no production change, log the
+market and injury-adjusted probabilities side by side every week, revisit at season end. D2 stands.
+
+This also answers the emotion-versus-data question Ryan raised: the instinct that some injuries matter
+more is correct about football and already fully reflected in the line. The place it would help a
+picker is the place the data says it does not.
+
+---
+
 ## 2026-09-10 — Block 8: injury reports tested; a real but small residual. One review round requested.
 
 Ryan asked whether injuries belong in the model. Rather than argue, I ran them through the Engine A
