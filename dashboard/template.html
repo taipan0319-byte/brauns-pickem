@@ -40,9 +40,10 @@ h2{font-family:"IBM Plex Sans Condensed",sans-serif;font-size:13px;letter-spacin
 .watch a .why{color:var(--muted);font-size:12px}
 .watch a:hover{border-color:var(--accent)}
 .games{display:flex;flex-direction:column;gap:10px}
-.game{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:grid;grid-template-columns:96px 1fr;gap:6px 14px;scroll-margin-top:70px}
+.game{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:grid;grid-template-columns:118px 1fr;gap:6px 12px;scroll-margin-top:70px}
 .game.opp{border-color:var(--opp);box-shadow:0 0 0 2px var(--opp-bg) inset}
-.game .pickcode{font-family:"IBM Plex Sans Condensed",sans-serif;font-weight:700;font-size:40px;line-height:.95;color:var(--accent);letter-spacing:-.01em;grid-row:1/span 2;align-self:start;padding-top:2px}
+.game .pickcode{font-family:"IBM Plex Sans Condensed",sans-serif;font-weight:700;font-size:24px;line-height:1;color:var(--accent);letter-spacing:-.01em;grid-row:1/span 2;align-self:start;padding-top:2px;text-transform:uppercase;overflow-wrap:anywhere}
+.game .pickcode .code{display:block;font-size:13px;letter-spacing:.08em;color:var(--ink2);font-weight:600;margin-top:4px}
 .game .pickcode small{display:block;font-size:10.5px;letter-spacing:.12em;color:var(--muted);font-weight:600;margin-top:6px}
 .game .match{display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap}
 .game .teams{font-family:"IBM Plex Sans Condensed",sans-serif;font-weight:600;font-size:18px}
@@ -80,7 +81,7 @@ p{max-width:65ch}
 code{font-family:"IBM Plex Mono",monospace;font-size:12.5px;background:var(--surface2);padding:1px 5px;border-radius:4px}
 .refresh{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-top:16px}
 .refresh .t{font-family:"IBM Plex Sans Condensed",sans-serif;font-weight:700;font-size:16px;letter-spacing:.04em}
-@media (max-width:420px){.game{grid-template-columns:84px 1fr}.game .pickcode{font-size:34px}.tiles{grid-template-columns:1fr 1fr}.hero .big{font-size:32px}}
+@media (max-width:420px){.game{grid-template-columns:104px 1fr}.game .pickcode{font-size:21px}.tiles{grid-template-columns:1fr 1fr}.hero .big{font-size:32px}}
 @media (min-width:640px){.facts{grid-template-columns:repeat(4,1fr)}.hero{grid-template-columns:1fr auto}.hero>div:last-child{text-align:right}}
 .hero>div,.game>*,.wrap{min-width:0}.game .why,.game .teams,.banner{overflow-wrap:anywhere}
 @media (prefers-reduced-motion:no-preference){nav.tabs button{transition:background .15s}}
@@ -106,7 +107,7 @@ code{font-family:"IBM Plex Mono",monospace;font-size:12.5px;background:var(--sur
   </div>
   <h2>Games to watch</h2>
   <div class="watch" id="watch"></div>
-  <h2>Recommendations</h2>
+  <h2>Recommendations <span id="order-note" style="font-weight:400;letter-spacing:0;text-transform:none;color:var(--muted)"></span></h2>
   <div class="games" id="games"></div>
   <div class="refresh">
     <div class="t">REFRESH WEEK</div>
@@ -178,23 +179,24 @@ if (D.p_first!==null) { document.getElementById('pfirst').textContent = pct(D.p_
 
 // watch list
 const W = D.games.filter(g => g.watch && g.watch.length);
-document.getElementById('watch').innerHTML = W.length ? W.map(g => `<a href="#g-${g.game_id}"><b class="cond">${g.away}@${g.home}</b><span class="why">${g.watch.join(' · ')}</span></a>`).join('')
+document.getElementById('watch').innerHTML = W.length ? W.map(g => `<a href="#g-${g.game_id}"><b class="cond">${g.away_name} @ ${g.home_name}</b><span class="why">${g.watch.join(' · ')}</span></a>`).join('')
   : '<span class="note">No close calls this week. Every recommendation is the favorite at HIGH robustness.</span>';
 
 // game cards
+document.getElementById('order-note').textContent = '· listed in ' + D.order_source;
 document.getElementById('games').innerHTML = D.games.map(g => {
   if (!g.pick) return `<article class="game" id="g-${g.game_id}"><div class="pickcode">—</div><div class="match"><span class="teams">${g.away} @ ${g.home}</span><span class="when">${g.weekday} ${g.kickoff_ct}</span></div><div class="why">${g.rationale}</div></article>`;
   const isOpp = g.pick !== g.fav, done = g.result !== null;
   const favPct = g.p_fav, homeIsFav = g.fav === g.home;
   const res = done ? `<div class="result ${g.pick_correct?'ok':'miss'}">Final ${g.away} ${g.away_score} – ${g.home} ${g.home_score} · pick ${g.pick_correct?'correct':'missed'}</div>` : '';
   return `<article class="game${isOpp?' opp':''}" id="g-${g.game_id}">
-    <div class="pickcode">${g.pick}<small>${isOpp?'UNDERDOG':'PICK'}</small></div>
-    <div class="match"><span class="teams">${g.away} @ ${g.home}</span><span class="when">${g.weekday} ${g.kickoff_ct}${done?' · FINAL':''}</span></div>
+    <div class="pickcode">${g.pick_name}<span class="code">${g.pick}</span><small>${isOpp?'UNDERDOG':'PICK'}</small></div>
+    <div class="match"><span class="teams">${g.away_name} @ ${g.home_name}</span><span class="when">${g.weekday} ${g.kickoff_ct}${done?' · FINAL':''}</span></div>
     <div><div class="meter" title="market probability, favorite"><i style="width:${(favPct*100).toFixed(1)}%"></i></div>
       <div class="facts">
-        <span>Market: <b>${g.fav} ${pct(g.p_fav)}</b></span>
-        <span>Family on ${g.fav}: <b>${pct(g.family_fav_rate,0)}</b></span>
-        <span>Dog ${g.dog}, ΔP(first): <b>${pts(g.dP_dog)}</b></span>
+        <span>Market: <b>${g.fav_name} ${pct(g.p_fav)}</b></span>
+        <span>Family on ${g.fav_name}: <b>${pct(g.family_fav_rate,0)}</b></span>
+        <span>Dog ${g.dog_name}, ΔP(first): <b>${pts(g.dP_dog)}</b></span>
         <span>Robustness: <span class="pill ${g.confidence}">${g.confidence}</span>${isOpp?' <span class="pill opp">strategic differentiation</span>':''}</span>
       </div></div>
     <div class="why${isOpp?' opp':''}">${g.rationale}${g.ryan_pick && g.ryan_pick!==g.pick?` <b>Ryan's logged pick: ${g.ryan_pick}.</b>`:''}</div>
