@@ -1,10 +1,10 @@
 {
  "season": 2026,
  "week": 1,
- "built_at": "2026-09-10T12:58:13Z",
+ "built_at": "2026-09-10T13:05:54Z",
  "order_source": "CBS app order (recorded from screenshot)",
  "model_refreshed_at": "2026-09-10T12:58:13Z",
- "market_asof": "2026-09-10T12:58:10Z",
+ "market_asof": "2026-09-10T13:05:31Z",
  "p_first": 0.5524,
  "games": [
   {
@@ -20,13 +20,28 @@
    "away_score": "10",
    "home_score": "13",
    "ryan_pick": "SEA",
-   "fav": null,
-   "pick": null,
-   "confidence": null,
-   "rationale": "No Engine B output for this game yet. Run the refresh.",
-   "watch": [
-    "no model output"
-   ]
+   "fav": "SEA",
+   "dog": "NE",
+   "p_fav": 0.5996,
+   "pick": "SEA",
+   "pick_name": "Seahawks",
+   "fav_name": "Seahawks",
+   "dog_name": "Patriots",
+   "confidence": "HIGH",
+   "family_fav_rate": 0.681,
+   "dP_dog": -0.0123,
+   "mc_noise": 0.0017,
+   "logged_at": "2026-09-10T00:58:03Z",
+   "rationale": "SEA is the market favorite at 60.0%. Taking NE would lower P(finish first) by 1.2 points: with about 68% of the family expected on SEA, the dog buys little differentiation and costs 0.20 expected points.",
+   "engine_a_pick": "SEA",
+   "spread": "3",
+   "ml": [
+    "140",
+    "-166"
+   ],
+   "watch": [],
+   "winner": "SEA",
+   "pick_correct": true
   },
   {
    "game_id": "2026_01_SF_LA",

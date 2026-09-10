@@ -43,6 +43,9 @@ h2{font-family:"IBM Plex Sans Condensed",sans-serif;font-size:13px;letter-spacin
 .game{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:grid;grid-template-columns:118px 1fr;gap:6px 12px;scroll-margin-top:70px}
 .game.opp{border-color:var(--opp);box-shadow:0 0 0 2px var(--opp-bg) inset}
 .game .pickcode{font-family:"IBM Plex Sans Condensed",sans-serif;font-weight:700;font-size:24px;line-height:1;color:var(--accent);letter-spacing:-.01em;grid-row:1/span 2;align-self:start;padding-top:2px;text-transform:uppercase;overflow-wrap:anywhere}
+.game.won .pickcode{color:var(--good)}.game.lost .pickcode{color:var(--bad)}
+.game.won{border-color:var(--good)}.game.lost{border-color:var(--bad)}
+.game .score{font-family:"IBM Plex Mono",monospace;font-weight:500;font-variant-numeric:tabular-nums}
 .game .pickcode .code{display:block;font-size:13px;letter-spacing:.08em;color:var(--ink2);font-weight:600;margin-top:4px}
 .game .pickcode small{display:block;font-size:10.5px;letter-spacing:.12em;color:var(--muted);font-weight:600;margin-top:6px}
 .game .match{display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap}
@@ -205,6 +208,7 @@ E[D²] ≈ r · n_close + r² · (Σ (1 − 2p))²      solve for r, the underdo
 <script id="data" type="application/json">/*__DATA__*/null</script>
 <script>
 const D = JSON.parse(document.getElementById('data').textContent);
+const MASCOT = Object.fromEntries(D.games.flatMap(g => [[g.away, g.away_name], [g.home, g.home_name]]));
 const pct = (x, d=1) => (x*100).toFixed(d) + '%';
 const pts = x => (x>=0?'+':'') + (x*100).toFixed(1) + ' pts';
 const fmtT = iso => { if(!iso) return '—'; const t=new Date(iso); return t.toLocaleString('en-US',{timeZone:'America/Chicago',month:'short',day:'numeric',hour:'numeric',minute:'2-digit'}) + ' CT'; };
@@ -216,6 +220,11 @@ const ma = ageH(D.market_asof), stale = ma!==null && ma > 24;
 document.getElementById('stamps').innerHTML =
   `<span>Model refreshed <b>${fmtT(D.model_refreshed_at)}</b></span><span>Market lines as of <b>${fmtT(D.market_asof)}</b>${ma!==null?` (${ma<1?'under an hour':Math.round(ma)+' h'} ago)`:''}</span>`;
 document.getElementById('rule').textContent = D.decisions.production_rule;
+const finals = D.games.filter(g => g.result !== null && g.pick);
+if (finals.length) {
+  const won = finals.filter(g => g.pick_correct).length;
+  document.querySelector('.hero > div:last-child').innerHTML = `<div class="lbl">This week so far</div><div class="big" style="color:${won >= finals.length - won ? 'var(--good)' : 'var(--bad)'}">${won}<span style="font-size:20px;color:var(--muted)"> / ${finals.length}</span></div><div class="sub">${finals.length} of ${D.games.length} games final · ${D.games.length - finals.length} to play</div>`;
+}
 document.getElementById('refresh-cmd').textContent = `python3 refresh.py --season ${D.season} --week ${D.week}` + (D.standings?' --standings standings.json':'');
 
 // banners
@@ -243,11 +252,13 @@ document.getElementById('order-note').textContent = '· listed in ' + D.order_so
 document.getElementById('games').innerHTML = D.games.map(g => {
   if (!g.pick) return `<article class="game" id="g-${g.game_id}"><div class="pickcode">—</div><div class="match"><span class="teams">${g.away} @ ${g.home}</span><span class="when">${g.weekday} ${g.kickoff_ct}</span></div><div class="why">${g.rationale}</div></article>`;
   const isOpp = g.pick !== g.fav, done = g.result !== null;
+  const outcome = done ? (g.pick_correct ? 'won' : (g.pick_correct === false ? 'lost' : '')) : '';
+  const scoreLine = done ? `<span class="score">${g.away_name} ${g.away_score} · ${g.home_name} ${g.home_score}</span>` : `${g.away_name} @ ${g.home_name}`;
   const favPct = g.p_fav, homeIsFav = g.fav === g.home;
-  const res = done ? `<div class="result ${g.pick_correct?'ok':'miss'}">Final ${g.away} ${g.away_score} – ${g.home} ${g.home_score} · pick ${g.pick_correct?'correct':'missed'}</div>` : '';
-  return `<article class="game${isOpp?' opp':''}" id="g-${g.game_id}">
-    <div class="pickcode">${g.pick_name}<span class="code">${g.pick}</span><small>${isOpp?'UNDERDOG':'PICK'}</small></div>
-    <div class="match"><span class="teams">${g.away_name} @ ${g.home_name}</span><span class="when">${g.weekday} ${g.kickoff_ct}${done?' · FINAL':''}</span></div>
+  const res = done ? `<div class="result ${g.pick_correct?'ok':'miss'}">${g.pick_correct ? `${g.pick_name} won. Pick correct.` : g.pick_correct === false ? `${g.winner ? MASCOT[g.winner] || g.winner : 'Tie'} won. Pick missed.` : 'Tie. No point.'}</div>` : '';
+  return `<article class="game${isOpp?' opp':''}${outcome?' '+outcome:''}" id="g-${g.game_id}">
+    <div class="pickcode">${g.pick_name}<span class="code">${g.pick}</span><small>${outcome==='won'?'✓ WON':outcome==='lost'?'✗ LOST':(isOpp?'UNDERDOG':'PICK')}</small></div>
+    <div class="match"><span class="teams">${scoreLine}</span><span class="when">${done?'FINAL':g.weekday+' '+g.kickoff_ct}</span></div>
     <div><div class="meter" title="market probability, favorite"><i style="width:${(favPct*100).toFixed(1)}%"></i></div>
       <div class="facts">
         <span>Market: <b>${g.fav_name} ${pct(g.p_fav)}</b></span>

@@ -61,8 +61,14 @@ def main():
     # --- Engine B log: latest run per game for this week, plus the previous run for change detection
     blog = [r for r in read_csv(os.path.join(HERE, "engine_b_log.csv")) if int(r["season"]) == a.season and int(r["week"]) == a.week]
     runs = sorted({r["logged_at_utc"] for r in blog})
-    latest = {r["game_id"]: r for r in blog if r["logged_at_utc"] == runs[-1]} if runs else {}
-    prev = {r["game_id"]: r for r in blog if r["logged_at_utc"] == runs[-2]} if len(runs) > 1 else {}
+    # A finished game drops out of later Engine B runs (it only simulates unplayed games), so each game keeps
+    # the LAST run that included it: for played games that is the standing pre-kickoff recommendation.
+    latest = {}
+    for r in sorted(blog, key=lambda r: r["logged_at_utc"]): latest[r["game_id"]] = r
+    prev = {}
+    for gid_, r in latest.items():
+        earlier = [x for x in blog if x["game_id"] == gid_ and x["logged_at_utc"] < r["logged_at_utc"]]
+        if earlier: prev[gid_] = max(earlier, key=lambda x: x["logged_at_utc"])
     alog = read_csv(os.path.join(HERE, "predictions_log.csv"))
     a_latest = {}
     for r in alog:
@@ -104,7 +110,7 @@ def main():
             winner = g["home_team"] if row["result"] > 0 else g["away_team"] if row["result"] < 0 else None
             row["winner"] = winner; row["pick_correct"] = (winner == row["pick"]) if winner else None
         out_games.append(row)
-    p_first = float(next(iter(latest.values()))["p_first_final"]) if latest else None
+    p_first = float(max(latest.values(), key=lambda r: r["logged_at_utc"])["p_first_final"]) if latest else None
     standings = json.load(open(os.path.join(HERE, "standings.json"))) if os.path.exists(os.path.join(HERE, "standings.json")) else None
 
     # --- scoreboard for the season so far (all completed REG games with a logged recommendation)
