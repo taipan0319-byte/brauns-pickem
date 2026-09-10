@@ -79,6 +79,8 @@ p{max-width:65ch}
 .kv{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:13px}
 .kv b{font-weight:600}
 code{font-family:"IBM Plex Mono",monospace;font-size:12.5px;background:var(--surface2);padding:1px 5px;border-radius:4px}
+pre.formula{background:var(--surface2);border:1px solid var(--line);border-radius:8px;padding:10px 12px;font-family:"IBM Plex Mono",monospace;font-size:12.5px;line-height:1.5;overflow-x:auto;margin:6px 0 10px;white-space:pre}
+#how p{font-size:14.5px}#how li{font-size:14px;margin-bottom:6px;max-width:65ch}
 .refresh{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-top:16px}
 .refresh .t{font-family:"IBM Plex Sans Condensed",sans-serif;font-weight:700;font-size:16px;letter-spacing:.04em}
 @media (max-width:420px){.game{grid-template-columns:104px 1fr}.game .pickcode{font-size:21px}.tiles{grid-template-columns:1fr 1fr}.hero .big{font-size:32px}}
@@ -97,6 +99,7 @@ code{font-family:"IBM Plex Mono",monospace;font-size:12.5px;background:var(--sur
   <button role="tab" aria-selected="true" data-tab="week" id="tab-week">This week</button>
   <button role="tab" aria-selected="false" data-tab="pool" id="tab-pool">Pool strategy</button>
   <button role="tab" aria-selected="false" data-tab="model" id="tab-model">Model &amp; audit</button>
+  <button role="tab" aria-selected="false" data-tab="how" id="tab-how">How it works</button>
 </nav>
 
 <section class="tab" id="week">
@@ -145,6 +148,59 @@ code{font-family:"IBM Plex Mono",monospace;font-size:12.5px;background:var(--sur
   <div class="scroll"><table id="audit"></table></div>
 </section>
 </div>
+
+<section class="tab" id="how" hidden>
+  <h2>The one-sentence version</h2>
+  <p>We pick the team the betting market says is more likely to win, in every game, because two seasons of family scores and twenty seasons of NFL history both say that nothing else does better. The clever part is not predicting football. It is measuring how the family picks, so we know whether it ever pays to disagree with them.</p>
+
+  <h2>Step 1 · Turning the betting line into a probability</h2>
+  <p>A moneyline like <b>Seahawks −166 / Patriots +140</b> is the bookmaker's price on each team. Convert each price to an implied chance, then rescale so the two chances add to 100%, which strips out the bookmaker's cut ("the vig"):</p>
+  <pre class="formula">q = 100 / (ML + 100)     if the moneyline is positive
+q = |ML| / (|ML| + 100)  if it is negative
+P(home) = q_home / (q_home + q_away)</pre>
+  <p>For that game: q = 0.624 and 0.417, so P(Seahawks) = 0.624 / 1.041 = <b>60%</b>. This is the only "football model" in production.</p>
+
+  <h2>Why we trust the line</h2>
+  <p>Across <b id="how-n">—</b> regular-season games since 2007, the market favorite won <b id="how-acc">—</b> of the time, and the probabilities are honest at every level: teams priced at 60–65% win about 60%, teams priced at 80–85% win about 84%. A season is 272 games, which makes the margin of error on a picker's accuracy about ±3 points, so a 66% picker and a 68% picker are indistinguishable in one year.</p>
+  <p>We then tried to beat it. A logistic regression with the market as the starting point and extra factors added one block at a time:</p>
+  <pre class="formula">log-odds(home wins) = a · log-odds(market) + b₁·Elo + b₂·rest + b₃·division + b₄·cold + b₅·wind + b₆·QB change</pre>
+  <p>Trained on past seasons and tested on later ones (2014–2025), every added block made the predictions slightly <i>worse</i>. With the market alone the fitted slope is 1.04, which means the line needs no correction. Coin flips were checked separately: home teams win 50.5% of games where the favorite is under 55%, exactly what the line already implies. Full tables are on the Model &amp; audit tab.</p>
+
+  <h2>Step 2 · The pool is a race, not a test</h2>
+  <p>Most correct picks does not win a pool. Finishing ahead of six specific people does. Those are different targets:</p>
+  <pre class="formula">Score objective:  maximize expected correct picks  →  always take the favorite
+Pool objective:   maximize P(Ryan's score ≥ everyone else's)  →  depends on what they pick</pre>
+  <p>Here is why they can differ. If all six opponents take a 60% favorite and Ryan does too, the game changes nothing; if it were the only game, everyone ties and Ryan's chance of first is 1 in 7. If Ryan alone takes the 40% underdog, his chance of first is 40%. So taking an underdog can raise the chance of finishing first even though it lowers the expected score. Whether it actually does depends on how often the others pick underdogs themselves, and by how much. That is a measurement question.</p>
+
+  <h2>Step 3 · Measuring the family</h2>
+  <p>CBS does not show past picks, but it shows weekly scores. If a member always took favorites, their weekly score would equal the all-favorites score exactly. Every underdog pick moves it up or down by one point, so the <i>scatter</i> of a member's weekly gap identifies how often they deviate without revealing which games:</p>
+  <pre class="formula">D = member's points − all-favorites points, each week
+E[D²] ≈ r · n_close + r² · (Σ (1 − 2p))²      solve for r, the underdog rate</pre>
+  <p>Fitted on 2024–2025 (the more recent season counting double), shrunk toward a cautious prior, with unentered weeks treated as missing rather than as contrarian. As real 2026 picks are revealed after each kickoff they progressively replace the estimate:</p>
+  <pre class="formula">rate = (observed underdog picks + prior × 10) / (observed picks + 10)</pre>
+  <p>These are estimates, labeled as such on the Pool strategy tab. Two known team loyalties (Packers, Bears) are modeled only for the members who told us about them.</p>
+
+  <h2>Step 4 · The weekly simulation</h2>
+  <p>Three times a week the pipeline downloads fresh lines and plays the rest of the season 20,000 times: each game's winner is drawn from the market probability, each opponent's pick from their fitted tendency, and the standings carried forward. For every game this week it compares Ryan's chance of finishing first with the favorite against the same with the underdog, and recommends whichever is higher. The <b>robustness</b> grade re-runs the comparison with the family modeled half as contrarian and twice as contrarian: HIGH means the answer holds either way, LOW means it flips, and LOW always resolves to the favorite.</p>
+
+  <h2>What it deliberately ignores, and why</h2>
+  <ul>
+    <li><b>Injuries.</b> Tested against official injury reports 2009–2025. On their own they predict winners at 56%; the market absorbs about 80% of that, and in coin-flip games the injury gap has no predictive value at all (the side missing its quarterback actually won more often, 36 of 62). Weighting stars more heavily changed nothing. Injuries reach the model through the line, which is where they belong.</li>
+    <li><b>Rest, travel, weather, division games, revenge, "momentum."</b> All tested, none survived. They are in the line too.</li>
+    <li><b>Football opinions.</b> No adjustment is ever made by hand for a matchup story. The original design allowed a ±3 point preseason adjustment; it was withdrawn before Week 1 because it could not be tested.</li>
+  </ul>
+
+  <h2>Guardrails</h2>
+  <ul>
+    <li>Every prediction is written to an append-only log with a timestamp before kickoff. A later refresh adds rows; nothing is edited after a result is known.</li>
+    <li>Any change to the method needs a written decision, and a second AI reviewer (ChatGPT) gets one round to reproduce or refute it. Both the reviews and the decisions are public in the repository.</li>
+    <li>Nothing enters the model without beating the market in chronological out-of-sample testing. So far, nothing has.</li>
+  </ul>
+
+  <h2>The track record that convinced us</h2>
+  <p id="how-history"></p>
+  <p class="note">Descriptive, not proof: over 500 games, a few points either way is noise. The point is the direction, not the margin.</p>
+</section>
 
 <script id="data" type="application/json">/*__DATA__*/null</script>
 <script>
@@ -246,6 +302,14 @@ if (F) {
 }
 document.getElementById('audit').innerHTML = `<tr><th>Logged (CT)</th><th>Wk</th><th>Game</th><th>Fav</th><th class="num">P(fav)</th><th>Rec.</th><th class="num">ΔP dog</th><th>Rob.</th><th>Ryan</th><th>Winner</th><th class="num">P(first)</th></tr>` +
   D.audit.slice().reverse().map(r=>`<tr><td class="mono" style="white-space:nowrap">${fmtT(r.logged_at)}</td><td>${r.week}</td><td>${r.game_id.slice(8)}</td><td>${r.fav}</td><td class="num">${pct(r.p_fav)}</td><td><b>${r.recommendation}</b></td><td class="num">${pts(r.dP_dog)}</td><td>${r.confidence}</td><td>${r.ryan_pick||'—'}</td><td>${r.winner||'—'}</td><td class="num">${pct(r.p_first)}</td></tr>`).join('');
+
+// how-it-works live numbers
+document.getElementById('how-n').textContent = C.games.toLocaleString();
+document.getElementById('how-acc').textContent = pct(C.accuracy);
+document.getElementById('how-history').innerHTML = D.history.map(s => {
+  const m = s.members; const names = Object.keys(m); const beat = names.filter(n => m[n] > s.all_favorites).length;
+  return `<b>${s.season}:</b> picking every favorite would have scored ${s.all_favorites}. ${beat === 0 ? 'Nobody in the family beat that.' : `${beat} of ${names.length} beat it (${names.filter(n=>m[n]>s.all_favorites).map(n=>`${n} ${m[n]}`).join(', ')}).`} The family finished ${names.map(n=>`${n} ${m[n]}`).join(', ')}.`;
+}).join('<br><br>');
 
 // tabs (remember last tab per viewer)
 const tabs = [...document.querySelectorAll('nav.tabs button')];

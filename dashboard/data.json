@@ -1,10 +1,10 @@
 {
  "season": 2026,
  "week": 1,
- "built_at": "2026-09-10T03:45:19Z",
+ "built_at": "2026-09-10T12:42:19Z",
  "order_source": "CBS app order (recorded from screenshot)",
  "model_refreshed_at": "2026-09-10T03:45:19Z",
- "market_asof": "2026-09-10T03:45:16Z",
+ "market_asof": "2026-09-10T00:57:19Z",
  "p_first": 0.5505,
  "games": [
   {
@@ -16,9 +16,9 @@
    "weekday": "WED",
    "kickoff_ct": "7:20 PM CT",
    "kickoff_iso": "2026-09-09T19:20:00-05:00",
-   "result": 3.0,
-   "away_score": "10",
-   "home_score": "13",
+   "result": null,
+   "away_score": null,
+   "home_score": null,
    "ryan_pick": "SEA",
    "fav": null,
    "pick": null,
@@ -552,7 +552,7 @@
  ],
  "previous_refresh": "2026-09-10T00:58:03Z",
  "standings": null,
- "games_remaining": 271,
+ "games_remaining": 272,
  "family": [
   {
    "name": "Casey",
@@ -793,11 +793,11 @@
   ]
  },
  "scoreboard": {
-  "games_scored": 1,
-  "engine_a_correct": 1,
-  "engine_b_correct": 1,
-  "ryan_correct": 1,
-  "ryan_entered": 1,
+  "games_scored": 0,
+  "engine_a_correct": 0,
+  "engine_b_correct": 0,
+  "ryan_correct": 0,
+  "ryan_entered": 0,
   "engine_b_value": 0
  },
  "history": [
@@ -1213,7 +1213,7 @@
    "confidence": "HIGH",
    "p_first": 0.5532,
    "ryan_pick": "SEA",
-   "winner": "SEA"
+   "winner": null
   },
   {
    "logged_at": "2026-09-09T23:17:09Z",
@@ -1437,7 +1437,7 @@
    "confidence": "HIGH",
    "p_first": 0.5708,
    "ryan_pick": "SEA",
-   "winner": "SEA"
+   "winner": null
   },
   {
    "logged_at": "2026-09-09T23:19:52Z",
@@ -1661,7 +1661,7 @@
    "confidence": "HIGH",
    "p_first": 0.5797,
    "ryan_pick": "SEA",
-   "winner": "SEA"
+   "winner": null
   },
   {
    "logged_at": "2026-09-09T23:22:06Z",
@@ -1885,7 +1885,7 @@
    "confidence": "HIGH",
    "p_first": 0.5801,
    "ryan_pick": "SEA",
-   "winner": "SEA"
+   "winner": null
   },
   {
    "logged_at": "2026-09-09T23:35:03Z",
@@ -2109,7 +2109,7 @@
    "confidence": "HIGH",
    "p_first": 0.5802,
    "ryan_pick": "SEA",
-   "winner": "SEA"
+   "winner": null
   },
   {
    "logged_at": "2026-09-10T00:40:08Z",
@@ -2333,7 +2333,7 @@
    "confidence": "HIGH",
    "p_first": 0.5783,
    "ryan_pick": "SEA",
-   "winner": "SEA"
+   "winner": null
   },
   {
    "logged_at": "2026-09-10T00:47:18Z",
@@ -2557,7 +2557,7 @@
    "confidence": "HIGH",
    "p_first": 0.5539,
    "ryan_pick": "SEA",
-   "winner": "SEA"
+   "winner": null
   },
   {
    "logged_at": "2026-09-10T00:58:03Z",
