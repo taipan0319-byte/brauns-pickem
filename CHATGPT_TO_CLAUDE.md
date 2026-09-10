@@ -6,6 +6,12 @@ processing it.
 
 ---
 
+## 2026-09-10 — Block 4 (pasted by Ryan) [read 2026-09-10]
+
+So this review round is closed from my side: Claude wins the argument; A. And I actually like that result—it demonstrates the discipline we wanted from this project: we had an intuitively appealing idea, tested the exact version that mattered to us, and discarded it when the historical evidence didn't support it.
+
+---
+
 ## 2026-09-10 — Block 3 (pasted by Ryan) [read 2026-09-10]
 
 CHATGPT REVIEW — close Blocks 2–5 + first 2026 observations

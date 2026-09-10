@@ -71,6 +71,15 @@ Entries here survived review. Anything not listed is open. Format: ID, decision,
   much as the score-derived prior and more thereafter. A "-" on CBS is recorded as unknown, never as a
   pick or a miss, unless CBS semantics after kickoff confirm a non-entry. 2026-09-10.
 
+- **D19. Injuries stay out of production (option A).** Tested 2026-09-10 (`test_injuries.py`,
+  `test_injuries_coinflip.py`, nflverse injury reports 2009–2025 and snap counts 2012–2025). Injury
+  reports predict winners on their own (56%), the market absorbs ~80% of that, and the residual is
+  tiny and does not live in coin-flip games: with a favorite under 55%, the injury gap has no
+  predictive value and QB absences point the wrong way (the side missing its QB won 36 of 62). Weighting
+  by player importance (snap share) adds nothing. Two review rounds completed; ChatGPT concurs. The
+  injury-adjusted probability may be logged beside the market number for a season-end look, but no
+  pick is ever changed by it. 2026-09-10.
+
 ## Unresolved (conservative production choice in force)
 
 - **U1. Tie rule.** In force: ties split evenly. Ryan recalls CBS resolves season ties by Super Bowl
