@@ -96,6 +96,14 @@ Entries here survived review. Anything not listed is open. Format: ID, decision,
   under-weights last season rather than over-weighting it; log-loss gain 0.001, pick flips 12–11.
   Production unchanged (post-hoc split, 1.8 SE, injury lesson applies). Pre-registered season-end test:
   do 2026 weeks 1–3 favorites win at their priced rate? Nothing acts on this before then.
+- **U6. Public-money / hype hypothesis (tested 2026-09-11, no action).** Does betting emotion leave
+  favorites mispriced? 2007–2025: favorites that are "public" franchises (DAL, GB, KC, PIT, CHI, NE, PHI,
+  SF, DEN, LV) won 69.0% vs 68.1% priced (+0.9 ± 1.1); primetime favorites +0.8 ± 1.5; no era shows a gap.
+  The only trace of public money is the favorite-longshot bias: favorites priced 80%+ win 87% (+2.4 ± 1.4),
+  i.e. the public overbets longshots and favorites are slightly UNDER-priced. One marginal cell: when a
+  public team is the underdog, the favorite wins 63.4% vs 66.1% priced (−2.7 ± 1.4, 1.9 SE), with no pick
+  flips since the favorite still wins 63%. Conclusion: emotion in the market, where measurable, makes
+  chalk better, not worse. Logged for a season-end look with U5; production unchanged.
 - **U4. Level differences between ChatGPT's simulation grid and Claude's.** Same shape, different
   levels; cause not identified (probability distribution, tie handling, or where opponent
   deviations land). Does not change any decision. Closed unless it starts to matter.
