@@ -168,7 +168,7 @@ def fit_family(a, family):
     counts = {m["name"]: {b: [0, 0] for b in ("tossup", "close", "other")} for m in family}
     for r in csv.DictReader(open(picks_path, newline="")):
         g = games.get(r["game_id"])
-        if not g or r["member"] not in counts: continue
+        if not g or r["member"] not in counts or r["pick"] in ("", "NONE"): continue   # NONE = no entry, not a pick
         p = home_prob(g); pf = max(p, 1 - p); fav = g["home_team"] if p >= 0.5 else g["away_team"]
         c = counts[r["member"]][band(pf)]; c[0] += 1; c[1] += (r["pick"] != fav)
     prior_n = 10.0

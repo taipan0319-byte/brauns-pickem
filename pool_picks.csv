@@ -6,3 +6,12 @@ season,week,game_id,member,pick,entered_at,note
 2026,1,2026_01_NE_SEA,Sheila,SEA,2026-09-10T00:57:19Z,observed on CBS after kickoff; entry time unknown
 2026,1,2026_01_NE_SEA,Sue,SEA,2026-09-10T00:57:19Z,observed on CBS after kickoff; entry time unknown
 2026,1,2026_01_SF_LA,Ryan,LA,2026-09-10T00:57:19Z,observed on CBS before kickoff (own pick)
+2026,1,2026_01_SF_LA,Casey,LA,2026-09-11T05:10:43Z,observed on CBS after final; entry time unknown
+2026,1,2026_01_SF_LA,Molly,LA,2026-09-11T05:10:43Z,observed on CBS after final; entry time unknown
+2026,1,2026_01_SF_LA,Nolan,LA,2026-09-11T05:10:43Z,observed on CBS after final; entry time unknown
+2026,1,2026_01_SF_LA,Ryan,LA,2026-09-11T05:10:43Z,observed on CBS after final; entry time unknown
+2026,1,2026_01_SF_LA,Sheila,LA,2026-09-11T05:10:43Z,observed on CBS after final; entry time unknown
+2026,1,2026_01_SF_LA,Sue,LA,2026-09-11T05:10:43Z,observed on CBS after final; entry time unknown
+2026,1,2026_01_NE_SEA,Kaleigh,NONE,2026-09-11T05:10:43Z,CBS shows '-' after the game went final: no entry made
+2026,1,2026_01_SF_LA,Kaleigh,NONE,2026-09-11T05:10:43Z,CBS shows '-' after the game went final: no entry made
+2026,1,2026_01_TB_CIN,Ryan,CIN,2026-09-11T05:10:43Z,"own pick, entered before kickoff"
