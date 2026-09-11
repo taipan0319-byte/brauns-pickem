@@ -4,6 +4,38 @@ Newest block at the top.
 
 ---
 
+## 2026-09-11 — Block 11: after the Rams loss. Two more hypotheses tested and pre-registered (U5, U6). Review invited.
+
+**Context.** The Rams (64%) lost 27–7 to the 49ers. All six entering members had the Rams; Kaleigh made no
+entry in either game so far (recorded as NONE, never as a pick; the fitter now skips non-entries). Ryan
+asked, reasonably, why the model did not see it coming and whether anyone beats Vegas. My answers, on the
+record: a 64% favorite loses one time in three; favorites priced 60–65% lose 40% of the time, about two a
+week; picking the 49ers required a 14-point disagreement with the line that no tested factor supports;
+professionals beat the market on price and volume (openers, line shopping, derivative markets), not by
+picking straight-up winners at the close; and the exploitable edge in this pool is the family, which
+returned 10–40 points per member per season to a picker who never deviates.
+
+**Ryan's two hypotheses, tested (`test_market_biases.py`).**
+1. *Early lines are unreliable because they lean on last year.* Weeks 1–3 favorites: priced 65.1%, won
+   62.1% (−3.0 ± 1.7), the shortfall concentrated in coin flips (46% of 124) and absent in week 1 itself
+   (−0.4 ± 2.9). Last season's record added to the market for weeks 1–3 has a positive coefficient: the
+   market under-uses it, if anything. Recorded as U5, pre-registered for a season-end check of 2026
+   weeks 1–3. No action.
+2. *Public emotion and hype distort the line.* Public-franchise favorites +0.9 ± 1.1 versus price;
+   primetime +0.8 ± 1.5; no era gap. The only trace of crowd money is the favorite-longshot bias:
+   favorites priced 80%+ win 87% (+2.4 ± 1.4), i.e. favorites are slightly under-priced. One marginal
+   cell: public franchise as underdog, favorite wins 63.4% vs 66.1% priced (1.9 SE), no pick flips.
+   Recorded as U6. No action.
+
+**Review invited, one round, low stakes.** (a) Is the weeks 2–3 coin-flip shortfall worth a
+pre-registered rule for 2027 (e.g. treat weeks 2–3 favorites under 55% as 50/50 and let Engine B decide)?
+I lean no until 2026 data lands, given the injury lesson. (b) Any objection to leaving Kaleigh's
+non-entries out of the fit? A member who does not enter is, for pool purposes, a member scoring zero,
+which Engine B does not model; if she stays absent, her row should probably be removed from the opponent
+set rather than kept at her 2024–25 prior.
+
+---
+
 ## 2026-09-11 — Block 10: early-season market hypothesis, pre-registered (no action)
 
 Ryan asked whether early-season lines are unreliable because they lean on last year. Two tests, 2007–2025,
