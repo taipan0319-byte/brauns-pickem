@@ -1,0 +1,116 @@
+====================================================================================================
+UNDERDOGS PRICED 40-50%: 1332 games 2009-2025, 984 in test seasons 2014-2025
+  overall: dogs won 44.3% vs priced 44.5%
+
+BENCHMARK: rank by market probability alone  (buckets ranked within season, 5 = model likes most; 984 out-of-sample dog games)
+  bucket games mkt prob    won excess wins   ±SE  per-game edge
+       1   201    40.9%  41.3%        +0.7   7.0          +0.4 pts
+       2   197    42.6%  36.0%       -12.9   6.9          -6.5 pts
+       3   198    44.4%  47.0%        +5.1   7.0          +2.6 pts
+       4   197    46.3%  45.2%        -2.2   7.0          -1.1 pts
+       5   191    48.4%  50.8%        +4.6   6.9          +2.4 pts
+  top bucket beat market expectation in 7/12 test seasons; top-bucket excess by season: +1.8 +0.2 -0.2 -1.7 -0.3 +3.2 +0.2 +2.7 +2.7 -3.1 +0.3 -1.3
+
+BENCHMARK: rank by pre-game Elo edge alone  (buckets ranked within season, 5 = model likes most; 984 out-of-sample dog games)
+  bucket games mkt prob    won excess wins   ±SE  per-game edge
+       1   201    43.9%  38.8%       -10.3   7.0          -5.1 pts
+       2   197    44.2%  40.6%        -7.2   7.0          -3.6 pts
+       3   198    44.1%  45.5%        +2.7   7.0          +1.4 pts
+       4   197    45.1%  48.7%        +7.1   7.0          +3.6 pts
+       5   191    45.0%  46.6%        +3.0   6.9          +1.6 pts
+  top bucket beat market expectation in 5/12 test seasons; top-bucket excess by season: +5.1 +2.7 -0.5 -2.2 -0.9 +2.6 -0.4 +1.4 -0.7 -4.2 +1.9 -1.8
+
+  RESIDUAL model coefficients (last fit) and sign consistency across test seasons:
+   mkt=+1.059(75%)  elo=-0.290(75%)  rest=+0.107(100%)  div=+0.196(100%)  cold=-0.430(100%)  windy=+0.181(83%)  qbchg=+0.053(17%)  inj=-0.024(100%)  prev=+0.472(83%)  dog_home=-0.102(100%)  early=+0.269(100%)  dog_public=+0.128(83%)  fav_public=-0.060(83%)
+
+RESIDUAL model: market + all pregame variables, ranked by (model prob - market prob)  (buckets ranked within season, 5 = model likes most; 984 out-of-sample dog games)
+  bucket games mkt prob    won excess wins   ±SE  per-game edge
+       1   201    45.4%  48.8%        +6.7   7.0          +3.4 pts
+       2   197    44.8%  42.6%        -4.3   7.0          -2.2 pts
+       3   198    44.6%  42.9%        -3.3   7.0          -1.6 pts
+       4   197    44.0%  45.2%        +2.4   7.0          +1.2 pts
+       5   191    43.6%  40.3%        -6.3   6.8          -3.3 pts
+  top bucket beat market expectation in 5/12 test seasons; top-bucket excess by season: -0.3 -2.9 +1.6 -3.0 -2.5 -0.2 +1.7 +4.6 +0.6 -1.2 +0.0 -4.7
+
+RESIDUAL model, deciles  (buckets ranked within season, 10 = model likes most; 984 out-of-sample dog games)
+  bucket games mkt prob    won excess wins   ±SE  per-game edge
+       1   104    45.9%  47.1%        +1.3   5.1          +1.2 pts
+       2    97    44.9%  50.5%        +5.5   4.9          +5.6 pts
+       3   101    44.7%  42.6%        -2.2   5.0          -2.2 pts
+       4    96    44.9%  42.7%        -2.1   4.9          -2.2 pts
+       5    98    45.2%  37.8%        -7.3   4.9          -7.5 pts
+       6   100    44.0%  48.0%        +4.0   5.0          +4.0 pts
+       7    98    43.9%  36.7%        -7.0   4.9          -7.2 pts
+       8    99    44.0%  53.5%        +9.4   4.9          +9.5 pts
+       9    99    43.7%  39.4%        -4.3   4.9          -4.3 pts
+      10    92    43.5%  41.3%        -2.0   4.7          -2.2 pts
+  top bucket beat market expectation in 5/12 test seasons; top-bucket excess by season: +0.0 -1.5 +0.6 -1.5 -0.5 -0.5 +1.9 +2.0 +0.5 -0.3 -0.9 -1.7
+
+PURE model: pregame variables only (no market), ranked by model prob  (buckets ranked within season, 5 = model likes most; 984 out-of-sample dog games)
+  bucket games mkt prob    won excess wins   ±SE  per-game edge
+       1   201    44.5%  45.8%        +2.6   7.0          +1.3 pts
+       2   197    44.2%  41.6%        -5.0   7.0          -2.6 pts
+       3   198    44.5%  45.5%        +1.8   7.0          +0.9 pts
+       4   197    44.7%  41.1%        -7.1   7.0          -3.6 pts
+       5   191    44.5%  46.1%        +3.1   6.9          +1.6 pts
+  top bucket beat market expectation in 7/12 test seasons; top-bucket excess by season: +0.5 -1.2 +1.5 -2.2 -0.8 +1.6 +1.5 +4.4 +1.5 -0.2 +0.9 -4.7
+
+  TOP DECILE (residual model): 92 games, won 41.3% vs priced 43.5%, excess -2.0 wins (±4.7) = -0.43 SE
+====================================================================================================
+UNDERDOGS PRICED 45-50%: 559 games 2009-2025, 414 in test seasons 2014-2025
+  overall: dogs won 46.5% vs priced 47.3%
+
+BENCHMARK: rank by market probability alone  (buckets ranked within season, 5 = model likes most; 414 out-of-sample dog games)
+  bucket games mkt prob    won excess wins   ±SE  per-game edge
+       1    88    45.6%  46.6%        +0.9   4.7          +1.0 pts
+       2    83    46.4%  42.2%        -3.5   4.5          -4.2 pts
+       3    83    47.3%  48.2%        +0.8   4.5          +0.9 pts
+       4    83    48.1%  48.2%        +0.1   4.6          +0.1 pts
+       5    77    49.1%  55.8%        +5.2   4.4          +6.7 pts
+  top bucket beat market expectation in 8/12 test seasons; top-bucket excess by season: +1.6 +2.6 +0.1 -2.0 -1.5 +2.0 -1.4 -0.5 +2.1 +0.0 +2.0 +0.0
+
+BENCHMARK: rank by pre-game Elo edge alone  (buckets ranked within season, 5 = model likes most; 414 out-of-sample dog games)
+  bucket games mkt prob    won excess wins   ±SE  per-game edge
+       1    88    47.3%  43.2%        -3.6   4.7          -4.1 pts
+       2    83    47.3%  44.6%        -2.3   4.5          -2.7 pts
+       3    83    47.0%  53.0%        +5.0   4.5          +6.0 pts
+       4    83    47.4%  50.6%        +2.7   4.5          +3.2 pts
+       5    77    47.2%  49.4%        +1.6   4.4          +2.1 pts
+  top bucket beat market expectation in 6/12 test seasons; top-bucket excess by season: +2.7 +1.7 -1.7 -0.8 -0.4 +0.2 -0.3 +0.6 +2.3 -1.9 -0.9 +0.2
+
+  RESIDUAL model coefficients (last fit) and sign consistency across test seasons:
+   mkt=+2.574(100%)  elo=-0.511(100%)  rest=-0.067(8%)  div=+0.173(100%)  cold=-0.374(100%)  windy=+0.219(83%)  qbchg=+0.347(92%)  inj=+0.026(100%)  prev=+0.307(75%)  dog_home=-0.016(67%)  early=+0.389(100%)  dog_public=+0.278(100%)  fav_public=-0.077(92%)
+
+RESIDUAL model: market + all pregame variables, ranked by (model prob - market prob)  (buckets ranked within season, 5 = model likes most; 414 out-of-sample dog games)
+  bucket games mkt prob    won excess wins   ±SE  per-game edge
+       1    88    46.8%  52.3%        +4.8   4.7          +5.4 pts
+       2    83    46.9%  44.6%        -2.0   4.5          -2.4 pts
+       3    83    47.3%  49.4%        +1.7   4.5          +2.1 pts
+       4    83    47.6%  41.0%        -5.5   4.5          -6.6 pts
+       5    77    47.7%  53.2%        +4.3   4.4          +5.6 pts
+  top bucket beat market expectation in 7/12 test seasons; top-bucket excess by season: -1.3 +0.7 +1.3 -0.8 -0.4 +1.1 +1.7 -0.4 +2.2 +1.1 -0.9 +0.1
+
+RESIDUAL model, deciles  (buckets ranked within season, 10 = model likes most; 414 out-of-sample dog games)
+  bucket games mkt prob    won excess wins   ±SE  per-game edge
+       1    47    46.5%  57.4%        +5.1   3.4         +10.9 pts
+       2    41    47.2%  46.3%        -0.3   3.2          -0.8 pts
+       3    41    46.7%  43.9%        -1.2   3.2          -2.8 pts
+       4    42    47.1%  45.2%        -0.8   3.2          -1.9 pts
+       5    40    47.1%  50.0%        +1.1   3.2          +2.9 pts
+       6    43    47.5%  48.8%        +0.6   3.3          +1.4 pts
+       7    42    47.3%  42.9%        -1.8   3.2          -4.4 pts
+       8    41    47.9%  39.0%        -3.6   3.2          -8.8 pts
+       9    41    47.7%  61.0%        +5.4   3.2         +13.3 pts
+      10    36    47.6%  44.4%        -1.1   3.0          -3.2 pts
+  top bucket beat market expectation in 5/12 test seasons; top-bucket excess by season: -1.4 +0.6 +2.1 -1.4 -1.0 +0.6 -0.4 -1.0 +1.1 +0.6 -0.4 -0.5
+
+PURE model: pregame variables only (no market), ranked by model prob  (buckets ranked within season, 5 = model likes most; 414 out-of-sample dog games)
+  bucket games mkt prob    won excess wins   ±SE  per-game edge
+       1    88    47.1%  53.4%        +5.6   4.7          +6.3 pts
+       2    83    47.2%  49.4%        +1.8   4.5          +2.2 pts
+       3    83    47.3%  44.6%        -2.2   4.5          -2.7 pts
+       4    83    47.5%  38.6%        -7.4   4.5          -8.9 pts
+       5    77    47.2%  54.5%        +5.6   4.4          +7.3 pts
+  top bucket beat market expectation in 8/12 test seasons; top-bucket excess by season: -1.3 +0.7 +1.3 +0.2 -0.3 +1.2 +0.7 -0.4 +2.2 +1.2 -0.9 +1.1
+
+  TOP DECILE (residual model): 36 games, won 44.4% vs priced 47.6%, excess -1.1 wins (±3.0) = -0.38 SE

@@ -80,6 +80,17 @@ Entries here survived review. Anything not listed is open. Format: ID, decision,
   injury-adjusted probability may be logged beside the market number for a season-end look, but no
   pick is ever changed by it. 2026-09-10.
 
+- **D20. Underdog ranking backtest: no ranking signal (2026-09-11).** `backtest_dogs.py`. Market underdogs
+  priced 40–50% (984 out-of-sample games, 2014–2025) and 45–50% (414), ranked within each season by a
+  logistic model of every pregame variable available (Elo, rest, division, cold, wind, QB change, injury
+  differential, last-season record, home dog, early season, public-franchise flags), trained only on prior
+  seasons. Residual model (market + variables), 40–50% band, quintile the model likes most: dogs won 40.3%
+  vs 43.6% priced, excess −6.3 wins; least-liked quintile +6.7. Top decile −2.0 wins (−0.4 SE). 45–50%
+  band: top quintile +4.3 wins but bottom quintile +4.8 and deciles alternate sign; top decile −1.1 wins.
+  No monotonic gradient in any specification; coefficient signs flip between the two bands. The pregame
+  variables cannot identify a subset of 40–50% underdogs that beats its market price. Production unchanged.
+  Output: `dashboard/backtest_dogs_output.txt`. 2026-09-11.
+
 ## Unresolved (conservative production choice in force)
 
 - **U1. Tie rule.** In force: ties split evenly. Ryan recalls CBS resolves season ties by Super Bowl

@@ -4,6 +4,45 @@ Newest block at the top.
 
 ---
 
+## 2026-09-11 — Block 12: underdog-ranking backtest as specified. Null result. No production change.
+
+Built `backtest_dogs.py` to the spec: market underdogs with no-vig probability 40–50% (and 45–50%
+separately), every pregame variable we hold, strict expanding-window training (train < t, score t,
+t = 2014–2025), ranked within each test season, pooled into quintiles and deciles, reported as games,
+mean market probability, actual win rate, excess wins vs market expectation with SE. Full output in
+`dashboard/backtest_dogs_output.txt`.
+
+**40–50% dogs, 984 out-of-sample games.** Residual model (market + all variables), ranked by model minus
+market:
+
+| Quintile | Games | Market | Won | Excess wins |
+|---|---|---|---|---|
+| 1 (least liked) | 201 | 45.4% | 48.8% | +6.7 |
+| 2 | 197 | 44.8% | 42.6% | −4.3 |
+| 3 | 198 | 44.6% | 42.9% | −3.3 |
+| 4 | 197 | 44.0% | 45.2% | +2.4 |
+| 5 (most liked) | 191 | 43.6% | 40.3% | −6.3 |
+
+The gradient runs the wrong way. Top decile: 92 games, won 41.3% vs 43.5% priced, −2.0 wins (−0.4 SE).
+The pure model (no market) is flat noise: +2.6, −5.0, +1.8, −7.1, +3.1. Elo alone ranks backwards
+(least-liked quintile −10.3, most-liked +3.0, i.e. Elo's disagreements with the market are wrong).
+
+**45–50% dogs, 414 games.** Residual quintiles +4.8, −2.0, +1.7, −5.5, +4.3: no gradient. Deciles
+alternate sign (decile 1 +5.1, decile 9 +5.4, decile 10 −1.1). Top decile −1.1 wins (−0.4 SE).
+Coefficients that look "consistent" within a band flip sign between bands (rest +0.11 vs −0.07), the
+signature of fitting noise.
+
+**One real thing in the tables, already known:** ranking 45–50% dogs by market probability alone puts the
+49% dogs in the top bucket, and they won 55.8% (77 games, +5.2, 8/12 seasons). That is the
+favorite-longshot bias at the 50% line, not a football signal, and it is worth about a coin flip.
+
+**Conclusion.** The pregame variables cannot pick out a subset of 40–50% underdogs that beats its price,
+in either band, in any specification. Recorded as D20. Production unchanged. This closes the underdog
+question for 2026 unless new data (pick-level 2026 results, or a genuinely new variable such as PFF grades)
+arrives.
+
+---
+
 ## 2026-09-11 — Block 11: after the Rams loss. Two more hypotheses tested and pre-registered (U5, U6). Review invited.
 
 **Context.** The Rams (64%) lost 27–7 to the 49ers. All six entering members had the Rams; Kaleigh made no
