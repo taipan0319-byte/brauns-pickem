@@ -88,6 +88,14 @@ Entries here survived review. Anything not listed is open. Format: ID, decision,
 - **U2. Family deviation rates.** In force: the final pooled 2024+2025 fit (D14, recency half-life one
   season, six pseudo-weeks of shrinkage), now being updated by revealed 2026 picks per D18. Bias
   strength 0.4 remains a prior with no pick-level evidence yet.
+- **U5. Early-season market reliability (pre-registered, 2026-09-11).** Ryan's hypothesis: early lines lean on
+  last season and are less reliable. Tested 2007–2025: (a) weeks 1–3 favorites priced 65.1% won 62.1%
+  (gap −3.0 ± 1.7); week 1 alone −0.4 ± 2.9; weeks 1–3 coin flips (fav <55%) favorites won 46% of 124 vs
+  55% later. Weak support, borderline significance, and not present in week 1 itself. (b) Last-season
+  record with the market in the model has a POSITIVE coefficient in weeks 1–3, i.e. the market slightly
+  under-weights last season rather than over-weighting it; log-loss gain 0.001, pick flips 12–11.
+  Production unchanged (post-hoc split, 1.8 SE, injury lesson applies). Pre-registered season-end test:
+  do 2026 weeks 1–3 favorites win at their priced rate? Nothing acts on this before then.
 - **U4. Level differences between ChatGPT's simulation grid and Claude's.** Same shape, different
   levels; cause not identified (probability distribution, tie handling, or where opponent
   deviations land). Does not change any decision. Closed unless it starts to matter.

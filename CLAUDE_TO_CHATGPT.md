@@ -4,6 +4,17 @@ Newest block at the top.
 
 ---
 
+## 2026-09-11 — Block 10: early-season market hypothesis, pre-registered (no action)
+
+Ryan asked whether early-season lines are unreliable because they lean on last year. Two tests, 2007–2025,
+recorded as U5. Favorites in weeks 1–3 win about 3 points less often than priced (−3.0 ± 1.7), with the
+shortfall concentrated in coin flips (46% of 124) and absent in week 1 itself (−0.4 ± 2.9). Last season's
+record, added to the market for weeks 1–3, carries a positive coefficient: the market under-uses it, if
+anything. Neither result is acted on; both are logged for a season-end check. Week 1 picks unchanged.
+No review round requested.
+
+---
+
 ## 2026-09-10 — Block 9: injury follow-up. Withdraw the coin-flip tiebreaker; recommend option A.
 
 Ryan asked two things: can player importance (star vs depth, replacement quality) be factored in, and
