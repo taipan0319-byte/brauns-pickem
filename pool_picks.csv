@@ -9,7 +9,6 @@ season,week,game_id,member,pick,entered_at,note
 2026,1,2026_01_SF_LA,Casey,LA,2026-09-11T05:10:43Z,observed on CBS after final; entry time unknown
 2026,1,2026_01_SF_LA,Molly,LA,2026-09-11T05:10:43Z,observed on CBS after final; entry time unknown
 2026,1,2026_01_SF_LA,Nolan,LA,2026-09-11T05:10:43Z,observed on CBS after final; entry time unknown
-2026,1,2026_01_SF_LA,Ryan,LA,2026-09-11T05:10:43Z,observed on CBS after final; entry time unknown
 2026,1,2026_01_SF_LA,Sheila,LA,2026-09-11T05:10:43Z,observed on CBS after final; entry time unknown
 2026,1,2026_01_SF_LA,Sue,LA,2026-09-11T05:10:43Z,observed on CBS after final; entry time unknown
 2026,1,2026_01_NE_SEA,Kaleigh,NONE,2026-09-11T05:10:43Z,CBS shows '-' after the game went final: no entry made
@@ -106,3 +105,9 @@ season,week,game_id,member,pick,entered_at,note
 2026,1,2026_01_TB_CIN,Sue,CIN,2026-09-13T17:51:53Z,observed on CBS after Sunday noon kickoff; entry time unknown
 2026,1,2026_01_TB_CIN,Sheila,CIN,2026-09-13T17:51:53Z,observed on CBS after Sunday noon kickoff; entry time unknown
 2026,1,2026_01_TB_CIN,Casey,TB,2026-09-13T17:51:53Z,observed on CBS after Sunday noon kickoff; entry time unknown
+2026,1,2026_01_DEN_KC,Nolan,KC,2026-09-16T04:31:05Z,observed on CBS after final
+2026,1,2026_01_DEN_KC,Molly,KC,2026-09-16T04:31:05Z,observed on CBS after final
+2026,1,2026_01_DEN_KC,Sheila,KC,2026-09-16T04:31:05Z,observed on CBS after final
+2026,1,2026_01_DEN_KC,Sue,KC,2026-09-16T04:31:05Z,observed on CBS after final
+2026,1,2026_01_DEN_KC,Kaleigh,KC,2026-09-16T04:31:05Z,observed on CBS after final
+2026,1,2026_01_DEN_KC,Casey,KC,2026-09-16T04:31:05Z,observed on CBS after final

@@ -4,6 +4,38 @@ Newest block at the top.
 
 ---
 
+## 2026-09-16 — Block 13: Week 1 wrap. Family fully observed; refit run; Week 2 begins with standings.
+
+**Results.** All-favorites picker 12 of 16. Ryan 12 (tied for the weekly lead with Nolan), Molly, Sheila
+and Sue 11, Kaleigh 10 (missed the first two games, no entry), Casey 9. Misses shared by everyone: Rams
+(64%), Chargers (80%), Cowboys (60%). Coin flips split: Bills won, Titans lost. Model Week 1: 12 of 16,
+identical to chalk by construction.
+
+**The family, observed for the first time at pick level** (`pool_picks.csv`, 111 rows): in the three
+toss-ups (favorite under 55%) the six opponents took the underdog 9 times in 18 (50%); in the five close
+games (55–62%) once in 30; in clear favorites zero in 36, except Casey's Buccaneers (36%). The score-based
+priors had the toss-up rate right (0.51) and the close-band rate far too high (0.32 vs 0.03 observed).
+Team leans confirmed: Sue and Kaleigh took the Packers at 46%; Nolan and Sheila took the Vikings.
+
+**Refit** (`engine_b.py --fit`, ten pseudo-picks per band). Close-band rates fell: Sue 0.18→0.11,
+Casey 0.28→0.17, Nolan 0.31→0.19, Sheila 0.24→0.15, Kaleigh 0.33→0.31, Molly 0.62→0.44. Toss-up rates
+moved toward the observed 50%: Sue 0.23→0.43, Casey 0.35→0.46, Molly 0.90→0.71. One week of data; the
+prior still dominates. `standings.json` now carries Week 1 points and Engine B optimizes from the actual
+standings from Week 2 on.
+
+**Structural reading, worth your attention.** The family is chalk on everything above 55% and a coin
+flip on toss-ups. That means (a) 11–13 of 16 games a week separate nobody, (b) the pool will be decided
+in toss-ups where every entrant is flipping a coin, and (c) Ryan's edge over the field is entirely that
+he never gives back points in the close and clear bands, which this week the family also did not do.
+If the family stays this disciplined, the season is closer to a lottery than the 2024–25 scores implied,
+and Engine B's P(first) will settle in the low 40s rather than the mid 50s. No action follows; it is the
+measured state.
+
+**Housekeeping.** A duplicate row for Ryan's Rams pick was removed. The push-triggered rebuild now passes
+standings to Engine B. Kaleigh entered picks from Sunday on, so she stays in the opponent set.
+
+---
+
 ## 2026-09-11 — Block 12: underdog-ranking backtest as specified. Null result. No production change.
 
 Built `backtest_dogs.py` to the spec: market underdogs with no-vig probability 40–50% (and 45–50%

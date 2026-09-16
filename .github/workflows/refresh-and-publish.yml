@@ -37,7 +37,9 @@ jobs:
       - name: Rebuild dashboard only (data files changed by hand)
         if: github.event_name == 'push'
         run: |
-          python3 refresh.py --offline --week auto || python3 refresh.py --week auto
+          ARGS="--week auto"
+          if [ -f standings.json ]; then ARGS="$ARGS --standings standings.json"; fi
+          python3 refresh.py $ARGS
       - name: Commit appended logs and rebuilt dashboard
         run: |
           git config user.name "pickem-bot"; git config user.email "pickem-bot@users.noreply.github.com"
