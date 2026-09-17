@@ -140,6 +140,34 @@ def main():
             if int(r["season"]) == s: tot[r["member"]] += int(r["points"])
         hist.append(dict(season=s, all_favorites=chalk, members=dict(sorted(tot.items(), key=lambda x: -x[1]))))
 
+    # --- season rankings from logged picks + results (CBS standings.json is the authority for totals)
+    members = ["Ryan", "Casey", "Sue", "Nolan", "Sheila", "Kaleigh", "Molly"]
+    season_games = {g["game_id"]: g for g in games if int(g["season"]) == a.season and g["game_type"] in ("REG","WC","DIV","CON","SB")}
+    won = {gid_: (g["home_team"] if float(g["result"]) > 0 else g["away_team"]) for gid_, g in season_games.items() if g["result"] not in ("", "0")}
+    weeks_played = sorted({int(season_games[g]["week"]) for g in won})
+    wk = {m: defaultdict(int) for m in members}; dogs = {m: [0, 0] for m in members}; missed = {m: 0 for m in members}
+    fav_of = {}
+    for gid_, g in season_games.items():
+        if g["away_moneyline"] and g["home_moneyline"]:
+            pa_, ph_ = backtest_market.american_to_prob(g["away_moneyline"]), backtest_market.american_to_prob(g["home_moneyline"]); fav_of[gid_] = g["home_team"] if ph_ >= pa_ else g["away_team"]
+        elif g["spread_line"]: fav_of[gid_] = g["home_team"] if float(g["spread_line"]) >= 0 else g["away_team"]
+    for r in picks:
+        if int(r["season"]) != a.season or r["member"] not in wk or r["game_id"] not in won: continue
+        w_ = int(season_games[r["game_id"]]["week"])
+        if r["pick"] in ("", "NONE"): missed[r["member"]] += 1; continue
+        wk[r["member"]][w_] += (r["pick"] == won[r["game_id"]])
+        if fav_of.get(r["game_id"]) and r["pick"] != fav_of[r["game_id"]]:
+            dogs[r["member"]][0] += 1; dogs[r["member"]][1] += (r["pick"] == won[r["game_id"]])
+    chalk_wk = defaultdict(int); engb_wk = defaultdict(int)
+    for gid_, wn in won.items():
+        w_ = int(season_games[gid_]["week"])
+        if fav_of.get(gid_): chalk_wk[w_] += (fav_of[gid_] == wn)
+        if gid_ in lastB: engb_wk[w_] += (lastB[gid_]["recommendation"] == wn)
+    rankings = dict(weeks=weeks_played,
+                    members=[dict(name=m, weekly={str(w_): wk[m][w_] for w_ in weeks_played}, logged_total=sum(wk[m].values()),
+                                  cbs_total=(standings or {}).get(m), dog_picks=dogs[m][0], dog_wins=dogs[m][1], missed=missed[m]) for m in members],
+                    all_favorites={str(w_): chalk_wk[w_] for w_ in weeks_played}, engine_b={str(w_): engb_wk[w_] for w_ in weeks_played},
+                    games_final=len(won))
     fam = json.load(open(os.path.join(HERE, "family.json")))
     remaining = sum(1 for g in games if int(g["season"]) == a.season and g["game_type"] == "REG" and g["result"] == "")
     calib = backtest_market.compute(games)
@@ -151,7 +179,7 @@ def main():
              for r in season_b]
     data = dict(season=a.season, week=a.week, built_at=now, order_source=order_source, model_refreshed_at=(runs[-1] if runs else None), market_asof=market_asof,
                 p_first=p_first, games=out_games, changes_since_previous_refresh=changes, previous_refresh=(runs[-2] if len(runs) > 1 else None),
-                standings=standings, games_remaining=remaining, family=fam, family_fit=ff, scoreboard=sb, history=hist,
+                standings=standings, games_remaining=remaining, rankings=rankings, family=fam, family_fit=ff, scoreboard=sb, history=hist,
                 engine_a=dict(calibration=calib, ablation=ea), audit=audit,
                 decisions=dict(production_rule="No-vig market favorite in every game, regular season and playoffs (D6, D16).",
                                tie_rule="Ties split evenly (U1 approximation).", threshold=None))

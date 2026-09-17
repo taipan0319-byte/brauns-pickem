@@ -22,7 +22,7 @@ h1{font-family:"IBM Plex Sans Condensed",sans-serif;font-weight:700;font-size:30
 .stamp{font-size:12.5px;color:var(--ink2);display:flex;flex-wrap:wrap;gap:4px 14px}
 .stamp b{font-weight:600;color:var(--ink)}
 nav.tabs{position:sticky;top:0;z-index:5;background:var(--bg);display:flex;gap:4px;padding-block:8px;border-bottom:1px solid var(--line);margin-bottom:14px}
-nav.tabs button{flex:1;background:transparent;border:1px solid transparent;border-radius:8px;padding:9px 6px;font:600 13px "IBM Plex Sans Condensed",sans-serif;letter-spacing:.04em;text-transform:uppercase;color:var(--ink2);cursor:pointer}
+nav.tabs button{flex:1;background:transparent;border:1px solid transparent;border-radius:8px;padding:9px 4px;font:600 12.5px "IBM Plex Sans Condensed",sans-serif;letter-spacing:.04em;text-transform:uppercase;color:var(--ink2);cursor:pointer}
 nav.tabs button[aria-selected="true"]{background:var(--surface);color:var(--ink);border-color:var(--line)}
 nav.tabs button:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
 section.tab[hidden]{display:none}
@@ -100,9 +100,10 @@ pre.formula{background:var(--surface2);border:1px solid var(--line);border-radiu
 </header>
 <nav class="tabs" role="tablist">
   <button role="tab" aria-selected="true" data-tab="week" id="tab-week">This week</button>
-  <button role="tab" aria-selected="false" data-tab="pool" id="tab-pool">Pool strategy</button>
-  <button role="tab" aria-selected="false" data-tab="model" id="tab-model">Model &amp; audit</button>
-  <button role="tab" aria-selected="false" data-tab="how" id="tab-how">How it works</button>
+  <button role="tab" aria-selected="false" data-tab="rank" id="tab-rank">Rankings</button>
+  <button role="tab" aria-selected="false" data-tab="pool" id="tab-pool">Pool</button>
+  <button role="tab" aria-selected="false" data-tab="model" id="tab-model">Model</button>
+  <button role="tab" aria-selected="false" data-tab="how" id="tab-how">How</button>
 </nav>
 
 <section class="tab" id="week">
@@ -121,6 +122,16 @@ pre.formula{background:var(--surface2);border:1px solid var(--line);border-radiu
     <code id="refresh-cmd"></code>
     <p class="note">Each refresh downloads fresh nflverse lines, reruns Engine A and Engine B, appends new timestamped rows to both logs (older rows are never edited), and rebuilds this page. Game-day plan: refresh Sunday morning, and again close to kickoff for any game in the watch list.</p>
   </div>
+</section>
+
+<section class="tab" id="rank" hidden>
+  <h2>Season standings</h2>
+  <div class="tiles" id="rank-tiles"></div>
+  <div class="scroll" style="margin-top:10px"><table id="rank-table"></table></div>
+  <p class="note" id="rank-note"></p>
+  <h2>Underdog record</h2>
+  <p class="note">Every pick against the market favorite, and how many of them won. Each underdog pick costs, on average, the gap between the favorite's and the dog's probability; this is where family members give back points to the all-favorites picker.</p>
+  <div class="scroll"><table id="dog-table"></table></div>
 </section>
 
 <section class="tab" id="pool" hidden>
@@ -269,6 +280,25 @@ document.getElementById('games').innerHTML = D.games.map(g => {
     <div class="why${isOpp?' opp':''}">${g.rationale}${g.ryan_pick && g.ryan_pick!==g.pick?` <b>Ryan's logged pick: ${g.ryan_pick}.</b>`:''}</div>
     ${res}</article>`;
 }).join('');
+
+// rankings tab
+(() => {
+  const R = D.rankings; if (!R || !R.weeks.length) { document.getElementById('rank-table').innerHTML = '<tr><td class="note">No completed games yet.</td></tr>'; return; }
+  const total = m => (m.cbs_total ?? m.logged_total);
+  const rows = R.members.slice().sort((a,b) => total(b) - total(a));
+  const lead = total(rows[0]); const chalkTot = Object.values(R.all_favorites).reduce((a,b)=>a+b,0); const engTot = Object.values(R.engine_b).reduce((a,b)=>a+b,0);
+  const ryan = R.members.find(m => m.name === 'Ryan'); const ryanRank = rows.findIndex(m => m.name === 'Ryan') + 1;
+  document.getElementById('rank-tiles').innerHTML = `<div class="tile"><div class="l">Ryan's rank</div><div class="v">${ryanRank}<span style="font-size:14px;color:var(--muted)"> of ${rows.length}</span></div></div><div class="tile"><div class="l">${total(ryan) >= lead ? 'Lead over 2nd' : 'Behind leader'}</div><div class="v">${total(ryan) >= lead ? total(ryan) - total(rows[1]) : lead - total(ryan)}</div></div><div class="tile"><div class="l">vs all-favorites</div><div class="v">${(total(ryan)-chalkTot>=0?'+':'')+(total(ryan)-chalkTot)}</div></div>`;
+  const wkHead = R.weeks.map(w => `<th class="num">W${w}</th>`).join('');
+  const line = (name, weekly, tot, cls='') => `<tr class="${cls}"><td>${name}</td>${R.weeks.map(w => `<td class="num">${weekly[String(w)] ?? '—'}</td>`).join('')}<td class="num"><b>${tot}</b></td><td class="num">${tot - lead === 0 ? '—' : (tot - lead)}</td></tr>`;
+  document.getElementById('rank-table').innerHTML = `<tr><th>#</th>${wkHead}<th class="num">Total</th><th class="num">Back</th></tr>` +
+    rows.map((m,i) => `<tr${m.name==='Ryan'?' style="background:var(--pick-bg)"':''}><td><b>${i+1}. ${m.name}</b>${m.missed?` <span class="pill done" title="games with no entry">${m.missed} no entry</span>`:''}</td>${R.weeks.map(w => `<td class="num">${m.weekly[String(w)] ?? 0}</td>`).join('')}<td class="num"><b>${total(m)}</b></td><td class="num">${total(m) - lead === 0 ? '—' : total(m) - lead}</td></tr>`).join('') +
+    line('<i>All-favorites picker</i>', R.all_favorites, chalkTot) + line('<i>Engine B recommendations</i>', R.engine_b, engTot);
+  const mism = R.members.filter(m => m.cbs_total != null && m.cbs_total !== m.logged_total);
+  document.getElementById('rank-note').textContent = `${R.games_final} games final. Totals come from CBS standings where entered; week columns are computed from logged picks and results.` + (mism.length ? ` Logged picks differ from CBS totals for: ${mism.map(m=>`${m.name} (logged ${m.logged_total}, CBS ${m.cbs_total})`).join(', ')}.` : '');
+  document.getElementById('dog-table').innerHTML = `<tr><th>Member</th><th class="num">Underdog picks</th><th class="num">Won</th><th class="num">Hit rate</th></tr>` +
+    rows.map(m => `<tr><td>${m.name}</td><td class="num">${m.dog_picks}</td><td class="num">${m.dog_wins}</td><td class="num">${m.dog_picks ? Math.round(100*m.dog_wins/m.dog_picks)+'%' : '—'}</td></tr>`).join('');
+})();
 
 // pool tab
 const S = D.standings;

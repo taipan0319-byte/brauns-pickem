@@ -1,10 +1,10 @@
 {
  "season": 2026,
  "week": 2,
- "built_at": "2026-09-16T04:32:18Z",
+ "built_at": "2026-09-17T03:38:04Z",
  "order_source": "kickoff time, then NFL schedule id (CBS within-slot order not recorded for this week)",
  "model_refreshed_at": "2026-09-16T04:32:18Z",
- "market_asof": "2026-09-16T04:32:15Z",
+ "market_asof": "2026-09-16T04:31:05Z",
  "p_first": 0.5372,
  "games": [
   {
@@ -566,6 +566,97 @@
   "Molly": 11
  },
  "games_remaining": 256,
+ "rankings": {
+  "weeks": [
+   1
+  ],
+  "members": [
+   {
+    "name": "Ryan",
+    "weekly": {
+     "1": 12
+    },
+    "logged_total": 12,
+    "cbs_total": 12,
+    "dog_picks": 0,
+    "dog_wins": 0,
+    "missed": 0
+   },
+   {
+    "name": "Casey",
+    "weekly": {
+     "1": 9
+    },
+    "logged_total": 9,
+    "cbs_total": 9,
+    "dog_picks": 3,
+    "dog_wins": 0,
+    "missed": 0
+   },
+   {
+    "name": "Sue",
+    "weekly": {
+     "1": 11
+    },
+    "logged_total": 11,
+    "cbs_total": 11,
+    "dog_picks": 3,
+    "dog_wins": 1,
+    "missed": 0
+   },
+   {
+    "name": "Nolan",
+    "weekly": {
+     "1": 12
+    },
+    "logged_total": 12,
+    "cbs_total": 12,
+    "dog_picks": 0,
+    "dog_wins": 0,
+    "missed": 0
+   },
+   {
+    "name": "Sheila",
+    "weekly": {
+     "1": 11
+    },
+    "logged_total": 11,
+    "cbs_total": 11,
+    "dog_picks": 1,
+    "dog_wins": 0,
+    "missed": 0
+   },
+   {
+    "name": "Kaleigh",
+    "weekly": {
+     "1": 10
+    },
+    "logged_total": 10,
+    "cbs_total": 10,
+    "dog_picks": 3,
+    "dog_wins": 1,
+    "missed": 2
+   },
+   {
+    "name": "Molly",
+    "weekly": {
+     "1": 11
+    },
+    "logged_total": 11,
+    "cbs_total": 11,
+    "dog_picks": 1,
+    "dog_wins": 0,
+    "missed": 0
+   }
+  ],
+  "all_favorites": {
+   "1": 12
+  },
+  "engine_b": {
+   "1": 12
+  },
+  "games_final": 16
+ },
  "family": [
   {
    "name": "Casey",
