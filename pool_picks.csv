@@ -111,3 +111,11 @@ season,week,game_id,member,pick,entered_at,note
 2026,1,2026_01_DEN_KC,Sue,KC,2026-09-16T04:31:05Z,observed on CBS after final
 2026,1,2026_01_DEN_KC,Kaleigh,KC,2026-09-16T04:31:05Z,observed on CBS after final
 2026,1,2026_01_DEN_KC,Casey,KC,2026-09-16T04:31:05Z,observed on CBS after final
+2026,2,2026_02_DET_BUF,Nolan,BUF,2026-09-18T01:01:01Z,observed on CBS after kickoff
+2026,2,2026_02_DET_BUF,Ryan,BUF,2026-09-18T01:01:01Z,own pick
+2026,2,2026_02_DET_BUF,Sheila,BUF,2026-09-18T01:01:01Z,observed on CBS after kickoff
+2026,2,2026_02_DET_BUF,Sue,BUF,2026-09-18T01:01:01Z,observed on CBS after kickoff
+2026,2,2026_02_DET_BUF,Casey,BUF,2026-09-18T01:01:01Z,observed on CBS after kickoff
+2026,2,2026_02_DET_BUF,Kaleigh,DET,2026-09-18T01:01:01Z,observed on CBS after kickoff
+2026,2,2026_02_DET_BUF,Molly,NONE,2026-09-18T01:01:01Z,CBS shows '-' after kickoff: no entry
+2026,2,2026_02_CIN_HOU,Ryan,HOU,2026-09-18T01:01:01Z,"own pick, entered before kickoff"
