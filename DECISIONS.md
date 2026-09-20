@@ -96,7 +96,12 @@ Entries here survived review. Anything not listed is open. Format: ID, decision,
   prior is the fixed 2024–25 score-derived rate (`prior_dog_rate` in `family.json`), never last week's
   posterior. Revisit after ~50–75 observed decisions per band.
 - **D22. D4 regression test.** `test_engine_b_d4.py`: all opponents at dog rate 0 and bias 0, equal
-  standings → Engine B must recommend the dog in the week's closest game and P(first) > 1/N. Passes.
+  standings → Engine B must recommend the dog in the week's closest game and P(first) > 1/N. The first
+  run FAILED and exposed two implementation errors, both fixed 2026-09-20: (1) the user's future-week
+  policy still took dogs under 52%, contradicting D6 (chalk baseline read 0.48 instead of 1/7; now 0.143);
+  (2) the coordinate search evaluated games in schedule order, so when a single deviation pays it could
+  settle on a slightly worse dog (41.7% vs 42.8%); it now evaluates closest games first. Test passes.
+  Production picks unchanged by either fix; P(first) estimates shift by about a point.
 - **D23. Injury diagnostic logging.** `injury_diagnostic_log.csv` records the market and injury-adjusted
   favorite probability (frozen coefficient −0.021) at each build; shown in small type on each card as
   "not used". No pick is ever changed by it (D19 stands). Season-end look.

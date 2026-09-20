@@ -1,10 +1,10 @@
 {
  "season": 2026,
  "week": 2,
- "built_at": "2026-09-20T15:25:27Z",
+ "built_at": "2026-09-20T15:26:45Z",
  "order_source": "kickoff time, then NFL schedule id (CBS within-slot order not recorded for this week)",
  "model_refreshed_at": "2026-09-20T14:24:54Z",
- "market_asof": "2026-09-16T04:31:05Z",
+ "market_asof": "2026-09-20T15:25:59Z",
  "p_first": 0.5307,
  "games": [
   {
@@ -16,9 +16,9 @@
    "weekday": "THU",
    "kickoff_ct": "7:15 PM CT",
    "kickoff_iso": "2026-09-17T19:15:00-05:00",
-   "result": null,
-   "away_score": null,
-   "home_score": null,
+   "result": 10.0,
+   "away_score": "31",
+   "home_score": "41",
    "ryan_pick": "BUF",
    "fav": "BUF",
    "dog": "DET",
@@ -39,8 +39,10 @@
     "195",
     "-238"
    ],
-   "p_fav_injury_adj": 0.6574752261956054,
-   "watch": []
+   "p_fav_injury_adj": 0.6750312469954812,
+   "watch": [],
+   "winner": "BUF",
+   "pick_correct": true
   },
   {
    "game_id": "2026_02_CAR_ATL",
@@ -74,7 +76,7 @@
     "-155",
     "130"
    ],
-   "p_fav_injury_adj": 0.551441114716549,
+   "p_fav_injury_adj": 0.5829926410466066,
    "watch": []
   },
   {
@@ -109,7 +111,7 @@
     "295",
     "-375"
    ],
-   "p_fav_injury_adj": 0.771505376344086,
+   "p_fav_injury_adj": 0.7571884984025559,
    "watch": []
   },
   {
@@ -144,7 +146,7 @@
     "180",
     "-218"
    ],
-   "p_fav_injury_adj": 0.6636481241914618,
+   "p_fav_injury_adj": 0.6574752261956054,
    "watch": []
   },
   {
@@ -179,7 +181,7 @@
     "124",
     "-148"
    ],
-   "p_fav_injury_adj": 0.5634920634920635,
+   "p_fav_injury_adj": 0.5720596355604638,
    "watch": []
   },
   {
@@ -214,7 +216,7 @@
     "190",
     "-230"
    ],
-   "p_fav_injury_adj": 0.6574752261956054,
+   "p_fav_injury_adj": 0.6690070210631895,
    "watch": []
   },
   {
@@ -249,7 +251,7 @@
     "-192",
     "160"
    ],
-   "p_fav_injury_adj": 0.644729178800233,
+   "p_fav_injury_adj": 0.6224665518611736,
    "watch": []
   },
   {
@@ -284,7 +286,7 @@
     "330",
     "-425"
    ],
-   "p_fav_injury_adj": 0.7659021045164341,
+   "p_fav_injury_adj": 0.7768331562167907,
    "watch": []
   },
   {
@@ -319,7 +321,7 @@
     "-325",
     "260"
    ],
-   "p_fav_injury_adj": 0.725752508361204,
+   "p_fav_injury_adj": 0.7335423197492162,
    "watch": []
   },
   {
@@ -354,7 +356,7 @@
     "124",
     "-148"
    ],
-   "p_fav_injury_adj": 0.5829926410466066,
+   "p_fav_injury_adj": 0.5720596355604638,
    "watch": []
   },
   {
@@ -389,7 +391,7 @@
     "250",
     "-310"
    ],
-   "p_fav_injury_adj": 0.7179705215419501,
+   "p_fav_injury_adj": 0.725752508361204,
    "watch": []
   },
   {
@@ -529,7 +531,7 @@
     "215",
     "-265"
    ],
-   "p_fav_injury_adj": 0.7095435684647302,
+   "p_fav_injury_adj": 0.6957699520733487,
    "watch": []
   },
   {
@@ -564,7 +566,7 @@
     "245",
     "-305"
    ],
-   "p_fav_injury_adj": 0.7477827050997783,
+   "p_fav_injury_adj": 0.7220792588780237,
    "watch": []
   }
  ],
@@ -586,18 +588,20 @@
   "Kaleigh": 10,
   "Molly": 11
  },
- "games_remaining": 256,
+ "games_remaining": 255,
  "rankings": {
   "weeks": [
-   1
+   1,
+   2
   ],
   "members": [
    {
     "name": "Ryan",
     "weekly": {
-     "1": 12
+     "1": 12,
+     "2": 1
     },
-    "logged_total": 12,
+    "logged_total": 13,
     "cbs_total": 12,
     "dog_picks": 0,
     "dog_wins": 0,
@@ -606,9 +610,10 @@
    {
     "name": "Casey",
     "weekly": {
-     "1": 9
+     "1": 9,
+     "2": 1
     },
-    "logged_total": 9,
+    "logged_total": 10,
     "cbs_total": 9,
     "dog_picks": 3,
     "dog_wins": 0,
@@ -617,9 +622,10 @@
    {
     "name": "Sue",
     "weekly": {
-     "1": 11
+     "1": 11,
+     "2": 1
     },
-    "logged_total": 11,
+    "logged_total": 12,
     "cbs_total": 11,
     "dog_picks": 3,
     "dog_wins": 1,
@@ -628,9 +634,10 @@
    {
     "name": "Nolan",
     "weekly": {
-     "1": 12
+     "1": 12,
+     "2": 1
     },
-    "logged_total": 12,
+    "logged_total": 13,
     "cbs_total": 12,
     "dog_picks": 0,
     "dog_wins": 0,
@@ -639,9 +646,10 @@
    {
     "name": "Sheila",
     "weekly": {
-     "1": 11
+     "1": 11,
+     "2": 1
     },
-    "logged_total": 11,
+    "logged_total": 12,
     "cbs_total": 11,
     "dog_picks": 1,
     "dog_wins": 0,
@@ -650,33 +658,37 @@
    {
     "name": "Kaleigh",
     "weekly": {
-     "1": 10
+     "1": 10,
+     "2": 0
     },
     "logged_total": 10,
     "cbs_total": 10,
-    "dog_picks": 3,
+    "dog_picks": 4,
     "dog_wins": 1,
     "missed": 2
    },
    {
     "name": "Molly",
     "weekly": {
-     "1": 11
+     "1": 11,
+     "2": 0
     },
     "logged_total": 11,
     "cbs_total": 11,
     "dog_picks": 1,
     "dog_wins": 0,
-    "missed": 0
+    "missed": 1
    }
   ],
   "all_favorites": {
-   "1": 12
+   "1": 12,
+   "2": 1
   },
   "engine_b": {
-   "1": 12
+   "1": 12,
+   "2": 1
   },
-  "games_final": 16
+  "games_final": 17
  },
  "family": [
   {
@@ -1032,11 +1044,11 @@
   ]
  },
  "scoreboard": {
-  "games_scored": 16,
-  "engine_a_correct": 12,
-  "engine_b_correct": 12,
-  "ryan_correct": 12,
-  "ryan_entered": 16,
+  "games_scored": 17,
+  "engine_a_correct": 13,
+  "engine_b_correct": 13,
+  "ryan_correct": 13,
+  "ryan_entered": 17,
   "engine_b_value": 0
  },
  "history": [
@@ -5344,7 +5356,7 @@
    "confidence": "HIGH",
    "p_first": 0.5372,
    "ryan_pick": "BUF",
-   "winner": null
+   "winner": "BUF"
   },
   {
    "logged_at": "2026-09-16T04:32:18Z",
@@ -5568,7 +5580,7 @@
    "confidence": "HIGH",
    "p_first": 0.5382,
    "ryan_pick": "BUF",
-   "winner": null
+   "winner": "BUF"
   },
   {
    "logged_at": "2026-09-17T03:38:21Z",
@@ -5792,7 +5804,7 @@
    "confidence": "HIGH",
    "p_first": 0.5381,
    "ryan_pick": "BUF",
-   "winner": null
+   "winner": "BUF"
   },
   {
    "logged_at": "2026-09-17T22:44:24Z",
@@ -6016,7 +6028,7 @@
    "confidence": "HIGH",
    "p_first": 0.5371,
    "ryan_pick": "BUF",
-   "winner": null
+   "winner": "BUF"
   },
   {
    "logged_at": "2026-09-18T01:01:19Z",

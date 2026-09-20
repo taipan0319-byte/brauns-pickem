@@ -33,7 +33,7 @@ import numpy as np
 
 URL = "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv"
 HERE = os.path.dirname(os.path.abspath(__file__))
-USER_DOG_THRESHOLD = 0.52   # default future-week policy for the user
+USER_DOG_THRESHOLD = 0.50   # D6: the user takes the favorite in every future game; the current week is evaluated explicitly
 TIE_RULE = "split"          # U1 in DECISIONS.md: ties split evenly (approximates a tiebreaker lottery)
 DEFAULT_FAMILY = [
  {"name": "Casey",   "dog_rate": {"tossup": 0.15, "close": 0.07, "other": 0.02}, "bias_team": None,  "bias_strength": 0.0},
@@ -93,8 +93,9 @@ def evaluate(games, family, standings, user, sims, seed, this_week_mask):
     user_fav = pfav >= USER_DOG_THRESHOLD
     base = p_first(user_fav)
     idx = np.where(this_week_mask)[0]; deltas, noise = {}, {}
+    order = sorted(idx, key=lambda i: pfav[i])   # evaluate the closest games first: when only one deviation pays, take the best one
     for _ in range(2):
-        for i in idx:
+        for i in order:
             u1 = user_fav.copy(); u1[i] = True; u0 = user_fav.copy(); u0[i] = False
             d = p_first(u0) - p_first(u1)
             d1 = p_first(u0, slice(0, half)) - p_first(u1, slice(0, half))
