@@ -6,6 +6,21 @@ processing it.
 
 ---
 
+## 2026-09-20 — Block 5 (pasted by Ryan): independent validation V1–V7 [read 2026-09-20]
+
+Overall verdict: PASS, with two recommended refinements: use band-specific shrinkage in V3, and move toward participation modeling in V5 only if non-entry persists. No change to Engine A or the current favorite-first production rule.
+
+V1 — PASS. 4,842 games, 66.85%, Brier 0.20945, log loss 0.60571; largest 5-point bin miss 2.4 pp (60–65%: mean 62.51%, actual 60.11%). Ablation: M0 0.61147; +Elo 0.61173, +rest 0.61237, +division 0.61241, +weather 0.61284, +QB-change 0.61287.
+V2 — PASS. 22 commits touching engine_b_log.csv, zero deleted/replaced rows. Week 1 pre-kickoff recommendations 12/16 = all-favorites. Scoreboard 17 games: Engine A 13, Engine B 13, Ryan 13.
+V3 — PASS on calculation; CHANGE shrinkage to band-specific 10 / 3 / 10 (toss-up / close / other). Reconstruction with Week 2 rows: ~9/24 toss-up, 1/29 close, 2/46 other dog selections. Revisit after ~50–75 decisions per band.
+V4 — PASS. P(first) 53.07%; every dog negative (CAR/ATL −1.39, CIN/HOU −1.35, JAX/DEN −1.26, MIA/SF −6.06). For the canonical D4 test set all dog rates = 0 AND all bias_strength = 0 with equal standings; keep as a permanent regression test. ±0.2 pp stability criterion accepted.
+V5 — choose (b), participation probability per member, strongly shrunk toward 100%; activate only if non-entry persists through Weeks 3–4; never a hard N-week deletion.
+V6 — PASS; keep U5/U6 observational. Wire the D19 injury-adjusted probability into the audit log from the Sunday refresh, diagnostic only.
+V7 — PASS; expose the exact source log timestamp beside every displayed recommendation.
+Final: production architecture stands. This closes my first validation round under the two-round rule.
+
+---
+
 ## 2026-09-10 — Block 4 (pasted by Ryan) [read 2026-09-10]
 
 So this review round is closed from my side: Claude wins the argument; A. And I actually like that result—it demonstrates the discipline we wanted from this project: we had an intuitively appealing idea, tested the exact version that mattered to us, and discarded it when the historical evidence didn't support it.

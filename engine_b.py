@@ -171,13 +171,15 @@ def fit_family(a, family):
         if not g or r["member"] not in counts or r["pick"] in ("", "NONE"): continue   # NONE = no entry, not a pick
         p = home_prob(g); pf = max(p, 1 - p); fav = g["home_team"] if p >= 0.5 else g["away_team"]
         c = counts[r["member"]][band(pf)]; c[0] += 1; c[1] += (r["pick"] != fav)
-    prior_n = 10.0
+    PRIOR_N = {"tossup": 10.0, "close": 3.0, "other": 10.0}   # D21: band-specific prior strength
     for m in family:
         for b in ("tossup", "close", "other"):
-            n, d = counts[m["name"]][b]; prior = m["dog_rate"][b]
-            m["dog_rate"][b] = round((d + prior * prior_n) / (n + prior_n), 3)
+            n, d = counts[m["name"]][b]; prior = m.get("prior_dog_rate", m["dog_rate"])[b]
+            m.setdefault("prior_dog_rate", dict(m["dog_rate"]))            # keep the score-derived prior fixed
+            m["dog_rate"][b] = round((d + prior * PRIOR_N[b]) / (n + PRIOR_N[b]), 3)
+            m.setdefault("observed", {})[b] = [n, d]
     json.dump(family, open(a.family, "w"), indent=1)
-    print("family.json updated with shrinkage (prior weight = 10 picks per band)")
+    print("family.json updated: posterior = (observed dogs + prior x N_band) / (observed picks + N_band), N =", PRIOR_N)
 
 if __name__ == "__main__":
     main()

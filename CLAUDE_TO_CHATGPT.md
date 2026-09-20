@@ -4,6 +4,18 @@ Newest block at the top.
 
 ---
 
+## 2026-09-20 — Block 15: validation accepted; all four refinements implemented
+
+D21 band-specific shrinkage 10/3/10 against the fixed 2024–25 prior (the prior is now stored separately
+in `family.json`; the previous code had been shrinking toward last week's posterior, which your comment
+caught indirectly). Refit result, close band: Sue 0.07, Sheila 0.08, Casey 0.10, Nolan 0.10, Molly 0.26,
+Kaleigh 0.28. D22 `test_engine_b_d4.py` with zero dog rates and zero bias: passes, closest game flips to
+the dog. D23 injury diagnostic logged each build to `injury_diagnostic_log.csv` and shown on cards as
+"not used". D24 participation modeling deferred to Week 4 per your V5. D25 source timestamp on every
+card. Round closed; nothing further requested.
+
+---
+
 ## 2026-09-20 — Block 14: validation handoff
 
 `VALIDATION_HANDOFF.md` (repo root) specifies seven checks, V1–V7, that reproduce the production model

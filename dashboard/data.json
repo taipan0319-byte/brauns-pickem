@@ -1,10 +1,10 @@
 {
  "season": 2026,
  "week": 2,
- "built_at": "2026-09-20T14:24:54Z",
+ "built_at": "2026-09-20T15:25:27Z",
  "order_source": "kickoff time, then NFL schedule id (CBS within-slot order not recorded for this week)",
  "model_refreshed_at": "2026-09-20T14:24:54Z",
- "market_asof": "2026-09-20T14:24:51Z",
+ "market_asof": "2026-09-16T04:31:05Z",
  "p_first": 0.5307,
  "games": [
   {
@@ -16,9 +16,9 @@
    "weekday": "THU",
    "kickoff_ct": "7:15 PM CT",
    "kickoff_iso": "2026-09-17T19:15:00-05:00",
-   "result": 10.0,
-   "away_score": "31",
-   "home_score": "41",
+   "result": null,
+   "away_score": null,
+   "home_score": null,
    "ryan_pick": "BUF",
    "fav": "BUF",
    "dog": "DET",
@@ -39,9 +39,8 @@
     "195",
     "-238"
    ],
-   "watch": [],
-   "winner": "BUF",
-   "pick_correct": true
+   "p_fav_injury_adj": 0.6574752261956054,
+   "watch": []
   },
   {
    "game_id": "2026_02_CAR_ATL",
@@ -75,6 +74,7 @@
     "-155",
     "130"
    ],
+   "p_fav_injury_adj": 0.551441114716549,
    "watch": []
   },
   {
@@ -109,6 +109,7 @@
     "295",
     "-375"
    ],
+   "p_fav_injury_adj": 0.771505376344086,
    "watch": []
   },
   {
@@ -143,6 +144,7 @@
     "180",
     "-218"
    ],
+   "p_fav_injury_adj": 0.6636481241914618,
    "watch": []
   },
   {
@@ -177,6 +179,7 @@
     "124",
     "-148"
    ],
+   "p_fav_injury_adj": 0.5634920634920635,
    "watch": []
   },
   {
@@ -211,6 +214,7 @@
     "190",
     "-230"
    ],
+   "p_fav_injury_adj": 0.6574752261956054,
    "watch": []
   },
   {
@@ -245,6 +249,7 @@
     "-192",
     "160"
    ],
+   "p_fav_injury_adj": 0.644729178800233,
    "watch": []
   },
   {
@@ -279,6 +284,7 @@
     "330",
     "-425"
    ],
+   "p_fav_injury_adj": 0.7659021045164341,
    "watch": []
   },
   {
@@ -313,6 +319,7 @@
     "-325",
     "260"
    ],
+   "p_fav_injury_adj": 0.725752508361204,
    "watch": []
   },
   {
@@ -347,6 +354,7 @@
     "124",
     "-148"
    ],
+   "p_fav_injury_adj": 0.5829926410466066,
    "watch": []
   },
   {
@@ -381,6 +389,7 @@
     "250",
     "-310"
    ],
+   "p_fav_injury_adj": 0.7179705215419501,
    "watch": []
   },
   {
@@ -415,6 +424,7 @@
     "-205",
     "170"
    ],
+   "p_fav_injury_adj": 0.644729178800233,
    "watch": []
   },
   {
@@ -449,6 +459,7 @@
     "180",
     "-218"
    ],
+   "p_fav_injury_adj": 0.6574752261956054,
    "watch": []
   },
   {
@@ -483,6 +494,7 @@
     "625",
     "-950"
    ],
+   "p_fav_injury_adj": 0.8677165354330709,
    "watch": []
   },
   {
@@ -517,6 +529,7 @@
     "215",
     "-265"
    ],
+   "p_fav_injury_adj": 0.7095435684647302,
    "watch": []
   },
   {
@@ -551,6 +564,7 @@
     "245",
     "-305"
    ],
+   "p_fav_injury_adj": 0.7477827050997783,
    "watch": []
   }
  ],
@@ -572,20 +586,18 @@
   "Kaleigh": 10,
   "Molly": 11
  },
- "games_remaining": 255,
+ "games_remaining": 256,
  "rankings": {
   "weeks": [
-   1,
-   2
+   1
   ],
   "members": [
    {
     "name": "Ryan",
     "weekly": {
-     "1": 12,
-     "2": 1
+     "1": 12
     },
-    "logged_total": 13,
+    "logged_total": 12,
     "cbs_total": 12,
     "dog_picks": 0,
     "dog_wins": 0,
@@ -594,10 +606,9 @@
    {
     "name": "Casey",
     "weekly": {
-     "1": 9,
-     "2": 1
+     "1": 9
     },
-    "logged_total": 10,
+    "logged_total": 9,
     "cbs_total": 9,
     "dog_picks": 3,
     "dog_wins": 0,
@@ -606,10 +617,9 @@
    {
     "name": "Sue",
     "weekly": {
-     "1": 11,
-     "2": 1
+     "1": 11
     },
-    "logged_total": 12,
+    "logged_total": 11,
     "cbs_total": 11,
     "dog_picks": 3,
     "dog_wins": 1,
@@ -618,10 +628,9 @@
    {
     "name": "Nolan",
     "weekly": {
-     "1": 12,
-     "2": 1
+     "1": 12
     },
-    "logged_total": 13,
+    "logged_total": 12,
     "cbs_total": 12,
     "dog_picks": 0,
     "dog_wins": 0,
@@ -630,10 +639,9 @@
    {
     "name": "Sheila",
     "weekly": {
-     "1": 11,
-     "2": 1
+     "1": 11
     },
-    "logged_total": 12,
+    "logged_total": 11,
     "cbs_total": 11,
     "dog_picks": 1,
     "dog_wins": 0,
@@ -642,98 +650,208 @@
    {
     "name": "Kaleigh",
     "weekly": {
-     "1": 10,
-     "2": 0
+     "1": 10
     },
     "logged_total": 10,
     "cbs_total": 10,
-    "dog_picks": 4,
+    "dog_picks": 3,
     "dog_wins": 1,
     "missed": 2
    },
    {
     "name": "Molly",
     "weekly": {
-     "1": 11,
-     "2": 0
+     "1": 11
     },
     "logged_total": 11,
     "cbs_total": 11,
     "dog_picks": 1,
     "dog_wins": 0,
-    "missed": 1
+    "missed": 0
    }
   ],
   "all_favorites": {
-   "1": 12,
-   "2": 1
+   "1": 12
   },
   "engine_b": {
-   "1": 12,
-   "2": 1
+   "1": 12
   },
-  "games_final": 17
+  "games_final": 16
  },
  "family": [
   {
    "name": "Casey",
    "dog_rate": {
-    "tossup": 0.464,
-    "close": 0.168,
-    "other": 0.089
+    "tossup": 0.455,
+    "close": 0.101,
+    "other": 0.083
    },
    "bias_team": null,
-   "bias_strength": 0.0
+   "bias_strength": 0.0,
+   "prior_dog_rate": {
+    "tossup": 0.437,
+    "close": 0.269,
+    "other": 0.05
+   },
+   "observed": {
+    "tossup": [
+     4,
+     2
+    ],
+    "close": [
+     5,
+     0
+    ],
+    "other": [
+     8,
+     1
+    ]
+   }
   },
   {
    "name": "Sue",
    "dog_rate": {
-    "tossup": 0.427,
-    "close": 0.111,
-    "other": 0.02
+    "tossup": 0.416,
+    "close": 0.065,
+    "other": 0.018
    },
    "bias_team": "GB",
-   "bias_strength": 0.4
+   "bias_strength": 0.4,
+   "prior_dog_rate": {
+    "tossup": 0.283,
+    "close": 0.174,
+    "other": 0.033
+   },
+   "observed": {
+    "tossup": [
+     4,
+     3
+    ],
+    "close": [
+     5,
+     0
+    ],
+    "other": [
+     8,
+     0
+    ]
+   }
   },
   {
    "name": "Nolan",
    "dog_rate": {
-    "tossup": 0.359,
-    "close": 0.187,
-    "other": 0.034
+    "tossup": 0.312,
+    "close": 0.101,
+    "other": 0.028
    },
    "bias_team": "CHI",
-   "bias_strength": 0.4
+   "bias_strength": 0.4,
+   "prior_dog_rate": {
+    "tossup": 0.437,
+    "close": 0.269,
+    "other": 0.05
+   },
+   "observed": {
+    "tossup": [
+     4,
+     0
+    ],
+    "close": [
+     5,
+     0
+    ],
+    "other": [
+     8,
+     0
+    ]
+   }
   },
   {
    "name": "Sheila",
    "dog_rate": {
-    "tossup": 0.352,
-    "close": 0.147,
-    "other": 0.026
+    "tossup": 0.329,
+    "close": 0.083,
+    "other": 0.023
    },
    "bias_team": "CHI",
-   "bias_strength": 0.4
+   "bias_strength": 0.4,
+   "prior_dog_rate": {
+    "tossup": 0.361,
+    "close": 0.222,
+    "other": 0.042
+   },
+   "observed": {
+    "tossup": [
+     4,
+     1
+    ],
+    "close": [
+     5,
+     0
+    ],
+    "other": [
+     8,
+     0
+    ]
+   }
   },
   {
    "name": "Kaleigh",
    "dog_rate": {
-    "tossup": 0.523,
-    "close": 0.305,
-    "other": 0.038
+    "tossup": 0.511,
+    "close": 0.279,
+    "other": 0.094
    },
    "bias_team": "GB",
-   "bias_strength": 0.4
+   "bias_strength": 0.4,
+   "prior_dog_rate": {
+    "tossup": 0.516,
+    "close": 0.318,
+    "other": 0.06
+   },
+   "observed": {
+    "tossup": [
+     4,
+     2
+    ],
+    "close": [
+     4,
+     1
+    ],
+    "other": [
+     7,
+     1
+    ]
+   }
   },
   {
    "name": "Molly",
    "dog_rate": {
     "tossup": 0.714,
-    "close": 0.444,
-    "other": 0.081
+    "close": 0.262,
+    "other": 0.077
    },
    "bias_team": null,
-   "bias_strength": 0.0
+   "bias_strength": 0.0,
+   "prior_dog_rate": {
+    "tossup": 0.9,
+    "close": 0.699,
+    "other": 0.131
+   },
+   "observed": {
+    "tossup": [
+     4,
+     1
+    ],
+    "close": [
+     5,
+     0
+    ],
+    "other": [
+     7,
+     0
+    ]
+   }
   }
  ],
  "family_fit": {
@@ -819,11 +937,11 @@
     "mean_diff": 0.08333333333333333,
     "sd_diff": 1.4808298831591502,
     "r_raw": 0.36428108243894375,
-    "r_shrunk": 0.36100270381368127,
+    "r_shrunk": 0.336229976540954,
     "dog_rate": {
-     "tossup": 0.469,
-     "close": 0.289,
-     "other": 0.054
+     "tossup": 0.437,
+     "close": 0.269,
+     "other": 0.05
     },
     "in_family": true
    },
@@ -833,10 +951,10 @@
     "mean_diff": -0.4,
     "sd_diff": 1.6305899329419902,
     "r_raw": 0.4008539491385071,
-    "r_shrunk": 0.4023116816052443,
+    "r_shrunk": 0.3972347585283212,
     "dog_rate": {
-     "tossup": 0.523,
-     "close": 0.322,
+     "tossup": 0.516,
+     "close": 0.318,
      "other": 0.06
     },
     "in_family": true
@@ -847,11 +965,11 @@
     "mean_diff": -1.1875,
     "sd_diff": 2.2351661553306243,
     "r_raw": 0.9532806539895238,
-    "r_shrunk": 0.945874523191619,
+    "r_shrunk": 0.873624523191619,
     "dog_rate": {
      "tossup": 0.9,
-     "close": 0.757,
-     "other": 0.142
+     "close": 0.699,
+     "other": 0.131
     },
     "in_family": true
    },
@@ -861,11 +979,11 @@
     "mean_diff": -0.6388888888888888,
     "sd_diff": 1.5884004133139331,
     "r_raw": 0.35862473320576876,
-    "r_shrunk": 0.3636475089865381,
+    "r_shrunk": 0.3359202362592653,
     "dog_rate": {
-     "tossup": 0.473,
-     "close": 0.291,
-     "other": 0.055
+     "tossup": 0.437,
+     "close": 0.269,
+     "other": 0.05
     },
     "in_family": true
    },
@@ -889,11 +1007,11 @@
     "mean_diff": -0.5277777777777778,
     "sd_diff": 1.3198725287176383,
     "r_raw": 0.2988259708284166,
-    "r_shrunk": 0.29949397613234086,
+    "r_shrunk": 0.27790306704143175,
     "dog_rate": {
-     "tossup": 0.389,
-     "close": 0.24,
-     "other": 0.045
+     "tossup": 0.361,
+     "close": 0.222,
+     "other": 0.042
     },
     "in_family": true
    },
@@ -903,22 +1021,22 @@
     "mean_diff": -0.25,
     "sd_diff": 1.1801936887041646,
     "r_raw": 0.23536042463490628,
-    "r_shrunk": 0.2341585292467415,
+    "r_shrunk": 0.21779489288310513,
     "dog_rate": {
-     "tossup": 0.304,
-     "close": 0.187,
-     "other": 0.035
+     "tossup": 0.283,
+     "close": 0.174,
+     "other": 0.033
     },
     "in_family": true
    }
   ]
  },
  "scoreboard": {
-  "games_scored": 17,
-  "engine_a_correct": 13,
-  "engine_b_correct": 13,
-  "ryan_correct": 13,
-  "ryan_entered": 17,
+  "games_scored": 16,
+  "engine_a_correct": 12,
+  "engine_b_correct": 12,
+  "ryan_correct": 12,
+  "ryan_entered": 16,
   "engine_b_value": 0
  },
  "history": [
@@ -5226,7 +5344,7 @@
    "confidence": "HIGH",
    "p_first": 0.5372,
    "ryan_pick": "BUF",
-   "winner": "BUF"
+   "winner": null
   },
   {
    "logged_at": "2026-09-16T04:32:18Z",
@@ -5450,7 +5568,7 @@
    "confidence": "HIGH",
    "p_first": 0.5382,
    "ryan_pick": "BUF",
-   "winner": "BUF"
+   "winner": null
   },
   {
    "logged_at": "2026-09-17T03:38:21Z",
@@ -5674,7 +5792,7 @@
    "confidence": "HIGH",
    "p_first": 0.5381,
    "ryan_pick": "BUF",
-   "winner": "BUF"
+   "winner": null
   },
   {
    "logged_at": "2026-09-17T22:44:24Z",
@@ -5898,7 +6016,7 @@
    "confidence": "HIGH",
    "p_first": 0.5371,
    "ryan_pick": "BUF",
-   "winner": "BUF"
+   "winner": null
   },
   {
    "logged_at": "2026-09-18T01:01:19Z",

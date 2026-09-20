@@ -276,6 +276,7 @@ document.getElementById('games').innerHTML = D.games.map(g => {
         <span>Family on ${g.fav_name}: <b>${pct(g.family_fav_rate,0)}</b></span>
         <span>Dog ${g.dog_name}, ΔP(first): <b>${pts(g.dP_dog)}</b></span>
         <span>Robustness: <span class="pill ${g.confidence}">${g.confidence}</span>${isOpp?' <span class="pill opp">strategic differentiation</span>':''}</span>
+        <span style="grid-column:1/-1;color:var(--muted);font-size:11.5px">Model run ${fmtT(g.logged_at)}${g.p_fav_injury_adj!=null?` · injury-adjusted diagnostic ${pct(g.p_fav_injury_adj)} (not used)`:''}</span>
       </div></div>
     <div class="why${isOpp?' opp':''}">${g.rationale}${g.ryan_pick && g.ryan_pick!==g.pick?` <b>Ryan's logged pick: ${g.ryan_pick}.</b>`:''}</div>
     ${res}</article>`;

@@ -91,6 +91,22 @@ Entries here survived review. Anything not listed is open. Format: ID, decision,
   variables cannot identify a subset of 40–50% underdogs that beats its market price. Production unchanged.
   Output: `dashboard/backtest_dogs_output.txt`. 2026-09-11.
 
+- **D21. Band-specific shrinkage for revealed picks (ChatGPT V3, 2026-09-20).** Posterior dog rate per band
+  = (observed dog picks + prior × N) / (observed picks + N) with N = 10 toss-up, 3 close, 10 other. The
+  prior is the fixed 2024–25 score-derived rate (`prior_dog_rate` in `family.json`), never last week's
+  posterior. Revisit after ~50–75 observed decisions per band.
+- **D22. D4 regression test.** `test_engine_b_d4.py`: all opponents at dog rate 0 and bias 0, equal
+  standings → Engine B must recommend the dog in the week's closest game and P(first) > 1/N. Passes.
+- **D23. Injury diagnostic logging.** `injury_diagnostic_log.csv` records the market and injury-adjusted
+  favorite probability (frozen coefficient −0.021) at each build; shown in small type on each card as
+  "not used". No pick is ever changed by it (D19 stands). Season-end look.
+- **D24. Non-entries: participation modeling deferred (ChatGPT V5).** `NONE` stays excluded from the fit.
+  If missed entries persist through Week 4, add a per-member participation probability, shrunk hard
+  toward 1, that scales expected points; never a hard removal rule.
+- **D25. Every displayed recommendation carries its source log timestamp** (ChatGPT V7). 2026-09-20.
+- **V1–V7 validation (2026-09-20): PASS.** Engine A reproduced to four decimals; audit log append-only across
+  22 commits; family model confirmed chalk above 55%; Engine B monotone and numerically stable.
+
 ## Unresolved (conservative production choice in force)
 
 - **U1. Tie rule.** In force: ties split evenly. Ryan recalls CBS resolves season ties by Super Bowl

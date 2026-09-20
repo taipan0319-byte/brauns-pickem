@@ -33,6 +33,29 @@ def ct_kickoff(g):
     except Exception:
         return g.get("weekday", "")[:3].upper(), "", ""
 
+def injury_adjusted(games_week):
+    """D19 diagnostic: market prob adjusted by the frozen residual coefficient (-0.021 per weighted-injury point).
+    Never used for a pick. Returns {game_id: p_fav_adjusted} or {} if the season's injury file is absent."""
+    try:
+        from test_injuries import W, T
+        season = games_week[0]["season"]; path = os.path.join(HERE, "data", "inj", f"injuries_{season}.csv")
+        if not os.path.exists(path):
+            urllib.request.urlretrieve(f"https://github.com/nflverse/nflverse-data/releases/download/injuries/injuries_{season}.csv", path)
+        wk = games_week[0]["week"]; last = {}
+        for r in csv.DictReader(open(path)):
+            if r["week"] == wk: last[(T(r["team"]), r["gsis_id"] or r["full_name"])] = (r["position"], r["report_status"])
+        inj = defaultdict(float)
+        for (t, _), (pos, st) in last.items(): inj[t] += W.get(pos, 0.5) * (1.0 if st == "Out" else 0.7 if st == "Doubtful" else 0.3 if st == "Questionable" else 0)
+        out = {}
+        for g in games_week:
+            if not (g["away_moneyline"] and g["home_moneyline"]): continue
+            pa, ph = backtest_market.american_to_prob(g["away_moneyline"]), backtest_market.american_to_prob(g["home_moneyline"]); ph = ph / (pa + ph)
+            d = inj[g["home_team"]] - inj[g["away_team"]]; padj = 1 / (1 + math.exp(-(math.log(ph / (1 - ph)) - 0.021 * d)))
+            out[g["game_id"]] = padj if ph >= 0.5 else 1 - padj
+        return out
+    except Exception as e:
+        print("injury diagnostic unavailable:", e.__class__.__name__); return {}
+
 def rationale(r, dog):
     fav, p, fam, d, conf = r["fav"], float(r["p_fav"]), float(r["family_fav_rate"]), float(r["dP_first_dog"]), r["confidence"]
     cost = 2 * p - 1
@@ -84,6 +107,7 @@ def main():
                         key=lambda g: (g["gameday"], g["gametime"], cbs_pos.get(g["game_id"], 999), g["old_game_id"]))
     order_source = "CBS app order (recorded from screenshot)" if cbs_pos else "kickoff time, then NFL schedule id (CBS within-slot order not recorded for this week)"
     out_games, changes = [], []
+    inj_adj = injury_adjusted(week_games) if week_games else {}
     for g in week_games:
         r = latest.get(g["game_id"]); wd, tm, iso = ct_kickoff(g)
         row = dict(game_id=g["game_id"], away=g["away_team"], home=g["home_team"], away_name=MASCOT.get(g["away_team"], g["away_team"]),
@@ -97,6 +121,7 @@ def main():
                        family_fav_rate=float(r["family_fav_rate"]), dP_dog=float(r["dP_first_dog"]), mc_noise=float(r["mc_noise"]),
                        logged_at=r["logged_at_utc"], rationale=rationale(r, dog), engine_a_pick=a_latest.get(g["game_id"], {}).get("pick"),
                        spread=a_latest.get(g["game_id"], {}).get("spread_line"), ml=(a_latest.get(g["game_id"], {}).get("away_ml"), a_latest.get(g["game_id"], {}).get("home_ml")))
+            row["p_fav_injury_adj"] = inj_adj.get(g["game_id"])
             row["watch"] = [w for w, c in (("near coin flip", row["p_fav"] < 0.55), ("robustness " + row["confidence"], row["confidence"] != "HIGH"),
                                             ("pool opportunity", row["dP_dog"] > 0)) if c]
             p = prev.get(g["game_id"])
@@ -183,6 +208,13 @@ def main():
                 engine_a=dict(calibration=calib, ablation=ea), audit=audit,
                 decisions=dict(production_rule="No-vig market favorite in every game, regular season and playoffs (D6, D16).",
                                tie_rule="Ties split evenly (U1 approximation).", threshold=None))
+    if inj_adj:
+        lp = os.path.join(HERE, "injury_diagnostic_log.csv"); newf = not os.path.exists(lp)
+        with open(lp, "a", newline="") as f:
+            w = csv.writer(f)
+            if newf: w.writerow(["logged_at_utc", "season", "week", "game_id", "fav", "p_fav_market", "p_fav_injury_adj"])
+            for g in out_games:
+                if g.get("p_fav_injury_adj") is not None: w.writerow([now, a.season, a.week, g["game_id"], g["fav"], f"{g['p_fav']:.4f}", f"{g['p_fav_injury_adj']:.4f}"])
     json.dump(data, open(os.path.join(D, "data.json"), "w"), indent=1)
     tpl = open(os.path.join(D, "template.html")).read()
     body = tpl.replace("/*__DATA__*/null", json.dumps(data).replace("</", "<\\/"))
