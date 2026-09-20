@@ -6,6 +6,26 @@ processing it.
 
 ---
 
+## 2026-09-20 — Block 6 (pasted by Ryan): Engine C, Upset Hunter proposal [read 2026-09-20]
+
+Yes. The biggest improvement is to stop asking "Can we beat Vegas on every game?" and build a specialized upset-discovery model whose only job is to identify the small subset of underdogs where the market favorite may be less safe than the pool believes.
+
+I'd keep the current market-only Engine A intact and add an Engine C: Upset Hunter. It would never automatically replace the favorite. Instead, each week it would rank perhaps 3–5 underdogs using factors that can plausibly contain information not fully reflected—or not yet reflected—in the market: late QB/OL/secondary injuries and replacements; large differences between opening and current lines; disagreement between moneyline and spread movement; pass-rush vs pass-protection mismatch; explosive-pass matchup; turnover/fumble regression; fourth-down and red-zone regression; early-season roster/coordinator changes; and weather only where it changes style of play materially.
+
+The important modeling change is that I would train Engine C only on underdogs, rather than asking a general winner model to do double duty. For every historical underdog, define the target as underdog won = 1, use the no-vig market probability as the starting prior, and train the model to estimate the residual: Upset Edge = P_UpsetHunter(dog wins) − P_market(dog wins). Then walk-forward test it. We don't care whether it improves prediction on a Chiefs −500 game. We care whether, for example, the historical dogs Engine C called +5 points better than market actually won materially more often than their market probabilities predicted.
+
+I would particularly investigate market disagreement rather than simply "football knowledge." Suppose an underdog is 38% by the closing market, but several independent signals all point the same direction—QB efficiency differential, trenches, injury-adjusted starters, and a line that moved from +6 to +3.5 despite most public selections remaining on the favorite. That is much more interesting than merely saying, "this feels like an upset."
+
+And then we combine it with the thing unique to your pool. An underdog is especially valuable when both Football Edge > 0 and Pool Leverage > 0. Imagine our validated Upset Hunter says a dog has a 45% chance while the market says 38%, and our family model says 90% of the family will take the favorite. That's exactly the game I want highlighted. Conversely, a 45% dog that half the family is already taking isn't nearly as interesting. (Upset Board example: DOG A 39% → 46%, +7, family 91% on favorite, Excellent; DOG B 43% → 47%, +4, 83%, Good; DOG C 31% → 38%, +7, 96%, Interesting but risky; DOG D 46% → 47%, +1, 58%.)
+
+There is another potentially valuable source of edge now that we have actual family picks: learn what Casey and Sue are doing. Casey's long-term record is interesting enough to study, even though two years of scores showed he was only slightly ahead of blind chalk. If Casey repeatedly selects certain dogs that the rest of the family avoids, we can test whether those selections outperform market expectation. We should not blindly copy him, but his revealed choices can become another diagnostic signal. Same for Sue.
+
+So I wouldn't loosen the current model and start guessing at upsets. I'd make the process more rigorous: Market Engine → Upset Hunter → Family Leverage → P(first) simulator → final pick. And I'd impose a hard discipline: Engine C earns the right to influence our picks only after its historical walk-forward "top upset" bucket demonstrates actual lift over the market. Until then it can show us candidates without changing production.
+
+I would have Claude build Engine C and initially test roughly 2009–2025, with the final few seasons held completely untouched, and specifically answer: If we had taken only the top one or two qualified upset candidates each week, would we actually have gained correct picks versus always choosing the favorite? That's a much harder and more useful test than simply producing a prettier prediction model. (Also: the GitHub integration remains read-only; this block was pasted by Ryan. Instruction: "Add this as ChatGPT Block 6 to the collaboration log and execute the research plan.")
+
+---
+
 ## 2026-09-20 — Block 5 (pasted by Ryan): independent validation V1–V7 [read 2026-09-20]
 
 Overall verdict: PASS, with two recommended refinements: use band-specific shrinkage in V3, and move toward participation modeling in V5 only if non-entry persists. No change to Engine A or the current favorite-first production rule.

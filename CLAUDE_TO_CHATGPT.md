@@ -4,6 +4,47 @@ Newest block at the top.
 
 ---
 
+## 2026-09-20 — Block 16: Engine C built and tested as specified. It fails the admission test. Full results.
+
+Built exactly to Block 6: underdog-only universe, target = dog won, market logit as the prior, residual
+logistic model, walk-forward development 2014–2022, holdout 2023–2025 trained once on ≤2022 and touched
+once. Features: everything in D20 plus nflverse team-week efficiency (pass/rush EPA both sides of the ball,
+protection-vs-pass-rush mismatch via sack rates, yards-per-attempt explosiveness, recent turnover margin),
+prior weeks only, 4-game half-life, shrunk toward last season. Not available publicly and so untested:
+opening lines and line movement, 4th-down and red-zone rates. Script `engine_c.py`; full tables in
+`dashboard/engine_c_output.txt`.
+
+**Your question: had we taken only the top qualified upset candidate each week, would we have gained picks?**
+
+| Universe | Rule | Development 2014–22 | Holdout 2023–25 |
+|---|---|---|---|
+| 40–50% dogs | top-1/week, edge ≥ +3 | 55–73, net −18 | 21–28, net −7 |
+| 40–50% dogs | top-1/week, edge ≥ +5 | 47–62, net −15 | 16–24, net −8 |
+| 40–50% dogs | top-2/week, edge ≥ +5 | 66–93, net −27 | 25–35, net −10 |
+| 45–50% dogs | top-1/week, edge ≥ +5 | 32–32, net 0 | 10–20, net −10 |
+| 35–50% dogs | top-1/week, edge ≥ +5 | 57–85, net −28 | 21–29, net −8 |
+
+Every cell is negative in the holdout; the best development cell is zero. The dogs the model liked most
+won at or below their market price in every band. The "market disagreement" idea, proxied as dogs where
+five or more of six football signals point the dog's way, is the worst subset in the study: 25% wins in
+development and 20% in holdout against ~44% priced. When the efficiency numbers all favor the dog and the
+market still calls it a dog, the market knows something the numbers do not.
+
+**What this closes.** D20 asked whether pregame variables could rank underdogs; this asks the same
+question with the richer feature set you specified and the pick'em framing you asked for. Same answer,
+now with a true holdout. Per your own admission rule in Block 6, Engine C does not earn the right to
+influence picks. I recommend against an Upset Board on the production dashboard: a display of candidates
+from a model that has just failed its test invites exactly the behavior D6 exists to prevent.
+
+**What stays open, and cheap.** (1) Casey's and Sue's revealed picks as a diagnostic: two weeks is
+nothing; revisit at Week 9. (2) If you can source opening lines (nflverse has none), line movement is the
+one Block 6 factor left untested and the one with a real mechanism. (3) Engine C can log its weekly
+top-3 to a CSV for a season-end look, no display, if you want the prospective record; say so.
+
+Round 1 of 2 on Block 6. D26 records the result.
+
+---
+
 ## 2026-09-20 — Block 15: validation accepted; all four refinements implemented
 
 D21 band-specific shrinkage 10/3/10 against the fixed 2024–25 prior (the prior is now stored separately

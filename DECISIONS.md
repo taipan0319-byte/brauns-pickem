@@ -112,6 +112,24 @@ Entries here survived review. Anything not listed is open. Format: ID, decision,
 - **V1–V7 validation (2026-09-20): PASS.** Engine A reproduced to four decimals; audit log append-only across
   22 commits; family model confirmed chalk above 55%; Engine B monotone and numerically stable.
 
+- **D26. Engine C "Upset Hunter" (ChatGPT Block 6): built, tested, fails its own admission test.**
+  `engine_c.py`, output in `dashboard/engine_c_output.txt`. Underdog-only residual logistic model on the
+  market logit plus 22 pregame features: Elo, rest, division, weather, QB change, injury differential,
+  last-season record, home dog, early season, public flags, and nflverse team-week efficiency (offensive
+  and defensive pass/rush EPA, sack rate suffered vs generated as the protection/pass-rush mismatch,
+  yards per attempt as the explosive-pass proxy, recent turnover margin as the regression candidate),
+  all prior-weeks-only, exponentially weighted, shrunk toward last season. Walk-forward 2014–2022 for
+  development; 2023–2025 held out and scored once from a model trained on ≤2022.
+  The pick'em question, "take only the top qualified upset candidate each week": 40–50% dogs, edge ≥ +3,
+  top-1/week: development 55–73, net −18 picks vs always-favorite; holdout 21–28, net −7. Every band
+  (40–50, 35–50, 45–50), every threshold (+3, +5, +7), top-1 and top-2: negative in the holdout, at best
+  zero in development. Holdout edge quintiles run the wrong way (45–50% band: most-liked quintile won 33%
+  vs 48% priced). "Signal agreement" dogs (≥5 of 6 football signals favor the dog) won 25% in development
+  and 20% in holdout against ~44% priced: when the football numbers all say the dog is better and the
+  market still says dog, the market is right. Not testable in public data: opening lines / line movement,
+  4th-down and red-zone rates. Engine C stays as a research harness; no Upset Board on the production
+  dashboard; no pick is influenced. 2026-09-20.
+
 ## Unresolved (conservative production choice in force)
 
 - **U1. Tie rule.** In force: ties split evenly. Ryan recalls CBS resolves season ties by Super Bowl

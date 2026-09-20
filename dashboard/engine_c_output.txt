@@ -1,0 +1,105 @@
+==============================================================================================================
+ENGINE C universe: dogs priced 40-50%  (1339 games 2009-2025; dogs won 44.2% vs priced 44.5%)
+  holdout-model coefficients (standardized): elo=-0.01  rest=+0.06  div=+0.09  cold=-0.08  windy=+0.09  qbchg=-0.03  inj=-0.03  prev=+0.09  dog_home=-0.05  early=+0.10  dog_public=+0.07  fav_public=-0.02  x_off_pass=+0.07  x_off_rush=-0.05  x_def_pass=-0.09  x_def_rush=-0.04  x_protect=+0.06  x_rush_vs_fav=+0.02  x_explosive=-0.09  x_explosive_fav=+0.12  x_to_dog=-0.10  x_to_fav=-0.06
+
+  DEVELOPMENT walk-forward 2014-2022: edge quintiles (5 = largest edge), 694 dog games
+   Q    n    mkt   edge    won  excess   ±SE
+   1  142  45.9% -10.9  47.2%    +1.9   5.9
+   2  139  44.6%  -3.2  48.9%    +6.1   5.9
+   3  139  44.6%  +0.9  41.0%    -5.0   5.9
+   4  139  44.3%  +5.4  48.2%    +5.4   5.8
+   5  135  43.8% +12.8  44.4%    +0.9   5.8
+
+  HOLDOUT 2023-2025 (trained once on <=2022): edge quintiles (5 = largest edge), 290 dog games
+   Q    n    mkt   edge    won  excess   ±SE
+   1   59  44.4%  -7.7  47.5%    +1.8   3.8
+   2   58  43.7%  -2.4  37.9%    -3.3   3.8
+   3   59  44.0%  +1.0  35.6%    -5.0   3.8
+   4   58  44.1%  +4.6  34.5%    -5.6   3.8
+   5   56  44.4% +10.3  41.1%    -1.8   3.7
+
+  THE PICK'EM QUESTION: take only the top qualified upset candidate(s) each week
+    dev : top-1/week, edge >= +3 pts: 128 picks, dogs won 55 (43.0%) vs market-expected 55.9 (43.7%), mean edge claimed +11.3; NET vs always-favorite -18 picks (±11.2); by season: 2014:5-9 2015:6-9 2016:8-7 2017:5-10 2018:5-11 2019:7-8 2020:5-9 2021:6-5 2022:8-5
+    HOLD: top-1/week, edge >= +3 pts: 49 picks, dogs won 21 (42.9%) vs market-expected 21.7 (44.3%), mean edge claimed +9.2; NET vs always-favorite -7 picks (±6.9); by season: 2023:6-12 2024:8-7 2025:7-9
+    dev : top-1/week, edge >= +5 pts: 109 picks, dogs won 47 (43.1%) vs market-expected 47.4 (43.5%), mean edge claimed +12.6; NET vs always-favorite -15 picks (±10.3); by season: 2014:5-8 2015:5-9 2016:7-7 2017:4-8 2018:5-9 2019:6-7 2020:3-7 2021:5-4 2022:7-3
+    HOLD: top-1/week, edge >= +5 pts: 40 picks, dogs won 16 (40.0%) vs market-expected 17.7 (44.2%), mean edge claimed +10.3; NET vs always-favorite -8 picks (±6.3); by season: 2023:5-11 2024:7-7 2025:4-6
+    dev : top-1/week, edge >= +7 pts: 90 picks, dogs won 38 (42.2%) vs market-expected 39.2 (43.6%), mean edge claimed +13.9; NET vs always-favorite -14 picks (±9.4); by season: 2014:5-8 2015:4-9 2016:6-7 2017:3-6 2018:3-6 2019:3-4 2020:3-6 2021:5-4 2022:6-2
+    HOLD: top-1/week, edge >= +7 pts: 29 picks, dogs won 12 (41.4%) vs market-expected 12.9 (44.3%), mean edge claimed +11.9; NET vs always-favorite -5 picks (±5.3); by season: 2023:3-7 2024:6-4 2025:3-6
+    dev : top-2/week, edge >= +3 pts: 205 picks, dogs won 92 (44.9%) vs market-expected 89.9 (43.8%), mean edge claimed +10.0; NET vs always-favorite -21 picks (±14.2); by season: 2014:9-13 2015:12-14 2016:11-15 2017:10-15 2018:7-16 2019:11-12 2020:11-11 2021:11-6 2022:10-11
+    HOLD: top-2/week, edge >= +3 pts: 80 picks, dogs won 37 (46.2%) vs market-expected 35.4 (44.2%), mean edge claimed +8.3; NET vs always-favorite -6 picks (±8.9); by season: 2023:11-19 2024:14-11 2025:12-13
+    dev : top-2/week, edge >= +5 pts: 159 picks, dogs won 66 (41.5%) vs market-expected 69.5 (43.7%), mean edge claimed +11.8; NET vs always-favorite -27 picks (±12.5); by season: 2014:9-12 2015:8-14 2016:10-10 2017:4-13 2018:5-13 2019:8-10 2020:8-8 2021:7-5 2022:7-8
+    HOLD: top-2/week, edge >= +5 pts: 60 picks, dogs won 25 (41.7%) vs market-expected 26.5 (44.1%), mean edge claimed +9.7; NET vs always-favorite -10 picks (±7.7); by season: 2023:8-15 2024:10-11 2025:7-9
+    dev : top-2/week, edge >= +7 pts: 125 picks, dogs won 51 (40.8%) vs market-expected 54.5 (43.6%), mean edge claimed +13.4; NET vs always-favorite -23 picks (±11.1); by season: 2014:8-12 2015:6-14 2016:8-8 2017:3-9 2018:3-9 2019:4-5 2020:6-6 2021:7-4 2022:6-7
+    HOLD: top-2/week, edge >= +7 pts: 40 picks, dogs won 18 (45.0%) vs market-expected 17.7 (44.2%), mean edge claimed +11.4; NET vs always-favorite -4 picks (±6.3); by season: 2023:5-9 2024:8-6 2025:5-7
+  signal-agreement (>=5 of 6 football signals favor the dog), dev: 36 dogs won 25.0% vs priced 44.5%  (net vs favorite -18)
+  signal-agreement (>=5 of 6 football signals favor the dog), HOLD: 10 dogs won 20.0% vs priced 43.5%  (net vs favorite -6)
+==============================================================================================================
+ENGINE C universe: dogs priced 35-50%  (2155 games 2009-2025; dogs won 42.8% vs priced 41.9%)
+  holdout-model coefficients (standardized): elo=+0.02  rest=-0.01  div=+0.03  cold=-0.07  windy=+0.07  qbchg=-0.04  inj=-0.05  prev=+0.06  dog_home=-0.04  early=+0.12  dog_public=+0.05  fav_public=+0.07  x_off_pass=+0.06  x_off_rush=+0.00  x_def_pass=-0.15  x_def_rush=-0.03  x_protect=+0.01  x_rush_vs_fav=+0.06  x_explosive=-0.11  x_explosive_fav=+0.18  x_to_dog=-0.06  x_to_fav=-0.05
+
+  DEVELOPMENT walk-forward 2014-2022: edge quintiles (5 = largest edge), 1140 dog games
+   Q    n    mkt   edge    won  excess   ±SE
+   1  231  43.4%  -9.2  44.6%    +2.7   7.5
+   2  228  42.0%  -2.8  43.0%    +2.3   7.4
+   3  228  41.7%  +1.3  45.6%    +8.9   7.4
+   4  228  41.3%  +6.0  45.6%    +9.8   7.4
+   5  225  40.6% +13.3  46.2%   +12.6   7.3
+
+  HOLDOUT 2023-2025 (trained once on <=2022): edge quintiles (5 = largest edge), 431 dog games
+   Q    n    mkt   edge    won  excess   ±SE
+   1   88  43.3%  -6.2  42.0%    -1.1   4.6
+   2   86  42.7%  -1.2  34.9%    -6.7   4.6
+   3   86  41.7%  +2.4  39.5%    -1.8   4.6
+   4   86  41.2%  +5.5  27.9%   -11.4   4.6
+   5   85  41.2% +12.0  38.8%    -2.0   4.5
+
+  THE PICK'EM QUESTION: take only the top qualified upset candidate(s) each week
+    dev : top-1/week, edge >= +3 pts: 149 picks, dogs won 59 (39.6%) vs market-expected 60.6 (40.6%), mean edge claimed +12.4; NET vs always-favorite -31 picks (±11.9); by season: 2014:6-11 2015:5-12 2016:5-10 2017:4-12 2018:7-9 2019:6-10 2020:10-7 2021:9-8 2022:7-11
+    HOLD: top-1/week, edge >= +3 pts: 54 picks, dogs won 23 (42.6%) vs market-expected 21.9 (40.6%), mean edge claimed +11.0; NET vs always-favorite -8 picks (±7.2); by season: 2023:5-13 2024:9-9 2025:9-9
+    dev : top-1/week, edge >= +5 pts: 142 picks, dogs won 57 (40.1%) vs market-expected 57.8 (40.7%), mean edge claimed +12.8; NET vs always-favorite -28 picks (±11.7); by season: 2014:6-11 2015:5-12 2016:5-10 2017:4-10 2018:6-7 2019:6-10 2020:10-7 2021:9-8 2022:6-10
+    HOLD: top-1/week, edge >= +5 pts: 50 picks, dogs won 21 (42.0%) vs market-expected 20.4 (40.7%), mean edge claimed +11.6; NET vs always-favorite -8 picks (±6.9); by season: 2023:5-12 2024:8-8 2025:8-9
+    dev : top-1/week, edge >= +7 pts: 122 picks, dogs won 52 (42.6%) vs market-expected 49.4 (40.5%), mean edge claimed +13.9; NET vs always-favorite -18 picks (±10.8); by season: 2014:6-9 2015:5-10 2016:5-8 2017:3-10 2018:5-3 2019:5-8 2020:9-7 2021:8-6 2022:6-9
+    HOLD: top-1/week, edge >= +7 pts: 42 picks, dogs won 18 (42.9%) vs market-expected 17.2 (41.0%), mean edge claimed +12.5; NET vs always-favorite -6 picks (±6.4); by season: 2023:4-10 2024:7-8 2025:7-6
+    dev : top-2/week, edge >= +3 pts: 273 picks, dogs won 118 (43.2%) vs market-expected 110.9 (40.6%), mean edge claimed +10.7; NET vs always-favorite -37 picks (±16.2); by season: 2014:11-18 2015:10-22 2016:11-18 2017:9-18 2018:16-13 2019:11-18 2020:19-12 2021:19-15 2022:12-21
+    HOLD: top-2/week, edge >= +3 pts: 97 picks, dogs won 33 (34.0%) vs market-expected 39.5 (40.8%), mean edge claimed +9.6; NET vs always-favorite -31 picks (±9.7); by season: 2023:7-25 2024:12-21 2025:14-18
+    dev : top-2/week, edge >= +5 pts: 238 picks, dogs won 103 (43.3%) vs market-expected 96.5 (40.6%), mean edge claimed +11.7; NET vs always-favorite -32 picks (±15.1); by season: 2014:10-16 2015:9-21 2016:11-14 2017:8-15 2018:12-9 2019:10-17 2020:18-12 2021:16-12 2022:9-19
+    HOLD: top-2/week, edge >= +5 pts: 81 picks, dogs won 27 (33.3%) vs market-expected 33.1 (40.8%), mean edge claimed +10.6; NET vs always-favorite -27 picks (±8.8); by season: 2023:7-21 2024:9-16 2025:11-17
+    dev : top-2/week, edge >= +7 pts: 190 picks, dogs won 82 (43.2%) vs market-expected 77.2 (40.6%), mean edge claimed +13.1; NET vs always-favorite -26 picks (±13.5); by season: 2014:9-13 2015:7-18 2016:10-11 2017:6-13 2018:8-5 2019:8-12 2020:14-11 2021:12-10 2022:8-15
+    HOLD: top-2/week, edge >= +7 pts: 59 picks, dogs won 20 (33.9%) vs market-expected 24.1 (40.8%), mean edge claimed +12.3; NET vs always-favorite -19 picks (±7.5); by season: 2023:4-14 2024:8-14 2025:8-11
+  signal-agreement (>=5 of 6 football signals favor the dog), dev: 52 dogs won 30.8% vs priced 42.3%  (net vs favorite -20)
+  signal-agreement (>=5 of 6 football signals favor the dog), HOLD: 16 dogs won 18.8% vs priced 41.5%  (net vs favorite -10)
+==============================================================================================================
+ENGINE C universe: dogs priced 45-50%  (563 games 2009-2025; dogs won 46.4% vs priced 47.3%)
+  holdout-model coefficients (standardized): elo=-0.06  rest=+0.05  div=+0.10  cold=-0.10  windy=+0.08  qbchg=+0.10  inj=+0.15  prev=+0.03  dog_home=+0.00  early=+0.16  dog_public=+0.18  fav_public=-0.03  x_off_pass=+0.22  x_off_rush=-0.13  x_def_pass=-0.21  x_def_rush=-0.12  x_protect=-0.04  x_rush_vs_fav=+0.14  x_explosive=-0.15  x_explosive_fav=+0.23  x_to_dog=-0.08  x_to_fav=-0.06
+
+  DEVELOPMENT walk-forward 2014-2022: edge quintiles (5 = largest edge), 314 dog games
+   Q    n    mkt   edge    won  excess   ±SE
+   1   67  46.8% -20.7  53.7%    +4.7   4.1
+   2   62  47.0% -10.9  48.4%    +0.8   3.9
+   3   64  47.1%  -2.8  50.0%    +1.9   4.0
+   4   62  47.4%  +5.1  40.3%    -4.4   3.9
+   5   59  47.6% +16.9  52.5%    +2.9   3.8
+
+  HOLDOUT 2023-2025 (trained once on <=2022): edge quintiles (5 = largest edge), 100 dog games
+   Q    n    mkt   edge    won  excess   ±SE
+   1   21  47.1% -12.3  47.6%    +0.1   2.3
+   2   21  47.4%  -4.3  61.9%    +3.1   2.3
+   3   19  47.5%  +4.3  42.1%    -1.0   2.2
+   4   21  47.4%  +8.9  38.1%    -1.9   2.3
+   5   18  48.1% +16.7  33.3%    -2.7   2.1
+
+  THE PICK'EM QUESTION: take only the top qualified upset candidate(s) each week
+    dev : top-1/week, edge >= +3 pts: 74 picks, dogs won 36 (48.6%) vs market-expected 35.2 (47.5%), mean edge claimed +13.1; NET vs always-favorite -2 picks (±8.6); by season: 2014:2-7 2015:4-4 2016:3-3 2017:1-5 2018:4-3 2019:9-2 2020:5-8 2021:3-4 2022:5-2
+    HOLD: top-1/week, edge >= +3 pts: 33 picks, dogs won 10 (30.3%) vs market-expected 15.8 (47.7%), mean edge claimed +11.4; NET vs always-favorite -13 picks (±5.7); by season: 2023:2-12 2024:3-6 2025:5-5
+    dev : top-1/week, edge >= +5 pts: 64 picks, dogs won 32 (50.0%) vs market-expected 30.5 (47.6%), mean edge claimed +14.5; NET vs always-favorite +0 picks (±8.0); by season: 2014:2-7 2015:4-4 2016:2-2 2017:1-4 2018:3-3 2019:9-2 2020:4-5 2021:3-3 2022:4-2
+    HOLD: top-1/week, edge >= +5 pts: 30 picks, dogs won 10 (33.3%) vs market-expected 14.3 (47.8%), mean edge claimed +12.2; NET vs always-favorite -10 picks (±5.5); by season: 2023:2-10 2024:3-5 2025:5-5
+    dev : top-1/week, edge >= +7 pts: 54 picks, dogs won 26 (48.1%) vs market-expected 25.7 (47.6%), mean edge claimed +16.1; NET vs always-favorite -2 picks (±7.3); by season: 2014:2-6 2015:4-3 2016:2-2 2017:1-4 2018:2-3 2019:8-2 2020:3-3 2021:2-3 2022:2-2
+    HOLD: top-1/week, edge >= +7 pts: 23 picks, dogs won 7 (30.4%) vs market-expected 11.0 (47.7%), mean edge claimed +14.0; NET vs always-favorite -9 picks (±4.8); by season: 2023:2-7 2024:1-4 2025:4-5
+    dev : top-2/week, edge >= +3 pts: 97 picks, dogs won 46 (47.4%) vs market-expected 46.1 (47.5%), mean edge claimed +12.5; NET vs always-favorite -5 picks (±9.8); by season: 2014:3-7 2015:5-6 2016:5-4 2017:2-7 2018:5-3 2019:10-6 2020:6-10 2021:3-4 2022:7-4
+    HOLD: top-2/week, edge >= +3 pts: 45 picks, dogs won 17 (37.8%) vs market-expected 21.4 (47.6%), mean edge claimed +11.3; NET vs always-favorite -11 picks (±6.7); by season: 2023:6-12 2024:3-8 2025:8-8
+    dev : top-2/week, edge >= +5 pts: 83 picks, dogs won 41 (49.4%) vs market-expected 39.5 (47.6%), mean edge claimed +14.0; NET vs always-favorite -1 picks (±9.1); by season: 2014:3-7 2015:5-6 2016:4-2 2017:2-6 2018:3-3 2019:10-5 2020:5-6 2021:3-3 2022:6-4
+    HOLD: top-2/week, edge >= +5 pts: 41 picks, dogs won 16 (39.0%) vs market-expected 19.5 (47.6%), mean edge claimed +12.0; NET vs always-favorite -9 picks (±6.4); by season: 2023:5-10 2024:3-7 2025:8-8
+    dev : top-2/week, edge >= +7 pts: 70 picks, dogs won 34 (48.6%) vs market-expected 33.3 (47.6%), mean edge claimed +15.5; NET vs always-favorite -2 picks (±8.4); by season: 2014:3-6 2015:5-5 2016:4-2 2017:1-6 2018:2-3 2019:9-4 2020:4-3 2021:2-3 2022:4-4
+    HOLD: top-2/week, edge >= +7 pts: 30 picks, dogs won 11 (36.7%) vs market-expected 14.3 (47.7%), mean edge claimed +14.1; NET vs always-favorite -8 picks (±5.5); by season: 2023:3-7 2024:1-6 2025:7-6
+  signal-agreement (>=5 of 6 football signals favor the dog), dev: 14 dogs won 35.7% vs priced 47.0%  (net vs favorite -4)
+  signal-agreement (>=5 of 6 football signals favor the dog), HOLD: 1 dogs won 0.0% vs priced 47.4%  (net vs favorite -1)
