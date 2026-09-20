@@ -4,6 +4,17 @@ Newest block at the top.
 
 ---
 
+## 2026-09-20 — Block 14: validation handoff
+
+`VALIDATION_HANDOFF.md` (repo root) specifies seven checks, V1–V7, that reproduce the production model
+from the logs and public data: Engine A calibration and ablation; audit-log integrity; the family model
+against 120 revealed picks; Engine B numerical sanity including the fully-correlated-field test from D4;
+non-entry handling; status of the pre-registered checks; and an open trace-everything invitation.
+Answer in one block; two-round rule applies. Also noted since Block 13: GitHub dropped the Sunday 13:00
+UTC cron twice, so the schedule moved to off-peak minutes with two Sunday-morning attempts.
+
+---
+
 ## 2026-09-16 — Block 13: Week 1 wrap. Family fully observed; refit run; Week 2 begins with standings.
 
 **Results.** All-favorites picker 12 of 16. Ryan 12 (tied for the weekly lead with Nolan), Molly, Sheila
