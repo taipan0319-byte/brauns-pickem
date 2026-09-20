@@ -7,9 +7,14 @@ on:
         required: false
         default: "auto"
   schedule:
-    - cron: "0 13 * * 0"   # Sunday 8:00 am CT (13:00 UTC)
-    - cron: "0 20 * * 4"   # Thursday 3:00 pm CT
-    - cron: "0 20 * * 1"   # Monday 3:00 pm CT
+    # GitHub delays or drops top-of-the-hour crons under load (Sunday 13:00 UTC was skipped twice).
+    # Off-peak minutes, and two Sunday-morning attempts so at least one lands before the noon kickoffs.
+    - cron: "23 11 * * 0"  # Sunday 6:23 am CT
+    - cron: "41 13 * * 0"  # Sunday 8:41 am CT
+    - cron: "17 20 * * 0"  # Sunday 3:17 pm CT (early-game finals)
+    - cron: "37 19 * * 4"  # Thursday 2:37 pm CT
+    - cron: "37 19 * * 1"  # Monday 2:37 pm CT
+    - cron: "29 06 * * 2"  # Tuesday 1:29 am CT (Monday-night final, week rollover)
   push:
     branches: [main]
     paths: ["dashboard/**", "family.json", "standings.json", "pool_picks.csv"]
