@@ -425,3 +425,4 @@ logged_at_utc,season,week,game_id,fav,p_fav,family_fav_rate,dP_first_dog,mc_nois
 2026-09-20T22:25:46Z,2026,2,2026_02_IND_KC,KC,0.6958,0.946,-0.0406,0.0020,HIGH,KC,0.4231,0.4231,"{""Ryan"": 12, ""Casey"": 9, ""Sue"": 11, ""Nolan"": 12, ""Sheila"": 11, ""Kaleigh"": 10, ""Molly"": 11}",family.json
 2026-09-20T22:25:46Z,2026,2,2026_02_NYG_LA,LA,0.7095,0.946,-0.0438,0.0011,HIGH,LA,0.4231,0.4231,"{""Ryan"": 12, ""Casey"": 9, ""Sue"": 11, ""Nolan"": 12, ""Sheila"": 11, ""Kaleigh"": 10, ""Molly"": 11}",family.json
 2026-09-21T19:11:08Z,2026,2,2026_02_NYG_LA,LA,0.7180,0.946,-0.0455,0.0006,HIGH,LA,0.4292,0.4292,"{""Ryan"": 12, ""Casey"": 9, ""Sue"": 11, ""Nolan"": 12, ""Sheila"": 11, ""Kaleigh"": 10, ""Molly"": 11}",family.json
+2026-09-21T22:46:53Z,2026,2,2026_02_NYG_LA,LA,0.7180,0.946,-0.0452,0.0002,HIGH,LA,0.4290,0.4290,"{""Ryan"": 12, ""Casey"": 9, ""Sue"": 11, ""Nolan"": 12, ""Sheila"": 11, ""Kaleigh"": 10, ""Molly"": 11}",family.json

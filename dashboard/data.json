@@ -1,11 +1,11 @@
 {
  "season": 2026,
  "week": 2,
- "built_at": "2026-09-21T19:11:08Z",
+ "built_at": "2026-09-21T22:46:53Z",
  "order_source": "kickoff time, then NFL schedule id (CBS within-slot order not recorded for this week)",
- "model_refreshed_at": "2026-09-21T19:11:08Z",
- "market_asof": "2026-09-21T19:11:07Z",
- "p_first": 0.4292,
+ "model_refreshed_at": "2026-09-21T22:46:53Z",
+ "market_asof": "2026-09-21T22:46:52Z",
+ "p_first": 0.429,
  "games": [
   {
    "game_id": "2026_02_DET_BUF",
@@ -584,9 +584,9 @@
    "dog_name": "Giants",
    "confidence": "HIGH",
    "family_fav_rate": 0.946,
-   "dP_dog": -0.0455,
-   "mc_noise": 0.0006,
-   "logged_at": "2026-09-21T19:11:08Z",
+   "dP_dog": -0.0452,
+   "mc_noise": 0.0002,
+   "logged_at": "2026-09-21T22:46:53Z",
    "rationale": "LA is the market favorite at 71.8%. Taking NYG would lower P(finish first) by 4.5 points: with about 95% of the family expected on LA, the dog buys little differentiation and costs 0.44 expected points.",
    "engine_a_pick": "LA",
    "spread": "6.5",
@@ -599,7 +599,7 @@
   }
  ],
  "changes_since_previous_refresh": [],
- "previous_refresh": "2026-09-20T22:25:46Z",
+ "previous_refresh": "2026-09-21T19:11:08Z",
  "standings": {
   "Ryan": 12,
   "Casey": 9,
@@ -7434,6 +7434,20 @@
    "dP_dog": -0.0455,
    "confidence": "HIGH",
    "p_first": 0.4292,
+   "ryan_pick": null,
+   "winner": null
+  },
+  {
+   "logged_at": "2026-09-21T22:46:53Z",
+   "season": 2026,
+   "week": 2,
+   "game_id": "2026_02_NYG_LA",
+   "fav": "LA",
+   "p_fav": 0.718,
+   "recommendation": "LA",
+   "dP_dog": -0.0452,
+   "confidence": "HIGH",
+   "p_first": 0.429,
    "ryan_pick": null,
    "winner": null
   }
