@@ -3,8 +3,8 @@
   "name": "Casey",
   "dog_rate": {
    "tossup": 0.455,
-   "close": 0.101,
-   "other": 0.083
+   "close": 0.164,
+   "other": 0.05
   },
   "bias_team": null,
   "bias_strength": 0.0,
@@ -19,11 +19,11 @@
     2
    ],
    "close": [
-    5,
-    0
+    8,
+    1
    ],
    "other": [
-    8,
+    20,
     1
    ]
   }
@@ -32,8 +32,8 @@
   "name": "Sue",
   "dog_rate": {
    "tossup": 0.416,
-   "close": 0.065,
-   "other": 0.018
+   "close": 0.138,
+   "other": 0.011
   },
   "bias_team": "GB",
   "bias_strength": 0.4,
@@ -48,11 +48,11 @@
     3
    ],
    "close": [
-    5,
-    0
+    8,
+    1
    ],
    "other": [
-    8,
+    20,
     0
    ]
   }
@@ -61,8 +61,8 @@
   "name": "Nolan",
   "dog_rate": {
    "tossup": 0.312,
-   "close": 0.101,
-   "other": 0.028
+   "close": 0.164,
+   "other": 0.017
   },
   "bias_team": "CHI",
   "bias_strength": 0.4,
@@ -77,11 +77,11 @@
     0
    ],
    "close": [
-    5,
-    0
+    8,
+    1
    ],
    "other": [
-    8,
+    20,
     0
    ]
   }
@@ -90,8 +90,8 @@
   "name": "Sheila",
   "dog_rate": {
    "tossup": 0.329,
-   "close": 0.083,
-   "other": 0.023
+   "close": 0.151,
+   "other": 0.014
   },
   "bias_team": "CHI",
   "bias_strength": 0.4,
@@ -106,11 +106,11 @@
     1
    ],
    "close": [
-    5,
-    0
+    8,
+    1
    ],
    "other": [
-    8,
+    20,
     0
    ]
   }
@@ -119,8 +119,8 @@
   "name": "Kaleigh",
   "dog_rate": {
    "tossup": 0.511,
-   "close": 0.279,
-   "other": 0.094
+   "close": 0.295,
+   "other": 0.124
   },
   "bias_team": "GB",
   "bias_strength": 0.4,
@@ -135,12 +135,12 @@
     2
    ],
    "close": [
-    4,
-    1
+    7,
+    2
    ],
    "other": [
-    7,
-    1
+    19,
+    3
    ]
   }
  },
@@ -148,8 +148,8 @@
   "name": "Molly",
   "dog_rate": {
    "tossup": 0.714,
-   "close": 0.262,
-   "other": 0.077
+   "close": 0.282,
+   "other": 0.045
   },
   "bias_team": null,
   "bias_strength": 0.0,
@@ -164,11 +164,11 @@
     1
    ],
    "close": [
-    5,
-    0
+    8,
+    1
    ],
    "other": [
-    7,
+    19,
     0
    ]
   }
