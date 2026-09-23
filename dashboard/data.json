@@ -1,11 +1,11 @@
 {
  "season": 2026,
  "week": 3,
- "built_at": "2026-09-22T11:57:55Z",
+ "built_at": "2026-09-23T05:18:00Z",
  "order_source": "kickoff time, then NFL schedule id (CBS within-slot order not recorded for this week)",
- "model_refreshed_at": "2026-09-22T11:57:55Z",
- "market_asof": "2026-09-22T11:57:52Z",
- "p_first": 0.4301,
+ "model_refreshed_at": "2026-09-23T05:18:00Z",
+ "market_asof": "2026-09-23T05:17:58Z",
+ "p_first": 0.6108,
  "games": [
   {
    "game_id": "2026_03_ATL_GB",
@@ -22,22 +22,22 @@
    "ryan_pick": null,
    "fav": "GB",
    "dog": "ATL",
-   "p_fav": 0.7136,
+   "p_fav": 0.7002,
    "pick": "GB",
    "pick_name": "Packers",
    "fav_name": "Packers",
    "dog_name": "Falcons",
    "confidence": "HIGH",
-   "family_fav_rate": 0.954,
-   "dP_dog": -0.043,
-   "mc_noise": 0.0017,
-   "logged_at": "2026-09-22T11:57:55Z",
-   "rationale": "GB is the market favorite at 71.4%. Taking ATL would lower P(finish first) by 4.3 points: with about 95% of the family expected on GB, the dog buys little differentiation and costs 0.43 expected points.",
+   "family_fav_rate": 0.966,
+   "dP_dog": -0.0366,
+   "mc_noise": 0.0012,
+   "logged_at": "2026-09-23T05:18:00Z",
+   "rationale": "GB is the market favorite at 70.0%. Taking ATL would lower P(finish first) by 3.7 points: with about 97% of the family expected on GB, the dog buys little differentiation and costs 0.40 expected points.",
    "engine_a_pick": "GB",
-   "spread": "6",
+   "spread": "5.5",
    "ml": [
-    "235",
-    "-290"
+    "220",
+    "-270"
    ],
    "p_fav_injury_adj": null,
    "watch": []
@@ -57,22 +57,22 @@
    "ryan_pick": null,
    "fav": "BUF",
    "dog": "LAC",
-   "p_fav": 0.7409,
+   "p_fav": 0.7441,
    "pick": "BUF",
    "pick_name": "Bills",
    "fav_name": "Bills",
    "dog_name": "Chargers",
    "confidence": "HIGH",
-   "family_fav_rate": 0.946,
-   "dP_dog": -0.0505,
-   "mc_noise": 0.0016,
-   "logged_at": "2026-09-22T11:57:55Z",
-   "rationale": "BUF is the market favorite at 74.1%. Taking LAC would lower P(finish first) by 5.1 points: with about 95% of the family expected on BUF, the dog buys little differentiation and costs 0.48 expected points.",
+   "family_fav_rate": 0.957,
+   "dP_dog": -0.044,
+   "mc_noise": 0.0007,
+   "logged_at": "2026-09-23T05:18:00Z",
+   "rationale": "BUF is the market favorite at 74.4%. Taking LAC would lower P(finish first) by 4.4 points: with about 96% of the family expected on BUF, the dog buys little differentiation and costs 0.49 expected points.",
    "engine_a_pick": "BUF",
    "spread": "7",
    "ml": [
-    "270",
-    "-340"
+    "275",
+    "-345"
    ],
    "p_fav_injury_adj": null,
    "watch": []
@@ -92,22 +92,22 @@
    "ryan_pick": null,
    "fav": "CAR",
    "dog": "CLE",
-   "p_fav": 0.583,
+   "p_fav": 0.5721,
    "pick": "CAR",
    "pick_name": "Panthers",
    "fav_name": "Panthers",
    "dog_name": "Browns",
    "confidence": "HIGH",
-   "family_fav_rate": 0.852,
-   "dP_dog": -0.0143,
-   "mc_noise": 0.0003,
-   "logged_at": "2026-09-22T11:57:55Z",
-   "rationale": "CAR is the market favorite at 58.3%. Taking CLE would lower P(finish first) by 1.4 points: with about 85% of the family expected on CAR, the dog buys little differentiation and costs 0.17 expected points.",
+   "family_fav_rate": 0.801,
+   "dP_dog": -0.0122,
+   "mc_noise": 0.0006,
+   "logged_at": "2026-09-23T05:18:00Z",
+   "rationale": "CAR is the market favorite at 57.2%. Taking CLE would lower P(finish first) by 1.2 points: with about 80% of the family expected on CAR, the dog buys little differentiation and costs 0.14 expected points.",
    "engine_a_pick": "CAR",
    "spread": "-2.5",
    "ml": [
-    "-155",
-    "130"
+    "-148",
+    "124"
    ],
    "p_fav_injury_adj": null,
    "watch": []
@@ -127,22 +127,22 @@
    "ryan_pick": null,
    "fav": "DET",
    "dog": "NYJ",
-   "p_fav": 0.7221,
+   "p_fav": 0.718,
    "pick": "DET",
    "pick_name": "Lions",
    "fav_name": "Lions",
    "dog_name": "Jets",
    "confidence": "HIGH",
-   "family_fav_rate": 0.946,
-   "dP_dog": -0.0451,
-   "mc_noise": 0.0005,
-   "logged_at": "2026-09-22T11:57:55Z",
-   "rationale": "DET is the market favorite at 72.2%. Taking NYJ would lower P(finish first) by 4.5 points: with about 95% of the family expected on DET, the dog buys little differentiation and costs 0.44 expected points.",
+   "family_fav_rate": 0.957,
+   "dP_dog": -0.0412,
+   "mc_noise": 0.0026,
+   "logged_at": "2026-09-23T05:18:00Z",
+   "rationale": "DET is the market favorite at 71.8%. Taking NYJ would lower P(finish first) by 4.1 points: with about 96% of the family expected on DET, the dog buys little differentiation and costs 0.44 expected points.",
    "engine_a_pick": "DET",
    "spread": "6.5",
    "ml": [
-    "245",
-    "-305"
+    "240",
+    "-298"
    ],
    "p_fav_injury_adj": null,
    "watch": []
@@ -162,22 +162,22 @@
    "ryan_pick": null,
    "fav": "HOU",
    "dog": "IND",
-   "p_fav": 0.5635,
+   "p_fav": 0.5721,
    "pick": "HOU",
    "pick_name": "Texans",
    "fav_name": "Texans",
    "dog_name": "Colts",
    "confidence": "HIGH",
-   "family_fav_rate": 0.852,
-   "dP_dog": -0.0117,
-   "mc_noise": 0.0006,
-   "logged_at": "2026-09-22T11:57:55Z",
-   "rationale": "HOU is the market favorite at 56.4%. Taking IND would lower P(finish first) by 1.2 points: with about 85% of the family expected on HOU, the dog buys little differentiation and costs 0.13 expected points.",
+   "family_fav_rate": 0.801,
+   "dP_dog": -0.0184,
+   "mc_noise": 0.0009,
+   "logged_at": "2026-09-23T05:18:00Z",
+   "rationale": "HOU is the market favorite at 57.2%. Taking IND would lower P(finish first) by 1.8 points: with about 80% of the family expected on HOU, the dog buys little differentiation and costs 0.14 expected points.",
    "engine_a_pick": "HOU",
-   "spread": "-2.5",
+   "spread": "-3",
    "ml": [
-    "-142",
-    "120"
+    "-148",
+    "124"
    ],
    "p_fav_injury_adj": null,
    "watch": []
@@ -197,22 +197,22 @@
    "ryan_pick": null,
    "fav": "JAX",
    "dog": "NE",
-   "p_fav": 0.5934,
+   "p_fav": 0.583,
    "pick": "JAX",
    "pick_name": "Jaguars",
    "fav_name": "Jaguars",
    "dog_name": "Patriots",
    "confidence": "HIGH",
-   "family_fav_rate": 0.852,
-   "dP_dog": -0.0185,
-   "mc_noise": 0.0007,
-   "logged_at": "2026-09-22T11:57:55Z",
-   "rationale": "JAX is the market favorite at 59.3%. Taking NE would lower P(finish first) by 1.8 points: with about 85% of the family expected on JAX, the dog buys little differentiation and costs 0.19 expected points.",
+   "family_fav_rate": 0.801,
+   "dP_dog": -0.0175,
+   "mc_noise": 0.0013,
+   "logged_at": "2026-09-23T05:18:00Z",
+   "rationale": "JAX is the market favorite at 58.3%. Taking NE would lower P(finish first) by 1.8 points: with about 80% of the family expected on JAX, the dog buys little differentiation and costs 0.17 expected points.",
    "engine_a_pick": "JAX",
    "spread": "3",
    "ml": [
-    "136",
-    "-162"
+    "130",
+    "-155"
    ],
    "p_fav_injury_adj": null,
    "watch": []
@@ -232,22 +232,22 @@
    "ryan_pick": null,
    "fav": "KC",
    "dog": "MIA",
-   "p_fav": 0.8579,
+   "p_fav": 0.863,
    "pick": "KC",
    "pick_name": "Chiefs",
    "fav_name": "Chiefs",
    "dog_name": "Dolphins",
    "confidence": "HIGH",
-   "family_fav_rate": 0.946,
-   "dP_dog": -0.0747,
-   "mc_noise": 0.0017,
-   "logged_at": "2026-09-22T11:57:55Z",
-   "rationale": "KC is the market favorite at 85.8%. Taking MIA would lower P(finish first) by 7.5 points: with about 95% of the family expected on KC, the dog buys little differentiation and costs 0.72 expected points.",
+   "family_fav_rate": 0.957,
+   "dP_dog": -0.0659,
+   "mc_noise": 0.001,
+   "logged_at": "2026-09-23T05:18:00Z",
+   "rationale": "KC is the market favorite at 86.3%. Taking MIA would lower P(finish first) by 6.6 points: with about 96% of the family expected on KC, the dog buys little differentiation and costs 0.73 expected points.",
    "engine_a_pick": "KC",
    "spread": "-11.5",
    "ml": [
-    "-850",
-    "575"
+    "-900",
+    "600"
    ],
    "p_fav_injury_adj": null,
    "watch": []
@@ -267,22 +267,22 @@
    "ryan_pick": null,
    "fav": "NYG",
    "dog": "TEN",
-   "p_fav": 0.6164,
+   "p_fav": 0.5514,
    "pick": "NYG",
    "pick_name": "Giants",
    "fav_name": "Giants",
    "dog_name": "Titans",
    "confidence": "HIGH",
-   "family_fav_rate": 0.852,
-   "dP_dog": -0.0242,
-   "mc_noise": 0.0018,
-   "logged_at": "2026-09-22T11:57:55Z",
-   "rationale": "NYG is the market favorite at 61.6%. Taking TEN would lower P(finish first) by 2.4 points: with about 85% of the family expected on NYG, the dog buys little differentiation and costs 0.23 expected points.",
+   "family_fav_rate": 0.801,
+   "dP_dog": -0.0132,
+   "mc_noise": 0.0019,
+   "logged_at": "2026-09-23T05:18:00Z",
+   "rationale": "NYG is the market favorite at 55.1%. Taking TEN would lower P(finish first) by 1.3 points: with about 80% of the family expected on NYG, the dog buys little differentiation and costs 0.10 expected points.",
    "engine_a_pick": "NYG",
-   "spread": "3.5",
+   "spread": "2.5",
    "ml": [
-    "150",
-    "-180"
+    "114",
+    "-135"
    ],
    "p_fav_injury_adj": null,
    "watch": []
@@ -302,22 +302,22 @@
    "ryan_pick": null,
    "fav": "CIN",
    "dog": "PIT",
-   "p_fav": 0.6225,
+   "p_fav": 0.6309,
    "pick": "CIN",
    "pick_name": "Bengals",
    "fav_name": "Bengals",
    "dog_name": "Steelers",
    "confidence": "HIGH",
-   "family_fav_rate": 0.946,
-   "dP_dog": -0.0229,
-   "mc_noise": 0.0014,
-   "logged_at": "2026-09-22T11:57:55Z",
-   "rationale": "CIN is the market favorite at 62.3%. Taking PIT would lower P(finish first) by 2.3 points: with about 95% of the family expected on CIN, the dog buys little differentiation and costs 0.25 expected points.",
+   "family_fav_rate": 0.957,
+   "dP_dog": -0.0257,
+   "mc_noise": 0.0015,
+   "logged_at": "2026-09-23T05:18:00Z",
+   "rationale": "CIN is the market favorite at 63.1%. Taking PIT would lower P(finish first) by 2.6 points: with about 96% of the family expected on CIN, the dog buys little differentiation and costs 0.26 expected points.",
    "engine_a_pick": "CIN",
    "spread": "-3.5",
    "ml": [
-    "-185",
-    "154"
+    "-192",
+    "160"
    ],
    "p_fav_injury_adj": null,
    "watch": []
@@ -343,11 +343,11 @@
    "fav_name": "Seahawks",
    "dog_name": "Commanders",
    "confidence": "HIGH",
-   "family_fav_rate": 0.946,
-   "dP_dog": -0.0433,
-   "mc_noise": 0.0017,
-   "logged_at": "2026-09-22T11:57:55Z",
-   "rationale": "SEA is the market favorite at 71.8%. Taking WAS would lower P(finish first) by 4.3 points: with about 95% of the family expected on SEA, the dog buys little differentiation and costs 0.44 expected points.",
+   "family_fav_rate": 0.957,
+   "dP_dog": -0.0396,
+   "mc_noise": 0.0008,
+   "logged_at": "2026-09-23T05:18:00Z",
+   "rationale": "SEA is the market favorite at 71.8%. Taking WAS would lower P(finish first) by 4.0 points: with about 96% of the family expected on SEA, the dog buys little differentiation and costs 0.44 expected points.",
    "engine_a_pick": "SEA",
    "spread": "-7",
    "ml": [
@@ -372,22 +372,22 @@
    "ryan_pick": null,
    "fav": "SF",
    "dog": "ARI",
-   "p_fav": 0.7867,
+   "p_fav": 0.7958,
    "pick": "SF",
    "pick_name": "49ers",
    "fav_name": "49ers",
    "dog_name": "Cardinals",
    "confidence": "HIGH",
-   "family_fav_rate": 0.946,
-   "dP_dog": -0.0597,
-   "mc_noise": 0.0011,
-   "logged_at": "2026-09-22T11:57:55Z",
-   "rationale": "SF is the market favorite at 78.7%. Taking ARI would lower P(finish first) by 6.0 points: with about 95% of the family expected on SF, the dog buys little differentiation and costs 0.57 expected points.",
+   "family_fav_rate": 0.957,
+   "dP_dog": -0.0537,
+   "mc_noise": 0.0007,
+   "logged_at": "2026-09-23T05:18:00Z",
+   "rationale": "SF is the market favorite at 79.6%. Taking ARI would lower P(finish first) by 5.4 points: with about 96% of the family expected on SF, the dog buys little differentiation and costs 0.59 expected points.",
    "engine_a_pick": "SF",
    "spread": "8.5",
    "ml": [
-    "350",
-    "-455"
+    "370",
+    "-485"
    ],
    "p_fav_injury_adj": null,
    "watch": []
@@ -407,27 +407,27 @@
    "ryan_pick": null,
    "fav": "MIN",
    "dog": "TB",
-   "p_fav": 0.5261,
+   "p_fav": 0.5217,
    "pick": "MIN",
    "pick_name": "Vikings",
    "fav_name": "Vikings",
    "dog_name": "Buccaneers",
-   "confidence": "MEDIUM",
+   "confidence": "LOW",
    "family_fav_rate": 0.544,
-   "dP_dog": -0.0022,
-   "mc_noise": 0.0008,
-   "logged_at": "2026-09-22T11:57:55Z",
-   "rationale": "MIN is the market favorite at 52.6%. Taking TB would lower P(finish first) by 0.2 points: with about 54% of the family expected on MIN, the dog buys little differentiation and costs 0.05 expected points.",
+   "dP_dog": -0.0052,
+   "mc_noise": 0.003,
+   "logged_at": "2026-09-23T05:18:00Z",
+   "rationale": "MIN is the market favorite at 52.2%. The sign of the pool effect flips between family scenarios (or sits inside Monte Carlo noise), so the rule defaults to the favorite.",
    "engine_a_pick": "MIN",
    "spread": "-1.5",
    "ml": [
-    "-122",
-    "102"
+    "-120",
+    "100"
    ],
    "p_fav_injury_adj": null,
    "watch": [
     "near coin flip",
-    "robustness MEDIUM"
+    "robustness LOW"
    ]
   },
   {
@@ -445,22 +445,22 @@
    "ryan_pick": null,
    "fav": "BAL",
    "dog": "DAL",
-   "p_fav": 0.583,
+   "p_fav": 0.6164,
    "pick": "BAL",
    "pick_name": "Ravens",
    "fav_name": "Ravens",
    "dog_name": "Cowboys",
    "confidence": "HIGH",
-   "family_fav_rate": 0.852,
-   "dP_dog": -0.0133,
-   "mc_noise": 0.002,
-   "logged_at": "2026-09-22T11:57:55Z",
-   "rationale": "BAL is the market favorite at 58.3%. Taking DAL would lower P(finish first) by 1.3 points: with about 85% of the family expected on BAL, the dog buys little differentiation and costs 0.17 expected points.",
+   "family_fav_rate": 0.801,
+   "dP_dog": -0.0213,
+   "mc_noise": 0.001,
+   "logged_at": "2026-09-23T05:18:00Z",
+   "rationale": "BAL is the market favorite at 61.6%. Taking DAL would lower P(finish first) by 2.1 points: with about 80% of the family expected on BAL, the dog buys little differentiation and costs 0.23 expected points.",
    "engine_a_pick": "BAL",
-   "spread": "-3",
+   "spread": "-3.5",
    "ml": [
-    "-155",
-    "130"
+    "-180",
+    "150"
    ],
    "p_fav_injury_adj": null,
    "watch": []
@@ -480,22 +480,22 @@
    "ryan_pick": null,
    "fav": "NO",
    "dog": "LV",
-   "p_fav": 0.6092,
+   "p_fav": 0.6225,
    "pick": "NO",
    "pick_name": "Saints",
    "fav_name": "Saints",
    "dog_name": "Raiders",
    "confidence": "HIGH",
-   "family_fav_rate": 0.852,
-   "dP_dog": -0.0232,
-   "mc_noise": 0.0003,
-   "logged_at": "2026-09-22T11:57:55Z",
-   "rationale": "NO is the market favorite at 60.9%. Taking LV would lower P(finish first) by 2.3 points: with about 85% of the family expected on NO, the dog buys little differentiation and costs 0.22 expected points.",
+   "family_fav_rate": 0.957,
+   "dP_dog": -0.0236,
+   "mc_noise": 0.0001,
+   "logged_at": "2026-09-23T05:18:00Z",
+   "rationale": "NO is the market favorite at 62.3%. Taking LV would lower P(finish first) by 2.4 points: with about 96% of the family expected on NO, the dog buys little differentiation and costs 0.25 expected points.",
    "engine_a_pick": "NO",
    "spread": "3",
    "ml": [
-    "145",
-    "-175"
+    "154",
+    "-185"
    ],
    "p_fav_injury_adj": null,
    "watch": []
@@ -515,22 +515,22 @@
    "ryan_pick": null,
    "fav": "LA",
    "dog": "DEN",
-   "p_fav": 0.5514,
+   "p_fav": 0.5635,
    "pick": "LA",
    "pick_name": "Rams",
    "fav_name": "Rams",
    "dog_name": "Broncos",
    "confidence": "HIGH",
-   "family_fav_rate": 0.852,
-   "dP_dog": -0.0091,
-   "mc_noise": 0.0012,
-   "logged_at": "2026-09-22T11:57:55Z",
-   "rationale": "LA is the market favorite at 55.1%. Taking DEN would lower P(finish first) by 0.9 points: with about 85% of the family expected on LA, the dog buys little differentiation and costs 0.10 expected points.",
+   "family_fav_rate": 0.801,
+   "dP_dog": -0.0134,
+   "mc_noise": 0.0018,
+   "logged_at": "2026-09-23T05:18:00Z",
+   "rationale": "LA is the market favorite at 56.4%. Taking DEN would lower P(finish first) by 1.3 points: with about 80% of the family expected on LA, the dog buys little differentiation and costs 0.13 expected points.",
    "engine_a_pick": "LA",
    "spread": "-2.5",
    "ml": [
-    "-135",
-    "114"
+    "-142",
+    "120"
    ],
    "p_fav_injury_adj": null,
    "watch": []
@@ -550,37 +550,47 @@
    "ryan_pick": null,
    "fav": "PHI",
    "dog": "CHI",
-   "p_fav": 0.6038,
+   "p_fav": 0.6636,
    "pick": "PHI",
    "pick_name": "Eagles",
    "fav_name": "Eagles",
    "dog_name": "Bears",
    "confidence": "HIGH",
-   "family_fav_rate": 0.73,
-   "dP_dog": -0.0209,
-   "mc_noise": 0.0013,
-   "logged_at": "2026-09-22T11:57:55Z",
-   "rationale": "PHI is the market favorite at 60.4%. Taking CHI would lower P(finish first) by 2.1 points: with about 73% of the family expected on PHI, the dog buys little differentiation and costs 0.21 expected points.",
+   "family_fav_rate": 0.825,
+   "dP_dog": -0.0285,
+   "mc_noise": 0.0019,
+   "logged_at": "2026-09-23T05:18:00Z",
+   "rationale": "PHI is the market favorite at 66.4%. Taking CHI would lower P(finish first) by 2.9 points: with about 82% of the family expected on PHI, the dog buys little differentiation and costs 0.33 expected points.",
    "engine_a_pick": "PHI",
-   "spread": "-3",
+   "spread": "-4.5",
    "ml": [
-    "-170",
-    "142"
+    "-225",
+    "185"
    ],
    "p_fav_injury_adj": null,
    "watch": []
   }
  ],
- "changes_since_previous_refresh": [],
- "previous_refresh": null,
+ "changes_since_previous_refresh": [
+  "ATL@GB: P(GB) 71.4% \u2192 70.0%",
+  "CAR@CLE: P(CAR) 58.3% \u2192 57.2%",
+  "NE@JAX: P(JAX) 59.3% \u2192 58.3%",
+  "TEN@NYG: P(NYG) 61.6% \u2192 55.1%",
+  "MIN@TB: robustness MEDIUM \u2192 LOW",
+  "BAL@DAL: P(BAL) 58.3% \u2192 61.6%",
+  "LV@NO: P(NO) 60.9% \u2192 62.3%",
+  "LA@DEN: P(LA) 55.1% \u2192 56.4%",
+  "PHI@CHI: P(PHI) 60.4% \u2192 66.4%"
+ ],
+ "previous_refresh": "2026-09-22T11:57:55Z",
  "standings": {
-  "Ryan": 12,
-  "Casey": 9,
-  "Sue": 11,
-  "Nolan": 12,
-  "Sheila": 11,
-  "Kaleigh": 10,
-  "Molly": 11
+  "Ryan": 23,
+  "Casey": 19,
+  "Sue": 21,
+  "Nolan": 22,
+  "Sheila": 21,
+  "Kaleigh": 19,
+  "Molly": 20
  },
  "games_remaining": 240,
  "rankings": {
@@ -593,10 +603,10 @@
     "name": "Ryan",
     "weekly": {
      "1": 12,
-     "2": 10
+     "2": 11
     },
-    "logged_total": 22,
-    "cbs_total": 12,
+    "logged_total": 23,
+    "cbs_total": 23,
     "dog_picks": 0,
     "dog_wins": 0,
     "missed": 0
@@ -605,10 +615,10 @@
     "name": "Casey",
     "weekly": {
      "1": 9,
-     "2": 9
+     "2": 10
     },
-    "logged_total": 18,
-    "cbs_total": 9,
+    "logged_total": 19,
+    "cbs_total": 19,
     "dog_picks": 4,
     "dog_wins": 0,
     "missed": 0
@@ -617,10 +627,10 @@
     "name": "Sue",
     "weekly": {
      "1": 11,
-     "2": 9
+     "2": 10
     },
-    "logged_total": 20,
-    "cbs_total": 11,
+    "logged_total": 21,
+    "cbs_total": 21,
     "dog_picks": 4,
     "dog_wins": 1,
     "missed": 0
@@ -629,10 +639,10 @@
     "name": "Nolan",
     "weekly": {
      "1": 12,
-     "2": 9
+     "2": 10
     },
-    "logged_total": 21,
-    "cbs_total": 12,
+    "logged_total": 22,
+    "cbs_total": 22,
     "dog_picks": 1,
     "dog_wins": 0,
     "missed": 0
@@ -641,10 +651,10 @@
     "name": "Sheila",
     "weekly": {
      "1": 11,
-     "2": 9
+     "2": 10
     },
-    "logged_total": 20,
-    "cbs_total": 11,
+    "logged_total": 21,
+    "cbs_total": 21,
     "dog_picks": 2,
     "dog_wins": 0,
     "missed": 0
@@ -653,10 +663,10 @@
     "name": "Kaleigh",
     "weekly": {
      "1": 10,
-     "2": 8
+     "2": 9
     },
-    "logged_total": 18,
-    "cbs_total": 10,
+    "logged_total": 19,
+    "cbs_total": 19,
     "dog_picks": 7,
     "dog_wins": 2,
     "missed": 2
@@ -665,10 +675,10 @@
     "name": "Molly",
     "weekly": {
      "1": 11,
-     "2": 8
+     "2": 9
     },
-    "logged_total": 19,
-    "cbs_total": 11,
+    "logged_total": 20,
+    "cbs_total": 20,
     "dog_picks": 2,
     "dog_wins": 0,
     "missed": 1
@@ -689,8 +699,8 @@
    "name": "Casey",
    "dog_rate": {
     "tossup": 0.455,
-    "close": 0.101,
-    "other": 0.083
+    "close": 0.164,
+    "other": 0.05
    },
    "bias_team": null,
    "bias_strength": 0.0,
@@ -705,11 +715,11 @@
      2
     ],
     "close": [
-     5,
-     0
+     8,
+     1
     ],
     "other": [
-     8,
+     20,
      1
     ]
    }
@@ -718,8 +728,8 @@
    "name": "Sue",
    "dog_rate": {
     "tossup": 0.416,
-    "close": 0.065,
-    "other": 0.018
+    "close": 0.138,
+    "other": 0.011
    },
    "bias_team": "GB",
    "bias_strength": 0.4,
@@ -734,11 +744,11 @@
      3
     ],
     "close": [
-     5,
-     0
+     8,
+     1
     ],
     "other": [
-     8,
+     20,
      0
     ]
    }
@@ -747,8 +757,8 @@
    "name": "Nolan",
    "dog_rate": {
     "tossup": 0.312,
-    "close": 0.101,
-    "other": 0.028
+    "close": 0.164,
+    "other": 0.017
    },
    "bias_team": "CHI",
    "bias_strength": 0.4,
@@ -763,11 +773,11 @@
      0
     ],
     "close": [
-     5,
-     0
+     8,
+     1
     ],
     "other": [
-     8,
+     20,
      0
     ]
    }
@@ -776,8 +786,8 @@
    "name": "Sheila",
    "dog_rate": {
     "tossup": 0.329,
-    "close": 0.083,
-    "other": 0.023
+    "close": 0.151,
+    "other": 0.014
    },
    "bias_team": "CHI",
    "bias_strength": 0.4,
@@ -792,11 +802,11 @@
      1
     ],
     "close": [
-     5,
-     0
+     8,
+     1
     ],
     "other": [
-     8,
+     20,
      0
     ]
    }
@@ -805,8 +815,8 @@
    "name": "Kaleigh",
    "dog_rate": {
     "tossup": 0.511,
-    "close": 0.279,
-    "other": 0.094
+    "close": 0.295,
+    "other": 0.124
    },
    "bias_team": "GB",
    "bias_strength": 0.4,
@@ -821,12 +831,12 @@
      2
     ],
     "close": [
-     4,
-     1
+     7,
+     2
     ],
     "other": [
-     7,
-     1
+     19,
+     3
     ]
    }
   },
@@ -834,8 +844,8 @@
    "name": "Molly",
    "dog_rate": {
     "tossup": 0.714,
-    "close": 0.262,
-    "other": 0.077
+    "close": 0.282,
+    "other": 0.045
    },
    "bias_team": null,
    "bias_strength": 0.0,
@@ -850,11 +860,11 @@
      1
     ],
     "close": [
-     5,
-     0
+     8,
+     1
     ],
     "other": [
-     7,
+     19,
      0
     ]
    }
@@ -1041,8 +1051,8 @@
   "games_scored": 32,
   "engine_a_correct": 23,
   "engine_b_correct": 23,
-  "ryan_correct": 22,
-  "ryan_entered": 31,
+  "ryan_correct": 23,
+  "ryan_entered": 32,
   "engine_b_value": 0
  },
  "history": [
@@ -5559,7 +5569,7 @@
    "dP_dog": -0.0397,
    "confidence": "HIGH",
    "p_first": 0.5372,
-   "ryan_pick": null,
+   "ryan_pick": "LA",
    "winner": "LA"
   },
   {
@@ -5783,7 +5793,7 @@
    "dP_dog": -0.0397,
    "confidence": "HIGH",
    "p_first": 0.5382,
-   "ryan_pick": null,
+   "ryan_pick": "LA",
    "winner": "LA"
   },
   {
@@ -6007,7 +6017,7 @@
    "dP_dog": -0.0406,
    "confidence": "HIGH",
    "p_first": 0.5381,
-   "ryan_pick": null,
+   "ryan_pick": "LA",
    "winner": "LA"
   },
   {
@@ -6231,7 +6241,7 @@
    "dP_dog": -0.0433,
    "confidence": "HIGH",
    "p_first": 0.5371,
-   "ryan_pick": null,
+   "ryan_pick": "LA",
    "winner": "LA"
   },
   {
@@ -6441,7 +6451,7 @@
    "dP_dog": -0.0382,
    "confidence": "HIGH",
    "p_first": 0.5307,
-   "ryan_pick": null,
+   "ryan_pick": "LA",
    "winner": "LA"
   },
   {
@@ -6651,7 +6661,7 @@
    "dP_dog": -0.0462,
    "confidence": "HIGH",
    "p_first": 0.4273,
-   "ryan_pick": null,
+   "ryan_pick": "LA",
    "winner": "LA"
   },
   {
@@ -6861,7 +6871,7 @@
    "dP_dog": -0.0444,
    "confidence": "HIGH",
    "p_first": 0.429,
-   "ryan_pick": null,
+   "ryan_pick": "LA",
    "winner": "LA"
   },
   {
@@ -7071,7 +7081,7 @@
    "dP_dog": -0.0444,
    "confidence": "HIGH",
    "p_first": 0.429,
-   "ryan_pick": null,
+   "ryan_pick": "LA",
    "winner": "LA"
   },
   {
@@ -7281,7 +7291,7 @@
    "dP_dog": -0.0424,
    "confidence": "HIGH",
    "p_first": 0.4287,
-   "ryan_pick": null,
+   "ryan_pick": "LA",
    "winner": "LA"
   },
   {
@@ -7393,7 +7403,7 @@
    "dP_dog": -0.0438,
    "confidence": "HIGH",
    "p_first": 0.4231,
-   "ryan_pick": null,
+   "ryan_pick": "LA",
    "winner": "LA"
   },
   {
@@ -7407,7 +7417,7 @@
    "dP_dog": -0.0455,
    "confidence": "HIGH",
    "p_first": 0.4292,
-   "ryan_pick": null,
+   "ryan_pick": "LA",
    "winner": "LA"
   },
   {
@@ -7421,7 +7431,7 @@
    "dP_dog": -0.0452,
    "confidence": "HIGH",
    "p_first": 0.429,
-   "ryan_pick": null,
+   "ryan_pick": "LA",
    "winner": "LA"
   },
   {
@@ -7645,6 +7655,230 @@
    "dP_dog": -0.0209,
    "confidence": "HIGH",
    "p_first": 0.4301,
+   "ryan_pick": null,
+   "winner": null
+  },
+  {
+   "logged_at": "2026-09-23T05:18:00Z",
+   "season": 2026,
+   "week": 3,
+   "game_id": "2026_03_ATL_GB",
+   "fav": "GB",
+   "p_fav": 0.7002,
+   "recommendation": "GB",
+   "dP_dog": -0.0366,
+   "confidence": "HIGH",
+   "p_first": 0.6108,
+   "ryan_pick": null,
+   "winner": null
+  },
+  {
+   "logged_at": "2026-09-23T05:18:00Z",
+   "season": 2026,
+   "week": 3,
+   "game_id": "2026_03_LAC_BUF",
+   "fav": "BUF",
+   "p_fav": 0.7441,
+   "recommendation": "BUF",
+   "dP_dog": -0.044,
+   "confidence": "HIGH",
+   "p_first": 0.6108,
+   "ryan_pick": null,
+   "winner": null
+  },
+  {
+   "logged_at": "2026-09-23T05:18:00Z",
+   "season": 2026,
+   "week": 3,
+   "game_id": "2026_03_CAR_CLE",
+   "fav": "CAR",
+   "p_fav": 0.5721,
+   "recommendation": "CAR",
+   "dP_dog": -0.0122,
+   "confidence": "HIGH",
+   "p_first": 0.6108,
+   "ryan_pick": null,
+   "winner": null
+  },
+  {
+   "logged_at": "2026-09-23T05:18:00Z",
+   "season": 2026,
+   "week": 3,
+   "game_id": "2026_03_NYJ_DET",
+   "fav": "DET",
+   "p_fav": 0.718,
+   "recommendation": "DET",
+   "dP_dog": -0.0412,
+   "confidence": "HIGH",
+   "p_first": 0.6108,
+   "ryan_pick": null,
+   "winner": null
+  },
+  {
+   "logged_at": "2026-09-23T05:18:00Z",
+   "season": 2026,
+   "week": 3,
+   "game_id": "2026_03_HOU_IND",
+   "fav": "HOU",
+   "p_fav": 0.5721,
+   "recommendation": "HOU",
+   "dP_dog": -0.0184,
+   "confidence": "HIGH",
+   "p_first": 0.6108,
+   "ryan_pick": null,
+   "winner": null
+  },
+  {
+   "logged_at": "2026-09-23T05:18:00Z",
+   "season": 2026,
+   "week": 3,
+   "game_id": "2026_03_NE_JAX",
+   "fav": "JAX",
+   "p_fav": 0.583,
+   "recommendation": "JAX",
+   "dP_dog": -0.0175,
+   "confidence": "HIGH",
+   "p_first": 0.6108,
+   "ryan_pick": null,
+   "winner": null
+  },
+  {
+   "logged_at": "2026-09-23T05:18:00Z",
+   "season": 2026,
+   "week": 3,
+   "game_id": "2026_03_KC_MIA",
+   "fav": "KC",
+   "p_fav": 0.863,
+   "recommendation": "KC",
+   "dP_dog": -0.0659,
+   "confidence": "HIGH",
+   "p_first": 0.6108,
+   "ryan_pick": null,
+   "winner": null
+  },
+  {
+   "logged_at": "2026-09-23T05:18:00Z",
+   "season": 2026,
+   "week": 3,
+   "game_id": "2026_03_TEN_NYG",
+   "fav": "NYG",
+   "p_fav": 0.5514,
+   "recommendation": "NYG",
+   "dP_dog": -0.0132,
+   "confidence": "HIGH",
+   "p_first": 0.6108,
+   "ryan_pick": null,
+   "winner": null
+  },
+  {
+   "logged_at": "2026-09-23T05:18:00Z",
+   "season": 2026,
+   "week": 3,
+   "game_id": "2026_03_CIN_PIT",
+   "fav": "CIN",
+   "p_fav": 0.6309,
+   "recommendation": "CIN",
+   "dP_dog": -0.0257,
+   "confidence": "HIGH",
+   "p_first": 0.6108,
+   "ryan_pick": null,
+   "winner": null
+  },
+  {
+   "logged_at": "2026-09-23T05:18:00Z",
+   "season": 2026,
+   "week": 3,
+   "game_id": "2026_03_SEA_WAS",
+   "fav": "SEA",
+   "p_fav": 0.718,
+   "recommendation": "SEA",
+   "dP_dog": -0.0396,
+   "confidence": "HIGH",
+   "p_first": 0.6108,
+   "ryan_pick": null,
+   "winner": null
+  },
+  {
+   "logged_at": "2026-09-23T05:18:00Z",
+   "season": 2026,
+   "week": 3,
+   "game_id": "2026_03_ARI_SF",
+   "fav": "SF",
+   "p_fav": 0.7958,
+   "recommendation": "SF",
+   "dP_dog": -0.0537,
+   "confidence": "HIGH",
+   "p_first": 0.6108,
+   "ryan_pick": null,
+   "winner": null
+  },
+  {
+   "logged_at": "2026-09-23T05:18:00Z",
+   "season": 2026,
+   "week": 3,
+   "game_id": "2026_03_MIN_TB",
+   "fav": "MIN",
+   "p_fav": 0.5217,
+   "recommendation": "MIN",
+   "dP_dog": -0.0052,
+   "confidence": "LOW",
+   "p_first": 0.6108,
+   "ryan_pick": null,
+   "winner": null
+  },
+  {
+   "logged_at": "2026-09-23T05:18:00Z",
+   "season": 2026,
+   "week": 3,
+   "game_id": "2026_03_BAL_DAL",
+   "fav": "BAL",
+   "p_fav": 0.6164,
+   "recommendation": "BAL",
+   "dP_dog": -0.0213,
+   "confidence": "HIGH",
+   "p_first": 0.6108,
+   "ryan_pick": null,
+   "winner": null
+  },
+  {
+   "logged_at": "2026-09-23T05:18:00Z",
+   "season": 2026,
+   "week": 3,
+   "game_id": "2026_03_LV_NO",
+   "fav": "NO",
+   "p_fav": 0.6225,
+   "recommendation": "NO",
+   "dP_dog": -0.0236,
+   "confidence": "HIGH",
+   "p_first": 0.6108,
+   "ryan_pick": null,
+   "winner": null
+  },
+  {
+   "logged_at": "2026-09-23T05:18:00Z",
+   "season": 2026,
+   "week": 3,
+   "game_id": "2026_03_LA_DEN",
+   "fav": "LA",
+   "p_fav": 0.5635,
+   "recommendation": "LA",
+   "dP_dog": -0.0134,
+   "confidence": "HIGH",
+   "p_first": 0.6108,
+   "ryan_pick": null,
+   "winner": null
+  },
+  {
+   "logged_at": "2026-09-23T05:18:00Z",
+   "season": 2026,
+   "week": 3,
+   "game_id": "2026_03_PHI_CHI",
+   "fav": "PHI",
+   "p_fav": 0.6636,
+   "recommendation": "PHI",
+   "dP_dog": -0.0285,
+   "confidence": "HIGH",
+   "p_first": 0.6108,
    "ryan_pick": null,
    "winner": null
   }
