@@ -511,3 +511,4 @@ logged_at_utc,season,week,game_id,fav,p_fav,family_fav_rate,dP_first_dog,mc_nois
 2026-09-27T23:02:00Z,2026,3,2026_03_LA_DEN,LA,0.5108,0.544,-0.0034,0.0011,HIGH,LA,0.5981,0.5981,"{""Ryan"": 23, ""Casey"": 19, ""Sue"": 21, ""Nolan"": 22, ""Sheila"": 21, ""Kaleigh"": 19, ""Molly"": 20}",family.json
 2026-09-27T23:02:00Z,2026,3,2026_03_PHI_CHI,PHI,0.6447,0.825,-0.0271,0.0007,HIGH,PHI,0.5981,0.5981,"{""Ryan"": 23, ""Casey"": 19, ""Sue"": 21, ""Nolan"": 22, ""Sheila"": 21, ""Kaleigh"": 19, ""Molly"": 20}",family.json
 2026-09-28T05:02:58Z,2026,3,2026_03_PHI_CHI,PHI,0.6369,0.821,-0.0242,0.0011,HIGH,PHI,0.6844,0.6844,"{""Ryan"": 32, ""Casey"": 28, ""Sue"": 27, ""Nolan"": 30, ""Sheila"": 30, ""Kaleigh"": 27, ""Molly"": 26}",family.json
+2026-09-28T23:53:37Z,2026,3,2026_03_PHI_CHI,PHI,0.6369,0.821,-0.0250,0.0009,HIGH,PHI,0.6851,0.6851,"{""Ryan"": 32, ""Casey"": 28, ""Sue"": 27, ""Nolan"": 30, ""Sheila"": 30, ""Kaleigh"": 27, ""Molly"": 26}",family.json

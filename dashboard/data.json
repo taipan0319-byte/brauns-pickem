@@ -1,11 +1,11 @@
 {
  "season": 2026,
  "week": 3,
- "built_at": "2026-09-28T05:02:58Z",
+ "built_at": "2026-09-28T23:53:38Z",
  "order_source": "kickoff time, then NFL schedule id (CBS within-slot order not recorded for this week)",
- "model_refreshed_at": "2026-09-28T05:02:58Z",
- "market_asof": "2026-09-28T05:02:57Z",
- "p_first": 0.6844,
+ "model_refreshed_at": "2026-09-28T23:53:37Z",
+ "market_asof": "2026-09-28T23:53:36Z",
+ "p_first": 0.6851,
  "games": [
   {
    "game_id": "2026_03_ATL_GB",
@@ -592,10 +592,10 @@
    "dog_name": "Bears",
    "confidence": "HIGH",
    "family_fav_rate": 0.821,
-   "dP_dog": -0.0242,
-   "mc_noise": 0.0011,
-   "logged_at": "2026-09-28T05:02:58Z",
-   "rationale": "PHI is the market favorite at 63.7%. Taking CHI would lower P(finish first) by 2.4 points: with about 82% of the family expected on PHI, the dog buys little differentiation and costs 0.27 expected points.",
+   "dP_dog": -0.025,
+   "mc_noise": 0.0009,
+   "logged_at": "2026-09-28T23:53:37Z",
+   "rationale": "PHI is the market favorite at 63.7%. Taking CHI would lower P(finish first) by 2.5 points: with about 82% of the family expected on PHI, the dog buys little differentiation and costs 0.27 expected points.",
    "engine_a_pick": "PHI",
    "spread": "-3.5",
    "ml": [
@@ -614,7 +614,7 @@
   "MIN@TB: robustness LOW \u2192 HIGH",
   "LA@DEN: P(LA) 54.3% \u2192 51.1%"
  ],
- "previous_refresh": "2026-09-27T23:02:00Z",
+ "previous_refresh": "2026-09-28T05:02:58Z",
  "standings": {
   "Ryan": 32,
   "Casey": 28,
@@ -8663,6 +8663,20 @@
    "dP_dog": -0.0242,
    "confidence": "HIGH",
    "p_first": 0.6844,
+   "ryan_pick": null,
+   "winner": null
+  },
+  {
+   "logged_at": "2026-09-28T23:53:37Z",
+   "season": 2026,
+   "week": 3,
+   "game_id": "2026_03_PHI_CHI",
+   "fav": "PHI",
+   "p_fav": 0.6369,
+   "recommendation": "PHI",
+   "dP_dog": -0.025,
+   "confidence": "HIGH",
+   "p_first": 0.6851,
    "ryan_pick": null,
    "winner": null
   }
