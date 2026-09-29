@@ -4,7 +4,7 @@
   "dog_rate": {
    "tossup": 0.409,
    "close": 0.12,
-   "other": 0.068
+   "other": 0.066
   },
   "bias_team": null,
   "bias_strength": 0.0,
@@ -23,7 +23,7 @@
     1
    ],
    "other": [
-    27,
+    28,
     2
    ]
   }
@@ -52,7 +52,7 @@
     2
    ],
    "other": [
-    27,
+    28,
     0
    ]
   }
@@ -62,7 +62,7 @@
   "dog_rate": {
    "tossup": 0.354,
    "close": 0.12,
-   "other": 0.041
+   "other": 0.066
   },
   "bias_team": "CHI",
   "bias_strength": 0.4,
@@ -81,8 +81,8 @@
     1
    ],
    "other": [
-    27,
-    1
+    28,
+    2
    ]
   }
  },
@@ -110,7 +110,7 @@
     2
    ],
    "other": [
-    27,
+    28,
     0
    ]
   }
@@ -120,7 +120,7 @@
   "dog_rate": {
    "tossup": 0.453,
    "close": 0.304,
-   "other": 0.128
+   "other": 0.124
   },
   "bias_team": "GB",
   "bias_strength": 0.4,
@@ -139,7 +139,7 @@
     3
    ],
    "other": [
-    26,
+    27,
     4
    ]
   }
@@ -149,7 +149,7 @@
   "dog_rate": {
    "tossup": 0.722,
    "close": 0.34,
-   "other": 0.036
+   "other": 0.035
   },
   "bias_team": null,
   "bias_strength": 0.0,
@@ -168,7 +168,7 @@
     3
    ],
    "other": [
-    26,
+    27,
     0
    ]
   }
