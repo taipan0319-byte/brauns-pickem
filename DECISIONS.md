@@ -130,6 +130,24 @@ Entries here survived review. Anything not listed is open. Format: ID, decision,
   4th-down and red-zone rates. Engine C stays as a research harness; no Upset Board on the production
   dashboard; no pick is influenced. 2026-09-20.
 
+- **D27. Engine B confidence gate: scenario-agreement veto removed (U7 replay, 2026-10-02).** Ryan asked
+  what the model adds if it only echoes the line. `backtest_engine_b.py` replays 2015–2025 week by week
+  against real results with opponents simulated from `family.json` (150 draws per season, three truths:
+  as modeled, half as contrarian, twice as contrarian), Engine B seeing exactly its production inputs each
+  week. A fast evaluator reproduces `evaluate()` (verified on three cases within MC noise). Findings, P(first)
+  vs pure chalk: production rule +0.5 / −0.3 / +0.7 pp across truths with ~1 dog per season, i.e. the
+  three-scenario agreement veto made Engine B chalk in all but name; the same rule without the veto (deviate
+  when |ΔP| exceeds MC noise) +1.5 / +3.9 / −0.6 pp with ~6 dogs per season, 5 of them after week 10, and its
+  dogs won 42.8% vs 42.0% priced, so the gain is pool position, not forecasting. A calibrated control
+  (outcomes drawn from the market instead of real scores) gives +1.8 / +4.1 / −1.0 pp for the no-veto rule
+  and exposes the rest as luck: "dog whenever the favorite is under 52%" shows +5.7 pp on real results and
+  −0.4 pp calibrated, because sub-52% dogs happened to win 53% vs 49% priced over 134 games (1 SE); the
+  late-season variance rule shows +3.7 pp real and 0.0 calibrated. Production change: the noise test alone
+  gates a deviation; the half/twice scenarios are still run and printed as "(scenarios disagree)" but no
+  longer veto. Week 4 picks unchanged (every game is the favorite by more than three times noise). Downside
+  if the family is far wilder than modeled: about −1 pp. Outputs in `dashboard/backtest_engine_b_output.txt`
+  and `dashboard/backtest_engine_b_calibrated.txt`. Open for ChatGPT round 1 (Block 17).
+
 ## Unresolved (conservative production choice in force)
 
 - **U1. Tie rule.** In force: ties split evenly. Ryan recalls CBS resolves season ties by Super Bowl

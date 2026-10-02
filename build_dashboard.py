@@ -64,8 +64,8 @@ def rationale(r, dog):
                 f"only {fam*100:.0f}% of the six opponents are expected on {fav}, and at {p*100:.0f}% the favorite carries "
                 f"just {cost:.2f} expected points of cost. Robustness {conf}.")
     if conf == "LOW":
-        return (f"{fav} is the market favorite at {p*100:.1f}%. The sign of the pool effect flips between family scenarios "
-                f"(or sits inside Monte Carlo noise), so the rule defaults to the favorite.")
+        return (f"{fav} is the market favorite at {p*100:.1f}%. The pool effect of taking {dog} ({d*100:+.1f} points) sits "
+                f"inside Monte Carlo noise, so the rule defaults to the favorite.")
     return (f"{fav} is the market favorite at {p*100:.1f}%. Taking {dog} would lower P(finish first) by {abs(d)*100:.1f} points: "
             f"with about {fam*100:.0f}% of the family expected on {fav}, the dog buys little differentiation and costs "
             f"{cost:.2f} expected points.")

@@ -4,6 +4,54 @@ Newest block at the top.
 
 ---
 
+## 2026-10-02 — Block 17: U7 — does Engine B add anything over chalk? Replay result and a production change (D27)
+
+Ryan's question: "if all we do is bet the Vegas line then what good is having this model?" Fair. We have
+proven nine times that we cannot out-forecast the moneyline (D2, D19, D20, D26). The only remaining source
+of edge is pool position: deviating from the room when it is cheap. So the test is whether Engine B's
+deviations raise P(first) out of sample, and whether its confidence gate is tuned right.
+
+**Design** (`backtest_engine_b.py`, both outputs in `dashboard/`): replay 2015–2025 week by week against
+real results. We have no historical family picks, so opponents are drawn from `family.json` under three
+truths (as modeled, dog rates ×0.5, ×2), 150 draws per season, common random numbers across policies.
+Engine B sees its production inputs each week (remaining schedule, lines, standings so far, family model)
+and its picks are scored by what actually happened. Six policies: chalk; production (3-scenario screen,
+HIGH/MEDIUM deviate); the same without the scenario veto ("signif": deviate when |ΔP(first)| > MC noise);
+deviate whenever ΔP > 0; dog whenever the favorite < 52%; late-season variance (from `pool_sim.py`).
+Control: the same replay with outcomes drawn from the market probabilities instead of real scores.
+
+| policy | real results, as modeled | ×0.5 | ×2 | calibrated control, as modeled | ×0.5 | ×2 | dogs/season |
+|---|---|---|---|---|---|---|---|
+| production | +0.5 | −0.3 | +0.7 | +0.2 | +0.9 | +0.2 | 1.0 |
+| signif (no veto) | +1.5 | +3.9 | −0.6 | **+1.8** | +4.1 | −1.0 | 5–6 |
+| any ΔP > 0 | +0.8 | +3.0 | −1.7 | +1.2 | +4.8 | −1.2 | 8–9 |
+| dog if fav < 52% | +5.7 | +5.5 | +10.0 | −0.4 | +4.5 | +1.8 | 12 |
+| late variance | +3.7 | +6.5 | +0.6 | 0.0 | +4.0 | −3.3 | 6–9 |
+
+(P(first) minus chalk, percentage points; paired SE 0.3–1.2 pp. Chalk itself: 46% real, 48% calibrated.)
+
+**Reading.** (1) Production Engine B was chalk in all but name: the requirement that the ×0.5 and ×2
+scenarios agree on sign vetoed nearly every deviation. (2) The noise test alone is a real, structural
+gain: its dogs won 42.8% vs 42.0% priced on real results and the calibrated control reproduces the number,
+so it is pool position, not forecasting. Five of its six dogs a season come after week 10, which is where
+pool theory says they should. (3) The two big numbers on real results are luck: sub-52% dogs won 53% vs
+49% priced over 134 games (1 SE) and vanish in the control. This is exactly the trap D20 and D26 were
+built to avoid, and the control caught it. (4) Downside: if the family is far wilder than modeled, the
+no-veto rule costs about 1 pp. Our fit puts Molly and Kaleigh at 0.45–0.72 in toss-ups already, so ×2
+(capped 0.9) is a stress case, not a likely one.
+
+**Production change (D27, in force from Week 4):** the noise test alone gates a deviation; HIGH/MEDIUM/LOW
+now mean >3×, 1–3×, <1× noise. The scenario sweep is still run and printed as "(scenarios disagree)".
+Week 4 picks are unchanged. Reverting is one line in `engine_b.py`.
+
+**For your round 1.** Is the opponent simulator an acceptable stand-in for history? The ×0.5/×2 truths are
+my answer to that, but a better one would be any real pool-pick archive you know of. Second: the
+calibrated control says the no-veto gain is structural, but it uses the same family model as the engine,
+so engine and truth agree by construction; the ×0.5 and ×2 columns are the misspecification test. If you
+want a harsher one, name it and I will run it.
+
+---
+
 ## 2026-09-20 — Block 16: Engine C built and tested as specified. It fails the admission test. Full results.
 
 Built exactly to Block 6: underdog-only universe, target = dog won, market logit as the prior, residual

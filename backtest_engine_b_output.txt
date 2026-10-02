@@ -1,0 +1,45 @@
+U7 Engine B replay  seasons 2015-2025  reps/season 150  inner sims 20000  N=7  ties split
+Real game results; opponents simulated from family.json under three truths. Paired vs chalk.
+
+== opponents really behave: as-modeled ==
+policy        P(first)  vs chalk     SE dogs/season dog hit% exp hit%  wk1-9  wk10+
+chalk           0.4604   +0.0000 0.0000        0.00      0.0      0.0   0.00   0.00
+prod            0.4654   +0.0050 0.0032        1.09     47.5     41.4   0.25   0.84
+any_positive    0.4687   +0.0083 0.0077        9.12     42.9     42.2   1.53   7.58
+signif          0.4756   +0.0153 0.0066        6.02     42.8     42.0   0.70   5.32
+static_52       0.5173   +0.0570 0.0091       12.18     53.0     49.0   7.55   4.64
+late_var        0.4973   +0.0370 0.0065        8.54     48.6     43.3   0.00   8.54
+
+== opponents really behave: chalkier x0.5 ==
+policy        P(first)  vs chalk     SE dogs/season dog hit% exp hit%  wk1-9  wk10+
+chalk           0.3285   +0.0000 0.0000        0.00      0.0      0.0   0.00   0.00
+prod            0.3253   -0.0032 0.0036        1.21     46.4     41.1   0.23   0.98
+any_positive    0.3586   +0.0301 0.0085        9.18     42.5     42.0   1.22   7.96
+signif          0.3670   +0.0385 0.0071        6.11     42.0     41.6   0.51   5.60
+static_52       0.3835   +0.0550 0.0116       12.18     53.0     49.0   7.55   4.64
+late_var        0.3937   +0.0653 0.0070        9.34     46.8     43.2   0.00   9.34
+
+== opponents really behave: wilder x2 ==
+policy        P(first)  vs chalk     SE dogs/season dog hit% exp hit%  wk1-9  wk10+
+chalk           0.6240   +0.0000 0.0000        0.00      0.0      0.0   0.00   0.00
+prod            0.6311   +0.0071 0.0023        0.72     47.1     41.7   0.18   0.54
+any_positive    0.6072   -0.0168 0.0069        8.76     41.7     42.6   1.93   6.83
+signif          0.6177   -0.0063 0.0059        5.40     41.7     42.2   0.98   4.41
+static_52       0.7244   +0.1004 0.0076       12.18     53.0     49.0   7.55   4.64
+late_var        0.6302   +0.0062 0.0060        5.54     51.3     43.3   0.00   5.54
+
+per season, as-modeled truth: P(first)
+season          chalk         prod any_positive       signif    static_52     late_var
+2015            0.294        0.303        0.407        0.375        0.294        0.524
+2016            0.830        0.790        0.550        0.617        0.742        0.730
+2017            0.933        0.907        0.810        0.890        0.659        0.920
+2018            0.323        0.336        0.352        0.327        0.214        0.300
+2019            0.044        0.040        0.086        0.113        0.567        0.354
+2020            0.331        0.331        0.299        0.323        0.331        0.262
+2021            0.030        0.056        0.152        0.134        0.156        0.067
+2022            0.278        0.323        0.420        0.369        0.782        0.299
+2023            0.869        0.900        0.873        0.900        0.730        0.830
+2024            0.880        0.873        0.883        0.870        0.963        0.847
+2025            0.251        0.260        0.323        0.314        0.251        0.338
+
+dog hit% = share of recommended dogs that actually won; exp hit% = what the market said they should win.

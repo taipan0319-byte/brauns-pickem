@@ -137,13 +137,15 @@ def main():
         d = deltas[i]; conf = ""
         if a.screen:
             ds = [res[n][2][i] for n, _ in scenarios]; agree = all(x > 0 for x in ds) or all(x <= 0 for x in ds)
-            if not agree or abs(d) <= noise[i]: conf = "LOW"; pick = fav_team[i]
+            # D27: scenario disagreement no longer vetoes a deviation (U7 replay: the veto left ~1 dog/season and
+            # no gain; the noise test alone is +1.8pp P(first) with calibrated outcomes). Disagreement is printed.
+            if abs(d) <= noise[i]: conf = "LOW"; pick = fav_team[i]
             elif abs(d) > 3 * noise[i]: conf = "HIGH"; pick = dog if d > 0 else fav_team[i]
             else: conf = "MEDIUM"; pick = dog if d > 0 else fav_team[i]
         else:
             pick = dog if user_fav[i] == False else fav_team[i]
         line = f"{g['away_team']+'@'+g['home_team']:10} {fav_team[i]:>10} {pfav[i]:7.3f} {P_opp[i].mean():13.2f} {d:+16.4f}  {pick:5}"
-        if a.screen: line += f"  {conf}"
+        if a.screen: line += f"  {conf}" + ("" if agree else "  (scenarios disagree)")
         print(line)
         out.append(dict(logged_at_utc=now, season=a.season, week=a.week, game_id=g["game_id"], fav=fav_team[i],
                         p_fav=f"{pfav[i]:.4f}", family_fav_rate=f"{P_opp[i].mean():.3f}", dP_first_dog=f"{d:+.4f}",
