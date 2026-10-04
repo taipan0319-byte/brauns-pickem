@@ -16,6 +16,10 @@ Policies (user picks):
   signif       Engine B, as-modeled scenario only, dog when dP > MC noise
   static_52    dog whenever the favorite is below 52% (no model)
   late_var     chalk through week 13; from week 14 take dogs in <62% games when trailing by > 0.05 x games left
+--adversarial (Block 17 round 1, ChatGPT): opponents drawn from models Engine B is not told about —
+  a correlated room (latent per-game chalk sentiment shared by all six, Gaussian copula, marginals preserved)
+  at rho 0.2 / 0.5 / 0.8, and the six fitted dog-rate profiles shuffled among the people each season.
+--calibrated: control with game outcomes drawn from the market instead of real scores.
 """
 import argparse, csv, json, os, sys, time
 import numpy as np
@@ -35,7 +39,8 @@ def season_data(rows, season, family):
     fams = [eb.scale_family(family, k) for _, k in SCEN]
     P_opp = np.array([[[eb.opponent_pick_fav_prob(m, r, pf, ft) for m in fam] for r, pf, ft in zip(g, pfav, fav_team)] for fam in fams])
     return dict(season=season, pfav=pfav, fav_won=fav_won, week=week, P_opp=P_opp, weeks=sorted(set(week.tolist())),
-                names=[m["name"] for m in family])
+                names=[m["name"] for m in family], family=family, fav_team=fav_team,
+                games_min=[dict(home_team=r["home_team"], away_team=r["away_team"]) for r in g])
 
 def week_cache(sd, w, s, sims, seed):
     """Everything in engine_b.evaluate that does not depend on standings or on this week's user picks."""
@@ -71,6 +76,32 @@ def fast_eval(c, pfav_w, user_pts, opp_pts):
             user_fav[i] = d <= 0; us = us_fav if d <= 0 else us_dog
     return base, pf_vec(us).mean(), deltas, user_fav, noise
 
+def norm_cdf(z):
+    try:
+        from scipy.special import erf
+    except ImportError:
+        import math; erf = np.vectorize(math.erf)
+    return 0.5 * (1.0 + erf(z / np.sqrt(2.0)))
+
+def draw_opponents(sd, truth, U0, rng):
+    """Returns opp_pick_fav (G x N) under a 'truth' Engine B does not know about.
+    scen k      : independent picks from scenario k of the family model (common uniforms U0)
+    corr rho    : Gaussian copula; a latent per-game chalk sentiment shared by all six, marginals preserved
+    perm        : the six fitted dog-rate profiles shuffled among the people each season; team leans stay put"""
+    kind, param = truth["kind"], truth.get("param")
+    if kind == "scen": return U0 < sd["P_opp"][param]
+    if kind == "corr":
+        G, N = U0.shape; S = rng.standard_normal(G)
+        Z = np.sqrt(param) * S[:, None] + np.sqrt(1 - param) * rng.standard_normal((G, N))
+        return norm_cdf(Z) < sd["P_opp"][0]
+    if kind == "perm":
+        perm = rng.permutation(len(sd["family"]))
+        fam = [dict(m, dog_rate=sd["family"][perm[i]]["dog_rate"]) for i, m in enumerate(sd["family"])]
+        P = np.array([[eb.opponent_pick_fav_prob(m, g, pf, ft) for m in fam]
+                      for g, pf, ft in zip(sd["games_min"], sd["pfav"], sd["fav_team"])])
+        return U0 < P
+    raise ValueError(kind)
+
 def grade_prod(ds, noise0, d0):
     """Production screen: LOW -> favorite; HIGH/MEDIUM -> dog iff dP > 0."""
     agree = all(x > 0 for x in ds) or all(x <= 0 for x in ds)
@@ -82,13 +113,14 @@ def run_season(args):
     N = len(sd["names"]); G = len(sd["pfav"]); weeks = sd["weeks"]
     caches = {w: [week_cache(sd, w, s, sims, season * 1000 + w * 10 + s) for s in range(3)] for w in weeks}
     policies = ["chalk", "prod", "any_positive", "signif", "static_52", "late_var"]
-    out = {t: {p: dict(pf=[], dev=0, hit=0, exp=0.0, dev_by_week={}) for p in policies} for t in truths}
+    out = {t["name"]: {p: dict(pf=[], dev=0, hit=0, exp=0.0, dev_by_week={}) for p in policies} for t in truths}
     rng = np.random.default_rng(season * 7919)
     for rep in range(reps):
         U = rng.random((G, N))
         fav_won = (rng.random(G) < sd["pfav"]) if calibrated else sd["fav_won"]   # control: outcomes drawn from the market
-        for t in truths:
-            opp_pick_fav = U < sd["P_opp"][t]; opp_correct = (opp_pick_fav == fav_won[:, None])
+        for tr in truths:
+            t = tr["name"]
+            opp_pick_fav = draw_opponents(sd, tr, U, rng); opp_correct = (opp_pick_fav == fav_won[:, None])
             opp_cum = {}; run = np.zeros(N, int)
             for w in weeks:
                 opp_cum[w] = run.copy(); run = run + opp_correct[sd["week"] == w].sum(0)
@@ -128,17 +160,23 @@ def main():
     ap.add_argument("--reps", type=int, default=150); ap.add_argument("--sims", type=int, default=20000)
     ap.add_argument("--family", default=os.path.join(HERE, "family.json")); ap.add_argument("--procs", type=int, default=4)
     ap.add_argument("--calibrated", action="store_true", help="control: replace real results with draws from the market probabilities")
+    ap.add_argument("--adversarial", action="store_true", help="Block 17 round 1: correlated room (rho 0.2/0.5/0.8) and shuffled dog rates")
     a = ap.parse_args()
     lo, hi = map(int, a.seasons.split("-")); seasons = list(range(lo, hi + 1))
     rows = eb.load_games(a.games_file); family = json.load(open(a.family))
-    truths = [0, 1, 2]
+    truths = [dict(name=SCEN[k][0], kind="scen", param=k) for k in range(3)]
+    if a.adversarial:
+        truths = [dict(name="as-modeled", kind="scen", param=0)] + \
+                 [dict(name=f"correlated room rho={r}", kind="corr", param=r) for r in (0.2, 0.5, 0.8)] + \
+                 [dict(name="dog rates shuffled among people", kind="perm")]
     jobs = [(season_data(rows, s, family), a.reps, a.sims, truths, a.calibrated) for s in seasons]
     with Pool(a.procs) as pool: results = dict(pool.map(run_season, jobs, chunksize=1))
     policies = ["chalk", "prod", "any_positive", "signif", "static_52", "late_var"]
     print(f"U7 Engine B replay {'[CALIBRATED CONTROL: outcomes drawn from market]' if a.calibrated else '[REAL RESULTS]'}  seasons {a.seasons}  reps/season {a.reps}  inner sims {a.sims}  N=7  ties split")
     print("Real game results; opponents simulated from family.json under three truths. Paired vs chalk.\n")
-    for t in truths:
-        print(f"== opponents really behave: {SCEN[t][0]} ==")
+    for tr in truths:
+        t = tr["name"]
+        print(f"== opponents really behave: {t} ==")
         print(f"{'policy':13}{'P(first)':>9}{'vs chalk':>10}{'SE':>7}{'dogs/season':>12}{'dog hit%':>9}{'exp hit%':>9}{'wk1-9':>7}{'wk10+':>7}")
         chalk = np.concatenate([np.array(results[s][t]["chalk"]["pf"]) for s in seasons])
         for p in policies:
@@ -150,10 +188,10 @@ def main():
             print(f"{p:13}{pf.mean():9.4f}{diff.mean():+10.4f}{se:7.4f}{dev/nrs:12.2f}"
                   f"{(100*hit/dev if dev else 0):9.1f}{(100*exp/dev if dev else 0):9.1f}{early/nrs:7.2f}{(dev-early)/nrs:7.2f}")
         print()
-    print("per season, as-modeled truth: P(first)")
+    t0 = truths[0]["name"]; print(f"per season, {t0} truth: P(first)")
     print(f"{'season':8}" + "".join(f"{p:>13}" for p in policies))
     for s in seasons:
-        print(f"{s:<8}" + "".join(f"{np.mean(results[s][0][p]['pf']):13.3f}" for p in policies))
+        print(f"{s:<8}" + "".join(f"{np.mean(results[s][t0][p]['pf']):13.3f}" for p in policies))
     print("\ndog hit% = share of recommended dogs that actually won; exp hit% = what the market said they should win.")
 
 if __name__ == "__main__":

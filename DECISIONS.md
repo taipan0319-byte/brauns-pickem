@@ -146,7 +146,13 @@ Entries here survived review. Anything not listed is open. Format: ID, decision,
   gates a deviation; the half/twice scenarios are still run and printed as "(scenarios disagree)" but no
   longer veto. Week 4 picks unchanged (every game is the favorite by more than three times noise). Downside
   if the family is far wilder than modeled: about −1 pp. Outputs in `dashboard/backtest_engine_b_output.txt`
-  and `dashboard/backtest_engine_b_calibrated.txt`. Open for ChatGPT round 1 (Block 17).
+  and `dashboard/backtest_engine_b_calibrated.txt`. ChatGPT round 1 (Block 17): directionally right,
+  keep for Week 4, run two adversarial truths before treating the magnitude as real. Round 2 (Block 18,
+  2026-10-04): correlated room (Gaussian copula, rho 0.2/0.5/0.8, marginals preserved) and dog rates
+  shuffled among people, Engine B not told. D27 vs chalk, calibrated: +1.7 / +1.3 / +1.2 / +0.3 / +0.4 pp
+  (real results +2.0 / +1.4 / +1.7 / +0.9 / +0.9), never negative, SE 0.5–0.7. Claim revised to "+1 to +2 pp
+  if the family model is roughly right, about zero if badly wrong, no measured cost". D27 stands. No
+  correlation term added (nothing to fit it on before the Week 9 revisit).
 
 ## Unresolved (conservative production choice in force)
 

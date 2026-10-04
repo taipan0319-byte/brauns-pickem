@@ -4,6 +4,50 @@ Newest block at the top.
 
 ---
 
+## 2026-10-04 — Block 18: round 2 on D27 — both adversarial tests run. D27 stands; the magnitude claim is revised down.
+
+Both tests implemented in `backtest_engine_b.py --adversarial` exactly as specified; Engine B unchanged
+and not told. (1) Correlated room: Gaussian copula with one latent per-game chalk-sentiment variable
+shared by all six, each person's marginal preserved (checked: marginals match to 3 decimals; P(all six on
+the favorite) rises from 50% independent to 54 / 61 / 68% at rho 0.2 / 0.5 / 0.8). (2) Wrong person: the six
+fitted dog-rate profiles shuffled among the people every simulated season, team leans staying put.
+11 seasons × 150 draws, real results and the calibrated control, paired against chalk. Outputs in
+`dashboard/backtest_engine_b_adversarial.txt` and `..._calibrated.txt`.
+
+P(first) minus chalk, percentage points, for the D27 rule (deviate when |ΔP| > MC noise; "signif"):
+
+| opponents really are | real results | calibrated control | dogs/season |
+|---|---|---|---|
+| as modeled (independent) | +2.0 | +1.7 | 5–6 |
+| correlated rho 0.2 | +1.4 | +1.3 | 5–6 |
+| correlated rho 0.5 | +1.7 | +1.2 | 5–6 |
+| correlated rho 0.8 | +0.9 | +0.3 | 4–5 |
+| dog rates shuffled among people | +0.9 | +0.4 | 5–6 |
+
+Paired SE 0.5–0.7 pp throughout. For reference in the same runs: the old production rule +0.0 to +1.0
+(≈1 dog/season); "dog whenever favorite < 52%" −2.3 to −3.8 in every calibrated cell; late-season
+variance rule −0.8 to +0.3 calibrated.
+
+**Reading.** D27 is never negative in any of the ten cells. Its edge degrades as the room becomes more
+correlated, and at rho 0.8 or with the wrong people it is within one SE of zero. Correlation also lifts
+chalk itself (chalk P(first) 0.53 → 0.63 from rho 0 to 0.8), which is consistent with your Week 1
+observation: when the room moves together, matching it is safer and splitting from it buys less. The
+shuffled-people result says the gain depends on knowing *who* is contrarian, which is what the weekly
+refit from revealed picks is for; three weeks in, the posterior already separates Molly and Kaleigh
+from the other four.
+
+**Revised claim.** Not "+1.8 pp structural". Rather: +1 to +2 pp if the family model is roughly right,
+about zero if it is badly wrong, and no cell where it costs anything beyond noise. The downside case
+remains the ×2-wilder family from Block 17 (−1 pp). D27 stays in force. I am not adding a correlation
+term to Engine B: the test shows the independent model degrades gracefully, and we have no data to fit
+rho (we would need many weeks of revealed picks; the Week 9 revisit is the earliest sensible look).
+
+**Also shipped today:** a "Refresh now" button on the dashboard (workflow_dispatch via a fine-grained
+token kept in Ryan's browser only). Ryan's P(first) on the live page is the as-modeled number; read it
+with the table above in mind.
+
+---
+
 ## 2026-10-02 — Block 17: U7 — does Engine B add anything over chalk? Replay result and a production change (D27)
 
 Ryan's question: "if all we do is bet the Vegas line then what good is having this model?" Fair. We have
