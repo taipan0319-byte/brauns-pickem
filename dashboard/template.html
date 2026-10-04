@@ -283,8 +283,22 @@ if (finals.length) {
 }
 document.getElementById('refresh-cmd').textContent = `python3 refresh.py --season ${D.season} --week ${D.week}` + (D.standings?' --standings standings.json':'');
 
+// picks lock: CBS locks each game at kickoff, and every remaining Sunday game at the FIRST Sunday kickoff
+// (8:30 AM CT on London weeks). Show the next lock and warn when it is earlier than the usual noon.
+const upcoming = D.games.filter(g => g.result === null && g.kickoff_iso).map(g => new Date(g.kickoff_iso)).sort((a,b)=>a-b);
+const nextKick = upcoming[0] || null;
+if (nextKick) {
+  const ctHour = Number(nextKick.toLocaleString('en-US',{timeZone:'America/Chicago',hour:'numeric',hour12:false}));
+  const ctDow = nextKick.toLocaleString('en-US',{timeZone:'America/Chicago',weekday:'short'});
+  const early = ctDow === 'Sun' && ctHour < 12;
+  const hrs = (nextKick - Date.now())/36e5;
+  document.getElementById('stamps').insertAdjacentHTML('beforeend', `<span>Next picks lock <b>${fmtT(nextKick.toISOString())}</b>${hrs>0?` (in ${hrs<1?Math.round(hrs*60)+' min':Math.round(hrs)+' h'})`:''}</span>`);
+  window.__lockBanner = early && hrs > -1 ? `<div class="banner bad">EARLY LOCK — first Sunday kickoff is ${fmtT(nextKick.toISOString())}${ctHour < 10 ? ' (London game)' : ''}. CBS locks every Sunday pick at that moment. Finalize picks before then.</div>` : '';
+}
+
 // banners
 const B = [];
+if (window.__lockBanner) B.push(window.__lockBanner);
 if (stale) B.push(`<div class="banner bad">MARKET DATA STALE — lines are ${Math.round(ma)} hours old. Refresh before picking.</div>`);
 const passed = D.games.filter(g => g.kickoff_iso && new Date(g.kickoff_iso) < new Date(D.market_asof||0));
 if (D.games.some(g => !g.pick)) B.push(`<div class="banner bad">Some games have no model output. Run the refresh.</div>`);
