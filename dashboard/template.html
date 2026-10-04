@@ -21,6 +21,10 @@ header.top{padding-block:18px 10px}
 h1{font-family:"IBM Plex Sans Condensed",sans-serif;font-weight:700;font-size:30px;line-height:1.05;margin:2px 0 6px;text-wrap:balance}
 .stamp{font-size:12.5px;color:var(--ink2);display:flex;flex-wrap:wrap;gap:4px 14px}
 .stamp b{font-weight:600;color:var(--ink)}
+.refresh-row{display:flex;align-items:center;gap:10px;margin-top:8px;flex-wrap:wrap}
+.refresh-row button{font:inherit;font-size:13px;font-weight:600;padding:7px 12px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--accent);cursor:pointer}
+.refresh-row button[disabled]{opacity:.55;cursor:default}
+.refresh-row .st{font-size:12.5px;color:var(--ink2)}
 nav.tabs{position:sticky;top:0;z-index:5;background:var(--bg);display:flex;gap:4px;padding-block:8px;border-bottom:1px solid var(--line);margin-bottom:14px}
 nav.tabs button{flex:1;background:transparent;border:1px solid transparent;border-radius:8px;padding:9px 4px;font:600 12.5px "IBM Plex Sans Condensed",sans-serif;letter-spacing:.04em;text-transform:uppercase;color:var(--ink2);cursor:pointer}
 nav.tabs button[aria-selected="true"]{background:var(--surface);color:var(--ink);border-color:var(--line)}
@@ -97,6 +101,7 @@ pre.formula{background:var(--surface2);border:1px solid var(--line);border-radiu
   <div class="eyebrow">Brauns Fam · CBS Pick'em · straight-up</div>
   <h1 id="h1">NFL Family Pick'em</h1>
   <div class="stamp" id="stamps"></div>
+  <div class="refresh-row"><button id="refresh-btn" type="button">Refresh now</button><span class="st" id="refresh-status"></span></div>
 </header>
 <nav class="tabs" role="tablist">
   <button role="tab" aria-selected="true" data-tab="week" id="tab-week">This week</button>
@@ -204,6 +209,9 @@ E[D²] ≈ r · n_close + r² · (Σ (1 − 2p))²      solve for r, the underdo
     <li><b>Football opinions.</b> No adjustment is ever made by hand for a matchup story. The original design allowed a ±3 point preseason adjustment; it was withdrawn before Week 1 because it could not be tested.</li>
   </ul>
 
+  <h2>The Refresh button</h2>
+  <p>"Refresh now" asks GitHub to run the same pipeline the schedule runs: fresh lines, both engines, new log rows, rebuilt page. It needs a GitHub token with permission to start that one workflow. The first tap asks for it; after that it lives only in this browser (never in the page, never in the repository). Make one at GitHub → Settings → Developer settings → Personal access tokens → Fine-grained → Generate: repository access <b>only brauns-pickem</b>, permissions <b>Actions: read and write</b>. A refresh takes one to two minutes and the page reloads itself when the new build is live. <a href="#" id="forget-token">Forget the token on this device</a>.</p>
+
   <h2>Guardrails</h2>
   <ul>
     <li>Every prediction is written to an append-only log with a timestamp before kickoff. A later refresh adds rows; nothing is edited after a result is known.</li>
@@ -224,6 +232,43 @@ const pct = (x, d=1) => (x*100).toFixed(d) + '%';
 const pts = x => (x>=0?'+':'') + (x*100).toFixed(1) + ' pts';
 const fmtT = iso => { if(!iso) return '—'; const t=new Date(iso); return t.toLocaleString('en-US',{timeZone:'America/Chicago',month:'short',day:'numeric',hour:'numeric',minute:'2-digit'}) + ' CT'; };
 const ageH = iso => iso ? (Date.now()-new Date(iso).getTime())/36e5 : null;
+
+// Refresh button: dispatches the GitHub Actions workflow with a token kept in this browser only.
+const GH_REPO = 'taipan0319-byte/brauns-pickem', GH_WF = 'refresh-and-publish.yml', TOK_KEY = 'brauns_gh_token';
+const rfBtn = document.getElementById('refresh-btn'), rfSt = document.getElementById('refresh-status');
+const rfStatus = s => { rfSt.textContent = s; };
+const getTok = () => { try { return localStorage.getItem(TOK_KEY) || ''; } catch (e) { return ''; } };
+const setTok = v => { try { v ? localStorage.setItem(TOK_KEY, v) : localStorage.removeItem(TOK_KEY); } catch (e) {} };
+async function refreshNow() {
+  let tok = getTok();
+  if (!tok) {
+    tok = prompt('One-time setup. Paste a GitHub fine-grained token for brauns-pickem with "Actions: read and write". It is stored only in this browser (see the How tab).');
+    if (!tok) return; tok = tok.trim(); setTok(tok);
+  }
+  rfBtn.disabled = true; rfStatus('Asking GitHub to start a refresh…');
+  let r;
+  try {
+    r = await fetch(`https://api.github.com/repos/${GH_REPO}/actions/workflows/${GH_WF}/dispatches`, {
+      method: 'POST', headers: { Authorization: 'Bearer ' + tok, Accept: 'application/vnd.github+json', 'Content-Type': 'application/json', 'X-GitHub-Api-Version': '2022-11-28' },
+      body: JSON.stringify({ ref: 'main', inputs: { week: 'auto' } }) });
+  } catch (e) { rfBtn.disabled = false; rfStatus('Could not reach GitHub (' + e.message + ').'); return; }
+  if (r.status === 401 || r.status === 403 || r.status === 404) { setTok(''); rfBtn.disabled = false; rfStatus(`GitHub rejected the token (${r.status}). Tap again to enter a new one.`); return; }
+  if (r.status !== 204) { rfBtn.disabled = false; rfStatus('GitHub answered ' + r.status + '.'); return; }
+  const t0 = Date.now(), was = D.built_at; let n = 0;
+  rfStatus('Started. Downloading lines and running the model, about 1–2 minutes…');
+  const iv = setInterval(async () => {
+    n++;
+    try {
+      const d = await (await fetch('data.json?t=' + Date.now(), { cache: 'no-store' })).json();
+      if (d.built_at && d.built_at !== was) { clearInterval(iv); rfStatus('New build is live. Reloading…'); location.reload(); return; }
+    } catch (e) {}
+    const s = Math.round((Date.now() - t0) / 1000);
+    if (s > 420) { clearInterval(iv); rfBtn.disabled = false; rfStatus('Not published after 7 minutes. Check the Actions tab on GitHub, or reload later.'); }
+    else rfStatus(`Running… ${s}s. The page reloads itself when the new build is live.`);
+  }, 10000);
+}
+rfBtn.addEventListener('click', refreshNow);
+document.getElementById('forget-token').addEventListener('click', e => { e.preventDefault(); setTok(''); rfStatus('Token forgotten on this device.'); });
 
 // header + stamps
 document.getElementById('h1').textContent = `Week ${D.week} — ${D.season}`;
