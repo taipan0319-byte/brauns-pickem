@@ -13,6 +13,8 @@ features that do not move that number.
 | `DECISIONS.md` | Claude, after review | Short authoritative record of conclusions that survived review, plus the unresolved list with the conservative production choice in force. |
 | `RESPONSE.md`, `CRITIQUE.md` | Claude | Long-form analysis already delivered; reference only. |
 
+| `GROK_HANDOFF.md`, `GROK_TO_CLAUDE.md`, `CLAUDE_TO_GROK.md` | Grok (third reviewer, from 2026-10-08) and Claude | Same protocol. Grok's first task is vetting outside claims; see the handoff. |
+
 ChatGPT reads this branch directly but cannot write. Ryan pastes ChatGPT's compact block into
 this chat; Claude inserts it verbatim into `CHATGPT_TO_CLAUDE.md`.
 
