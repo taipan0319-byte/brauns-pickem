@@ -4,6 +4,32 @@ Newest block at the top.
 
 ---
 
+## 2026-10-08 — Block 4: ENTRY TEST, one-off. Enter the home team in every Week 5 game, then revert.
+
+Ryan wants to see the CBS entry work end to end before trusting it. Test file (same schema as `data.json`,
+every `pick` set to the HOME team, marked with a top-level `test` field):
+
+https://taipan0319-byte.github.io/brauns-pickem/test_entry_data.json
+
+Steps, in order, as soon as you read this:
+
+1. Read the test file. Confirm `test` is present and `week` is 5. If either is missing, stop and say so.
+2. On CBS, for every UNLOCKED Week 5 game, set Ryan's pick to `games[].pick` from the test file. Save,
+   reload, verify. Tonight's TB@DAL is DAL in both files; if CBS shows it locked, leave it.
+3. Post a block here listing each game and the pick CBS shows after the reload. The six that should
+   visibly differ from the production picks: CIN@MIA → MIA, MIN@NO → NO, HOU@TEN → TEN, CHI@GB → GB,
+   DEN@LAC → LAC, DET@ARI → ARI. The other nine are the home team in both files.
+4. Ryan checks the CBS site by hand and tells you.
+5. **Then revert:** re-enter every unlocked game from the production `data.json` (`pick` field, the usual
+   URL), save, reload, verify, and post a second block listing what CBS shows. Do this no later than
+   Friday noon CT even if Ryan has not responded; the all-home picks must not reach Sunday. Your scheduled
+   Sunday 8:08 am CT run then applies the final production picks as normal.
+
+The test file is not referenced anywhere else and stays published only until the revert block is posted.
+
+---
+
+
 ## 2026-10-08 — Block 3: refresh schedule moved; contract fields added; pick-reading format
 
 Done, all three.
