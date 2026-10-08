@@ -3,8 +3,8 @@
   "name": "Casey",
   "dog_rate": {
    "tossup": 0.409,
-   "close": 0.12,
-   "other": 0.066
+   "close": 0.134,
+   "other": 0.096
   },
   "bias_team": null,
   "bias_strength": 0.0,
@@ -19,12 +19,12 @@
     3
    ],
    "close": [
-    12,
-    1
+    18,
+    2
    ],
    "other": [
-    28,
-    2
+    37,
+    4
    ]
   }
  },
@@ -33,7 +33,7 @@
   "dog_rate": {
    "tossup": 0.435,
    "close": 0.168,
-   "other": 0.009
+   "other": 0.007
   },
   "bias_team": "GB",
   "bias_strength": 0.4,
@@ -48,11 +48,11 @@
     5
    ],
    "close": [
-    12,
-    2
+    18,
+    3
    ],
    "other": [
-    28,
+    37,
     0
    ]
   }
@@ -61,8 +61,8 @@
   "name": "Nolan",
   "dog_rate": {
    "tossup": 0.354,
-   "close": 0.12,
-   "other": 0.066
+   "close": 0.181,
+   "other": 0.074
   },
   "bias_team": "CHI",
   "bias_strength": 0.4,
@@ -77,12 +77,12 @@
     2
    ],
    "close": [
-    12,
-    1
+    18,
+    3
    ],
    "other": [
-    28,
-    2
+    37,
+    3
    ]
   }
  },
@@ -90,8 +90,8 @@
   "name": "Sheila",
   "dog_rate": {
    "tossup": 0.423,
-   "close": 0.178,
-   "other": 0.011
+   "close": 0.175,
+   "other": 0.009
   },
   "bias_team": "CHI",
   "bias_strength": 0.4,
@@ -106,11 +106,11 @@
     4
    ],
    "close": [
-    12,
-    2
+    18,
+    3
    ],
    "other": [
-    28,
+    37,
     0
    ]
   }
@@ -119,8 +119,8 @@
   "name": "Kaleigh",
   "dog_rate": {
    "tossup": 0.453,
-   "close": 0.304,
-   "other": 0.124
+   "close": 0.313,
+   "other": 0.143
   },
   "bias_team": "GB",
   "bias_strength": 0.4,
@@ -135,12 +135,12 @@
     3
    ],
    "close": [
-    10,
-    3
+    16,
+    5
    ],
    "other": [
-    27,
-    4
+    36,
+    6
    ]
   }
  },
@@ -148,8 +148,8 @@
   "name": "Molly",
   "dog_rate": {
    "tossup": 0.722,
-   "close": 0.34,
-   "other": 0.035
+   "close": 0.338,
+   "other": 0.094
   },
   "bias_team": null,
   "bias_strength": 0.0,
@@ -164,12 +164,12 @@
     4
    ],
    "close": [
-    12,
-    3
+    18,
+    5
    ],
    "other": [
-    27,
-    0
+    36,
+    3
    ]
   }
  }
