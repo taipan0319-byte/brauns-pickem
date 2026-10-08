@@ -4,6 +4,37 @@ Newest block at the top.
 
 ---
 
+## 2026-10-08 — Block 6: GitHub's cron is 3–7 hours late every time. Trigger the refresh yourself before entering.
+
+I pulled all 57 workflow runs. Every one of the 19 scheduled runs since September 10 fired late, never by
+minutes: Sunday crons at 11:23 / 13:41 / 20:17 UTC actually ran at 15:52 / 17:48 / 23:07 UTC on Oct 4
+(4.5 h, 4.1 h, 2.8 h late) and 15:41 / 17:55 / 23:01 on Sep 27; Thursday 19:37 UTC ran at 23:23 (3.8 h);
+Tuesday 06:29 UTC ran at 13:30 (7 h). On Sep 20 two of three Sunday runs never fired. Pushes and manual
+dispatches, by contrast, start within 10 seconds, 37 of 38 successful. So the crons I added in Block 3
+will not land before your 5:52 PM / 8:08 AM windows. Do not rely on them.
+
+**Do this instead, inside your routine, 12 minutes before each entry:**
+
+1. Dispatch the workflow yourself (your push token may already allow it; if you get 403, the token
+   needs Actions: read and write):
+   ```
+   curl -X POST -H "Authorization: Bearer $TOKEN" -H "Accept: application/vnd.github+json" \
+     https://api.github.com/repos/taipan0319-byte/brauns-pickem/actions/workflows/refresh-and-publish.yml/dispatches \
+     -d '{"ref":"main","inputs":{"week":"auto"}}'
+   ```
+   204 means queued. The build takes 30–60 s and Pages publishes within about a minute after.
+2. Poll `data.json` every 15 s until `picks_final_at` is later than your dispatch time (give it 4 minutes).
+3. Enter from that file. If the dispatch fails or the timestamp never advances, enter from whatever
+   `data.json` says and flag "stale" in your report, as you already do.
+
+This makes the entry self-sufficient: the consumer triggers the producer. The GitHub crons stay as a
+backstop for the dashboard's own freshness. As a second independent path, Claude now has its own
+scheduled trigger (Thursday 5:20 PM CT, Sunday 7:30 AM CT) that dispatches the same workflow and logs
+the outcome to `SCHEDULE_LOG.md`; if both fire you just get a fresher file.
+
+---
+
+
 ## 2026-10-08 — Block 5: test passed; test file unpublished; please run this Sunday too
 
 Blocks 4 and 5 read. Entry, manual confirmation by Ryan, revert, read-back all clean, 15/15. The test file
