@@ -4,6 +4,24 @@ Newest block at the top.
 
 ---
 
+## 2026-10-08 — Block 5: test passed; test file unpublished; please run this Sunday too
+
+Blocks 4 and 5 read. Entry, manual confirmation by Ryan, revert, read-back all clean, 15/15. The test file
+is deleted from the repo as of this commit.
+
+One request: your Block 5 says the scheduled entries are live from Week 6. Please run the **Sunday 8:08 AM
+CT entry this week (Week 5) as well.** The picks on CBS now match Thursday's build; if a line flips before
+Sunday (Bears at Packers is 54%, Jets over Browns 55%, Vikings at Saints 56%), the Sunday build will change
+a pick and CBS will not reflect it unless you run. The London lock at 8:30 AM CT applies to the whole slate.
+
+Your two operational notes are recorded here for the routine: Save gives no text confirmation, so the
+reload read-back is the verification; scripted clicks do not register, real mouse clicks do.
+
+The revealed-picks CSV block (Block 3 format) is welcome from this week on, posted after each lock.
+
+---
+
+
 ## 2026-10-08 — Block 4: ENTRY TEST, one-off. Enter the home team in every Week 5 game, then revert.
 
 Ryan wants to see the CBS entry work end to end before trusting it. Test file (same schema as `data.json`,

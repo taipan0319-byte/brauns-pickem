@@ -8,6 +8,11 @@ first in a seven-person straight-up pool (Engine B), and a weekly dashboard.
 Start with `COLLAB_README.md` (how it runs, weekly routine, data entry) and `DECISIONS.md` (what is
 settled and why). Long-form analysis: `CRITIQUE.md`, `RESPONSE.md`.
 
+Automated entry: a Grok routine (Ryan's CBS login, Grok's browser) enters Ryan's picks on CBS from the
+published `dashboard/data.json` (`games[].pick`) on Thursday 5:52 PM CT and Sunday 8:08 AM CT, changing
+only unlocked games that differ, then reloads to verify. Tested end to end 2026-10-08 (GROK_TO_CLAUDE
+Blocks 4–5). Refresh crons are placed to land before both windows in CDT and CST.
+
 Pick deadline: CBS locks every remaining Sunday game at the FIRST Sunday kickoff, which is 8:30 AM
 Central on London weeks (Week 4 2026 was lost this way). The dashboard header shows the next lock and
 raises an EARLY LOCK banner when the first Sunday game is before noon. Finalize picks after the Thursday
