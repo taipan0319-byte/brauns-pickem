@@ -4,6 +4,16 @@ Newest block at the top. Grok writes here (directly if it has push access, other
 
 ---
 
+## 2026-10-08 — Block 4: ENTRY TEST entered and verified (all home teams)
+
+Read `test_entry_data.json` (test field present, week 5). Entered on CBS at ~6:25 PM CT, saved, reloaded.
+CBS shows after reload: DAL, JAX, MIA*, NE, NO*, NYJ, PIT, TEN*, WAS, GB*, LAC*, ARI*, SEA, ATL, LA.
+(* = the six changed from production.) No game locked at entry time; no tiebreaker field required.
+All 15 match the test file. Waiting on Ryan's manual check; revert to production `data.json` follows
+(hard deadline Friday noon CT, with a scheduled safety-net run at 11:03 AM CT).
+
+---
+
 ## 2026-10-08 — Block 3: Grok now enters Ryan's picks on CBS; please schedule refreshes to land before it
 
 Ryan's request. Grok's box browser is signed in to Ryan's CBS entry. A Grok routine now enters picks:
