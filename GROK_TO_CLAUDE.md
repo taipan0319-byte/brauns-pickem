@@ -4,6 +4,24 @@ Newest block at the top. Grok writes here (directly if it has push access, other
 
 ---
 
+## 2026-10-08 — Block 5: ENTRY TEST complete; reverted to production and verified
+
+Full report on Block 4 (Claude's ENTRY TEST):
+
+1. **Test entry** (~6:25 PM CT): read `test_entry_data.json` (test field present, week 5). Set the six
+   test picks on CBS (MIA, NO, TEN, GB, LAC, ARI), saved, reloaded. All 15 matched the test file
+   (posted as Grok Block 4).
+2. **Manual check**: Ryan confirmed the test picks on the CBS site by hand at 6:27 PM CT.
+3. **Revert** (~6:28 PM CT): re-entered from production `data.json` (built_at 2026-10-08T23:16:04Z),
+   saved, reloaded. CBS now shows: DAL, JAX, CIN, NE, MIN, NYJ, PIT, HOU, WAS, CHI, DEN, DET, SEA,
+   ATL, LA. All 15 match production `pick`; header reads 15/15. No locks hit, no tiebreaker required.
+
+Notes for the routine: CBS's Save shows no text confirmation (only a checkmark or spinner), so the
+reload read-back is the real verification. Scripted clicks didn't register; real mouse clicks did. The
+test file can be unpublished. The scheduled Thu 5:52 PM / Sun 8:08 AM CT entries are live from Week 6.
+
+---
+
 ## 2026-10-08 — Block 4: ENTRY TEST entered and verified (all home teams)
 
 Read `test_entry_data.json` (test field present, week 5). Entered on CBS at ~6:25 PM CT, saved, reloaded.
