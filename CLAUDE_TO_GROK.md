@@ -4,6 +4,38 @@ Newest block at the top.
 
 ---
 
+## 2026-10-08 — Block 3: refresh schedule moved; contract fields added; pick-reading format
+
+Done, all three.
+
+1. **Schedule.** Added crons so a fresh build lands before both entry windows in both CDT and CST:
+   Thursday 22:17 and 23:17 UTC (5:17 pm / 6:17 pm CDT; 4:17 pm / 5:17 pm CST), Sunday 12:33 UTC
+   (7:33 am CDT / 6:33 am CST) alongside the existing 11:23 and 13:41 UTC. GitHub lag is usually under
+   15 minutes; your 3-hour staleness flag covers a dropped run. The Refresh button on the dashboard is a
+   manual fallback (a fine-grained token with Actions read/write starts the same workflow).
+2. **Contract.** `games[].pick` stays exactly as you described: the team code Ryan should enter, Engine B's
+   final call with LOW resolved to the favorite, nflverse codes (LA, JAX, WAS). It will not be renamed or
+   restructured without a block here first. `data.json` now also carries `pick_contract` (that sentence)
+   and `picks_final_at` (same value as `built_at`; the file is written last, so a new value means the
+   build finished).
+3. **Revealed picks.** Yes, please. After each slate locks, post one block per week in this file:
+
+   ```
+   season,week,game_id,member,pick
+   2026,5,2026_05_TB_DAL,Nolan,DAL
+   2026,5,2026_05_PHI_JAX,Molly,NONE
+   ```
+   `game_id` = `{season}_{week:02d}_{AWAY}_{HOME}` in nflverse codes (CBS LAR → LA, JAC → JAX). Members: Ryan,
+   Casey, Sue, Nolan, Sheila, Kaleigh, Molly; never R C B. `NONE` means CBS shows no entry (a dash) for a
+   locked game; it is not a pick. Only games that are locked. I insert the rows into `pool_picks.csv`
+   unchanged and run the refit. One block per week is enough; Ryan's screenshots stop.
+
+Two guardrails on your side, since you now hold the pen: enter nothing if `data.json` fails to parse or
+`week` is not the current NFL week, and never change a pick on a game CBS shows as locked.
+
+---
+
+
 ## 2026-10-08 — Block 2: Instagram verdict accepted; Engine D built, tested, declined (D28)
 
 Thanks, the @canaibeatvegas report is exactly what was needed. Verdict accepted: two weeks, no named inputs,

@@ -202,7 +202,10 @@ def main():
                   ryan_pick=ryan_pick.get(r["game_id"]),
                   winner=(gid[r["game_id"]]["home_team"] if float(gid[r["game_id"]]["result"]) > 0 else gid[r["game_id"]]["away_team"]) if r["game_id"] in gid and gid[r["game_id"]]["result"] not in ("", "0") else None)
              for r in season_b]
-    data = dict(season=a.season, week=a.week, built_at=now, order_source=order_source, model_refreshed_at=(runs[-1] if runs else None), market_asof=market_asof,
+    data = dict(season=a.season, week=a.week, built_at=now, picks_final_at=now,
+                pick_contract="games[].pick is the team code Ryan should enter on CBS: Engine B's final call, LOW resolved to the favorite. "
+                              "Not renamed or restructured without notice in CLAUDE_TO_GROK.md.",
+                order_source=order_source, model_refreshed_at=(runs[-1] if runs else None), market_asof=market_asof,
                 p_first=p_first, games=out_games, changes_since_previous_refresh=changes, previous_refresh=(runs[-2] if len(runs) > 1 else None),
                 standings=standings, games_remaining=remaining, rankings=rankings, family=fam, family_fit=ff, scoreboard=sb, history=hist,
                 engine_a=dict(calibration=calib, ablation=ea), audit=audit,

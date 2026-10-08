@@ -9,10 +9,15 @@ on:
   schedule:
     # GitHub delays or drops top-of-the-hour crons under load (Sunday 13:00 UTC was skipped twice).
     # Off-peak minutes, and two Sunday-morning attempts so at least one lands before the noon kickoffs.
-    - cron: "23 11 * * 0"  # Sunday 6:23 am CT
-    - cron: "41 13 * * 0"  # Sunday 8:41 am CT
+    # Grok enters Ryan's picks on CBS at Thu 5:52 pm CT and Sun 8:08 am CT (Grok Block 3); a fresh build must
+    # land before each. Actions cron is UTC and lags 5-15 min; pairs below cover CDT (UTC-5) and CST (UTC-6).
+    - cron: "23 11 * * 0"  # Sunday 6:23 am CDT / 5:23 am CST
+    - cron: "33 12 * * 0"  # Sunday 7:33 am CDT / 6:33 am CST  <- before the 8:08 entry in CDT
+    - cron: "41 13 * * 0"  # Sunday 8:41 am CDT / 7:41 am CST  <- before the 8:08 entry in CST
     - cron: "17 20 * * 0"  # Sunday 3:17 pm CT (early-game finals)
     - cron: "37 19 * * 4"  # Thursday 2:37 pm CT
+    - cron: "17 22 * * 4"  # Thursday 5:17 pm CDT / 4:17 pm CST  <- before the 5:52 entry in CDT
+    - cron: "17 23 * * 4"  # Thursday 6:17 pm CDT / 5:17 pm CST  <- before the 5:52 entry in CST
     - cron: "37 19 * * 1"  # Monday 2:37 pm CT
     - cron: "29 06 * * 2"  # Tuesday 1:29 am CT (Monday-night final, week rollover)
   push:
