@@ -154,6 +154,19 @@ Entries here survived review. Anything not listed is open. Format: ID, decision,
   if the family model is roughly right, about zero if badly wrong, no measured cost". D27 stands. No
   correlation term added (nothing to fit it on before the Week 9 revisit).
 
+- **D28. Engine D, a Vegas-free efficiency model (Grok Block 2): built, tested, no weekly log (2026-10-08).**
+  `engine_d.py`, output in `dashboard/engine_d_output.txt`. Home-win logistic regression with NO market input:
+  Engine C's team-efficiency pipeline (pass/rush EPA for and against, yards per attempt, sack rates, turnover
+  margin, prior-weeks-only, exponentially weighted, shrunk toward last season) plus Elo, rest and home field.
+  This closes the gap D2 left open ("EPA untested") that D26 covered only as a residual for underdogs.
+  Walk-forward 2014–2022: 63.7% straight up vs market 65.6%, log loss 0.633 vs 0.613; 368 disagreements with
+  the closing favorite, Engine D's side won 44.0% vs 41.3% market-implied (+1.1 SE). Holdout 2023–2025, trained
+  once on ≤2022: 64.2% vs 68.5%, log loss 0.632 vs 0.608; 127 disagreements, Engine D's side won 36.2% vs
+  43.1% implied (−1.6 SE). Residual check (market + Engine D features): log loss 0.6081 → 0.6083, 35 pick
+  flips, flipped side won 15 of 35. Verdict: the market already contains everything the efficiency numbers
+  know and more; when they disagree, the market is right more often than it says it should be. No weekly
+  log (it would be a second opinion that is wrong on its disagreements). Research harness only, same as C.
+
 ## Unresolved (conservative production choice in force)
 
 - **U1. Tie rule.** In force: ties split evenly. Ryan recalls CBS resolves season ties by Super Bowl

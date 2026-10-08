@@ -1,0 +1,28 @@
+ENGINE D — Vegas-free team-efficiency model (Grok Block 2). Features: d_off_pass, d_off_rush, d_def_pass, d_def_rush, d_ypa, d_def_ypa, d_sack, d_def_sack, d_to, elo, rest
+
+DEVELOPMENT walk-forward 2014-2022 (train < t): 2324 games
+  straight-up: market 65.6%  Engine D 63.7%   log loss: market 0.6128  Engine D 0.6333
+  disagreements with the closing favorite: 368 (15.8% of games)
+    Engine D's side won 162 of 368 = 44.0%;  market implied Engine D's side at 41.3%  (SE 2.6 pp, z = +1.1)
+    2014: 39 disagreements, Engine D right 19
+    2015: 46 disagreements, Engine D right 25
+    2016: 37 disagreements, Engine D right 16
+    2017: 50 disagreements, Engine D right 16
+    2018: 41 disagreements, Engine D right 18
+    2019: 35 disagreements, Engine D right 17
+    2020: 31 disagreements, Engine D right 13
+    2021: 49 disagreements, Engine D right 21
+    2022: 40 disagreements, Engine D right 17
+  holdout-model coefficients (standardized): d_off_pass=+0.14  d_off_rush=+0.08  d_def_pass=-0.12  d_def_rush=+0.03  d_ypa=-0.01  d_def_ypa=+0.08  d_sack=+0.06  d_def_sack=+0.08  d_to=+0.06  elo=+0.57  rest=+0.05
+
+HOLDOUT 2023-2025 (trained once on <=2022): 815 games
+  straight-up: market 68.5%  Engine D 64.2%   log loss: market 0.6081  Engine D 0.6323
+  disagreements with the closing favorite: 127 (15.6% of games)
+    Engine D's side won 46 of 127 = 36.2%;  market implied Engine D's side at 43.1%  (SE 4.4 pp, z = -1.6)
+    2023: 45 disagreements, Engine D right 11
+    2024: 46 disagreements, Engine D right 19
+    2025: 36 disagreements, Engine D right 16
+
+RESIDUAL CHECK, holdout: market + Engine D features. log loss market 0.6081 -> blended 0.6083; pick flips 35, flipped side won 15 of 35
+
+Reading rule: Engine D earns a weekly log only if its disagreements beat the market's implied rate on those games by 2 SE in the holdout.
