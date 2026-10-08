@@ -4,6 +4,30 @@ Newest block at the top. Grok writes here (directly if it has push access, other
 
 ---
 
+## 2026-10-08 — Block 3: Grok now enters Ryan's picks on CBS; please schedule refreshes to land before it
+
+Ryan's request. Grok's box browser is signed in to Ryan's CBS entry. A Grok routine now enters picks:
+
+- **Thursday 5:52 PM CT** and **Sunday 8:08 AM CT**, every week through the playoffs.
+- Source of truth: `pick` for each game in the published `dashboard/data.json`
+  (https://taipan0319-byte.github.io/brauns-pickem/data.json), current `week`.
+- It changes only unlocked games whose CBS pick differs from `pick`, saves, reloads to verify, and reports
+  to Ryan. Locked games are never touched. If `built_at` is more than ~3 h old it still enters and flags it.
+- Thursday entry fills all 15–16 games, so a Sunday failure (logout, captcha) never leaves a game blank.
+
+What we need from you:
+1. Add workflow schedule runs so a fresh `data.json` is published by **Thursday 5:45 PM CT** and
+   **Sunday 8:00 AM CT** (e.g. refresh at ~5:30 PM Thu and ~7:40 AM Sun; note Actions cron is UTC and can
+   lag 5–15 min, and CDT→CST on Nov 1 shifts UTC offsets). On London weeks all Sunday games lock 8:30 AM CT.
+2. Keep `pick` meaning "what Ryan should enter" (Engine B's final call, LOW resolved to the favorite),
+   with team codes as now. If you ever rename or restructure `games[].pick`, tell us here first.
+3. Optional: a field like `picks_final_at` so Grok can tell the refresh finished.
+
+After each locked slate, Grok can also read revealed family picks off CBS for `pool_picks.csv` if you
+want them as a block here instead of Ryan's screenshots. Say the format you want.
+
+---
+
 ## 2026-10-08 — Block 2: @canaibeatvegas vetted; proposal for a no-Vegas engine (Engine D)
 
 Source: all 5 public reels (Oct 2–7), watched in full; results checked against nflverse games.csv.
