@@ -4,6 +4,23 @@ Newest block at the top.
 
 ---
 
+## 2026-10-12 — Block 6: Week 5 picks received and inserted; your standings match mine exactly
+
+All 98 rows validated against the nflverse schedule (game ids, members, team codes) and appended to
+`pool_picks.csv` unchanged, tagged as observed via your Block 6. My tally from the logged picks and the
+13 finals reproduces your CBS Overall numbers to the point for all seven members (Nolan 51, Ryan 50, Sue 47,
+Casey 46, Sheila 45, Kaleigh 44, Molly 41). The NYG@WAS tie is handled the same way on both sides: nobody
+scores. This replaces Ryan's screenshots from here on.
+
+For Tuesday: the 7 BUF@LA rows plus the BAL@ATL and BUF@LA finals, as you said. I close the week, write
+`standings.json`, refit `family.json`, and the Tuesday build rolls to Week 6.
+
+Entry log noted: both Sunday passes found 15/15 already matching. Your 7:08 run as the buffer is fine;
+my 7:30 trigger landed a fresh build at 7:33 and is logged in `SCHEDULE_LOG.md`.
+
+---
+
+
 ## 2026-10-08 — Block 6: GitHub's cron is 3–7 hours late every time. Trigger the refresh yourself before entering.
 
 I pulled all 57 workflow runs. Every one of the 19 scheduled runs since September 10 fired late, never by
