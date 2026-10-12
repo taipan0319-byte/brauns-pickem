@@ -1,13 +1,13 @@
 {
  "season": 2026,
  "week": 5,
- "built_at": "2026-10-12T01:30:41Z",
- "picks_final_at": "2026-10-12T01:30:41Z",
+ "built_at": "2026-10-12T16:37:56Z",
+ "picks_final_at": "2026-10-12T16:37:56Z",
  "pick_contract": "games[].pick is the team code Ryan should enter on CBS: Engine B's final call, LOW resolved to the favorite. Not renamed or restructured without notice in CLAUDE_TO_GROK.md.",
  "order_source": "kickoff time, then NFL schedule id (CBS within-slot order not recorded for this week)",
- "model_refreshed_at": "2026-10-12T01:30:41Z",
- "market_asof": "2026-10-12T01:30:40Z",
- "p_first": 0.5017,
+ "model_refreshed_at": "2026-10-12T16:37:56Z",
+ "market_asof": "2026-10-12T16:37:55Z",
+ "p_first": 0.5009,
  "games": [
   {
    "game_id": "2026_05_TB_DAL",
@@ -501,9 +501,9 @@
    "weekday": "SUN",
    "kickoff_ct": "7:20 PM CT",
    "kickoff_iso": "2026-10-11T19:20:00-05:00",
-   "result": null,
-   "away_score": null,
-   "home_score": null,
+   "result": -7.0,
+   "away_score": "30",
+   "home_score": "23",
    "ryan_pick": "ATL",
    "fav": "ATL",
    "dog": "BAL",
@@ -525,7 +525,9 @@
     "-175"
    ],
    "p_fav_injury_adj": null,
-   "watch": []
+   "watch": [],
+   "winner": "BAL",
+   "pick_correct": false
   },
   {
    "game_id": "2026_05_BUF_LA",
@@ -542,22 +544,22 @@
    "ryan_pick": null,
    "fav": "LA",
    "dog": "BUF",
-   "p_fav": 0.6164,
+   "p_fav": 0.6092,
    "pick": "LA",
    "pick_name": "Rams",
    "fav_name": "Rams",
    "dog_name": "Bills",
    "confidence": "HIGH",
    "family_fav_rate": 0.782,
-   "dP_dog": -0.022,
-   "mc_noise": 0.0017,
-   "logged_at": "2026-10-12T01:30:41Z",
-   "rationale": "LA is the market favorite at 61.6%. Taking BUF would lower P(finish first) by 2.2 points: with about 78% of the family expected on LA, the dog buys little differentiation and costs 0.23 expected points.",
+   "dP_dog": -0.0193,
+   "mc_noise": 0.0021,
+   "logged_at": "2026-10-12T16:37:56Z",
+   "rationale": "LA is the market favorite at 60.9%. Taking BUF would lower P(finish first) by 1.9 points: with about 78% of the family expected on LA, the dog buys little differentiation and costs 0.22 expected points.",
    "engine_a_pick": "LA",
    "spread": "3.5",
    "ml": [
-    "150",
-    "-180"
+    "145",
+    "-175"
    ],
    "p_fav_injury_adj": null,
    "watch": []
@@ -566,7 +568,7 @@
  "changes_since_previous_refresh": [
   "DET@ARI: P(DET) 68.5% \u2192 69.6%"
  ],
- "previous_refresh": "2026-10-11T23:38:30Z",
+ "previous_refresh": "2026-10-12T01:30:41Z",
  "standings": {
   "Ryan": 41,
   "Casey": 39,
@@ -576,7 +578,7 @@
   "Kaleigh": 37,
   "Molly": 34
  },
- "games_remaining": 195,
+ "games_remaining": 194,
  "rankings": {
   "weeks": [
    1,
@@ -668,12 +670,12 @@
      "2": 9,
      "3": 8,
      "4": 10,
-     "5": 7
+     "5": 8
     },
-    "logged_total": 44,
+    "logged_total": 45,
     "cbs_total": 37,
-    "dog_picks": 21,
-    "dog_wins": 8,
+    "dog_picks": 22,
+    "dog_wins": 9,
     "missed": 3
    },
    {
@@ -706,7 +708,7 @@
    "4": 9,
    "5": 9
   },
-  "games_final": 76
+  "games_final": 77
  },
  "family": [
   {
@@ -1062,11 +1064,11 @@
   ]
  },
  "scoreboard": {
-  "games_scored": 76,
+  "games_scored": 77,
   "engine_a_correct": 50,
   "engine_b_correct": 49,
   "ryan_correct": 50,
-  "ryan_entered": 76,
+  "ryan_entered": 77,
   "engine_b_value": -1
  },
  "history": [
@@ -11464,7 +11466,7 @@
    "confidence": "HIGH",
    "p_first": 0.6454,
    "ryan_pick": "ATL",
-   "winner": null
+   "winner": "BAL"
   },
   {
    "logged_at": "2026-10-06T13:31:08Z",
@@ -11674,7 +11676,7 @@
    "confidence": "HIGH",
    "p_first": 0.5406,
    "ryan_pick": "ATL",
-   "winner": null
+   "winner": "BAL"
   },
   {
    "logged_at": "2026-10-08T21:34:55Z",
@@ -11884,7 +11886,7 @@
    "confidence": "HIGH",
    "p_first": 0.5228,
    "ryan_pick": "ATL",
-   "winner": null
+   "winner": "BAL"
   },
   {
    "logged_at": "2026-10-08T21:38:48Z",
@@ -12094,7 +12096,7 @@
    "confidence": "HIGH",
    "p_first": 0.523,
    "ryan_pick": "ATL",
-   "winner": null
+   "winner": "BAL"
   },
   {
    "logged_at": "2026-10-08T22:55:58Z",
@@ -12304,7 +12306,7 @@
    "confidence": "HIGH",
    "p_first": 0.523,
    "ryan_pick": "ATL",
-   "winner": null
+   "winner": "BAL"
   },
   {
    "logged_at": "2026-10-08T23:10:20Z",
@@ -12514,7 +12516,7 @@
    "confidence": "HIGH",
    "p_first": 0.523,
    "ryan_pick": "ATL",
-   "winner": null
+   "winner": "BAL"
   },
   {
    "logged_at": "2026-10-08T23:16:04Z",
@@ -12724,7 +12726,7 @@
    "confidence": "HIGH",
    "p_first": 0.5229,
    "ryan_pick": "ATL",
-   "winner": null
+   "winner": "BAL"
   },
   {
    "logged_at": "2026-10-08T23:30:18Z",
@@ -12934,7 +12936,7 @@
    "confidence": "HIGH",
    "p_first": 0.5229,
    "ryan_pick": "ATL",
-   "winner": null
+   "winner": "BAL"
   },
   {
    "logged_at": "2026-10-08T23:54:25Z",
@@ -13144,7 +13146,7 @@
    "confidence": "HIGH",
    "p_first": 0.5223,
    "ryan_pick": "ATL",
-   "winner": null
+   "winner": "BAL"
   },
   {
    "logged_at": "2026-10-09T02:58:15Z",
@@ -13340,7 +13342,7 @@
    "confidence": "HIGH",
    "p_first": 0.521,
    "ryan_pick": "ATL",
-   "winner": null
+   "winner": "BAL"
   },
   {
    "logged_at": "2026-10-10T22:41:51Z",
@@ -13536,7 +13538,7 @@
    "confidence": "HIGH",
    "p_first": 0.52,
    "ryan_pick": "ATL",
-   "winner": null
+   "winner": "BAL"
   },
   {
    "logged_at": "2026-10-11T04:17:41Z",
@@ -13732,7 +13734,7 @@
    "confidence": "HIGH",
    "p_first": 0.5191,
    "ryan_pick": "ATL",
-   "winner": null
+   "winner": "BAL"
   },
   {
    "logged_at": "2026-10-11T12:17:34Z",
@@ -13928,7 +13930,7 @@
    "confidence": "HIGH",
    "p_first": 0.5191,
    "ryan_pick": "ATL",
-   "winner": null
+   "winner": "BAL"
   },
   {
    "logged_at": "2026-10-11T12:18:08Z",
@@ -14124,7 +14126,7 @@
    "confidence": "HIGH",
    "p_first": 0.5191,
    "ryan_pick": "ATL",
-   "winner": null
+   "winner": "BAL"
   },
   {
    "logged_at": "2026-10-11T12:33:24Z",
@@ -14320,7 +14322,7 @@
    "confidence": "HIGH",
    "p_first": 0.5171,
    "ryan_pick": "ATL",
-   "winner": null
+   "winner": "BAL"
   },
   {
    "logged_at": "2026-10-11T13:15:46Z",
@@ -14516,7 +14518,7 @@
    "confidence": "HIGH",
    "p_first": 0.5201,
    "ryan_pick": "ATL",
-   "winner": null
+   "winner": "BAL"
   },
   {
    "logged_at": "2026-10-11T16:40:55Z",
@@ -14698,7 +14700,7 @@
    "confidence": "HIGH",
    "p_first": 0.5156,
    "ryan_pick": "ATL",
-   "winner": null
+   "winner": "BAL"
   },
   {
    "logged_at": "2026-10-11T17:45:57Z",
@@ -14880,7 +14882,7 @@
    "confidence": "HIGH",
    "p_first": 0.5156,
    "ryan_pick": "ATL",
-   "winner": null
+   "winner": "BAL"
   },
   {
    "logged_at": "2026-10-11T18:24:41Z",
@@ -14950,7 +14952,7 @@
    "confidence": "HIGH",
    "p_first": 0.4984,
    "ryan_pick": "ATL",
-   "winner": null
+   "winner": "BAL"
   },
   {
    "logged_at": "2026-10-11T22:42:23Z",
@@ -14992,7 +14994,7 @@
    "confidence": "HIGH",
    "p_first": 0.4995,
    "ryan_pick": "ATL",
-   "winner": null
+   "winner": "BAL"
   },
   {
    "logged_at": "2026-10-11T23:38:30Z",
@@ -15020,7 +15022,7 @@
    "confidence": "HIGH",
    "p_first": 0.5017,
    "ryan_pick": "ATL",
-   "winner": null
+   "winner": "BAL"
   },
   {
    "logged_at": "2026-10-12T01:30:41Z",
@@ -15033,6 +15035,20 @@
    "dP_dog": -0.022,
    "confidence": "HIGH",
    "p_first": 0.5017,
+   "ryan_pick": null,
+   "winner": null
+  },
+  {
+   "logged_at": "2026-10-12T16:37:56Z",
+   "season": 2026,
+   "week": 5,
+   "game_id": "2026_05_BUF_LA",
+   "fav": "LA",
+   "p_fav": 0.6092,
+   "recommendation": "LA",
+   "dP_dog": -0.0193,
+   "confidence": "HIGH",
+   "p_first": 0.5009,
    "ryan_pick": null,
    "winner": null
   }
