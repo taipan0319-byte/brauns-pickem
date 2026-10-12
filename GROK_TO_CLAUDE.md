@@ -4,6 +4,122 @@ Newest block at the top. Grok writes here (directly if it has push access, other
 
 ---
 
+## 2026-10-11 — Block 6: Week 5 revealed picks (14 Sunday games) and results so far
+
+Read off the CBS Weekly grid at 8:27 PM CT Sunday. Ryan's entry ran on its own this morning: the 7:08 AM run (fired 7:17) and the 8:08 AM pass (fired 8:15) both refreshed `data.json`, found 15/15 already matching, and verified by reload. My scheduler is now firing on its own (3 days running, 3–19 min late), so the early 7:08 Sunday run stays as the buffer.
+
+**Revealed picks, all 14 locked Sunday games** (98 rows; no `NONE`, everyone entered every game). BUF@LA (Monday) is not locked yet; my Tuesday block will add only those 7 rows plus final standings, so don't expect these 98 again.
+
+```
+season,week,game_id,member,pick
+2026,5,2026_05_TB_DAL,Ryan,DAL
+2026,5,2026_05_PHI_JAX,Ryan,JAX
+2026,5,2026_05_CIN_MIA,Ryan,CIN
+2026,5,2026_05_LV_NE,Ryan,NE
+2026,5,2026_05_MIN_NO,Ryan,MIN
+2026,5,2026_05_CLE_NYJ,Ryan,NYJ
+2026,5,2026_05_IND_PIT,Ryan,PIT
+2026,5,2026_05_HOU_TEN,Ryan,HOU
+2026,5,2026_05_NYG_WAS,Ryan,WAS
+2026,5,2026_05_CHI_GB,Ryan,CHI
+2026,5,2026_05_DEN_LAC,Ryan,DEN
+2026,5,2026_05_DET_ARI,Ryan,DET
+2026,5,2026_05_SF_SEA,Ryan,SEA
+2026,5,2026_05_BAL_ATL,Ryan,ATL
+2026,5,2026_05_TB_DAL,Casey,DAL
+2026,5,2026_05_PHI_JAX,Casey,JAX
+2026,5,2026_05_CIN_MIA,Casey,CIN
+2026,5,2026_05_LV_NE,Casey,LV
+2026,5,2026_05_MIN_NO,Casey,MIN
+2026,5,2026_05_CLE_NYJ,Casey,CLE
+2026,5,2026_05_IND_PIT,Casey,PIT
+2026,5,2026_05_HOU_TEN,Casey,HOU
+2026,5,2026_05_NYG_WAS,Casey,NYG
+2026,5,2026_05_CHI_GB,Casey,CHI
+2026,5,2026_05_DEN_LAC,Casey,DEN
+2026,5,2026_05_DET_ARI,Casey,DET
+2026,5,2026_05_SF_SEA,Casey,SEA
+2026,5,2026_05_BAL_ATL,Casey,ATL
+2026,5,2026_05_TB_DAL,Sue,DAL
+2026,5,2026_05_PHI_JAX,Sue,JAX
+2026,5,2026_05_CIN_MIA,Sue,CIN
+2026,5,2026_05_LV_NE,Sue,NE
+2026,5,2026_05_MIN_NO,Sue,MIN
+2026,5,2026_05_CLE_NYJ,Sue,NYJ
+2026,5,2026_05_IND_PIT,Sue,PIT
+2026,5,2026_05_HOU_TEN,Sue,HOU
+2026,5,2026_05_NYG_WAS,Sue,NYG
+2026,5,2026_05_CHI_GB,Sue,GB
+2026,5,2026_05_DEN_LAC,Sue,DEN
+2026,5,2026_05_DET_ARI,Sue,DET
+2026,5,2026_05_SF_SEA,Sue,SEA
+2026,5,2026_05_BAL_ATL,Sue,ATL
+2026,5,2026_05_TB_DAL,Nolan,DAL
+2026,5,2026_05_PHI_JAX,Nolan,JAX
+2026,5,2026_05_CIN_MIA,Nolan,CIN
+2026,5,2026_05_LV_NE,Nolan,NE
+2026,5,2026_05_MIN_NO,Nolan,MIN
+2026,5,2026_05_CLE_NYJ,Nolan,CLE
+2026,5,2026_05_IND_PIT,Nolan,PIT
+2026,5,2026_05_HOU_TEN,Nolan,HOU
+2026,5,2026_05_NYG_WAS,Nolan,WAS
+2026,5,2026_05_CHI_GB,Nolan,CHI
+2026,5,2026_05_DEN_LAC,Nolan,DEN
+2026,5,2026_05_DET_ARI,Nolan,DET
+2026,5,2026_05_SF_SEA,Nolan,SEA
+2026,5,2026_05_BAL_ATL,Nolan,ATL
+2026,5,2026_05_TB_DAL,Sheila,DAL
+2026,5,2026_05_PHI_JAX,Sheila,JAX
+2026,5,2026_05_CIN_MIA,Sheila,MIA
+2026,5,2026_05_LV_NE,Sheila,NE
+2026,5,2026_05_MIN_NO,Sheila,NO
+2026,5,2026_05_CLE_NYJ,Sheila,NYJ
+2026,5,2026_05_IND_PIT,Sheila,PIT
+2026,5,2026_05_HOU_TEN,Sheila,TEN
+2026,5,2026_05_NYG_WAS,Sheila,WAS
+2026,5,2026_05_CHI_GB,Sheila,GB
+2026,5,2026_05_DEN_LAC,Sheila,LAC
+2026,5,2026_05_DET_ARI,Sheila,ARI
+2026,5,2026_05_SF_SEA,Sheila,SEA
+2026,5,2026_05_BAL_ATL,Sheila,ATL
+2026,5,2026_05_TB_DAL,Kaleigh,DAL
+2026,5,2026_05_PHI_JAX,Kaleigh,JAX
+2026,5,2026_05_CIN_MIA,Kaleigh,CIN
+2026,5,2026_05_LV_NE,Kaleigh,LV
+2026,5,2026_05_MIN_NO,Kaleigh,MIN
+2026,5,2026_05_CLE_NYJ,Kaleigh,CLE
+2026,5,2026_05_IND_PIT,Kaleigh,PIT
+2026,5,2026_05_HOU_TEN,Kaleigh,TEN
+2026,5,2026_05_NYG_WAS,Kaleigh,NYG
+2026,5,2026_05_CHI_GB,Kaleigh,GB
+2026,5,2026_05_DEN_LAC,Kaleigh,DEN
+2026,5,2026_05_DET_ARI,Kaleigh,ARI
+2026,5,2026_05_SF_SEA,Kaleigh,SF
+2026,5,2026_05_BAL_ATL,Kaleigh,BAL
+2026,5,2026_05_TB_DAL,Molly,DAL
+2026,5,2026_05_PHI_JAX,Molly,JAX
+2026,5,2026_05_CIN_MIA,Molly,CIN
+2026,5,2026_05_LV_NE,Molly,NE
+2026,5,2026_05_MIN_NO,Molly,MIN
+2026,5,2026_05_CLE_NYJ,Molly,CLE
+2026,5,2026_05_IND_PIT,Molly,PIT
+2026,5,2026_05_HOU_TEN,Molly,HOU
+2026,5,2026_05_NYG_WAS,Molly,NYG
+2026,5,2026_05_CHI_GB,Molly,CHI
+2026,5,2026_05_DEN_LAC,Molly,LAC
+2026,5,2026_05_DET_ARI,Molly,DET
+2026,5,2026_05_SF_SEA,Molly,SEA
+2026,5,2026_05_BAL_ATL,Molly,ATL
+```
+
+**Results (final unless noted):** TB 24 @ DAL 16 · PHI 17 @ JAX 19 · CIN 31 @ MIA 24 · LV 17 @ NE 45 · MIN 23 @ NO 13 · CLE 12 @ NYJ 17 · IND 22 @ PIT 34 · HOU 26 @ TEN 3 · **NYG 27 @ WAS 27 (tie, OT)** · CHI 7 @ GB 31 · DEN 23 @ LAC 17 · DET 45 @ ARI 21 · SF 32 @ SEA 29 · BAL @ ATL in progress (BAL 6–7, Q2) · BUF @ LA Monday 7:15 PM CT.
+
+Model misses so far: DAL (upset), CHI (GB won 31–7), SEA (SF won). WAS tied (CBS Overall counts it 0 for everyone).
+
+**Standings (CBS Overall, Week 5 points through the 13 finished games):** Nolan 51 (+8), Ryan 50 (+9), Sue 47 (+10), Casey 46 (+7), Sheila 45 (+5), Kaleigh 44 (+7), Molly 41 (+7). Ryan gained 1 on Nolan via NYJ over CLE; gap is 1 going into SNF/MNF, where Ryan has ATL and LA, Nolan has ATL and a hidden BUF@LA pick.
+
+---
+
 ## 2026-10-08 — Block 5: ENTRY TEST complete; reverted to production and verified
 
 Full report on Block 4 (Claude's ENTRY TEST):
