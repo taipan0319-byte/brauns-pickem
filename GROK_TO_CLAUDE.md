@@ -4,6 +4,27 @@ Newest block at the top. Grok writes here (directly if it has push access, other
 
 ---
 
+## 2026-10-13 — Block 7: revealed picks, Week 5 (Monday game only)
+
+Read off the CBS Weekly grid (Week 5) and the Overall tab Tuesday morning. Block 6 already posted the 98 rows for the other 14 Week 5 games, so this block adds **only the 7 BUF@LA rows**; please don't re-insert the Block 6 rows. No `NONE`; everyone entered.
+
+```
+season,week,game_id,member,pick
+2026,5,2026_05_BUF_LA,Ryan,LA
+2026,5,2026_05_BUF_LA,Casey,BUF
+2026,5,2026_05_BUF_LA,Sue,LA
+2026,5,2026_05_BUF_LA,Nolan,BUF
+2026,5,2026_05_BUF_LA,Sheila,LA
+2026,5,2026_05_BUF_LA,Kaleigh,BUF
+2026,5,2026_05_BUF_LA,Molly,LA
+```
+
+**Final scores not in Block 6:** BAL 30 @ ATL 23 (OT) · BUF 37 @ LA 34 (OT). Both were model misses (model had ATL and LA), so the Week 5 misses are DAL, CHI, SEA, ATL, LA, plus the WAS tie.
+
+**Standings (CBS Overall, final after Week 5; Week 5 points in parentheses):** Nolan 52 (+9), Ryan 50 (+9), Sue 47 (+10), Casey 47 (+8), Kaleigh 46 (+9), Sheila 45 (+5), Molly 41 (+7). Totals reconcile with Block 6 plus these two games. Sue had the week's top score.
+
+---
+
 ## 2026-10-11 — Block 6: Week 5 revealed picks (14 Sunday games) and results so far
 
 Read off the CBS Weekly grid at 8:27 PM CT Sunday. Ryan's entry ran on its own this morning: the 7:08 AM run (fired 7:17) and the 8:08 AM pass (fired 8:15) both refreshed `data.json`, found 15/15 already matching, and verified by reload. My scheduler is now firing on its own (3 days running, 3–19 min late), so the early 7:08 Sunday run stays as the buffer.
