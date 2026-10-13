@@ -1,13 +1,13 @@
 {
  "season": 2026,
  "week": 5,
- "built_at": "2026-10-12T16:37:56Z",
- "picks_final_at": "2026-10-12T16:37:56Z",
+ "built_at": "2026-10-13T01:35:25Z",
+ "picks_final_at": "2026-10-13T01:35:25Z",
  "pick_contract": "games[].pick is the team code Ryan should enter on CBS: Engine B's final call, LOW resolved to the favorite. Not renamed or restructured without notice in CLAUDE_TO_GROK.md.",
  "order_source": "kickoff time, then NFL schedule id (CBS within-slot order not recorded for this week)",
- "model_refreshed_at": "2026-10-12T16:37:56Z",
- "market_asof": "2026-10-12T16:37:55Z",
- "p_first": 0.5009,
+ "model_refreshed_at": "2026-10-13T01:35:25Z",
+ "market_asof": "2026-10-13T01:35:24Z",
+ "p_first": 0.4954,
  "games": [
   {
    "game_id": "2026_05_TB_DAL",
@@ -544,31 +544,32 @@
    "ryan_pick": null,
    "fav": "LA",
    "dog": "BUF",
-   "p_fav": 0.6092,
+   "p_fav": 0.6225,
    "pick": "LA",
    "pick_name": "Rams",
    "fav_name": "Rams",
    "dog_name": "Bills",
    "confidence": "HIGH",
-   "family_fav_rate": 0.782,
-   "dP_dog": -0.0193,
-   "mc_noise": 0.0021,
-   "logged_at": "2026-10-12T16:37:56Z",
-   "rationale": "LA is the market favorite at 60.9%. Taking BUF would lower P(finish first) by 1.9 points: with about 78% of the family expected on LA, the dog buys little differentiation and costs 0.22 expected points.",
+   "family_fav_rate": 0.929,
+   "dP_dog": -0.0237,
+   "mc_noise": 0.0002,
+   "logged_at": "2026-10-13T01:35:25Z",
+   "rationale": "LA is the market favorite at 62.3%. Taking BUF would lower P(finish first) by 2.4 points: with about 93% of the family expected on LA, the dog buys little differentiation and costs 0.25 expected points.",
    "engine_a_pick": "LA",
    "spread": "3.5",
    "ml": [
-    "145",
-    "-175"
+    "154",
+    "-185"
    ],
    "p_fav_injury_adj": null,
    "watch": []
   }
  ],
  "changes_since_previous_refresh": [
-  "DET@ARI: P(DET) 68.5% \u2192 69.6%"
+  "DET@ARI: P(DET) 68.5% \u2192 69.6%",
+  "BUF@LA: P(LA) 60.9% \u2192 62.3%"
  ],
- "previous_refresh": "2026-10-12T01:30:41Z",
+ "previous_refresh": "2026-10-12T16:37:56Z",
  "standings": {
   "Ryan": 41,
   "Casey": 39,
@@ -15049,6 +15050,20 @@
    "dP_dog": -0.0193,
    "confidence": "HIGH",
    "p_first": 0.5009,
+   "ryan_pick": null,
+   "winner": null
+  },
+  {
+   "logged_at": "2026-10-13T01:35:25Z",
+   "season": 2026,
+   "week": 5,
+   "game_id": "2026_05_BUF_LA",
+   "fav": "LA",
+   "p_fav": 0.6225,
+   "recommendation": "LA",
+   "dP_dog": -0.0237,
+   "confidence": "HIGH",
+   "p_first": 0.4954,
    "ryan_pick": null,
    "winner": null
   }
