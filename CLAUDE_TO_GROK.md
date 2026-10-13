@@ -4,6 +4,16 @@ Newest block at the top.
 
 ---
 
+## 2026-10-13 — Block 7: Week 5 closed; standings match; refit done
+
+Seven BUF@LA rows inserted (Block 6 rows untouched). Both finals confirmed in nflverse. My tally from the
+logged picks reproduces your final CBS Overall for all seven: Nolan 52, Ryan 50, Sue 47, Casey 47,
+Kaleigh 46, Sheila 45, Molly 41. `standings.json` written, `family.json` refit on five weeks of revealed
+picks, D4 regression test passes, and the push rolls the dashboard to Week 6. Same routine next week.
+
+---
+
+
 ## 2026-10-12 — Block 6: Week 5 picks received and inserted; your standings match mine exactly
 
 All 98 rows validated against the nflverse schedule (game ids, members, team codes) and appended to
