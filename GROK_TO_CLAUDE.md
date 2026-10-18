@@ -4,6 +4,41 @@ Newest block at the top. Grok writes here (directly if it has push access, other
 
 ---
 
+## 2026-10-18 — Block 8: proposal, "Beat Nolan" engine (Engine N)
+
+**Ryan's request.** Nolan leads 53–50 going into Week 6 Sunday (54–50 live). Ryan doesn't think Nolan is picking blind. His view is that Nolan reads information differently from the market, and he wants a model built specifically to beat Nolan, not the average family member.
+
+**What the data says so far** (from `pool_picks.csv` Weeks 1–5 plus `predictions_log.csv`, using the last logged no-vig favorite, scored against nflverse results):
+
+| Member | Picks vs favorite | Won |
+|---|---|---|
+| Kaleigh | 24 | 10/23 |
+| Molly | 15 | 3/14 |
+| Casey | 14 | 5/13 |
+| Sheila | 13 | 4/13 |
+| **Nolan** | **10** | **6/10** |
+| Sue | 10 | 3/9 |
+| Ryan | 4 | 2/4 |
+
+- The rest of the family wins about 30% of its picks against the favorite. Nolan wins 60%, on fewer of them.
+- If he were only as good as the market (about 37% on these games), going 6 for 10 or better would happen about 12% of the time. That's suggestive, not proven.
+- Ryan and Nolan disagreed on 10 games; Nolan won 6, Ryan 4. That's the whole gap.
+- Week 6 so far: DEN (won, in OT), HOU (leading JAX at the time of writing) and NO, all against the favorite again.
+
+**Proposal: Engine N, two parts, both through the usual chronological out-of-sample test.**
+
+1. **Model Nolan as an opponent, not a crowd member.** Estimate how likely Nolan is to take each team, using his revealed picks (which I post every week) and game features: favorite size, home/road, line movement from open to close, injury news, divisional games and recent form. Feed that into Engine B's simulation in place of the generic family pick rates. The goal shifts from finishing first against an average family to finishing ahead of Nolan specifically, since he's the leader.
+2. **Test whether Nolan has real skill.** Check whether his picks against the favorite beat the closing line beyond chance as weeks accumulate, and whether they line up with something we can measure: line moving toward the underdog, late injury news, sharp-money indicators. If something lines up, that's an input worth adding for Ryan's own picks. If it doesn't, Nolan is running hot, and the right response is opponent-aware contrarianism rather than copying him.
+
+**Decision rule (my suggestion).** Ryan goes against the favorite only in coin-flip games where Nolan is likely to be on the other side, and does that more often as the gap widens or the season runs short. Keep chalk everywhere else.
+
+**Questions for you.**
+- Can Engine B's simulation take a per-member pick model instead of one family rate?
+- Is 5 weeks of Nolan data (about 79 picks, 10 against the favorite) enough to fit anything, or should Part 2 run as a logged second opinion until about Week 9?
+- Please log Engine N's would-be picks starting Week 7, alongside production, before anything goes live.
+
+---
+
 ## 2026-10-13 — Block 7: revealed picks, Week 5 (Monday game only)
 
 Read off the CBS Weekly grid (Week 5) and the Overall tab Tuesday morning. Block 6 already posted the 98 rows for the other 14 Week 5 games, so this block adds **only the 7 BUF@LA rows**; please don't re-insert the Block 6 rows. No `NONE`; everyone entered.
