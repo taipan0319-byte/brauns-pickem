@@ -203,14 +203,20 @@ Entries here survived review. Anything not listed is open. Format: ID, decision,
   (4) **Loyalty strength is estimated, not assumed.** `fit_family` now identifies bias_strength from picks in
   games involving the member's team against what band rates alone predict, shrunk toward the 0.4 prior with
   N = 10. After five weeks: Sue 0.60, Nolan 0.60, Kaleigh 0.60 (each 5 of 5 on their team), Sheila 0.27 (3 of 5).
-  (5) **Replay robustness, done** (Block 21; outputs `dashboard/backtest_engine_b_{futureprior,skilled,
-  skilled_calibrated}.txt`). D27 rule vs chalk, pp: future weeks at the 57% placeholder instead of their eventual
-  closing line, real results: +4.1 / +5.5 / +1.6 (as modeled / ×0.5 / ×2). Season-clustered SE is 3–4× the naive
-  SE (as-modeled +4.1 ± 2.3 clustered vs ± 0.6 naive), so every gain in this project is 1–2 SE on 11 season
-  paths, not 5–7. "Skilled Nolan" (his dog picks win more than priced, marginal preserved): k = 0.25 → chalk's
-  own P(first) 58% → 44% real, 61% → 47% calibrated; k = 0.5 → 18% / 17%. The D27 rule stays positive in all four
-  cells (+2.4, +1.9 real; +1.7, +1.1 calibrated) and never turns negative; the late-variance rule does. If Nolan
-  truly had that skill, no pick policy of Ryan's would recover it; only learning what he reacts to could.
+  (5) **Replay validation of the D30 search itself (Block 23; outputs `dashboard/backtest_engine_b_d30*.txt`).**
+  ChatGPT (Block 8) caught that the first replays still ran the old coordinate search and that the "skilled
+  Nolan" setting lifted his dogs by +11/+21 pp, not +4/+8; both corrected (replay now carries the joint search;
+  skill reparametrized to an exact +5 / +10 pp per game, verified on 2M draws). D30 production rule vs chalk,
+  11 seasons × 100 draws, season-clustered SE in parentheses: real results +2.2 (2.4) / +2.6 (3.2) / −0.8 (1.9)
+  for as-modeled / ×0.5 / ×2; calibrated +1.3 (0.9) / +3.6 (0.8) / −1.3 (0.5). Skilled Nolan: chalk's own
+  P(first) falls 57 → 52 → 42% real (61 → 57 → 45% calibrated) at +0 / +5 / +10 pp; the rule stays +2.6 / +1.8
+  real and +0.9 / +1.4 calibrated. Honest readings: (a) every gain is about one clustered SE; (b) the joint search
+  is not better than the D27 coordinate rule on the 11-season average and is slightly worse calibrated (+1.3 vs
+  +1.9 as modeled), because it takes ~1 more dog a season; its value is the endgame failure mode it removes, which
+  an average over whole seasons cannot show; (c) the ×2-wilder family is the one cell where the rule costs
+  beyond its error bar (−1.3 ± 0.5 calibrated). Kept in force; the gate (deviation set must beat confirmation-half
+  noise) is listed as U8 for a possible tightening to 2× noise, to be decided on 2026 prospective logs, not
+  re-tuned on the same 11 seasons.
   Not changed: the family-rate sensitivity ChatGPT measured is real and is why the rates are refit weekly, not a
   bug; correlation lifting chalk agrees with Block 18; standings-dependent opponent behavior is deferred until
   there are enough revealed picks to see it (the tracker data will show it); the single-source nflverse line
@@ -240,6 +246,9 @@ Entries here survived review. Anything not listed is open. Format: ID, decision,
   public team is the underdog, the favorite wins 63.4% vs 66.1% priced (−2.7 ± 1.4, 1.9 SE), with no pick
   flips since the favorite still wins 63%. Conclusion: emotion in the market, where measurable, makes
   chalk better, not worse. Logged for a season-end look with U5; production unchanged.
+- **U8. D30 gate strength (2026-10-18).** The joint-search deviation set is kept when its gain on the confirmation
+  half exceeds the noise estimate (1×). The replay suggests a 2× gate would trade a little average P(first) for
+  less downside in the wilder-family cell. Not re-tuned on the same seasons; the 2026 log decides at season end.
 - **U4. Level differences between ChatGPT's simulation grid and Claude's.** Same shape, different
   levels; cause not identified (probability distribution, tie handling, or where opponent
   deviations land). Does not change any decision. Closed unless it starts to matter.

@@ -1,0 +1,48 @@
+U7 Engine B replay [REAL RESULTS] [future lines: closing]  seasons 2015-2025  reps/season 100  inner sims 20000  N=7  ties split
+Real game results; opponents simulated from family.json under three truths. Paired vs chalk.
+
+== opponents really behave: as-modeled ==
+policy        P(first)  vs chalk     SE SE(season) dogs/season dog hit% exp hit%  wk1-9  wk10+
+chalk           0.5721   +0.0000 0.0000     0.0000        0.00      0.0      0.0   0.00   0.00
+prod            0.5815   +0.0094 0.0032     0.0062        0.76     43.7     43.1   0.22   0.54
+any_positive    0.5858   +0.0136 0.0083     0.0295        6.67     42.6     43.2   1.36   5.30
+signif          0.5933   +0.0211 0.0069     0.0205        3.88     42.6     42.7   0.54   3.33
+d30             0.5945   +0.0224 0.0073     0.0242        5.08     42.5     42.4   0.67   4.41
+static_52       0.6632   +0.0911 0.0106     0.0727       12.18     53.0     49.0   7.55   4.64
+late_var        0.6094   +0.0373 0.0076     0.0348        6.45     49.3     43.3   0.00   6.45
+
+== opponents really behave: Nolan skilled: his dogs win +5 pp over price ==
+policy        P(first)  vs chalk     SE SE(season) dogs/season dog hit% exp hit%  wk1-9  wk10+
+chalk           0.5167   +0.0000 0.0000     0.0000        0.00      0.0      0.0   0.00   0.00
+prod            0.5259   +0.0092 0.0032     0.0060        0.86     44.8     42.9   0.24   0.62
+any_positive    0.5295   +0.0129 0.0085     0.0294        7.51     43.0     43.2   1.42   6.08
+signif          0.5429   +0.0262 0.0071     0.0201        4.64     43.4     42.8   0.58   4.06
+d30             0.5427   +0.0261 0.0075     0.0253        5.86     43.1     42.5   0.68   5.18
+static_52       0.5995   +0.0829 0.0109     0.0743       12.18     53.0     49.0   7.55   4.64
+late_var        0.5529   +0.0362 0.0078     0.0364        7.64     48.6     43.3   0.00   7.64
+
+== opponents really behave: Nolan skilled: his dogs win +10 pp over price ==
+policy        P(first)  vs chalk     SE SE(season) dogs/season dog hit% exp hit%  wk1-9  wk10+
+chalk           0.4233   +0.0000 0.0000     0.0000        0.00      0.0      0.0   0.00   0.00
+prod            0.4311   +0.0077 0.0034     0.0062        1.00     44.4     43.0   0.26   0.74
+any_positive    0.4430   +0.0196 0.0089     0.0346        9.14     43.0     43.1   1.51   7.63
+signif          0.4443   +0.0210 0.0067     0.0196        5.79     43.2     43.0   0.61   5.18
+d30             0.4417   +0.0184 0.0079     0.0289        7.71     43.1     42.4   0.75   6.96
+static_52       0.4945   +0.0711 0.0115     0.0807       12.18     53.0     49.0   7.55   4.64
+late_var        0.4456   +0.0223 0.0086     0.0403        9.98     47.3     43.3   0.00   9.98
+
+per season, as-modeled truth: P(first)
+season          chalk         prod any_positive       signif          d30    static_52     late_var
+2015            0.490        0.500        0.520        0.515        0.535        0.490        0.655
+2016            0.850        0.830        0.715        0.765        0.760        0.795        0.775
+2017            0.995        0.995        0.935        0.965        0.955        0.900        0.985
+2018            0.645        0.660        0.700        0.680        0.665        0.535        0.615
+2019            0.128        0.107        0.237        0.178        0.222        0.665        0.423
+2020            0.493        0.493        0.440        0.453        0.460        0.493        0.408
+2021            0.055        0.102        0.235        0.205        0.245        0.318        0.140
+2022            0.322        0.355        0.463        0.440        0.428        0.853        0.343
+2023            0.915        0.940        0.875        0.925        0.905        0.825        0.885
+2024            0.950        0.960        0.925        0.935        0.935        0.970        0.920
+2025            0.450        0.455        0.398        0.465        0.430        0.450        0.553
+
+dog hit% = share of recommended dogs that actually won; exp hit% = what the market said they should win.

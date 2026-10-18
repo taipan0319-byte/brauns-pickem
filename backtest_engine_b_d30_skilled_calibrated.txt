@@ -1,0 +1,48 @@
+U7 Engine B replay [CALIBRATED CONTROL: outcomes drawn from market] [future lines: closing]  seasons 2015-2025  reps/season 100  inner sims 20000  N=7  ties split
+Real game results; opponents simulated from family.json under three truths. Paired vs chalk.
+
+== opponents really behave: as-modeled ==
+policy        P(first)  vs chalk     SE SE(season) dogs/season dog hit% exp hit%  wk1-9  wk10+
+chalk           0.6152   +0.0000 0.0000     0.0000        0.00      0.0      0.0   0.00   0.00
+prod            0.6235   +0.0083 0.0031     0.0040        0.70     44.0     42.6   0.14   0.56
+any_positive    0.6398   +0.0247 0.0077     0.0105        5.63     43.6     43.4   1.06   4.57
+signif          0.6338   +0.0186 0.0067     0.0075        3.30     43.4     42.9   0.39   2.92
+d30             0.6283   +0.0132 0.0064     0.0093        4.37     42.5     42.3   0.51   3.86
+static_52       0.6173   +0.0021 0.0129     0.0146       12.18     49.5     49.0   7.55   4.64
+late_var        0.6102   -0.0050 0.0073     0.0053        6.26     42.6     43.1   0.00   6.26
+
+== opponents really behave: Nolan skilled: his dogs win +5 pp over price ==
+policy        P(first)  vs chalk     SE SE(season) dogs/season dog hit% exp hit%  wk1-9  wk10+
+chalk           0.5717   +0.0000 0.0000     0.0000        0.00      0.0      0.0   0.00   0.00
+prod            0.5785   +0.0068 0.0032     0.0054        0.76     43.3     42.5   0.14   0.62
+any_positive    0.5921   +0.0205 0.0078     0.0073        6.13     43.2     43.3   1.08   5.05
+signif          0.5879   +0.0162 0.0062     0.0057        3.75     43.0     42.9   0.41   3.34
+d30             0.5803   +0.0086 0.0067     0.0073        4.91     41.7     42.3   0.51   4.40
+static_52       0.5712   -0.0005 0.0133     0.0124       12.18     49.5     49.0   7.55   4.64
+late_var        0.5679   -0.0038 0.0080     0.0061        7.26     42.9     43.1   0.00   7.26
+
+== opponents really behave: Nolan skilled: his dogs win +10 pp over price ==
+policy        P(first)  vs chalk     SE SE(season) dogs/season dog hit% exp hit%  wk1-9  wk10+
+chalk           0.4535   +0.0000 0.0000     0.0000        0.00      0.0      0.0   0.00   0.00
+prod            0.4617   +0.0082 0.0034     0.0020        0.88     43.0     42.6   0.17   0.71
+any_positive    0.4744   +0.0209 0.0075     0.0068        7.87     43.4     43.1   1.11   6.75
+signif          0.4752   +0.0217 0.0062     0.0069        4.98     43.9     43.1   0.44   4.53
+d30             0.4674   +0.0139 0.0063     0.0074        6.46     42.6     42.4   0.52   5.93
+static_52       0.4598   +0.0064 0.0133     0.0118       12.18     49.5     49.0   7.55   4.64
+late_var        0.4427   -0.0108 0.0072     0.0053        9.70     42.6     43.1   0.00   9.70
+
+per season, as-modeled truth: P(first)
+season          chalk         prod any_positive       signif          d30    static_52     late_var
+2015            0.583        0.603        0.647        0.628        0.598        0.565        0.553
+2016            0.560        0.570        0.630        0.588        0.597        0.608        0.543
+2017            0.675        0.683        0.693        0.653        0.653        0.688        0.665
+2018            0.540        0.560        0.545        0.575        0.560        0.578        0.565
+2019            0.625        0.620        0.660        0.610        0.620        0.635        0.625
+2020            0.605        0.600        0.598        0.603        0.593        0.630        0.590
+2021            0.695        0.683        0.710        0.703        0.700        0.655        0.710
+2022            0.575        0.610        0.600        0.595        0.590        0.545        0.550
+2023            0.660        0.665        0.615        0.690        0.645        0.553        0.645
+2024            0.615        0.620        0.685        0.675        0.705        0.632        0.620
+2025            0.633        0.643        0.655        0.650        0.650        0.700        0.645
+
+dog hit% = share of recommended dogs that actually won; exp hit% = what the market said they should win.

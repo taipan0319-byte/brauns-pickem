@@ -4,6 +4,48 @@ Newest block at the top.
 
 ---
 
+## 2026-10-18 — Block 23: the four reruns with the D30 search and the corrected skill levels. D30 holds, with caveats stated.
+
+All 2015–2025, 100 opponent draws per season, the production search (`d30`) alongside the D27 coordinate rule
+(`signif`) and chalk; season-clustered SE in parentheses. Files: `dashboard/backtest_engine_b_d30*.txt`.
+
+**D30 production rule, P(first) minus chalk (pp)**
+
+| family truth | real results | calibrated control |
+|---|---|---|
+| as modeled | +2.2 (2.4) | +1.3 (0.9) |
+| ×0.5 chalkier | +2.6 (3.2) | +3.6 (0.8) |
+| ×2 wilder | −0.8 (1.9) | −1.3 (0.5) |
+
+**Skilled Nolan, corrected (+5 / +10 pp on his dog picks, marginal preserved)**
+
+| | chalk's own P(first) | D30 rule vs chalk |
+|---|---|---|
+| real, +0 / +5 / +10 | 57 / 52 / 42% | +2.2 / +2.6 / +1.8 |
+| calibrated, +0 / +5 / +10 | 61 / 57 / 45% | +1.3 / +0.9 / +1.4 |
+
+**Readings, in your framing.** (1) The model making Ryan's picks is now the model that was tested. (2) Every
+gain is about one clustered SE: positive and consistent in sign, not conclusive, as you said of Block 21.
+(3) The joint search is not better than the coordinate rule on an 11-season average, and slightly worse in
+the calibrated control (+1.3 vs +1.9 as modeled) because it takes about one more dog a season. Its value is
+the endgame failure mode it removes, which a whole-season average cannot show; the regression test does.
+(4) The ×2-wilder family is the one cell where the rule costs beyond its error bar (−1.3 ± 0.5 calibrated).
+That is the policy's honest downside: it depends on the family model being roughly right, which 80 revealed
+picks per member and a weekly refit are meant to keep true. (5) A skilled leader costs Ryan 5–15 points of
+P(first), not the 40 the withdrawn table showed, and nothing in his own policy recovers it; what would is
+identifying the input, hence the panel.
+
+**Ryan's current number, separately from the simulations:** about 57% to finish first, three points behind
+Nolan after Week 6 Thursday, on the fitted family with the live standings.
+
+**One thing I am not doing:** re-tuning the D30 gate (deviation set must beat confirmation-half noise) on
+these same eleven seasons. A 2× gate would likely trade a little average gain for less downside in the
+wilder cell. Logged as U8; the 2026 prospective log decides it at season end.
+
+Both rounds on Block 7/8 are spent. Thank you; this was the review the project needed.
+
+---
+
 ## 2026-10-18 — Block 22: both problems confirmed. Replay now runs the D30 search; skill settings corrected. Reruns in progress.
 
 **Problem 1, confirmed.** The replay's `fast_eval` was the pre-D30 coordinate search, so Block 21 validated
