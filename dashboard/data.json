@@ -1,13 +1,13 @@
 {
  "season": 2026,
  "week": 6,
- "built_at": "2026-10-18T14:41:45Z",
- "picks_final_at": "2026-10-18T14:41:45Z",
+ "built_at": "2026-10-18T14:59:35Z",
+ "picks_final_at": "2026-10-18T14:59:35Z",
  "pick_contract": "games[].pick is the team code Ryan should enter on CBS: Engine B's final call, LOW resolved to the favorite. Not renamed or restructured without notice in CLAUDE_TO_GROK.md.",
  "order_source": "kickoff time, then NFL schedule id (CBS within-slot order not recorded for this week)",
- "model_refreshed_at": "2026-10-18T14:41:45Z",
- "market_asof": "2026-10-18T14:41:43Z",
- "p_first": 0.566,
+ "model_refreshed_at": "2026-10-18T14:59:35Z",
+ "market_asof": "2026-10-18T14:59:33Z",
+ "p_first": 0.5708,
  "games": [
   {
    "game_id": "2026_06_SEA_DEN",
@@ -496,10 +496,10 @@
    "dog_name": "Commanders",
    "confidence": "HIGH",
    "family_fav_rate": 0.908,
-   "dP_dog": -0.0479,
-   "mc_noise": 0.0003,
-   "logged_at": "2026-10-18T14:41:45Z",
-   "rationale": "SF is the market favorite at 78.7%. Taking WAS would lower P(finish first) by 4.8 points: with about 91% of the family expected on SF, the dog buys little differentiation and costs 0.57 expected points.",
+   "dP_dog": -0.0467,
+   "mc_noise": 0.0025,
+   "logged_at": "2026-10-18T14:59:35Z",
+   "rationale": "SF is the market favorite at 78.7%. Taking WAS would lower P(finish first) by 4.7 points: with about 91% of the family expected on SF, the dog buys little differentiation and costs 0.57 expected points.",
    "engine_a_pick": "SF",
    "spread": "7.5",
    "ml": [
@@ -511,7 +511,7 @@
   }
  ],
  "changes_since_previous_refresh": [],
- "previous_refresh": "2026-10-18T14:24:49Z",
+ "previous_refresh": "2026-10-18T14:41:45Z",
  "standings": {
   "Ryan": 50,
   "Casey": 47,
@@ -701,7 +701,7 @@
     "other": 0.006
    },
    "bias_team": "GB",
-   "bias_strength": 0.4,
+   "bias_strength": 0.6,
    "prior_dog_rate": {
     "tossup": 0.283,
     "close": 0.174,
@@ -720,7 +720,12 @@
      44,
      0
     ]
-   }
+   },
+   "bias_observed": [
+    5,
+    5,
+    3.33
+   ]
   },
   {
    "name": "Nolan",
@@ -730,7 +735,7 @@
     "other": 0.083
    },
    "bias_team": "CHI",
-   "bias_strength": 0.4,
+   "bias_strength": 0.6,
    "prior_dog_rate": {
     "tossup": 0.437,
     "close": 0.269,
@@ -749,7 +754,12 @@
      44,
      4
     ]
-   }
+   },
+   "bias_observed": [
+    5,
+    5,
+    3.24
+   ]
   },
   {
    "name": "Sheila",
@@ -759,7 +769,7 @@
     "other": 0.082
    },
    "bias_team": "CHI",
-   "bias_strength": 0.4,
+   "bias_strength": 0.267,
    "prior_dog_rate": {
     "tossup": 0.361,
     "close": 0.222,
@@ -778,7 +788,12 @@
      44,
      4
     ]
-   }
+   },
+   "bias_observed": [
+    5,
+    3,
+    3.38
+   ]
   },
   {
    "name": "Kaleigh",
@@ -788,7 +803,7 @@
     "other": 0.181
    },
    "bias_team": "GB",
-   "bias_strength": 0.4,
+   "bias_strength": 0.6,
    "prior_dog_rate": {
     "tossup": 0.516,
     "close": 0.318,
@@ -807,7 +822,12 @@
      43,
      9
     ]
-   }
+   },
+   "bias_observed": [
+    5,
+    5,
+    3.59
+   ]
   },
   {
    "name": "Molly",
@@ -17886,6 +17906,188 @@
    "dP_dog": -0.0479,
    "confidence": "HIGH",
    "p_first": 0.566,
+   "ryan_pick": null,
+   "winner": null
+  },
+  {
+   "logged_at": "2026-10-18T14:59:35Z",
+   "season": 2026,
+   "week": 6,
+   "game_id": "2026_06_HOU_JAX",
+   "fav": "JAX",
+   "p_fav": 0.5635,
+   "recommendation": "JAX",
+   "dP_dog": 0.0,
+   "confidence": "LOCKED",
+   "p_first": 0.5708,
+   "ryan_pick": null,
+   "winner": null
+  },
+  {
+   "logged_at": "2026-10-18T14:59:35Z",
+   "season": 2026,
+   "week": 6,
+   "game_id": "2026_06_CHI_ATL",
+   "fav": "CHI",
+   "p_fav": 0.5217,
+   "recommendation": "CHI",
+   "dP_dog": 0.0,
+   "confidence": "LOCKED",
+   "p_first": 0.5708,
+   "ryan_pick": null,
+   "winner": null
+  },
+  {
+   "logged_at": "2026-10-18T14:59:35Z",
+   "season": 2026,
+   "week": 6,
+   "game_id": "2026_06_BAL_CLE",
+   "fav": "BAL",
+   "p_fav": 0.6092,
+   "recommendation": "BAL",
+   "dP_dog": 0.0,
+   "confidence": "LOCKED",
+   "p_first": 0.5708,
+   "ryan_pick": null,
+   "winner": null
+  },
+  {
+   "logged_at": "2026-10-18T14:59:35Z",
+   "season": 2026,
+   "week": 6,
+   "game_id": "2026_06_TEN_IND",
+   "fav": "IND",
+   "p_fav": 0.7221,
+   "recommendation": "IND",
+   "dP_dog": 0.0,
+   "confidence": "LOCKED",
+   "p_first": 0.5708,
+   "ryan_pick": null,
+   "winner": null
+  },
+  {
+   "logged_at": "2026-10-18T14:59:35Z",
+   "season": 2026,
+   "week": 6,
+   "game_id": "2026_06_NYJ_NE",
+   "fav": "NE",
+   "p_fav": 0.7441,
+   "recommendation": "NE",
+   "dP_dog": 0.0,
+   "confidence": "LOCKED",
+   "p_first": 0.5708,
+   "ryan_pick": null,
+   "winner": null
+  },
+  {
+   "logged_at": "2026-10-18T14:59:35Z",
+   "season": 2026,
+   "week": 6,
+   "game_id": "2026_06_NO_NYG",
+   "fav": "NYG",
+   "p_fav": 0.5043,
+   "recommendation": "NYG",
+   "dP_dog": 0.0,
+   "confidence": "LOCKED",
+   "p_first": 0.5708,
+   "ryan_pick": null,
+   "winner": null
+  },
+  {
+   "logged_at": "2026-10-18T14:59:35Z",
+   "season": 2026,
+   "week": 6,
+   "game_id": "2026_06_CAR_PHI",
+   "fav": "CAR",
+   "p_fav": 0.5934,
+   "recommendation": "CAR",
+   "dP_dog": 0.0,
+   "confidence": "LOCKED",
+   "p_first": 0.5708,
+   "ryan_pick": null,
+   "winner": null
+  },
+  {
+   "logged_at": "2026-10-18T14:59:35Z",
+   "season": 2026,
+   "week": 6,
+   "game_id": "2026_06_PIT_TB",
+   "fav": "PIT",
+   "p_fav": 0.5635,
+   "recommendation": "PIT",
+   "dP_dog": 0.0,
+   "confidence": "LOCKED",
+   "p_first": 0.5708,
+   "ryan_pick": null,
+   "winner": null
+  },
+  {
+   "logged_at": "2026-10-18T14:59:35Z",
+   "season": 2026,
+   "week": 6,
+   "game_id": "2026_06_ARI_LA",
+   "fav": "LA",
+   "p_fav": 0.8525,
+   "recommendation": "LA",
+   "dP_dog": 0.0,
+   "confidence": "LOCKED",
+   "p_first": 0.5708,
+   "ryan_pick": null,
+   "winner": null
+  },
+  {
+   "logged_at": "2026-10-18T14:59:35Z",
+   "season": 2026,
+   "week": 6,
+   "game_id": "2026_06_LAC_KC",
+   "fav": "KC",
+   "p_fav": 0.7715,
+   "recommendation": "KC",
+   "dP_dog": 0.0,
+   "confidence": "LOCKED",
+   "p_first": 0.5708,
+   "ryan_pick": null,
+   "winner": null
+  },
+  {
+   "logged_at": "2026-10-18T14:59:35Z",
+   "season": 2026,
+   "week": 6,
+   "game_id": "2026_06_BUF_LV",
+   "fav": "BUF",
+   "p_fav": 0.6806,
+   "recommendation": "BUF",
+   "dP_dog": 0.0,
+   "confidence": "LOCKED",
+   "p_first": 0.5708,
+   "ryan_pick": null,
+   "winner": null
+  },
+  {
+   "logged_at": "2026-10-18T14:59:35Z",
+   "season": 2026,
+   "week": 6,
+   "game_id": "2026_06_DAL_GB",
+   "fav": "GB",
+   "p_fav": 0.5108,
+   "recommendation": "GB",
+   "dP_dog": 0.0,
+   "confidence": "LOCKED",
+   "p_first": 0.5708,
+   "ryan_pick": null,
+   "winner": null
+  },
+  {
+   "logged_at": "2026-10-18T14:59:35Z",
+   "season": 2026,
+   "week": 6,
+   "game_id": "2026_06_WAS_SF",
+   "fav": "SF",
+   "p_fav": 0.7867,
+   "recommendation": "SF",
+   "dP_dog": -0.0467,
+   "confidence": "HIGH",
+   "p_first": 0.5708,
    "ryan_pick": null,
    "winner": null
   }
