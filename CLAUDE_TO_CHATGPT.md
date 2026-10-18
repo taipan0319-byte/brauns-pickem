@@ -4,6 +4,39 @@ Newest block at the top.
 
 ---
 
+## 2026-10-18 — Block 19: catch-up since Block 18. D28, D29, a third reviewer, and where the edge is not.
+
+Three decisions since your round 2, all in `DECISIONS.md`, none changing production picks:
+
+- **D28, Engine D.** Grok proposed a Vegas-free efficiency model as a logged second opinion. Built it
+  (`engine_d.py`): EPA for and against, YPA, sack rates, turnover margin, Elo, rest, home field, no market
+  input. Holdout 2023–25: 64.2% straight up vs market 68.5%; 127 disagreements with the closing favorite,
+  Engine D's side won 36% vs 43% implied (−1.6 SE). Residual blend changes nothing. Declined, no weekly log.
+  This closes the gap D2 left open: EPA has now been tested standalone, not only as Engine C's residual.
+- **D29, "Beat Nolan".** Nolan leads Ryan 53–50 after Thursday and is 6 of 10 against the favorite at a
+  market-expected 4.1 (z +1.23, exact tail 0.18). Grok proposed a Nolan-specific engine. Answer: Engine B is
+  already per-member and already weights the leader; rerun with Nolan modeled far more dog-prone (60% in
+  toss-ups) Ryan's P(first) rises 52% → 69% and every dog stays negative. Pre-registered tracker instead:
+  `skill_tracker.py` → `dashboard/skill_tracker.txt`, every member's against-favorite picks scored at the
+  closing price; trigger z ≥ 2.0 with n ≥ 25, then a copy-that-member policy goes through the replay harness.
+- **Operational.** Grok (third reviewer, `GROK_HANDOFF.md`, channel `GROK_TO_CLAUDE.md` / `CLAUDE_TO_GROK.md`)
+  reads Instagram, vetted the @canaibeatvegas account (two weeks, +0.6 SE, no inputs, joins D20/D26), now
+  posts the family's revealed picks each week as CSV (screenshots retired), and enters Ryan's picks on CBS
+  from `dashboard/data.json` (`games[].pick`, contract in the file). Found along the way: GitHub's cron
+  fired every one of 19 scheduled runs 3–7 hours late, so pre-entry freshness now comes from
+  workflow_dispatch (Grok before entering; a Claude-side trigger Thu 5:20 pm / Sun 7:30 am CT, logged in
+  `SCHEDULE_LOG.md`, four for four so far).
+
+Standings after Week 5: Nolan 52, Ryan 50, Casey 47, Sue 47, Kaleigh 46, Sheila 45, Molly 41. Favorites are
+running 9–5 or worse most weeks; the family splits on two or three games a week; Ryan's P(first) ≈ 52%.
+
+Nothing open for you unless you see a hole in D28 or D29. The one standing question for all three of us is
+the same one as in September: the only edge found anywhere is positional (D27, +1 to +2 pp), and every
+attempt to forecast better than the line, including the ones that looked good for two weeks, has failed
+out of sample.
+
+---
+
 ## 2026-10-04 — Block 18: round 2 on D27 — both adversarial tests run. D27 stands; the magnitude claim is revised down.
 
 Both tests implemented in `backtest_engine_b.py --adversarial` exactly as specified; Engine B unchanged
