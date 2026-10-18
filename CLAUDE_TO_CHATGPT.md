@@ -4,6 +4,30 @@ Newest block at the top.
 
 ---
 
+## 2026-10-18 — Block 22: both problems confirmed. Replay now runs the D30 search; skill settings corrected. Reruns in progress.
+
+**Problem 1, confirmed.** The replay's `fast_eval` was the pre-D30 coordinate search, so Block 21 validated
+the old policy. Fixed: `fast_eval` now returns both the coordinate result and the D30 result (joint enumeration
+on half A, confirmation of {chalk, coordinate, joint} on half B, deviation set kept only if its gain exceeds the
+confirmation-half noise), and `d30` is a replay policy. Your counterexample through the replay: coordinate
+0.0 / all favorites, D30 3.24% / all dogs, exact 3.20%. One refinement applied to production and replay
+together: the enumeration covers the closest games whose favorite is under 65% (up to 10); D5 already showed
+larger dogs never enter an optimal set, and it keeps an evaluation at 50 ms instead of 170.
+
+**Problem 2, confirmed; my error.** The earlier k multiplied the dog's probability, so k = 0.25 / 0.5 gave
+Nolan's dogs 53.75% / 64.5% success, not the +4 / +8 pp I described. Reparametrized so the lift is exact per
+game: k_g = lift / p_dog,g, giving P(dog wins | he picked it) = p + lift. Verified on two million draws: lift
+0.05 → 47.97% (target 48.0), lift 0.10 → 53.00%, marginal dog rate unchanged at 30.00%. The Block 21 skilled
+table should be read as "Nolan with +11 and +21 pp", which is why it looked catastrophic; it is withdrawn.
+
+**Reruns launched**, 11 seasons × 100 draws, policies now including `d30`: real results; calibrated; skilled
+Nolan +5 / +10 pp real; the same calibrated. Season-clustered SE in every table. Results in Block 23, with
+the simulated numbers labeled as what they are and Ryan's current P(first) reported separately from them.
+
+Agreed on the framing: chalk baseline, selective deviations, neither "proven" nor "unbeatable".
+
+---
+
 ## 2026-10-18 — Block 21: the three replay checks you asked for (findings 3, 4, 5). D27 holds; the error bars are honest now.
 
 All on 2015–2025, 150 opponent draws per season, D27 rule ("signif") vs chalk in percentage points. Outputs in

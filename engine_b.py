@@ -74,6 +74,7 @@ def scale_family(family, k):
     return [dict(m, dog_rate={b: min(0.9, r * k) for b, r in m["dog_rate"].items()}) for m in family]
 
 JOINT_K = 10   # D30: enumerate all 2^K pick combinations over the K closest games this week (ChatGPT Block 7, test 1)
+JOINT_MAX_FAV = 0.65   # only games with the favorite under this enter the enumeration (D5: bigger dogs never help)
 
 def evaluate(games, family, standings, user, sims, seed, this_week_mask, fixed_picks=None):
     """Returns (base P(first), final P(first), deltas dict, user_fav picks, P_opp, pfav, fav_team, fav_home, noise).
@@ -117,9 +118,10 @@ def evaluate(games, family, standings, user, sims, seed, this_week_mask, fixed_p
         return uf
     coord = coordinate(user_fav.copy())
     # joint enumeration over the K closest searchable games, scored on half A only
-    K = min(JOINT_K, len(order)); joint = coord.copy(); best_val = -1.0
+    cand = [i for i in order if pfav[i] < JOINT_MAX_FAV]            # dogs above this never enter an optimal set (D5)
+    K = min(JOINT_K, len(cand)); joint = coord.copy(); best_val = -1.0
     if K:
-        ks = order[:K]; W = fav_wins[A][:, ks]
+        ks = cand[:K]; W = fav_wins[A][:, ks]
         rest = coord.copy(); rest_pts = user_pts + (np.delete(rest, ks)[None, :] == np.delete(fav_wins[A], ks, axis=1)).sum(1)
         for c in range(2 ** K):
             pick = np.array([(c >> j) & 1 == 0 for j in range(K)])      # bit set = take the dog

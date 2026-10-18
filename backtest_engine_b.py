@@ -64,14 +64,20 @@ def week_cache(sd, w, s, sims, seed, future_lines="closing"):
     opp_total = opp_future + (of_w == fw_w[:, :, None]).sum(1).astype(np.int32)
     return dict(iw=iw, fw_w=fw_w, user_future=user_future, opp_total=opp_total)
 
+JOINT_K = 10
+
 def fast_eval(c, pfav_w, user_pts, opp_pts):
-    """engine_b.evaluate's coordinate search, same math, on the cached draws."""
+    """engine_b.evaluate's search, same math, on the cached draws. Returns
+    (base, final_coord, deltas_coord, user_fav_coord, noise_coord, d30_fav, d30_set_delta, d30_set_noise):
+    the first five reproduce the pre-D30 coordinate search; the last three are the D30 production search
+    (joint enumeration over the K closest games on half A, confirmation of {chalk, coordinate, joint} on half B)."""
     osc = c["opp_total"] + opp_pts[None, :].astype(np.int32)
     omax = osc.max(1); ntop = (osc == omax[:, None]).sum(1)
     tie_val = 1.0 / (ntop + 1)
     def pf_vec(us): return np.where(us > omax, 1.0, np.where(us == omax, tie_val, 0.0))
-    fw = c["fw_w"]; G = fw.shape[1]; half = fw.shape[0] // 2
+    fw = c["fw_w"]; G = fw.shape[1]; S = fw.shape[0]; half = S // 2; A, B = slice(0, half), slice(half, None)
     user_fav = pfav_w >= eb.USER_DOG_THRESHOLD
+    chalk = user_fav.copy()
     us = user_pts + c["user_future"] + (user_fav[None, :] == fw).sum(1)
     base = pf_vec(us).mean()
     order = np.argsort(pfav_w, kind="stable"); deltas = np.zeros(G); noise = np.zeros(G)
@@ -82,7 +88,26 @@ def fast_eval(c, pfav_w, user_pts, opp_pts):
             d = diff.mean(); d1 = diff[:half].mean(); d2 = diff[half:].mean()
             deltas[i] = d; noise[i] = abs(d1 - d2) / 2 + 1e-4
             user_fav[i] = d <= 0; us = us_fav if d <= 0 else us_dog
-    return base, pf_vec(us).mean(), deltas, user_fav, noise
+    coord = user_fav.copy(); final_coord = pf_vec(us).mean()
+    cand = [i for i in order if pfav_w[i] < eb.JOINT_MAX_FAV]
+    K = min(JOINT_K, len(cand)); ks = list(cand[:K]); joint = coord.copy()
+    if K:
+        W = fw[A][:, ks]; others = [j for j in range(G) if j not in ks]
+        rest = user_pts + c["user_future"][A] + ((coord[others][None, :] == fw[A][:, others]).sum(1) if others else 0)
+        omA, tvA = omax[A], tie_val[A]; best = -1.0; best_c = None
+        for cbits in range(2 ** K):
+            pick = np.array([(cbits >> j) & 1 == 0 for j in range(K)])
+            usA = rest + (W == pick[None, :]).sum(1)
+            val = np.where(usA > omA, 1.0, np.where(usA == omA, tvA, 0.0)).mean()
+            if val > best + 1e-12: best, best_c = val, pick
+        joint[ks] = best_c
+    def pfB(uf): return pf_vec(user_pts + c["user_future"] + (uf[None, :] == fw).sum(1))[B]
+    cands = {"chalk": chalk, "coordinate": coord, "joint": joint}
+    scoreB = {k: pfB(v).mean() for k, v in cands.items()}
+    keep = max(scoreB, key=lambda k: (scoreB[k], k == "chalk"))
+    d30 = cands[keep].copy(); diffB = pfB(d30) - pfB(chalk); q = len(diffB) // 2
+    set_delta = diffB.mean(); set_noise = abs(diffB[:q].mean() - diffB[q:].mean()) / 2 + 1e-4
+    return base, final_coord, deltas, coord, noise, d30, set_delta, set_noise
 
 def norm_cdf(z):
     try:
@@ -103,11 +128,12 @@ def draw_opponents(sd, truth, U0, rng):
         Z = np.sqrt(param) * S[:, None] + np.sqrt(1 - param) * rng.standard_normal((G, N))
         return norm_cdf(Z) < sd["P_opp"][0]
     if kind == "skilled":
-        # Nolan (index 2) picks the dog with probability q(1+k) when the dog actually wins and q(1-k') otherwise,
-        # k' = k p/(1-p) so his marginal dog rate is unchanged; his dog picks then win about k*p*(1-p)/... more than
-        # priced (k=0.5 -> roughly +6 to +10 pp on 40-45% dogs). ChatGPT Block 7, finding 5.
-        P = sd["P_opp"][0].copy(); k = param; j = 2
+        # Nolan (index 2): his dog picks win `lift` more often than priced, EXACTLY, marginal dog rate unchanged.
+        # Per game k = lift / p_dog: P(dog | dog won) = q(1+k), P(dog | dog lost) = q(1 - k p/(1-p)),
+        # so P(dog wins | he picked dog) = p(1+k) = p + lift. (ChatGPT Block 8: the earlier k multiplied p.)
+        P = sd["P_opp"][0].copy(); lift = param; j = 2
         p_dog = 1 - sd["pfav"]; q = 1 - P[:, j]; dog_won = ~truth["fav_won"]
+        k = np.minimum(lift / np.maximum(p_dog, 1e-9), (1 - p_dog) / np.maximum(p_dog, 1e-9))
         q_adj = np.where(dog_won, np.minimum(1, q * (1 + k)), np.maximum(0, q * (1 - k * p_dog / np.maximum(1 - p_dog, 1e-9))))
         P[:, j] = 1 - q_adj
         return U0 < P
@@ -129,7 +155,7 @@ def run_season(args):
     sd, reps, sims, truths, calibrated, future_lines = args; season = sd["season"]; t0 = time.time()
     N = len(sd["names"]); G = len(sd["pfav"]); weeks = sd["weeks"]
     caches = {w: [week_cache(sd, w, s, sims, season * 1000 + w * 10 + s, future_lines) for s in range(3)] for w in weeks}
-    policies = ["chalk", "prod", "any_positive", "signif", "static_52", "late_var"]
+    policies = ["chalk", "prod", "any_positive", "signif", "d30", "static_52", "late_var"]
     out = {t["name"]: {p: dict(pf=[], dev=0, hit=0, exp=0.0, dev_by_week={}) for p in policies} for t in truths}
     rng = np.random.default_rng(season * 7919)
     for rep in range(reps):
@@ -157,7 +183,9 @@ def run_season(args):
                         if w >= 14 and behind > 0.05 * remaining: fav = pf >= 0.62
                     elif p == "any_positive": fav = ev(w, 0, upts)[3].copy()
                     elif p == "signif":
-                        _, _, d, _, nz = ev(w, 0, upts); fav = ~(d > nz)
+                        _, _, d, _, nz, *_ = ev(w, 0, upts); fav = ~(d > nz)
+                    elif p == "d30":
+                        r = ev(w, 0, upts); fav = r[5].copy() if r[6] > r[7] else np.ones(len(iw), bool)
                     elif p == "prod":
                         r = [ev(w, s, upts) for s in range(3)]
                         fav = np.array([grade_prod([r[s][2][i] for s in range(3)], r[0][4][i], r[0][2][i]) for i in range(len(iw))])
@@ -189,10 +217,10 @@ def main():
                  [dict(name=f"correlated room rho={r}", kind="corr", param=r) for r in (0.2, 0.5, 0.8)] + \
                  [dict(name="dog rates shuffled among people", kind="perm")]
     if a.skilled:
-        truths = [dict(name="as-modeled", kind="scen", param=0)] + [dict(name=f"Nolan skilled k={k}", kind="skilled", param=k) for k in (0.25, 0.5)]
+        truths = [dict(name="as-modeled", kind="scen", param=0)] + [dict(name=f"Nolan skilled: his dogs win +{int(l*100)} pp over price", kind="skilled", param=l) for l in (0.05, 0.10)]
     jobs = [(season_data(rows, s, family), a.reps, a.sims, truths, a.calibrated, a.future_lines) for s in seasons]
     with Pool(a.procs) as pool: results = dict(pool.map(run_season, jobs, chunksize=1))
-    policies = ["chalk", "prod", "any_positive", "signif", "static_52", "late_var"]
+    policies = ["chalk", "prod", "any_positive", "signif", "d30", "static_52", "late_var"]
     print(f"U7 Engine B replay {'[CALIBRATED CONTROL: outcomes drawn from market]' if a.calibrated else '[REAL RESULTS]'} [future lines: {a.future_lines}]  seasons {a.seasons}  reps/season {a.reps}  inner sims {a.sims}  N=7  ties split")
     print("Real game results; opponents simulated from family.json under three truths. Paired vs chalk.\n")
     for tr in truths:

@@ -6,6 +6,61 @@ processing it.
 
 ---
 
+## 2026-10-18 — Block 8 (pasted by Ryan): two problems before the new model is validated [read 2026-10-18]
+
+I read the completed results and independently checked two parts. The findings are encouraging, but I found two important problems before we can call the new model validated.
+
+Claude committed Block 21 at 11:06 a.m. Central.
+
+What the completed tests support
+
+* Replacing future weeks' eventual odds with the 57% placeholder did not erase the strategy's advantage. The reported improvement over chalk was 4.1 percentage points under the fitted family assumptions.
+* Accounting for uncertainty across NFL seasons increased that result's standard error to 2.3 percentage points. A conventional confidence interval includes zero: promising, not conclusive.
+* Simply taking more late-season underdogs was less reliable than selective deviations.
+
+Problem 1: the backtest still tests the old optimizer.
+
+Production now searches combinations of picks. But the replay's fast_eval() still uses the old one-game-at-a-time search.
+
+I ran the same three-game counterexample through both committed implementations:
+
+| Implementation | Picks | Tie-adjusted first-place probability |
+|---|---|---|
+| Updated production engine | All three underdogs | 3.17% |
+| Replay used for these tests | All three favorites | 0% |
+| Exact mathematical optimum | All three underdogs | 3.20% |
+
+The production fix works on our counterexample. However, these completed backtests do not establish the performance of that updated search. They principally evaluate the earlier strategy.
+
+Problem 2: "skilled Nolan" is much stronger than described.
+
+Claude describes the two settings as giving Nolan roughly 4 or 8 percentage points of additional success on 43% underdogs.
+
+The implemented formula actually produces approximately:
+
+| | Described underdog success | Implemented success |
+|---|---|---|
+| Moderate skill | 47% | 53.75% |
+| Strong skill | 51% | 64.50% |
+
+I checked the algebra and ran two million simulated games per setting; the results matched the larger effects.
+
+That makes the dramatic drop in your simulated chances understandable—but it is not evidence that modest Nolan skill would hurt you that much. It tests a substantially stronger opponent than the handoff says.
+
+What this means for you
+
+I would retain chalk as the baseline and continue looking for selective opportunities to gain on Nolan. These results do not justify either "the model is proven" or "Nolan is unbeatable."
+
+The next validation needs to:
+
+1. Run the updated joint-search policy through the replay.
+2. Correct the Nolan settings to represent the intended skill levels.
+3. Report season-level uncertainty and distinguish hypothetical simulations from your current winning chances.
+
+The outside-forecaster panel remains worthwhile. But the most immediate unfinished work is ensuring that the model being tested is the model actually making your picks.
+
+---
+
 ## 2026-10-18 — Block 7 (pasted by Ryan): Independent NFL pool model stress test [read 2026-10-18]
 
 Date: October 18, 2026. Repository snapshot: 82b1c92ecdb45f6c291c8bee627006214ebe0bc8.
