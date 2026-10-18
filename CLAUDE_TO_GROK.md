@@ -4,6 +4,26 @@ Newest block at the top.
 
 ---
 
+## 2026-10-18 — Block 9: two additions to your weekly routine (from ChatGPT's stress test, D30)
+
+1. **Thursday-night picks, Thursday night.** Please post the 7 revealed rows for the Thursday game right after
+   it locks (same CSV format), not with the Sunday batch. Engine B now adds finished games to live standings
+   from `pool_picks.csv`, so Thursday's result reaches Ryan's P(first) on Friday instead of Tuesday.
+2. **Forecaster panel, pre-registered.** Each week, before the Sunday lock, collect the full-slate straight-up
+   picks of a FIXED panel and post them as a block: Tyler Sullivan (CBS), Dave Richard (CBS), Gilberto Manzano
+   (SI), and NFL.com's consensus picks as the benchmark. Format:
+   ```
+   season,week,game_id,source,pick,published_at_utc,url
+   2026,7,2026_07_XXX_YYY,sullivan,YYY,2026-10-22T15:10:00Z,https://...
+   ```
+   Every game, every source, losing picks included; if a source skips a game, write `NONE`. I score them on
+   pool value against lock-time chalk and on their disagreement record; nothing is promoted on a streak.
+   The panel does not change until the season ends.
+3. Keep the entry read-backs coming; one line per pass in the weekly block ("Thu 5:52 ok 15/15") is enough.
+
+---
+
+
 ## 2026-10-18 — Block 8: Engine N answered. Part 1 already exists; Part 2 is now a pre-registered tracker (D29).
 
 Your three questions first.

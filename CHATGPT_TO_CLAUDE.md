@@ -6,6 +6,146 @@ processing it.
 
 ---
 
+## 2026-10-18 — Block 7 (pasted by Ryan): Independent NFL pool model stress test [read 2026-10-18]
+
+Date: October 18, 2026. Repository snapshot: 82b1c92ecdb45f6c291c8bee627006214ebe0bc8.
+
+Finding
+
+Retain the market as a benchmark, but do not treat the present optimizer or its probability of first as settled. I independently executed the repository's Engine B against boundary cases and synthetic schedules, reviewed the A/C/D research code and replay design, and searched outside forecasting sources. I did not reproduce the complete historical A/C/D fits or certify any outside expert's entire record. No production code or CBS picks were changed.
+
+The user's concern is valid conditionally: if Nolan keeps choosing exactly the same favorites you do, an existing deficit cannot disappear. However, selecting more underdogs is not equivalent to predicting better. There are two separate reasons to differ: a forecast that puts the underdog above 50% outright, or a lower-probability pick that improves the chance of winning the pool given the gap and other picks.
+
+Tests independently executed
+
+1. Coordinate-search failure, exact answer available
+
+Three games remain. Each favorite has a 60% win probability. Nolan leads Ryan by three, all six opponents choose favorites, and the other five are too far behind to affect the result. Run the actual engine_b.evaluate with 100,000 simulations, seed 7.
+
+• Engine chooses all three favorites; probability of first = 0.
+• Exhaustive enumeration of all eight pick combinations and all eight possible result combinations finds that all three underdogs gives a tie-adjusted probability of first of 0.5 * 0.4^3 = 3.2%.
+• Each one-pick or two-pick deviation still has zero chance. The algorithm starts on chalk, changes a pick only when its individual delta is positive, and therefore cannot cross the flat region to reach the useful three-pick combination.
+
+This is a genuine optimizer counterexample. It does not establish that today's slate requires three underdogs. It disproves a general claim that the current coordinate search always finds the best catch-up policy.
+
+Required change: enumerate combinations of a predeclared shortlist of plausible games, including group deviations whose individual deltas are not positive, and test multi-start alternatives. A shortlist of 10 games has 1,024 binary combinations. Confirm selected policies on independent simulation draws; retain exact boundary cases as regression tests.
+
+2. Family-chalk sensitivity
+
+Synthetic schedule: the 13 games without final results in the October 18 09:24 CT dashboard snapshot, plus 179 artificial future games whose favorites each have a 57% probability. Artificial future team labels exclude team-loyalty effects. Use actual family.json and actual Engine B. Baseline standings are the committed Week 5 totals, including Ryan 50 and Nolan 52. Three seeds (7, 19, 43), 20,000 simulations each, per cell. Scale each member's fitted underdog rates; retain existing loyalty effects except in the all-chalk boundary.
+
+|Opponent rates                                     |Ryan trailing by 2|Ryan trailing by 3|
+|---------------------------------------------------|-----------------:|-----------------:|
+|As fitted                                          |55.6%             |50.8%             |
+|Half the fitted underdog rates                     |41.5%             |34.4%             |
+|One tenth the fitted underdog rates                |25.0%             |15.7%             |
+|Everyone always chooses chalk, no loyalty overrides|Engine returns 0% |Engine returns 0% |
+
+The last row also exposes the local-search problem; it is not a statement that every possible strategy has zero probability. These values are sensitivity experiments, not estimates of the real season's win probability.
+
+Repeating with artificial future favorites at 67% gives 76.8/69.7%, 57.2/44.0%, and 24.5/14.3% in the first three rows. This also changes which favorite-probability band applies, so it is a combined strength-and-band sensitivity, not an isolated causal effect of forecast confidence.
+
+Total optimizer sensitivity draws: 2 future-strength cases * 4 rate scales * 2 gaps * 3 seeds * 20,000 = 960,000. The boundary counterexample uses another 100,000.
+
+3. Correlated-room check
+
+Using the 57% artificial future schedule and unmodified family marginals, score a fixed all-favorite user policy with 50,000 fresh outcomes per setting. Opponent choices share a Gaussian latent variable within each game, with rho = 0, .5, .9, 1.
+Tie-adjusted first-place probabilities: 55.4%, 59.7%, 65.8%, 67.7%. Simulation SE roughly 0.20–0.21 percentage points.
+
+Correlation does not universally hurt chalk. Its effect depends on which opponents are aligned and their standings. Model source-following clusters and uncertainty rather than adding an arbitrary correlation penalty. These are synthetic, conditional results.
+
+Other material findings from source inspection
+
+1. Current-state inconsistency: standings.json and the dashboard retain Nolan 52, Ryan 50, while the reviewers report Nolan 53, Ryan 50 after Thursday. Engine B excludes completed games and does not add their points to those committed standings. Repair effective live standings before updating pool probabilities.
+2. Lock discipline: Engine B filters on whether a final result exists, not on kickoff or the CBS lock. A live game can still be treated as adjustable. The entry routine has a locked-game guard, but the optimizer must also respect actually entered, immutable picks.
+3. The historical replay uses every remaining game's eventual line, including future weeks, in week_cache. That is information a real weekly decision-maker does not possess. Replace unknown future lines with forecasts available at that historical date, or sampled future matchups and line evolution. Closing-line performance is a valid idealized benchmark, not a faithful simulation of a whole-slate early CBS deadline.
+4. Historical NFL outcomes are reused across simulated opponent replications. The reported SE across season-times-replications primarily measures conditional opponent-simulation uncertainty, not full uncertainty across future NFL seasons. Report season-clustered/blocked uncertainty, with only 11 season paths acknowledged.
+5. Opponent underdog probabilities are independent of whether the choice is genuinely informed. This assumes departures from the market have no predictive residual. Add adversarial cases where Nolan's disagreement picks win 5–10 percentage points more often than priced; do not assert he has that skill.
+6. Opponent behavior is static with respect to standings. Model leaders becoming more conservative and trailing members taking more risks, with uncertainty. The current user's future policy also assumes chalk; compare with future reoptimization.
+7. Fixed team-loyalty strength .4 survives the weekly refit: fit_family updates dog-rate bands but not bias_strength. This is an assumption, not an estimated 40% rate of blind fandom. Test zero/learned loyalty and shrink strongly with limited observations.
+8. HIGH means a strategic delta exceeds estimated Monte Carlo noise. It does not mean a high team win probability or robust advantage under input/model uncertainty.
+9. The production market feed identifies itself as a single-book snapshot. More download times are not necessarily more recent bookmaker quotes; preserve source quote timestamps.
+10. D's failed holdout does not prove that every football feature, interaction, or granular model is exhausted. Repeatedly reusing 2023–25 to judge challengers also weakens the idea of a fresh untouched holdout.
+11. A/C/D were inspected, not independently re-fit in this review. The full historical source CSV could not be retrieved through the available GitHub fetch route; it was rejected as too large/unsupported. No historical reproduction is claimed.
+
+Data priorities, ranked
+
+1. Per-book two-sided moneylines and quote times at opening, analyst publication, actual CBS lock, and final pregame close. Remove vig within each book first, then robustly combine current books. Distinguish a stale favorite from the current favorite. Use close only for later evaluation if it was unavailable at lock.
+2. Immutable entry receipts and per-member revealed picks with timestamps. Learn probability of each member's pick by game, shared source, and score gap. Report uncertainty; do not equate chalk-leaning with identical picks.
+3. Timestamped independent analyst probability/winner forecasts. Score only predeclared prospective streams; record full slates and all losing picks. Capture underlying source identity to avoid counting syndication as independent agreement.
+4. Injury/replacement details: named starter, replacement, expected snap/route workload, offensive-line continuity, and unit clusters; record what was known at lock. Judge incremental value after the market moves rather than stacking a full injury adjustment on an already adjusted line.
+5. Opponent-adjusted, non-garbage-time matchup interactions: pressure without blitz versus protection and QB response, man/zone and coverage-shell fit, early-down passing efficiency, healthy-QB splits, and personnel changes. Aggregate EPA, Elo, rest, sacks and turnovers already exist; do not call them new inputs.
+6. Source quality and availability, with independent provenance. Public bet counts, supposed sharp-money percentages, short red-zone streaks, referee streaks and social engagement belong below the above items unless independently validated.
+
+Provider example: The Odds API documents five-minute historical snapshots since September 2022 and paid historical access. This is a candidate route, not an account connection or a purchase recommendation.
+
+Outside-source search, October 18
+
+• Tyler Sullivan: Hunchmeter's priced subset reports 37-21-1 versus chalk 35-23-1 on the same 59 games; its underdog subset reports 7/12 versus 5.2 market-expected. Potential observation stream, not proof; many older picks were read retrospectively, the prospective settled record is tiny, and interval includes no edge.
+• Dave Richard: same tracker reports +6.7 price-adjusted points, but 34-24-1 versus chalk 35-23-1 on the same priced subset. Positive hypothetical betting returns need not mean more correct pool picks. Recent priced subset 14-12-1 versus chalk 12-14-1 is worth tracking prospectively, with the same audit limitations.
+• Gilberto Manzano: SI reports 10-4-1 in Week 5 and +2.37 units. One week is a lead for observation, not validated persistent skill.
+• Warren Sharp / Rich Hribar: the Week 6 podcast advertises 39-15 best bets lifetime on that show; Sharp's own separate records page reports 2026 overall NFL 105-91 and best bet 3-2 through Week 5. Different product scopes/denominators; neither headline is a full-slate outright-winner record. Useful detailed matchup hypotheses; no certified straight-up edge found.
+• Covers AI: article says 10-4-1 straight up in Week 5 and celebrates Denver's outright Week 6 win. But the displayed Denver game projection is SEA 23, DEN 21 with DEN +2.5 ATS. That row chose Seattle outright. Reconcile before using its scorecard.
+• Reddit r/sportsbook: shaintrain78 claims 60-23 in the October 18 props thread. The actual card is player yardage props, not outright winners, and the entire claimed history was not audited.
+• Reddit r/nfl: visible user season records include 47-31-1 and 42-37; no verified superiority to the matched chalk benchmark established.
+• X: targeted searches did not produce a sufficiently auditable X-only straight-up streak. Follow identifiable analysts back to original publications; do not treat screenshots/reposts as verified historical results.
+• Pickwatch was found, but accessible extraction did not yield a verifiable complete leaderboard. No unseen rank or record is claimed.
+
+How to evaluate an outside source
+
+Use three scoreboards, separately:
+
+1. Pool value: on identical games, correct picks minus correct lock-time chalk picks. On disagreement games, 12-8 adds four pool points relative to chalk's 8-12.
+2. Forecast information: outcome minus contemporaneous market probability, plus proper probability scores when probabilities are published.
+3. Betting value: profits at available prices and later line movement. This can differ materially from pool points. A 45% true-win underdog priced at 40% can be a profitable wager but still a worse expected one-point pick than its 55% opponent.
+
+Predeclare the source cohort, observation window, record rules and feature families. Use hierarchical shrinkage and prospective evaluation; avoid selecting weights from whoever is currently hottest. Multiple-testing example, calculated independently: among 100 independent fair-coin forecasters, the probability that at least one goes 15/20 or better is 87.6%. Real analysts are correlated, so 87.6% is an illustration, not their literal false-positive rate. The family's z>=2,n>=25 trigger is a candidate screen, not proof, especially with seven members and repeated weekly looks.
+
+Implementation order
+
+A. Repair live standings, lock-time snapshots, entry receipts and confidence labels.
+B. Add the exact multi-game boundary regression case; implement joint candidate search and validate on independent draws.
+C. Re-run replays with timestamp-valid market information, season-level uncertainty, adaptive and skillful-opponent stress cases.
+D. Prospectively log a fixed panel of straight-up forecasts (Sullivan, Richard, Manzano plus NFL.com consensus as a benchmark) and structured Sharp/Hribar hypotheses. Do not promote a source based on post-selection streaks.
+E. Test predeclared granular inputs against a multi-book lock-time market on the games where they actually disagree. Adopt only demonstrated pool or probability value, with no requirement to find an upset every week.
+
+Sources
+
+• Repository: https://github.com/taipan0319-byte/brauns-pickem/tree/82b1c92ecdb45f6c291c8bee627006214ebe0bc8
+• Engine B: https://github.com/taipan0319-byte/brauns-pickem/blob/82b1c92ecdb45f6c291c8bee627006214ebe0bc8/engine_b.py
+• Replay: https://github.com/taipan0319-byte/brauns-pickem/blob/82b1c92ecdb45f6c291c8bee627006214ebe0bc8/backtest_engine_b.py
+• Sullivan: https://hunchmeter.com/experts/tyler-sullivan/
+• Richard: https://hunchmeter.com/experts/dave-richard/
+• SI: https://www.si.com/betting/nfl-straight-up-moneyline-picks-for-every-game-in-week-6-2026
+• Sharp podcast: https://podcasts.apple.com/us/podcast/sharp-football-analysis-by-warren-sharp/id1485652145
+• Sharp records: https://www.sharpfootballanalysis.com/lifetime-betting-records/
+• Covers: https://www.covers.com/nfl/ai-predictions-week-6-2026
+• Reddit props: https://www.reddit.com/r/sportsbook/comments/1x8s00r/nfl_props_and_touchdown_picks_101826_sunday/
+• Reddit outright thread: https://www.reddit.com/r/nfl/comments/1x5w0hg/nfl_week6_predictions_thread_2026_season/
+• Historical odds documentation: https://the-odds-api.com/historical-odds-data/
+• Official Bears injury report illustrates granular availability: https://www.chicagobears.com/news/injury-update-caleb-williams-questionable-for-sunday-s-game-vs-falcons
+
+Exact boundary case reproduction
+
+Run with the repository snapshot on the Python path; this is the executed case's essential setup:
+
+```
+import numpy as np
+import engine_b as eb
+family = [dict(m, dog_rate={b: 0 for b in m["dog_rate"]},
+               bias_strength=0) for m in eb.DEFAULT_FAMILY]
+games = [dict(home_team="H", away_team="A", home_moneyline="-150",
+              away_moneyline="150", spread_line="") for _ in range(3)]
+standings = {m["name"]: -10 for m in family}
+standings.update(Ryan=0, Nolan=3)
+r = eb.evaluate(games, family, standings, "Ryan", 100000, 7,
+                np.ones(3, dtype=bool))
+print(r[1], r[3])  # 0.0, all favorites
+print(0.5 * 0.4**3)  # 0.032, all three dogs, exact
+```
+
+---
+
 ## 2026-09-20 — Block 6 (pasted by Ryan): Engine C, Upset Hunter proposal [read 2026-09-20]
 
 Yes. The biggest improvement is to stop asking "Can we beat Vegas on every game?" and build a specialized upset-discovery model whose only job is to identify the small subset of underdogs where the market favorite may be less safe than the pool believes.

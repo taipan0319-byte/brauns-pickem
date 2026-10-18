@@ -82,7 +82,8 @@ def main():
     now = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
     # --- Engine B log: latest run per game for this week, plus the previous run for change detection
-    blog = [r for r in read_csv(os.path.join(HERE, "engine_b_log.csv")) if int(r["season"]) == a.season and int(r["week"]) == a.week]
+    blog = [r for r in read_csv(os.path.join(HERE, "engine_b_log.csv")) if int(r["season"]) == a.season and int(r["week"]) == a.week
+            and r["confidence"] != "LOCKED"]   # D30: a locked game's standing row is its last pre-lock recommendation
     runs = sorted({r["logged_at_utc"] for r in blog})
     # A finished game drops out of later Engine B runs (it only simulates unplayed games), so each game keeps
     # the LAST run that included it: for played games that is the standing pre-kickoff recommendation.

@@ -4,6 +4,53 @@ Newest block at the top.
 
 ---
 
+## 2026-10-18 — Block 20: round 1 on your stress test (Block 7). Test 1 confirmed and fixed; findings 1, 2, 7 fixed; 3, 4, 5 running; the rest answered.
+
+This is the most useful review the project has had. Point by point.
+
+**Test 1, coordinate-search failure.** Reproduced exactly with your snippet: engine 0.0, all favorites, exact
+3.2%. Fixed in `evaluate()` (D30): joint enumeration of all 2^K combinations over the K = 10 closest searchable
+games on half A of the simulations, then {chalk, coordinate result, best joint} confirmed on half B, which
+the enumeration never saw; ties go to chalk. The boundary case is `test_engine_b_d30.py` (engine 3.17% vs
+3.20%); D4's test still passes; Week 6's recommendations are unchanged; the screen takes 3 s. Your reading is
+also right about what this means: it did not change today's slate, it removed a false guarantee about the
+endgame, which is exactly where D27's value was supposed to come from.
+
+**Test 2, family-chalk sensitivity.** Agreed on the mechanism, with one correction to the last row: "engine
+returns 0%" was the optimizer bug, now fixed. The rest is a genuine parameter sensitivity, not a flaw: Ryan's
+P(first) depends on how much variance the room generates, the fitted rates are the estimate of that, and they
+are refit every week from revealed picks (now ~80 per member). D27's ×0.5 scenario is your half-rates row.
+
+**Test 3, correlated room.** Matches Block 18 (chalk's P(first) 0.53 → 0.63 from rho 0 to 0.8). Agreed that
+the right model is source-following clusters; nothing to fit that on yet.
+
+**Findings.** 1 and 2: fixed (D30). `standings.json` stays the weekly-close record; Engine B now adds this
+week's finished games from revealed picks, with Ryan's own pick from the last logged recommendation until
+revealed. Locked games (kickoff passed, or the whole Sunday slate once the first Sunday game has kicked off)
+are held at the entered pick and excluded from the search. Grok will post Thursday-night picks Thursday night
+so the Thursday result reaches P(first) immediately. 3, 4, 5: implemented in the replay and running now:
+`--future-lines prior` (future weeks at the 57% placeholder, opponent rates from the matching band), a
+season-clustered SE column, and a "skilled Nolan" truth whose dog picks win more than priced with the
+marginal preserved (k = 0.25, 0.5), real results and calibrated. Results in Block 21. 6: deferred; five
+weeks of picks cannot show standings-dependence, the tracker rows will as the season goes. 7: fixed;
+bias_strength is now estimated with N = 10 shrinkage: Sue 0.60, Nolan 0.60, Kaleigh 0.60, Sheila 0.27.
+8: agreed; the How tab already describes HIGH as effect vs the simulation's own noise, and I will not call it
+robustness in the next copy edit. 9: agreed and not fixable with nflverse; a multi-book lock-time feed is a
+purchase and Ryan's call. 10: agreed; from here the untouched holdout is 2026 itself, prospectively logged.
+
+**Data priorities and order A–E.** A done except entry receipts, which Grok's read-backs already are and will
+now be posted. B done. C running. D starting: a fixed forecaster panel (Sullivan, Richard, Manzano, NFL.com
+consensus as the benchmark), collected by Grok each week before the Sunday lock into `forecaster_panel.csv`
+with publish time and URL, scored on your three scoreboards with pool value first. Pre-registered now, no
+weights, no promotion on streaks. E waits on priority 1.
+
+**Where I push back, lightly.** The review is right that P(first) is not settled and never will be with
+seven opponents fit on five weeks. It is also true that nothing in it moves a pick this week, and that the
+one proven edge remains positional. I would rather the record show that than let the length of the list
+imply the system is broken. It is not; it had a bug in the endgame search, and it is gone.
+
+---
+
 ## 2026-10-18 — Block 19: catch-up since Block 18. D28, D29, a third reviewer, and where the edge is not.
 
 Three decisions since your round 2, all in `DECISIONS.md`, none changing production picks:

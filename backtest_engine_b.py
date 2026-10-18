@@ -38,15 +38,23 @@ def season_data(rows, season, family):
     week = np.array([int(r["week"]) for r in g])
     fams = [eb.scale_family(family, k) for _, k in SCEN]
     P_opp = np.array([[[eb.opponent_pick_fav_prob(m, r, pf, ft) for m in fam] for r, pf, ft in zip(g, pfav, fav_team)] for fam in fams])
-    return dict(season=season, pfav=pfav, fav_won=fav_won, week=week, P_opp=P_opp, weeks=sorted(set(week.tolist())),
+    P_opp_prior = np.array([[[eb.opponent_pick_fav_prob(m, r, FUTURE_PRIOR, r["home_team"]) for m in fam] for r in g] for fam in fams])
+    return dict(season=season, pfav=pfav, fav_won=fav_won, week=week, P_opp=P_opp, P_opp_prior=P_opp_prior, weeks=sorted(set(week.tolist())),
                 names=[m["name"] for m in family], family=family, fav_team=fav_team,
                 games_min=[dict(home_team=r["home_team"], away_team=r["away_team"]) for r in g])
 
-def week_cache(sd, w, s, sims, seed):
-    """Everything in engine_b.evaluate that does not depend on standings or on this week's user picks."""
+FUTURE_PRIOR = 0.57   # nflverse's own placeholder before a line exists: home team favored at 57%
+
+def week_cache(sd, w, s, sims, seed, future_lines="closing"):
+    """Everything in engine_b.evaluate that does not depend on standings or on this week's user picks.
+    future_lines="prior": weeks beyond w use the 57% placeholder instead of their eventual closing line, which a
+    real weekly decision-maker does not have (ChatGPT Block 7, finding 3). Opponent pick rates for those games
+    then come from the 'close' band, as they would in production."""
     rng = np.random.default_rng(seed)
     iw = np.where(sd["week"] == w)[0]; ifu = np.where(sd["week"] > w)[0]; N = sd["P_opp"].shape[2]
     pf = sd["pfav"][ifu]; Po = sd["P_opp"][s][ifu]
+    if future_lines == "prior" and len(ifu):
+        pf = np.full(len(ifu), FUTURE_PRIOR); Po = sd["P_opp_prior"][s][ifu]
     fw_f = rng.random((sims, len(ifu)), dtype=np.float32) < pf[None, :]
     of_f = rng.random((sims, len(ifu), N), dtype=np.float32) < Po[None, :, :]
     user_future = fw_f.sum(1).astype(np.int32)                      # D6: user takes the favorite in every future game
@@ -94,6 +102,15 @@ def draw_opponents(sd, truth, U0, rng):
         G, N = U0.shape; S = rng.standard_normal(G)
         Z = np.sqrt(param) * S[:, None] + np.sqrt(1 - param) * rng.standard_normal((G, N))
         return norm_cdf(Z) < sd["P_opp"][0]
+    if kind == "skilled":
+        # Nolan (index 2) picks the dog with probability q(1+k) when the dog actually wins and q(1-k') otherwise,
+        # k' = k p/(1-p) so his marginal dog rate is unchanged; his dog picks then win about k*p*(1-p)/... more than
+        # priced (k=0.5 -> roughly +6 to +10 pp on 40-45% dogs). ChatGPT Block 7, finding 5.
+        P = sd["P_opp"][0].copy(); k = param; j = 2
+        p_dog = 1 - sd["pfav"]; q = 1 - P[:, j]; dog_won = ~truth["fav_won"]
+        q_adj = np.where(dog_won, np.minimum(1, q * (1 + k)), np.maximum(0, q * (1 - k * p_dog / np.maximum(1 - p_dog, 1e-9))))
+        P[:, j] = 1 - q_adj
+        return U0 < P
     if kind == "perm":
         perm = rng.permutation(len(sd["family"]))
         fam = [dict(m, dog_rate=sd["family"][perm[i]]["dog_rate"]) for i, m in enumerate(sd["family"])]
@@ -109,9 +126,9 @@ def grade_prod(ds, noise0, d0):
     return not (d0 > 0)
 
 def run_season(args):
-    sd, reps, sims, truths, calibrated = args; season = sd["season"]; t0 = time.time()
+    sd, reps, sims, truths, calibrated, future_lines = args; season = sd["season"]; t0 = time.time()
     N = len(sd["names"]); G = len(sd["pfav"]); weeks = sd["weeks"]
-    caches = {w: [week_cache(sd, w, s, sims, season * 1000 + w * 10 + s) for s in range(3)] for w in weeks}
+    caches = {w: [week_cache(sd, w, s, sims, season * 1000 + w * 10 + s, future_lines) for s in range(3)] for w in weeks}
     policies = ["chalk", "prod", "any_positive", "signif", "static_52", "late_var"]
     out = {t["name"]: {p: dict(pf=[], dev=0, hit=0, exp=0.0, dev_by_week={}) for p in policies} for t in truths}
     rng = np.random.default_rng(season * 7919)
@@ -119,7 +136,7 @@ def run_season(args):
         U = rng.random((G, N))
         fav_won = (rng.random(G) < sd["pfav"]) if calibrated else sd["fav_won"]   # control: outcomes drawn from the market
         for tr in truths:
-            t = tr["name"]
+            t = tr["name"]; tr = dict(tr, fav_won=fav_won)
             opp_pick_fav = draw_opponents(sd, tr, U, rng); opp_correct = (opp_pick_fav == fav_won[:, None])
             opp_cum = {}; run = np.zeros(N, int)
             for w in weeks:
@@ -161,6 +178,8 @@ def main():
     ap.add_argument("--family", default=os.path.join(HERE, "family.json")); ap.add_argument("--procs", type=int, default=4)
     ap.add_argument("--calibrated", action="store_true", help="control: replace real results with draws from the market probabilities")
     ap.add_argument("--adversarial", action="store_true", help="Block 17 round 1: correlated room (rho 0.2/0.5/0.8) and shuffled dog rates")
+    ap.add_argument("--skilled", action="store_true", help="ChatGPT Block 7: Nolan's dog picks win more than priced (k=0.25, 0.5)")
+    ap.add_argument("--future-lines", default="closing", choices=["closing", "prior"], help="prior: future weeks use the 57% placeholder, not their eventual line")
     a = ap.parse_args()
     lo, hi = map(int, a.seasons.split("-")); seasons = list(range(lo, hi + 1))
     rows = eb.load_games(a.games_file); family = json.load(open(a.family))
@@ -169,23 +188,27 @@ def main():
         truths = [dict(name="as-modeled", kind="scen", param=0)] + \
                  [dict(name=f"correlated room rho={r}", kind="corr", param=r) for r in (0.2, 0.5, 0.8)] + \
                  [dict(name="dog rates shuffled among people", kind="perm")]
-    jobs = [(season_data(rows, s, family), a.reps, a.sims, truths, a.calibrated) for s in seasons]
+    if a.skilled:
+        truths = [dict(name="as-modeled", kind="scen", param=0)] + [dict(name=f"Nolan skilled k={k}", kind="skilled", param=k) for k in (0.25, 0.5)]
+    jobs = [(season_data(rows, s, family), a.reps, a.sims, truths, a.calibrated, a.future_lines) for s in seasons]
     with Pool(a.procs) as pool: results = dict(pool.map(run_season, jobs, chunksize=1))
     policies = ["chalk", "prod", "any_positive", "signif", "static_52", "late_var"]
-    print(f"U7 Engine B replay {'[CALIBRATED CONTROL: outcomes drawn from market]' if a.calibrated else '[REAL RESULTS]'}  seasons {a.seasons}  reps/season {a.reps}  inner sims {a.sims}  N=7  ties split")
+    print(f"U7 Engine B replay {'[CALIBRATED CONTROL: outcomes drawn from market]' if a.calibrated else '[REAL RESULTS]'} [future lines: {a.future_lines}]  seasons {a.seasons}  reps/season {a.reps}  inner sims {a.sims}  N=7  ties split")
     print("Real game results; opponents simulated from family.json under three truths. Paired vs chalk.\n")
     for tr in truths:
         t = tr["name"]
         print(f"== opponents really behave: {t} ==")
-        print(f"{'policy':13}{'P(first)':>9}{'vs chalk':>10}{'SE':>7}{'dogs/season':>12}{'dog hit%':>9}{'exp hit%':>9}{'wk1-9':>7}{'wk10+':>7}")
+        print(f"{'policy':13}{'P(first)':>9}{'vs chalk':>10}{'SE':>7}{'SE(season)':>11}{'dogs/season':>12}{'dog hit%':>9}{'exp hit%':>9}{'wk1-9':>7}{'wk10+':>7}")
         chalk = np.concatenate([np.array(results[s][t]["chalk"]["pf"]) for s in seasons])
         for p in policies:
             pf = np.concatenate([np.array(results[s][t][p]["pf"]) for s in seasons])
             diff = pf - chalk; se = diff.std(ddof=1) / np.sqrt(len(diff))
+            smeans = np.array([np.mean(np.array(results[s_][t][p]["pf"]) - np.array(results[s_][t]["chalk"]["pf"])) for s_ in seasons])
+            se_season = smeans.std(ddof=1) / np.sqrt(len(seasons)) if len(seasons) > 1 else float("nan")   # season-clustered (ChatGPT Block 7, finding 4)
             dev = sum(results[s][t][p]["dev"] for s in seasons); hit = sum(results[s][t][p]["hit"] for s in seasons)
             exp = sum(results[s][t][p]["exp"] for s in seasons); nrs = len(seasons) * a.reps
             early = sum(v for s in seasons for w, v in results[s][t][p]["dev_by_week"].items() if w <= 9)
-            print(f"{p:13}{pf.mean():9.4f}{diff.mean():+10.4f}{se:7.4f}{dev/nrs:12.2f}"
+            print(f"{p:13}{pf.mean():9.4f}{diff.mean():+10.4f}{se:7.4f}{se_season:11.4f}{dev/nrs:12.2f}"
                   f"{(100*hit/dev if dev else 0):9.1f}{(100*exp/dev if dev else 0):9.1f}{early/nrs:7.2f}{(dev-early)/nrs:7.2f}")
         print()
     t0 = truths[0]["name"]; print(f"per season, {t0} truth: P(first)")

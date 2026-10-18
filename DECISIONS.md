@@ -181,6 +181,33 @@ Entries here survived review. Anything not listed is open. Format: ID, decision,
   pick log: under Grok's own decision rule its picks equal Engine B's unless skill is shown. Line movement open
   to close is not in our data (nflverse carries one line); injuries are D19.
 
+- **D30. Engine B search and state fixes from ChatGPT's independent stress test (Block 7, 2026-10-18).**
+  (1) **Optimizer bug, confirmed and fixed.** ChatGPT's boundary case: three 60% favorites left, Nolan up three,
+  every opponent on chalk. The coordinate search returned chalk and P(first) = 0; the true optimum is all three
+  dogs at 0.5 × 0.4³ = 3.2%, unreachable one toggle at a time because every single or double deviation is also 0.
+  `evaluate()` now adds a joint enumeration of all 2^K combinations over the K = 10 closest searchable games,
+  scored on the first half of the simulations, then confirms the candidates {all-favorite, coordinate result,
+  best joint} on the second half, which the enumeration never saw, and keeps the best (ties to chalk). For a
+  kept deviation set, the logged dP and noise are the set's gain over chalk on the confirmation half; HIGH /
+  MEDIUM / LOW grade the set. `test_engine_b_d30.py` holds the boundary case (engine 3.17% vs exact 3.20%);
+  `test_engine_b_d4.py` still passes; Week 6 recommendations unchanged; screen runs in 3 s.
+  (2) **Live standings.** `standings.json` is written at the weekly close; Engine B now adds points from this
+  week's finished games using revealed picks in `pool_picks.csv`, with the user's own pick from the last logged
+  recommendation until revealed. Thursday's result reaches P(first) as soon as Grok posts the TNF rows.
+  (3) **Lock discipline.** Games already locked on CBS (kickoff passed, or any Sunday game once the first Sunday
+  kickoff has passed) stay in the simulation with the pick held at the last logged recommendation and are
+  excluded from the search; logged as LOCKED; the dashboard keeps the last pre-lock row.
+  (4) **Loyalty strength is estimated, not assumed.** `fit_family` now identifies bias_strength from picks in
+  games involving the member's team against what band rates alone predict, shrunk toward the 0.4 prior with
+  N = 10. After five weeks: Sue 0.60, Nolan 0.60, Kaleigh 0.60 (each 5 of 5 on their team), Sheila 0.27 (3 of 5).
+  (5) **Replay robustness, running** (results to Block 21): future weeks priced at the 57% placeholder instead of
+  their eventual closing line; season-clustered SE; a "skilled Nolan" truth whose dog picks win more than priced
+  with the marginal preserved (k = 0.25, 0.5), real and calibrated.
+  Not changed: the family-rate sensitivity ChatGPT measured is real and is why the rates are refit weekly, not a
+  bug; correlation lifting chalk agrees with Block 18; standings-dependent opponent behavior is deferred until
+  there are enough revealed picks to see it (the tracker data will show it); the single-source nflverse line
+  and multi-book lock-time quotes are a data purchase (Ryan's call). 2026-10-18.
+
 ## Unresolved (conservative production choice in force)
 
 - **U1. Tie rule.** In force: ties split evenly. Ryan recalls CBS resolves season ties by Super Bowl

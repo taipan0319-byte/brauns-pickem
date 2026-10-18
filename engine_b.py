@@ -73,8 +73,18 @@ def scale_family(family, k):
     """Multiply every dog rate by k (capped at 0.9); bias unchanged."""
     return [dict(m, dog_rate={b: min(0.9, r * k) for b, r in m["dog_rate"].items()}) for m in family]
 
-def evaluate(games, family, standings, user, sims, seed, this_week_mask):
-    """Returns (base P(first), final P(first), deltas dict, user_fav picks, P_opp, noise estimate)."""
+JOINT_K = 10   # D30: enumerate all 2^K pick combinations over the K closest games this week (ChatGPT Block 7, test 1)
+
+def evaluate(games, family, standings, user, sims, seed, this_week_mask, fixed_picks=None):
+    """Returns (base P(first), final P(first), deltas dict, user_fav picks, P_opp, pfav, fav_team, fav_home, noise).
+
+    Search: (1) coordinate search, closest games first (D4/D27); (2) joint enumeration of every combination over the
+    K closest searchable games on the first half of the simulations; (3) the candidates {all-favorite, coordinate
+    result, best joint combination} are scored on the SECOND half, which the enumeration never saw, and the best
+    one is kept (D30). For games in the kept deviation set, `deltas` holds the SET's gain over all-favorites and
+    `noise` the set's noise, both from the confirmation half; for other games, the single-toggle delta at the
+    final picks. `fixed_picks`: {index: True/False} for locked games (user takes favorite True/False), excluded
+    from the search but still simulated."""
     G, N = len(games), len(family)
     ph = np.array([home_prob(g) for g in games]); pfav = np.maximum(ph, 1 - ph); fav_home = ph >= 0.5
     fav_team = [g["home_team"] if fh else g["away_team"] for g, fh in zip(games, fav_home)]
@@ -85,24 +95,103 @@ def evaluate(games, family, standings, user, sims, seed, this_week_mask):
     opp_pts = np.array([standings.get(m["name"], 0) for m in family], float)
     user_pts = float(standings.get(user, 0))
     opp_scores = opp_pts[None, :] + (opp_fav == fav_wins[:, :, None]).sum(1)
-    half = sims // 2
-    def p_first(uf, sl=slice(None)):
-        us = user_pts + (uf[None, :] == fav_wins[sl]).sum(1); osc = opp_scores[sl]
-        best = np.maximum(us, osc.max(1)); ntop = (osc == best[:, None]).sum(1) + (us == best)
-        return np.where(us == best, 1.0 / ntop, 0.0).mean()
+    omax = opp_scores.max(1); ntop_o = (opp_scores == omax[:, None]).sum(1); tie_val = 1.0 / (ntop_o + 1)
+    half = sims // 2; A, B = slice(0, half), slice(half, None)
+    def pf_vec(uf, sl=slice(None)):
+        us = user_pts + (uf[None, :] == fav_wins[sl]).sum(1)
+        return np.where(us > omax[sl], 1.0, np.where(us == omax[sl], tie_val[sl], 0.0))
+    def p_first(uf, sl=slice(None)): return pf_vec(uf, sl).mean()
     user_fav = pfav >= USER_DOG_THRESHOLD
-    base = p_first(user_fav)
-    idx = np.where(this_week_mask)[0]; deltas, noise = {}, {}
-    order = sorted(idx, key=lambda i: pfav[i])   # evaluate the closest games first: when only one deviation pays, take the best one
-    for _ in range(2):
-        for i in order:
+    fixed_picks = fixed_picks or {}
+    for i, v in fixed_picks.items(): user_fav[i] = bool(v)
+    chalk = user_fav.copy()
+    base = p_first(chalk)
+    idx = [i for i in np.where(this_week_mask)[0] if i not in fixed_picks]
+    order = sorted(idx, key=lambda i: pfav[i])
+    deltas, noise = {}, {}
+    def coordinate(uf):
+        for _ in range(2):
+            for i in order:
+                u1 = uf.copy(); u1[i] = True; u0 = uf.copy(); u0[i] = False
+                d = p_first(u0) - p_first(u1); uf[i] = d <= 0
+        return uf
+    coord = coordinate(user_fav.copy())
+    # joint enumeration over the K closest searchable games, scored on half A only
+    K = min(JOINT_K, len(order)); joint = coord.copy(); best_val = -1.0
+    if K:
+        ks = order[:K]; W = fav_wins[A][:, ks]
+        rest = coord.copy(); rest_pts = user_pts + (np.delete(rest, ks)[None, :] == np.delete(fav_wins[A], ks, axis=1)).sum(1)
+        for c in range(2 ** K):
+            pick = np.array([(c >> j) & 1 == 0 for j in range(K)])      # bit set = take the dog
+            us = rest_pts + (W == pick[None, :]).sum(1)
+            val = np.where(us > omax[A], 1.0, np.where(us == omax[A], tie_val[A], 0.0)).mean()
+            if val > best_val + 1e-12: best_val, best_c = val, pick.copy()
+        joint = coord.copy(); joint[ks] = best_c
+    # confirmation on half B, which the enumeration never saw
+    cands = {"chalk": chalk, "coordinate": coord, "joint": joint}
+    scoreB = {k: p_first(v, B) for k, v in cands.items()}
+    keep = max(scoreB, key=lambda k: (scoreB[k], k == "chalk"))   # ties go to chalk
+    user_fav = cands[keep].copy()
+    diffB = pf_vec(user_fav, B) - pf_vec(chalk, B); q = len(diffB) // 2
+    set_delta = diffB.mean(); set_noise = abs(diffB[:q].mean() - diffB[q:].mean()) / 2 + 1e-4
+    dev = [i for i in idx if user_fav[i] != chalk[i]]
+    for i in fixed_picks: deltas[i] = 0.0; noise[i] = 1.0          # locked: nothing to decide
+    for i in idx:
+        if i in dev: deltas[i] = set_delta; noise[i] = set_noise
+        else:
             u1 = user_fav.copy(); u1[i] = True; u0 = user_fav.copy(); u0[i] = False
-            d = p_first(u0) - p_first(u1)
-            d1 = p_first(u0, slice(0, half)) - p_first(u1, slice(0, half))
-            d2 = p_first(u0, slice(half, None)) - p_first(u1, slice(half, None))
-            deltas[i] = d; noise[i] = abs(d1 - d2) / 2 + 1e-4
-            user_fav[i] = d <= 0
+            db = pf_vec(u0, B) - pf_vec(u1, B); deltas[i] = db.mean(); noise[i] = abs(db[:q].mean() - db[q:].mean()) / 2 + 1e-4
     return base, p_first(user_fav), deltas, user_fav, P_opp, pfav, fav_team, fav_home, noise
+
+def live_standings(standings, all_games, season, week):
+    """standings.json is written at each weekly close (weeks < `week`). Add points from THIS week's finished games
+    using revealed picks in pool_picks.csv, so mid-week P(first) sees Thursday's result (ChatGPT Block 7, finding 1)."""
+    out = dict(standings); path = os.path.join(HERE, "pool_picks.csv")
+    if not out or not os.path.exists(path): return out
+    won = {g["game_id"]: (g["home_team"] if float(g["result"]) > 0 else g["away_team"]) for g in all_games
+           if int(g["season"]) == season and int(g["week"]) == week and g["result"] not in ("", "0")}
+    seen = set()
+    for r in csv.DictReader(open(path, newline="")):
+        if r["game_id"] in won and r["pick"] not in ("", "NONE") and r["member"] in out:
+            out[r["member"]] = out[r["member"]] + int(r["pick"] == won[r["game_id"]]); seen.add((r["game_id"], r["member"]))
+    log = os.path.join(HERE, "engine_b_log.csv")   # the user's own finished games: last logged recommendation until revealed
+    if os.path.exists(log) and "Ryan" in out:
+        last = {}
+        for r in csv.DictReader(open(log, newline="")):
+            if int(r["season"]) == season and int(r["week"]) == week: last[r["game_id"]] = r["recommendation"]
+        for gid, w in won.items():
+            if (gid, "Ryan") not in seen and gid in last: out["Ryan"] = out["Ryan"] + int(last[gid] == w)
+    return out
+
+def locked_picks(games, idx, season, week, now=None):
+    """{index: user takes favorite?} for this week's games already locked on CBS: kickoff passed, or any Sunday game
+    once the first Sunday kickoff has passed (CBS locks the whole Sunday slate then). The held pick is the last
+    logged recommendation for that game, else the favorite (ChatGPT Block 7, finding 2)."""
+    try:
+        from zoneinfo import ZoneInfo; ET = ZoneInfo("America/New_York")
+    except Exception: return {}
+    now = now or dt.datetime.now(dt.timezone.utc)
+    def kick(g):
+        try: return dt.datetime.strptime(g["gameday"] + " " + g["gametime"], "%Y-%m-%d %H:%M").replace(tzinfo=ET)
+        except Exception: return None
+    kicks = {i: kick(games[i]) for i in idx}
+    sundays = [k for i, k in kicks.items() if k and k.weekday() == 6]
+    first_sunday = min(sundays) if sundays else None
+    locked = {}
+    for i in idx:
+        k = kicks[i]
+        if k is None: continue
+        if now >= k or (first_sunday and k.weekday() == 6 and now >= first_sunday): locked[i] = None
+    if not locked: return {}
+    last = {}
+    log = os.path.join(HERE, "engine_b_log.csv")
+    if os.path.exists(log):
+        for r in csv.DictReader(open(log, newline="")):
+            if int(r["season"]) == season and int(r["week"]) == week: last[r["game_id"]] = r["recommendation"]
+    for i in list(locked):
+        g = games[i]; ph = home_prob(g); fav = g["home_team"] if ph >= 0.5 else g["away_team"]
+        locked[i] = (last.get(g["game_id"], fav) == fav)
+    return locked
 
 def main():
     ap = argparse.ArgumentParser()
@@ -116,26 +205,32 @@ def main():
     family = json.load(open(a.family)) if os.path.exists(a.family) else DEFAULT_FAMILY
     if a.fit: return fit_family(a, family)
     standings = json.load(open(a.standings)) if a.standings else {}
-    games = [g for g in load_games(a.games_file) if int(g["season"]) == a.season and g["game_type"] == "REG"
+    all_games = load_games(a.games_file)
+    standings = live_standings(standings, all_games, a.season, a.week)       # D30: add this week's finished games
+    games = [g for g in all_games if int(g["season"]) == a.season and g["game_type"] == "REG"
              and int(g["week"]) >= a.week and g["result"] == ""]
     games.sort(key=lambda g: (int(g["week"]), g["gameday"]))
     mask = np.array([int(g["week"]) == a.week for g in games]); idx = np.where(mask)[0]
+    fixed = locked_picks(games, idx, a.season, a.week)                         # D30: locked games are not searchable
     seed = a.season * 100 + a.week
     scenarios = [("as-modeled", family)]
     if a.screen: scenarios += [("chalkier x0.5", scale_family(family, 0.5)), ("wilder x2", scale_family(family, 2.0))]
-    res = {name: evaluate(games, fam, standings, a.user, a.sims, seed, mask) for name, fam in scenarios}
+    res = {name: evaluate(games, fam, standings, a.user, a.sims, seed, mask, fixed) for name, fam in scenarios}
     base, final, deltas, user_fav, P_opp, pfav, fav_team, fav_home, noise = res["as-modeled"]
     now = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     print(f"ENGINE B  {a.season} week {a.week}  user={a.user}  N={len(family)+1}  sims={a.sims}  tie rule={TIE_RULE}")
-    print(f"opponents: {', '.join(m['name'] for m in family)}   standings: {standings or 'none (week 1)'}")
+    print(f"opponents: {', '.join(m['name'] for m in family)}   live standings: {standings or 'none (week 1)'}")
+    if fixed: print(f"locked this week (not searchable, pick held): {', '.join(games[i]['away_team']+'@'+games[i]['home_team']+'='+(fav_team[i] if fixed[i] else (games[i]['away_team'] if fav_home[i] else games[i]['home_team'])) for i in fixed)}")
     print(f"P(first) if all favorites this week: {base:.3f}   with recommended picks: {final:.3f}\n")
     hdr = f"{'game':10} {'market fav':>10} {'P(fav)':>7} {'family on fav':>13} {'dP(first) if dog':>16}  {'pick':5}"
     if a.screen: hdr += "  confidence"
     print(hdr); out = []
     for i in idx:
         g = games[i]; dog = g["away_team"] if fav_home[i] else g["home_team"]
-        d = deltas[i]; conf = ""
-        if a.screen:
+        d = deltas[i]; conf = ""; agree = True
+        if i in fixed:
+            conf = "LOCKED"; pick = fav_team[i] if fixed[i] else dog
+        elif a.screen:
             ds = [res[n][2][i] for n, _ in scenarios]; agree = all(x > 0 for x in ds) or all(x <= 0 for x in ds)
             # D27: scenario disagreement no longer vetoes a deviation (U7 replay: the veto left ~1 dog/season and
             # no gain; the noise test alone is +1.8pp P(first) with calibrated outcomes). Disagreement is printed.
@@ -175,6 +270,22 @@ def fit_family(a, family):
         p = home_prob(g); pf = max(p, 1 - p); fav = g["home_team"] if p >= 0.5 else g["away_team"]
         c = counts[r["member"]][band(pf)]; c[0] += 1; c[1] += (r["pick"] != fav)
     PRIOR_N = {"tossup": 10.0, "close": 3.0, "other": 10.0}   # D21: band-specific prior strength
+    # D30: team-loyalty strength is estimated, not assumed. In games involving the member's team, the share of picks
+    # on that team above what the band rates alone predict identifies s; shrunk toward the 0.4 prior with N=10.
+    bias_obs = {m["name"]: [0, 0.0, 0] for m in family}   # [team picks, expected team picks under s=0, games]
+    for r in csv.DictReader(open(picks_path, newline="")):
+        g = games.get(r["game_id"]); m = next((x for x in family if x["name"] == r["member"]), None)
+        if not g or not m or not m.get("bias_team") or r["pick"] in ("", "NONE"): continue
+        bt = m["bias_team"]
+        if bt not in (g["home_team"], g["away_team"]): continue
+        p = home_prob(g); pf = max(p, 1 - p); fav = g["home_team"] if p >= 0.5 else g["away_team"]
+        base_fav = 1 - m.get("prior_dog_rate", m["dog_rate"])[band(pf)]
+        o = bias_obs[m["name"]]; o[0] += (r["pick"] == bt); o[1] += base_fav if fav == bt else 1 - base_fav; o[2] += 1
+    for m in family:
+        if m.get("bias_team"):
+            k, e, n = bias_obs[m["name"]]
+            s_hat = max(0.0, min(1.0, (k - e) / max(n - e, 1e-9))) if n else 0.4
+            m["bias_strength"] = round((n * s_hat + 10 * 0.4) / (n + 10), 3); m["bias_observed"] = [n, k, round(e, 2)]
     for m in family:
         for b in ("tossup", "close", "other"):
             n, d = counts[m["name"]][b]; prior = m.get("prior_dog_rate", m["dog_rate"])[b]
