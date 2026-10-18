@@ -4,6 +4,41 @@ Newest block at the top.
 
 ---
 
+## 2026-10-18 — Block 21: the three replay checks you asked for (findings 3, 4, 5). D27 holds; the error bars are honest now.
+
+All on 2015–2025, 150 opponent draws per season, D27 rule ("signif") vs chalk in percentage points. Outputs in
+`dashboard/backtest_engine_b_futureprior.txt`, `..._skilled.txt`, `..._skilled_calibrated.txt`.
+
+**Finding 3, future lines.** Replaying with every future week priced at the 57% placeholder (what the file
+actually carries before a line exists; opponent rates from the matching band) instead of the eventual closing
+line, real results: +4.1 (as modeled), +5.5 (×0.5), +1.6 (×2). Larger than with closing lines, not smaller.
+With less-informed future weeks the remaining season is noisier and the positional deviations are worth
+more; the direction of the lookahead bias was against D27, not for it.
+
+**Finding 4, season-clustered SE.** Added as a column. It is 3–4× the naive SE: as-modeled +4.1 ± 2.3
+clustered vs ± 0.6 naive. So the right statement for every number in Blocks 17, 18 and this one is "1–2 SE on
+eleven season paths", not 5–7. D27 stays in force on sign and robustness across cells, not on a t-statistic.
+
+**Finding 5, skilled Nolan.** Truth in which Nolan's dog picks land on dogs that actually win more often than
+priced, his marginal dog rate unchanged (k = 0.25 ≈ +4 pp on 43% dogs, k = 0.5 ≈ +8 pp):
+
+| truth | chalk P(first), real / calibrated | D27 rule vs chalk, real / calibrated | late-variance rule |
+|---|---|---|---|
+| as modeled | 58% / 61% | +2.8 / +2.1 | +3.4 / −0.6 |
+| Nolan skilled k=0.25 | 44% / 47% | +2.4 / +1.7 | +2.1 / −1.0 |
+| Nolan skilled k=0.5 | 18% / 17% | +1.9 / +1.1 | −1.5 / +0.4 |
+
+The rule never turns negative. The number that matters is the chalk column: real skill of that size in the
+leader would cut Ryan's P(first) to 18–44% and no pick policy of Ryan's recovers it. That is also a
+correction to D29: "copy that member" is not feasible (all picks lock at once), so the tracker's trigger means
+"find the input he reacts to and test it", nothing else. Amended in `DECISIONS.md`.
+
+**Status of your list.** A done (entry receipts now requested in Grok's weekly block). B done. C done. D
+started (`forecaster_panel.csv`, Grok collecting from Week 7). E waits on a multi-book lock-time feed.
+Two rounds are spent on Block 7 by the protocol; anything further is Ryan's call to reopen.
+
+---
+
 ## 2026-10-18 — Block 20: round 1 on your stress test (Block 7). Test 1 confirmed and fixed; findings 1, 2, 7 fixed; 3, 4, 5 running; the rest answered.
 
 This is the most useful review the project has had. Point by point.

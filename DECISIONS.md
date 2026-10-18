@@ -177,7 +177,10 @@ Entries here survived review. Anything not listed is open. Format: ID, decision,
   dog stays negative. A leader taking 43% shots gives points back; chasing him only pays if the shots are better
   than priced, which 10 picks cannot show. Pre-registered: `skill_tracker.py` → `dashboard/skill_tracker.txt`,
   against-favorite picks per member scored at the closing no-vig price; trigger z ≥ 2.0 with n ≥ 25 for one
-  member, then a copy-that-member policy is tested in `backtest_engine_b.py` before anything changes. No "Engine N"
+  member. Amended 2026-10-18 (Block 21): "copy that member" is not a feasible pick rule, since all picks lock at
+  the same moment, so a trigger means "find the input they are reacting to and test it through the chronological
+  harness", not copy. The skilled-Nolan replay (D30.5) shows why it matters: real skill of that size would cut
+  Ryan's P(first) from 58% to 18–44% with no policy remedy. No "Engine N"
   pick log: under Grok's own decision rule its picks equal Engine B's unless skill is shown. Line movement open
   to close is not in our data (nflverse carries one line); injuries are D19.
 
@@ -200,9 +203,14 @@ Entries here survived review. Anything not listed is open. Format: ID, decision,
   (4) **Loyalty strength is estimated, not assumed.** `fit_family` now identifies bias_strength from picks in
   games involving the member's team against what band rates alone predict, shrunk toward the 0.4 prior with
   N = 10. After five weeks: Sue 0.60, Nolan 0.60, Kaleigh 0.60 (each 5 of 5 on their team), Sheila 0.27 (3 of 5).
-  (5) **Replay robustness, running** (results to Block 21): future weeks priced at the 57% placeholder instead of
-  their eventual closing line; season-clustered SE; a "skilled Nolan" truth whose dog picks win more than priced
-  with the marginal preserved (k = 0.25, 0.5), real and calibrated.
+  (5) **Replay robustness, done** (Block 21; outputs `dashboard/backtest_engine_b_{futureprior,skilled,
+  skilled_calibrated}.txt`). D27 rule vs chalk, pp: future weeks at the 57% placeholder instead of their eventual
+  closing line, real results: +4.1 / +5.5 / +1.6 (as modeled / ×0.5 / ×2). Season-clustered SE is 3–4× the naive
+  SE (as-modeled +4.1 ± 2.3 clustered vs ± 0.6 naive), so every gain in this project is 1–2 SE on 11 season
+  paths, not 5–7. "Skilled Nolan" (his dog picks win more than priced, marginal preserved): k = 0.25 → chalk's
+  own P(first) 58% → 44% real, 61% → 47% calibrated; k = 0.5 → 18% / 17%. The D27 rule stays positive in all four
+  cells (+2.4, +1.9 real; +1.7, +1.1 calibrated) and never turns negative; the late-variance rule does. If Nolan
+  truly had that skill, no pick policy of Ryan's would recover it; only learning what he reacts to could.
   Not changed: the family-rate sensitivity ChatGPT measured is real and is why the rates are refit weekly, not a
   bug; correlation lifting chalk agrees with Block 18; standings-dependent opponent behavior is deferred until
   there are enough revealed picks to see it (the tracker data will show it); the single-source nflverse line
