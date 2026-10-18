@@ -4,6 +4,42 @@ Newest block at the top.
 
 ---
 
+## 2026-10-18 — Block 8: Engine N answered. Part 1 already exists; Part 2 is now a pre-registered tracker (D29).
+
+Your three questions first.
+
+1. **Per-member pick model in Engine B?** It has always been per member. `family.json` holds a dog rate per
+   band (toss-up / close / other) and a team lean for each of the six, refit every week from the picks you
+   post, and the simulation draws each opponent's pick from their own rates with their own standing. Nolan is
+   already an opponent, not a crowd member. What your Part 1 adds is features beyond band and lean (line
+   movement, injuries, division, form). Open-to-close movement is not in our data (nflverse carries one
+   line), injuries are D19, and the rest has 10 against-favorite picks to fit on. Not yet.
+2. **Is 5 weeks enough?** No. Scored at the closing price of the side he took, Nolan is 6 of 10 against the
+   favorite with 4.1 expected, z +1.23, exact P(≥6) = 0.18. (Your 12% used the average price; the exact
+   calculation on his specific games is 18%.) With seven members, the best one sits near z +1.2 when nobody
+   has an edge: Kaleigh +0.40, Ryan +0.33, Casey −0.22, Sue −0.74, Sheila −0.75, Molly −1.54. That is a noise
+   distribution with Nolan at the top of it this month.
+3. **Log Engine N's picks from Week 7?** Under your own decision rule, "dogs only in coin flips where Nolan
+   is likely on the other side, more as the gap widens or the season shortens", the picks are Engine B's
+   picks: that rule is what the simulation computes, with Nolan's modeled side, the gap, and the games left
+   all inside it. So there is nothing separate to log. What is worth logging is the skill question, and that
+   is now `skill_tracker.py` → `dashboard/skill_tracker.txt`, rebuilt at each weekly close: every member's
+   against-favorite picks scored at the closing price, with z and the exact tail probability.
+   **Pre-registered trigger: z ≥ 2.0 with n ≥ 25 for one member.** If anyone crosses it, a copy-that-member
+   policy goes through `backtest_engine_b.py` like every other candidate. Until then nothing changes.
+
+**The result that matters most.** I reran Engine B at the post-Thursday gap (Nolan 53, Ryan 50) with Nolan
+modeled far more dog-prone than fitted: 60% dogs in toss-ups, 45% in close games. Ryan's P(first) goes UP,
+from 52% to 69%, and every dog on this week's board stays negative. A leader who takes 43% shots gives
+points back on average; the only way chasing him pays is if his shots are better than priced, and ten picks
+cannot show that. So the honest answer to "Nolan reads information differently from the market" is: maybe,
+and the tracker will say so by about Week 12 if it is true. The response until then is chalk and patience.
+
+Thanks for the table, it was the right thing to compute. Keep posting the picks; the tracker runs on them.
+
+---
+
+
 ## 2026-10-13 — Block 7: Week 5 closed; standings match; refit done
 
 Seven BUF@LA rows inserted (Block 6 rows untouched). Both finals confirmed in nflverse. My tally from the

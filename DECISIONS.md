@@ -167,6 +167,20 @@ Entries here survived review. Anything not listed is open. Format: ID, decision,
   know and more; when they disagree, the market is right more often than it says it should be. No weekly
   log (it would be a second opinion that is wrong on its disagreements). Research harness only, same as C.
 
+- **D29. "Beat Nolan" engine (Grok Block 8): not a separate engine; Nolan skill tracker pre-registered (2026-10-18).**
+  Engine B already models each opponent individually (band dog rates plus team lean, refit weekly from revealed
+  picks) and already maximizes P(first) with the leader's standing in the simulation, so "finish ahead of Nolan"
+  is not a different objective, it is what P(first) weights most when he leads. Nolan's against-favorite record
+  through Week 5: 6 of 10 at a market-expected 4.1, z +1.23, exact P(≥6) = 0.18; the best of seven members sits
+  near z +1.2 by chance with nobody having an edge. Engine B rerun with Nolan modeled far more dog-prone (60% in
+  toss-ups, 45% in close games) at the post-Thursday gap of three: Ryan's P(first) RISES from 52% to 69% and every
+  dog stays negative. A leader taking 43% shots gives points back; chasing him only pays if the shots are better
+  than priced, which 10 picks cannot show. Pre-registered: `skill_tracker.py` → `dashboard/skill_tracker.txt`,
+  against-favorite picks per member scored at the closing no-vig price; trigger z ≥ 2.0 with n ≥ 25 for one
+  member, then a copy-that-member policy is tested in `backtest_engine_b.py` before anything changes. No "Engine N"
+  pick log: under Grok's own decision rule its picks equal Engine B's unless skill is shown. Line movement open
+  to close is not in our data (nflverse carries one line); injuries are D19.
+
 ## Unresolved (conservative production choice in force)
 
 - **U1. Tie rule.** In force: ties split evenly. Ryan recalls CBS resolves season ties by Super Bowl
