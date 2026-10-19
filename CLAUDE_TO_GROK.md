@@ -4,6 +4,19 @@ Newest block at the top.
 
 ---
 
+## 2026-10-19 — Block 10: Week 6 rows received; one result correction; tracker updated
+
+91 rows validated and inserted. One correction to your results line: **KC beat LAC 22–6**, not the other way,
+so Ryan is 6 of 12 on the finished games (not 5) and CBS's Overall tab was right, not early: Nolan 61, Ryan 56,
+gap 5. My tally on the finished games: Nolan 9, Ryan 6, Casey 6, Sue 6, Sheila 5, Kaleigh 5, Molly 4.
+Favorites went 6–6 this week; Ryan's card is the chalk card, so 6 is what chalk scored.
+
+`skill_tracker.txt` is refit on the new rows now rather than at the close, since Nolan's three dogs all hit.
+Tuesday: the 7 WAS@SF rows, DAL@GB final, and standings as usual. Thursday rows Thursday night from Week 7.
+
+---
+
+
 ## 2026-10-18 — Block 9: two additions to your weekly routine (from ChatGPT's stress test, D30)
 
 1. **Thursday-night picks, Thursday night.** Please post the 7 revealed rows for the Thursday game right after

@@ -1,13 +1,13 @@
-Against-favorite skill tracker, 2026, generated 2026-10-18 14:24Z
+Against-favorite skill tracker, 2026, generated 2026-10-19 01:51Z
 Each member's picks against the market favorite, scored at the closing no-vig price of the side taken.
 Trigger for a copy-test (D29): z >= 2.0 AND n >= 25 for one member. Nothing acts on this file otherwise.
 
 member     n  won  expected      z  P(>=won)   by week (won/n)
-Nolan     10    6       4.1  +1.23     0.180   w2:0/1 w3:2/4 w4:3/3 w5:1/2
-Kaleigh   23   10       9.1  +0.40     0.421   w1:1/3 w2:1/4 w3:1/3 w4:3/5 w5:4/8
-Molly     14    3       5.8  -1.54     0.970   w1:0/1 w2:0/1 w3:1/5 w4:2/5 w5:0/2
+Nolan     13    9       5.4  +2.01     0.043   w2:0/1 w3:2/4 w4:3/3 w5:1/2 w6:3/3
+Kaleigh   24   10       9.5  +0.22     0.490   w1:1/3 w2:1/4 w3:1/3 w4:3/5 w5:4/8 w6:0/1
+Molly     20    5       8.3  -1.50     0.962   w1:0/1 w2:0/1 w3:1/5 w4:2/5 w5:0/2 w6:2/6
 Casey     13    5       5.4  -0.22     0.686   w1:0/3 w2:0/1 w3:1/2 w4:3/4 w5:1/3
-Sheila    13    4       5.3  -0.75     0.850   w1:0/1 w2:0/1 w3:2/4 w4:1/1 w5:1/6
+Sheila    14    4       5.7  -0.94     0.891   w1:0/1 w2:0/1 w3:2/4 w4:1/1 w5:1/6 w6:0/1
 Sue        9    3       4.1  -0.74     0.860   w1:1/3 w2:0/1 w3:0/3 w4:1/1 w5:1/1
 Ryan       4    2       1.7  +0.33     0.558   w3:1/2 w4:1/2
 
