@@ -1239,3 +1239,4 @@ logged_at_utc,season,week,game_id,fav,p_fav,family_fav_rate,dP_first_dog,mc_nois
 2026-10-18T22:24:42Z,2026,6,2026_06_WAS_SF,SF,0.7867,0.908,-0.0313,0.0002,HIGH,SF,0.8270,0.8270,"{""Ryan"": 54, ""Casey"": 47, ""Sue"": 47, ""Nolan"": 52, ""Sheila"": 45, ""Kaleigh"": 46, ""Molly"": 41}",family.json
 2026-10-19T01:51:22Z,2026,6,2026_06_DAL_GB,DAL,0.5108,0.434,+0.0000,1.0000,LOCKED,GB,0.4014,0.4014,"{""Ryan"": 56, ""Casey"": 53, ""Sue"": 53, ""Nolan"": 61, ""Sheila"": 50, ""Kaleigh"": 51, ""Molly"": 45}",family.json
 2026-10-19T01:51:22Z,2026,6,2026_06_WAS_SF,SF,0.7867,0.908,-0.0443,0.0007,HIGH,SF,0.4014,0.4014,"{""Ryan"": 56, ""Casey"": 53, ""Sue"": 53, ""Nolan"": 61, ""Sheila"": 50, ""Kaleigh"": 51, ""Molly"": 45}",family.json
+2026-10-19T23:02:14Z,2026,6,2026_06_WAS_SF,SF,0.7659,0.908,-0.0399,0.0003,HIGH,SF,0.4058,0.4058,"{""Ryan"": 57, ""Casey"": 54, ""Sue"": 54, ""Nolan"": 62, ""Sheila"": 51, ""Kaleigh"": 52, ""Molly"": 46}",family.json
