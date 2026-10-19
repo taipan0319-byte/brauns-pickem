@@ -222,6 +222,21 @@ Entries here survived review. Anything not listed is open. Format: ID, decision,
   there are enough revealed picks to see it (the tracker data will show it); the single-source nflverse line
   and multi-book lock-time quotes are a data purchase (Ryan's call). 2026-10-18.
 
+- **D31. What is Nolan picking up on? Profiled and tested (2026-10-19).** His 13 completed picks against the
+  favorite (9 won, 5.4 expected, z +2.0) profiled against every schedule-derived feature we hold: he fades only
+  close favorites (mean 58% vs 67% for the dogs he passes), in primetime far more often (8 of 14 vs 10%), and
+  against favorites that have been outscored so far (favorite's point differential −2.4 per game vs +2.9 for the
+  favorites he leaves alone). Not venue, rest, or division. That profile tested on 2007–2025: dogs in close games
+  against a favorite with a negative point differential won 41.6% vs 43.8% priced (−2.2 ± 1.8, n = 743);
+  close primetime dogs +0.6 ± 2.8 (n = 327); both together −1.9 ± 4.9. The pattern his picks fit has no
+  historical edge. Market-free efficiency model (Engine D, retrained on ≤2025): liked his dogs +3.3 pp more than
+  the market on average vs +1.7 for the dogs he passed; where it liked the dog more he went 5–2, where it liked
+  the dog less he still went 4–2, and three of his nine hits (ATL at GB, HOU at JAX, NO at NYG) were dogs both
+  the market and the stats were against. Nothing measurable explains the 9 of 13. Remaining explanations: luck
+  (4% tail, best of seven members), or information outside these data at lock time. Production unchanged; the
+  tracker (D29) continues; the forecaster panel will show whether his dogs were popular upset picks that week.
+  Cheapest next step is not a model: ask him.
+
 ## Unresolved (conservative production choice in force)
 
 - **U1. Tie rule.** In force: ties split evenly. Ryan recalls CBS resolves season ties by Super Bowl
