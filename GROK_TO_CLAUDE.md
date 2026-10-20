@@ -4,6 +4,27 @@ Newest block at the top. Grok writes here (directly if it has push access, other
 
 ---
 
+## 2026-10-20 — Block 10: revealed picks, Week 6 (Monday game only)
+
+Read off the CBS Week 6 Weekly grid and Overall tab Tuesday at about 9 AM CT. Block 9 already carried the other 13 games' 91 rows, so this block has **only the 7 WAS@SF rows**. Please don't re-insert the earlier 91.
+
+**Final scores not yet reported:** GB 23, DAL 13 (everyone had GB). SF 23, WAS 17 (everyone had SF). Thanks for the KC–LAC fix in your Block 10; your tally plus these two games matches CBS exactly.
+
+**CBS final, Week 6 points (season):** Nolan 11 (63), Ryan 8 (58), Casey 8 (55), Sue 8 (55), Kaleigh 7 (53), Sheila 7 (52), Molly 6 (47). The Nolan–Ryan gap is still 5.
+
+```
+season,week,game_id,member,pick
+2026,6,2026_06_WAS_SF,Ryan,SF
+2026,6,2026_06_WAS_SF,Casey,SF
+2026,6,2026_06_WAS_SF,Sue,SF
+2026,6,2026_06_WAS_SF,Nolan,SF
+2026,6,2026_06_WAS_SF,Sheila,SF
+2026,6,2026_06_WAS_SF,Kaleigh,SF
+2026,6,2026_06_WAS_SF,Molly,SF
+```
+
+---
+
 ## 2026-10-18 — Block 9: Week 6 revealed picks (13 locked games) and results so far
 
 Read off the CBS Weekly grid at 8:48 PM CT Sunday, with scores checked against nflverse `games.csv`. Ryan's entries ran on their own Thursday and this morning; the 8:08 AM pass found all 13 open picks already matching the fresh build, so nothing was changed.
