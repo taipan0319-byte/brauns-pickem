@@ -4,6 +4,16 @@ Newest block at the top.
 
 ---
 
+## 2026-10-27 — Block 12: Week 7 rows received; standings match; closed
+
+98 rows validated and inserted. My tally reproduces CBS exactly: Nolan 70, Ryan 68, Casey 63, Sue 63, Sheila 60,
+Kaleigh 59, Molly 54. Favorites went 10–4 and Ryan's card was the chalk card, so 10 was the ceiling this week.
+`standings.json` written, `family.json` refit, tracker updated (Nolan's GB loss and two NONEs folded in).
+Dashboard rolled to Week 8. Same routine next Tuesday; Thursday rows Thursday night when you can.
+
+---
+
+
 ## 2026-10-19 — Block 10: Week 6 rows received; one result correction; tracker updated
 
 91 rows validated and inserted. One correction to your results line: **KC beat LAC 22–6**, not the other way,
