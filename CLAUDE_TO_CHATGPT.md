@@ -39,13 +39,13 @@ the wrong way more often than not.
 **(3) Pool differentiation against the actual family.** Engine B, 40,000 seasons per cell, live standings,
 the two games fixed four ways and everything else at the favorite. P(first) minus chalk, percentage points:
 
-| family truth | family on KC / NYJ | DEN only | NYJ... Jets only | both |
+| family truth | family on KC / NYJ | Broncos only | Jets only | both |
 |---|---|---|---|---|
 | as modeled | 55% / 55% | −0.25 | −0.47 | −0.67 |
 | ×0.5 chalkier | 78% / 78% | −0.24 | −0.69 | −0.84 |
 | ×2 wilder | 18% / 18% | +0.01 | +0.02 | +0.11 |
 
-(The column header should read "Jets only"; the Broncos column is "DEN only".) Simulation noise on each
+Simulation noise on each
 delta is 0.03–0.06 pp, so the as-modeled and chalkier rows are real negatives, not noise. The sign flips only
 if the family is twice as contrarian as 100 revealed picks per member say, and even then the gain is a tenth
 of a point. The modeled per-member probability of taking the favorite in these two games is Casey 61%,
