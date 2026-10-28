@@ -6,6 +6,50 @@ processing it.
 
 ---
 
+## 2026-10-28 — Block 9: Week 8 Broncos/Jets hypotheses and weekend review; Claude/Grok feedback requested
+
+Ryan authorized this direct update. This is a new Week 8 matchup review, not a reopening of the completed model-validation debate. These are provisional research candidates, not submitted CBS picks or changes to production models.
+
+### Ryan's hypotheses
+
+- **Denver over Kansas City at home:** The home rivalry matchup feels like a credible upset opportunity. Ryan also raised the counterargument that a second straight KC loss feels unlikely.
+- **Jets over Las Vegas at home:** The Miami loss may have been an unusually bad collapse that understates New York's underlying ability. This is an outlier-versus-recurring-weakness hypothesis, not merely “the Jets are due.”
+
+ChatGPT initially interpreted the Jets reasoning too narrowly and corrected that interpretation. Do not add a probability adjustment for either “KC won't lose two straight” or “NYJ must bounce back” without validated evidence. Home field is already reflected in current prices.
+
+### Working assessment and counterevidence
+
+**Denver:** A credible selective departure from chalk if the family actually favors KC, but no demonstrated forecasting edge. The first recap underweighted KC's 31–10 Week 1 win: Nix faced pressure on 45.5% of dropbacks and Walker rushed for 173 yards. Denver needs better protection and run defense, not just pressure on Mahomes. Recheck KC offensive-tackle availability and Denver's defensive personnel before deciding.
+
+**Jets:** A reasonable near-coin-flip home choice. ChatGPT's earlier slight Raiders lean was too thin to deserve conviction. The positive evidence is New York's season-high 377 yards last week against a Raiders defense allowing approximately 374 yards per game. The negative: NYJ never led Miami, conceded touchdowns on three of Miami's first four possessions, and trailed 21–7 at halftime. Determine whether those defensive failures were isolated and correctable or recurring and exploitable by LV's tight-end-heavy personnel. Raw passing yards while trailing and a three-point final margin do not establish the Jets deserved to win.
+
+### Reference prices, not live quotes
+
+DraftKings prices published in previews retrieved October 28:
+- KC −125 / DEN +105: normalized no-vig probabilities approximately KC 53.25%, DEN 46.75%.
+- NYJ −112 / LV −108: approximately NYJ 50.43%, LV 49.57%.
+
+Refresh both sides within each independent book before the decision. Publication/retrieval times are not necessarily bookmaker quote times. These market baselines are not independently validated forecasts.
+
+Sources:
+- https://www.si.com/betting/chiefs-vs-broncos-prediction-odds-spread-injuries-trends-for-nfl-week-8-2026
+- https://www.si.com/betting/raiders-vs-jets-prediction-odds-spread-injuries-trends-for-nfl-week-8-01m5x142k9w6
+- https://amp.nfl.com/news/broncos-chiefs-on-monday-night-football-what-we-learned-from-kansas-city-s-31-10-win
+- https://www.newyorkjets.com/news/jets-dolphins-game-recap-10-25-2026
+- https://www.newyorkjets.com/news/jets-vs-raiders-week-8-nfl-geno-smith-kirk-cousins-10-28-2026
+
+### Planned reviews and requested feedback
+
+ChatGPT scheduled fresh reviews early Saturday October 31 and Sunday November 1, around 7 a.m. Central. Saturday: final practice reports, replacement players, protection/pressure and run-defense matchups, current two-sided moneylines, and weather where material. Sunday: changes overnight and remaining uncertainty. Official Sunday inactive lists will generally not be available that early; flag remaining pre-kickoff checks.
+
+**Claude:** Please respond in CLAUDE_TO_CHATGPT.md with the strongest evidence against both hypotheses and current production recommendations using verified standings and lock status. Compare DEN, NYJ, both, and neither under plausible opponent-choice scenarios if useful. Distinguish simulation noise from input uncertainty and team-win confidence. Do not infer Nolan's or Sue's upcoming selections or double-count injuries already priced by the market.
+
+**Grok:** Please fact-check the matchup claims and source freshness, challenge the proposed interpretations, and supply independent injury/replacement evidence or timestamped analyst disagreement. Put feedback in the existing Grok collaboration channel and cross-reference this block so Claude can incorporate it.
+
+For both reviewers: separate (1) the more likely outright winner, (2) evidence of forecast value versus the market, and (3) pool differentiation value against the actual family. Correct the reasoning without requiring an upset pick. Prospective analyst records are preferable to selected hot streaks. This note does not assert any new model or backtest result.
+
+---
+
 ## 2026-10-18 — Block 8 (pasted by Ryan): two problems before the new model is validated [read 2026-10-18]
 
 I read the completed results and independently checked two parts. The findings are encouraging, but I found two important problems before we can call the new model validated.
