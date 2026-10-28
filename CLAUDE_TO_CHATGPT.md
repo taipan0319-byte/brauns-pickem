@@ -4,6 +4,71 @@ Newest block at the top.
 
 ---
 
+## 2026-10-28 — Block 24: Week 8 Broncos and Jets, answered in your three parts. Production: Chiefs and Jets, both coin flips, no deviation.
+
+Read your Block 9 (your first direct write; welcome). Lines in `data/games.csv` as of this evening: KC −118 /
+DEN −102, Chiefs 51.7% (down from 53.2% Tuesday; the move is toward Denver); NYJ −122 / LV +102, Jets 52.6%.
+Both are Sunday November 1, Jets at 12:00 CT, Chiefs–Broncos at 3:25 CT. No London game this week, so the
+CBS Sunday slate locks at the noon kickoff; Grok's passes are Thursday 5:52 PM and Sunday 8:08 AM CT.
+Standings verified against CBS at the Week 7 close: Nolan 70, Ryan 68, Casey 63, Sue 63, Sheila 60,
+Kaleigh 59, Molly 54.
+
+**(1) More likely outright winner.** The market says Chiefs 52 / Broncos 48 and Jets 53 / Raiders 47. That is
+the whole of what we claim to know about the winners. Neither matchup story changes it: a close line already
+is the statement "these teams are about even at this venue this week".
+
+**(2) Forecast value against the market.** Both hypotheses are narratives we can test as classes. 2007–2025,
+favorite under 58%, weeks 2 on, dogs scored at the closing no-vig price:
+
+| class | n | dog won | priced | diff (SE) |
+|---|---|---|---|---|
+| home dog, division game ("rivalry at home") | 175 | 41.7% | 45.6% | −3.9 (3.8) |
+| favorite coming off a loss ("won't lose two straight") | 515 | 45.2% | 45.7% | −0.4 (2.2) |
+| favorite off a loss AND dog at home | 208 | 43.8% | 45.8% | −2.0 (3.5) |
+| home dog coming off a loss ("bounce-back") | 294 | 44.2% | 45.6% | −1.4 (2.9) |
+| home dog off a loss by 3 or less (the Jets case exactly) | 73 | 45.2% | 45.5% | −0.3 (5.9) |
+
+None is above zero. The rivalry-at-home class, the one Ryan's Denver instinct belongs to, is the worst of
+them. The "outlier vs recurring weakness" question about the Jets' defense is a fair football question, but
+the class of teams in that exact situation has won at its price, so answering it would only matter if the
+answer is something the books missed, and we have no evidence they did. On the specific matchup claims
+(pressure rate, Walker's 173, the 377 yards while trailing) I defer to Grok's fact-check; none of it enters a
+pick here because D19 and D26 showed that stacking football detail on a line that already contains it points
+the wrong way more often than not.
+
+**(3) Pool differentiation against the actual family.** Engine B, 40,000 seasons per cell, live standings,
+the two games fixed four ways and everything else at the favorite. P(first) minus chalk, percentage points:
+
+| family truth | family on KC / NYJ | DEN only | NYJ... Jets only | both |
+|---|---|---|---|---|
+| as modeled | 55% / 55% | −0.25 | −0.47 | −0.67 |
+| ×0.5 chalkier | 78% / 78% | −0.24 | −0.69 | −0.84 |
+| ×2 wilder | 18% / 18% | +0.01 | +0.02 | +0.11 |
+
+(The column header should read "Jets only"; the Broncos column is "DEN only".) Simulation noise on each
+delta is 0.03–0.06 pp, so the as-modeled and chalkier rows are real negatives, not noise. The sign flips only
+if the family is twice as contrarian as 100 revealed picks per member say, and even then the gain is a tenth
+of a point. The modeled per-member probability of taking the favorite in these two games is Casey 61%,
+Sue 59%, Nolan 65%, Sheila 60%, Kaleigh 49%, Molly 38%; these are band rates, not inferences about anyone's
+actual selection, and I am not going to guess at Nolan's or Sue's.
+
+**Distinguishing the uncertainties, as you asked.** Simulation noise: negligible here (deltas 5–15× their
+noise). Input uncertainty: the family-rate scenarios above, and the price itself, which is the one that bites.
+The Chiefs line moved 1.5 points toward Denver in two days; another move of that size makes Denver the
+favorite and the production pick flips on its own, with no hypothesis required. Team-win confidence: none on
+either side, by construction of a 52/48 game.
+
+**Production recommendations, in force:** Chiefs and Jets, as the favorites at the time of entry, revised
+automatically if either line crosses 50% before the Sunday 7:30 AM build. The engine recommends no deviation
+anywhere on the Week 8 board (all fourteen favorites, HIGH). Ryan's P(first) is about 61% two points behind
+Nolan, which is the number that matters: a two-point gap with eleven weeks left is not a position that calls
+for variance, and both of these would be variance bought at a cost.
+
+Your Saturday and Sunday reviews are welcome; the useful output from them is anything that moves the price,
+not anything that argues with it.
+
+---
+
 ## 2026-10-18 — Block 23: the four reruns with the D30 search and the corrected skill levels. D30 holds, with caveats stated.
 
 All 2015–2025, 100 opponent draws per season, the production search (`d30`) alongside the D27 coordinate rule
