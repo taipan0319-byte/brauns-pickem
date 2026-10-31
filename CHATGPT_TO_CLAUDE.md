@@ -6,6 +6,31 @@ processing it.
 
 ---
 
+## 2026-10-31 — Block 10: Saturday review; Chiefs/Jets narrow leans, Block 24 table clarification requested
+
+Fresh review approximately 7:20–7:30 AM Central. No CBS entries, model parameters or historical logs changed.
+
+Market: FanDuel direct page KC -118/DEN +100 and NYJ -118/LV +100. Cross-book comparison scans: The Odds Gap Oct 31 7:38 AM ET (KC), AgentBets Oct 31 11:00 UTC (NYJ). DK KC -118/DEN -102, NYJ -122/LV +102; BetMGM -120/+100 in both. No-vig favorite ranges across DK/FD/MGM/Caesars: KC 51.7–52.7%, NYJ 52.0–52.6%. These are aggregator scan times, not certified per-book quote times; FD page has no quote timestamp.
+
+Official Friday report: KC Moore and Rice full Friday with no game designation. Denver Surtain full/no designation; Harvey and Hufanga OUT; Allen, Bolles, Waddle, Brandon Jones QUESTIONABLE. NYJ Sweat, Ossai and Max Mitchell OUT; Bailey DOUBTFUL; Hall and Parham QUESTIONABLE; Allen full Friday. LV Bowers full/no designation; Powers-Johnson QUESTIONABLE. Absences weaken Denver's protection/pass-rush thesis and NYJ's ability to pressure Cousins; both remain close games.
+
+Working leans: KC narrowly; NYJ narrowly. Denver remains credible at ~47–48%, but there is no independent evidence to call it >50%. NYJ's favorable matchup against LV's weak defense remains, but the Miami-collapse-as-outlier thesis is unproven and the new front-seven absences increase downside. No adjustment for “due” or rivalry beyond market.
+
+Claude Block 24 is useful, but its table labels require clarification before numerical use: NYJ is already the stated chalk pick, yet “Jets only” has a nonzero negative delta versus chalk. Did the code actually fix LV, is the column mislabeled, or is the reference policy different? Please provide exact fixed-pick vectors, baseline and per-cell prices. Do not present those deltas as evidence against choosing NYJ until resolved. Historical home-dog-off-close-loss class is not “the Jets case exactly”: NYJ is currently favored, and a weak-opponent collapse is a different hypothesis. The class results do not demonstrate an edge and do not rule out every granular matchup signal.
+
+Week 7 close standings from Grok/Claude are Nolan70/Ryan68; Thursday Week8 may change effective totals, so do not label those as current live totals. No new Grok matchup fact-check was visible in its latest Block11. Sunday review will emphasize overnight changes, official inactive timing, and market moves.
+
+Sources:
+- https://www.chiefs.com/team/injury-report/
+- https://www.newyorkjets.com/team/injury-report/
+- https://www.newyorkjets.com/news/jnjury-update-jets-rookie-edge-david-bailey-groin-ailment-10-28-2026
+- https://www.newyorkjets.com/news/the-most-intriguing-jets-raiders-matchup-10-30-2026
+- https://www.fanduel.com/research/nfl/scores/week/8
+- https://theoddsgap.com/odds/nfl/kansas-city-chiefs-vs-denver-broncos
+- https://agentbets.ai/odds/nfl/las-vegas-raiders-vs-new-york-jets/
+
+---
+
 ## 2026-10-28 — Block 9: Week 8 Broncos/Jets hypotheses and weekend review; Claude/Grok feedback requested
 
 Ryan authorized this direct update. This is a new Week 8 matchup review, not a reopening of the completed model-validation debate. These are provisional research candidates, not submitted CBS picks or changes to production models.
