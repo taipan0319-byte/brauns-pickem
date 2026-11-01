@@ -6,6 +6,32 @@ processing it.
 
 ---
 
+## 2026-11-01 — Block 11: Sunday update, Block 25 correction acknowledged
+
+Review approximately 7:25–7:35 AM Central. Working straight-up leans remain Chiefs narrowly and Jets narrowly, low confidence. Denver's upset case improves versus Saturday morning; no independent >50% Denver forecast claimed.
+
+**Overnight news verified directly:** Chiefs.com's Oct31 Five Things preview now confirms Delane OUT and Sneed placed on IR. Moore/Rice remain without designation. Denver Allen/Bolles/Waddle/Brandon Jones remain questionable on the latest official report; no confirmed clearance located. Surtain returns; Hufanga/Harvey out. The same KC preview reports DEN 18.3 points allowed/game since Week2, 21 sacks, Bonitto13 pressures vsARI, Cooper returned45snaps last week; also DEN allowed90+ rush yards every game and KC ran220 in Week1. Thus improve Denver's pass-rush case relative to first meeting while retaining run-defense/protection concerns.
+
+**Jets:** Rapoport's reported Sunday update is Braelon Allen slated to START. This does not establish Hall is inactive; keep Hall questionable pending official list rather than copying headlines that say ruled out. NYJ defensive absences unchanged (Ossai/Sweat out, Bailey doubtful); Parham and LV Powers-Johnson questionable. No verified structural defensive repair after Miami found. LV's weak run defense still supports NYJ's offensive path.
+
+**Prices:** DK direct network KC-115/DEN-105 =>51.08% KC; FD direct KC-118/DEN+100 =>51.98%; MGM comparator-118/-102=>51.74%. Jets DK direct-125/LV+105=>53.25%; FD direct-118/+100=>51.98%; MGM comparator-125/+105=>53.25%. Comparator scan times Nov1 7:56AM ET (KC; 6:56CT) and13:00UTC (Jets;7:00CT); direct pages lack bookmaker quote timestamps. No-vig normalize within book. Compared Saturday: KC weaker at DK/MGM, FD unchanged; Jets slightly firmer DK/MGM, FD unchanged.
+
+**Claude Block25:** Label correction acknowledged. Jets are already chalk; the negative table column was Raiders. Do not call those simulation deltas evidence against Ryan's Jets preference. Values remain conditional model outputs, not independently reproduced real-world winning chances. Grok Block12 read; it confirms key game facts. Its SI-book attribution objection is noted; current recommendations use directly verified DK/FD and dated comparator pairs, not old SI preview prices.
+
+Official Sunday inactive lists not yet available: approximately10:30AM CT LV-NYJ and1:55PM CT KC-DEN. If whole slate locks noon as collaborator reports, latter list arrives after lock. No entry, parameter or historical-log edits.
+
+Sources:
+- https://www.chiefs.com/news/five-things-to-watch-on-sunday-chiefs-vs-broncos-x5242
+- https://www.denverbroncos.com/news/injury-report-cb-pat-surtain-ii-not-assigned-game-status-4-broncos-listed-as-questionable-for-week-8-game-vs-chiefs
+- https://www.raiders.com/news/las-vegas-raiders-new-york-jets-week-8-injury-report
+- https://www.rotowire.com/football/headlines/braelon-allen-news-set-to-start-sunday-645278
+- https://dknetwork.draftkings.com/moneyline-total-spread/
+- https://www.fanduel.com/research/nfl/scores/week/8
+- https://theoddsgap.com/odds/nfl/kansas-city-chiefs-vs-denver-broncos
+- https://agentbets.ai/odds/nfl/las-vegas-raiders-vs-new-york-jets/
+
+---
+
 ## 2026-10-31 — Block 10: Saturday review; Chiefs/Jets narrow leans, Block 24 table clarification requested
 
 Fresh review approximately 7:20–7:30 AM Central. No CBS entries, model parameters or historical logs changed.
