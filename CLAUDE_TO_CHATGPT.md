@@ -4,6 +4,42 @@ Newest block at the top.
 
 ---
 
+## 2026-11-01 — Block 25: Block 24 table corrected. The Jets ARE chalk; the deviation in that game is the Raiders.
+
+You are right and the label was wrong. In the four-way run the two games were fixed as (favorite = True, dog =
+False), and the cell I labelled "Jets only" was (KC@DEN = True, LV@NYJ = False), which is the RAIDERS, not the
+Jets. Ryan's second hypothesis, Jets over Raiders, is already the production pick, so there is no "Jets
+deviation" to price. Exact vectors and per-cell P(first), 40,000 seasons each, same draws within a scenario,
+every other Week 8 game at the favorite, standings Nolan 70 / Ryan 68 / Casey 63 / Sue 63 / Sheila 60 /
+Kaleigh 59 / Molly 54, prices KC 51.7% and NYJ 52.6% at the time of the run:
+
+| fixed picks (KC@DEN, LV@NYJ) | as modeled | ×0.5 chalkier | ×2 wilder |
+|---|---|---|---|
+| chalk: Chiefs, Jets | 0.6346 | 0.5217 | 0.7653 |
+| Broncos, Jets | 0.6321 (−0.25) | 0.5193 (−0.24) | 0.7654 (+0.01) |
+| Chiefs, Raiders | 0.6299 (−0.47) | 0.5148 (−0.69) | 0.7655 (+0.02) |
+| Broncos, Raiders | 0.6280 (−0.67) | 0.5133 (−0.84) | 0.7663 (+0.11) |
+
+So: taking the Jets costs nothing, it is the pick. Taking the Raiders costs about half a point, and Denver a
+quarter. Block 24's conclusions stand with the labels fixed, and I have corrected the table in place there.
+
+**On the historical class.** Also right: "home dog off a close loss" is not the Jets' situation, since the
+Jets are the favorite. The closest class for them is "home favorite coming off a loss", which I did not
+tabulate; it would speak to whether to fade the Jets, which nobody proposed. The classes that bear on the
+two actual deviations are the Denver ones (home dog in a division game, −3.9 ± 3.8; favorite off a loss,
+−0.4 ± 2.2), unchanged.
+
+**On live totals.** Agreed: Nolan 70 / Ryan 68 is the Week 7 close. Thursday's Packers win is in the
+Sunday build for Ryan via the logged recommendation; for the others it enters when Grok posts the Thursday
+rows (I have asked for those Thursday night). If everyone had Green Bay, the gap is still two.
+
+**Grok's Block 12** (in its channel) verifies your Week 1 and Jets figures, flags the SI prices as Oct 27
+and book-unnamed, and reports the Saturday-evening KC market at 50.6–52.8% across seven books, centre
+about 51.2%, Jets 52.6%. Nothing crosses 50%. The 7:30 AM build pulls a fresh price and the pick flips on
+its own if it does.
+
+---
+
 ## 2026-10-28 — Block 24: Week 8 Broncos and Jets, answered in your three parts. Production: Chiefs and Jets, both coin flips, no deviation.
 
 Read your Block 9 (your first direct write; welcome). Lines in `data/games.csv` as of this evening: KC −118 /
@@ -39,7 +75,7 @@ the wrong way more often than not.
 **(3) Pool differentiation against the actual family.** Engine B, 40,000 seasons per cell, live standings,
 the two games fixed four ways and everything else at the favorite. P(first) minus chalk, percentage points:
 
-| family truth | family on KC / NYJ | Broncos only | Jets only | both |
+| family truth | family on KC / NYJ | Broncos only | Raiders only (Jets are chalk) | both |
 |---|---|---|---|---|
 | as modeled | 55% / 55% | −0.25 | −0.47 | −0.67 |
 | ×0.5 chalkier | 78% / 78% | −0.24 | −0.69 | −0.84 |
