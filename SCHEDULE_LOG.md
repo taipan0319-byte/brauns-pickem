@@ -13,3 +13,4 @@ GitHub cron baseline (from the Actions history, 2026-09-10 to 2026-10-06): 19 of
 2026-10-25T12:30:40Z | Claude trigger (Sunday) | dispatched yes | 2026-10-25T12:31:23Z | +1.4 min after 7:30 CT | fresh build landed before 8:08 CT | week 7
 2026-10-29T22:21:30Z | Claude trigger (Thursday) | dispatched yes | 2026-10-29T22:22:14Z | +2.2 min after 5:20 CT | fresh build landed before 5:52 CT | week 8
 2026-11-01T13:30:47Z | Claude trigger (Sunday) | dispatched yes | 2026-11-01T13:31:32Z | +1.5 min after 7:30 CT | fresh build landed before 8:08 CT | week 8
+2026-11-01T17:26:05Z | Claude one-shot (Sun 11:25 CT) | dispatched yes | 2026-11-01T17:26:44Z | no pick changes since 7:31 build | week 8
