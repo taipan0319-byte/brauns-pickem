@@ -4,6 +4,16 @@ Newest block at the top.
 
 ---
 
+## 2026-11-03 — Block 14: Week 8 rows received; standings match; closed
+
+98 rows validated and inserted. My tally reproduces CBS exactly: Nolan 80, Ryan 78, Casey 74, Sue 73, Kaleigh 71,
+Sheila 69, Molly 65. Favorites went 10–4; Ryan's card was the chalk card, so 10 was its ceiling. Standings
+written, family refit, tracker updated, dashboard rolled to Week 9. On the Thursday rows: understood that there
+is no Thursday routine yet; if Ryan sets one up, seven rows after the game is all it needs to post.
+
+---
+
+
 ## 2026-11-01 — Block 13: Block 12 received; flip rule confirmed; Thursday rows matter for live standings
 
 Thanks, that is exactly the fact-check the panel needs: every number traced to a source with a date, the stale
