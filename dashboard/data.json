@@ -1,12 +1,12 @@
 {
  "season": 2026,
  "week": 8,
- "built_at": "2026-11-01T23:34:02Z",
- "picks_final_at": "2026-11-01T23:34:02Z",
+ "built_at": "2026-11-03T01:45:08Z",
+ "picks_final_at": "2026-11-03T01:45:08Z",
  "pick_contract": "games[].pick is the team code Ryan should enter on CBS: Engine B's final call, LOW resolved to the favorite. Not renamed or restructured without notice in CLAUDE_TO_GROK.md.",
  "order_source": "kickoff time, then NFL schedule id (CBS within-slot order not recorded for this week)",
  "model_refreshed_at": "2026-11-01T23:34:02Z",
- "market_asof": "2026-11-01T23:34:01Z",
+ "market_asof": "2026-11-03T01:45:07Z",
  "p_first": 0.9577,
  "games": [
   {
@@ -355,9 +355,9 @@
    "weekday": "SUN",
    "kickoff_ct": "3:05 PM CT",
    "kickoff_iso": "2026-11-01T15:05:00-05:00",
-   "result": null,
-   "away_score": null,
-   "home_score": null,
+   "result": 15.0,
+   "away_score": "9",
+   "home_score": "24",
    "ryan_pick": null,
    "fav": "LA",
    "dog": "LAC",
@@ -379,7 +379,9 @@
     "-285"
    ],
    "p_fav_injury_adj": null,
-   "watch": []
+   "watch": [],
+   "winner": "LA",
+   "pick_correct": true
   },
   {
    "game_id": "2026_08_KC_DEN",
@@ -390,9 +392,9 @@
    "weekday": "SUN",
    "kickoff_ct": "3:25 PM CT",
    "kickoff_iso": "2026-11-01T15:25:00-05:00",
-   "result": null,
-   "away_score": null,
-   "home_score": null,
+   "result": 4.0,
+   "away_score": "24",
+   "home_score": "28",
    "ryan_pick": null,
    "fav": "KC",
    "dog": "DEN",
@@ -416,7 +418,9 @@
    "p_fav_injury_adj": null,
    "watch": [
     "near coin flip"
-   ]
+   ],
+   "winner": "DEN",
+   "pick_correct": false
   },
   {
    "game_id": "2026_08_NE_MIA",
@@ -427,9 +431,9 @@
    "weekday": "SUN",
    "kickoff_ct": "3:25 PM CT",
    "kickoff_iso": "2026-11-01T15:25:00-05:00",
-   "result": null,
-   "away_score": null,
-   "home_score": null,
+   "result": -5.0,
+   "away_score": "24",
+   "home_score": "19",
    "ryan_pick": null,
    "fav": "NE",
    "dog": "MIA",
@@ -451,7 +455,9 @@
     "275"
    ],
    "p_fav_injury_adj": null,
-   "watch": []
+   "watch": [],
+   "winner": "NE",
+   "pick_correct": true
   },
   {
    "game_id": "2026_08_PHI_WAS",
@@ -462,9 +468,9 @@
    "weekday": "SUN",
    "kickoff_ct": "7:20 PM CT",
    "kickoff_iso": "2026-11-01T19:20:00-05:00",
-   "result": null,
-   "away_score": null,
-   "home_score": null,
+   "result": 17.0,
+   "away_score": "10",
+   "home_score": "27",
    "ryan_pick": null,
    "fav": "WAS",
    "dog": "PHI",
@@ -486,7 +492,9 @@
     "-278"
    ],
    "p_fav_injury_adj": null,
-   "watch": []
+   "watch": [],
+   "winner": "WAS",
+   "pick_correct": true
   },
   {
    "game_id": "2026_08_CHI_SEA",
@@ -539,7 +547,7 @@
   "Kaleigh": 59,
   "Molly": 54
  },
- "games_remaining": 156,
+ "games_remaining": 152,
  "rankings": {
   "weeks": [
    1,
@@ -687,7 +695,7 @@
    "5": 9,
    "6": 7,
    "7": 10,
-   "8": 7
+   "8": 11
   },
   "engine_b": {
    "1": 12,
@@ -697,9 +705,9 @@
    "5": 9,
    "6": 8,
    "7": 10,
-   "8": 7
+   "8": 10
   },
-  "games_final": 115
+  "games_final": 119
  },
  "family": [
   {
@@ -1075,12 +1083,12 @@
   ]
  },
  "scoreboard": {
-  "games_scored": 115,
-  "engine_a_correct": 74,
-  "engine_b_correct": 74,
+  "games_scored": 119,
+  "engine_a_correct": 78,
+  "engine_b_correct": 77,
   "ryan_correct": 68,
   "ryan_entered": 106,
-  "engine_b_value": 0
+  "engine_b_value": -1
  },
  "history": [
   {
@@ -21515,7 +21523,7 @@
    "confidence": "HIGH",
    "p_first": 0.4233,
    "ryan_pick": null,
-   "winner": null
+   "winner": "LA"
   },
   {
    "logged_at": "2026-10-27T12:34:49Z",
@@ -21529,7 +21537,7 @@
    "confidence": "HIGH",
    "p_first": 0.4233,
    "ryan_pick": null,
-   "winner": null
+   "winner": "DEN"
   },
   {
    "logged_at": "2026-10-27T12:34:49Z",
@@ -21543,7 +21551,7 @@
    "confidence": "HIGH",
    "p_first": 0.4233,
    "ryan_pick": null,
-   "winner": null
+   "winner": "NE"
   },
   {
    "logged_at": "2026-10-27T12:34:49Z",
@@ -21557,7 +21565,7 @@
    "confidence": "HIGH",
    "p_first": 0.4233,
    "ryan_pick": null,
-   "winner": null
+   "winner": "WAS"
   },
   {
    "logged_at": "2026-10-27T12:34:49Z",
@@ -21711,7 +21719,7 @@
    "confidence": "HIGH",
    "p_first": 0.6106,
    "ryan_pick": null,
-   "winner": null
+   "winner": "LA"
   },
   {
    "logged_at": "2026-10-27T14:42:13Z",
@@ -21725,7 +21733,7 @@
    "confidence": "HIGH",
    "p_first": 0.6106,
    "ryan_pick": null,
-   "winner": null
+   "winner": "DEN"
   },
   {
    "logged_at": "2026-10-27T14:42:13Z",
@@ -21739,7 +21747,7 @@
    "confidence": "HIGH",
    "p_first": 0.6106,
    "ryan_pick": null,
-   "winner": null
+   "winner": "NE"
   },
   {
    "logged_at": "2026-10-27T14:42:13Z",
@@ -21753,7 +21761,7 @@
    "confidence": "HIGH",
    "p_first": 0.6106,
    "ryan_pick": null,
-   "winner": null
+   "winner": "WAS"
   },
   {
    "logged_at": "2026-10-27T14:42:13Z",
@@ -21907,7 +21915,7 @@
    "confidence": "HIGH",
    "p_first": 0.6243,
    "ryan_pick": null,
-   "winner": null
+   "winner": "LA"
   },
   {
    "logged_at": "2026-10-29T22:22:14Z",
@@ -21921,7 +21929,7 @@
    "confidence": "MEDIUM",
    "p_first": 0.6243,
    "ryan_pick": null,
-   "winner": null
+   "winner": "DEN"
   },
   {
    "logged_at": "2026-10-29T22:22:14Z",
@@ -21935,7 +21943,7 @@
    "confidence": "HIGH",
    "p_first": 0.6243,
    "ryan_pick": null,
-   "winner": null
+   "winner": "NE"
   },
   {
    "logged_at": "2026-10-29T22:22:14Z",
@@ -21949,7 +21957,7 @@
    "confidence": "HIGH",
    "p_first": 0.6243,
    "ryan_pick": null,
-   "winner": null
+   "winner": "WAS"
   },
   {
    "logged_at": "2026-10-29T22:22:14Z",
@@ -22103,7 +22111,7 @@
    "confidence": "HIGH",
    "p_first": 0.6243,
    "ryan_pick": null,
-   "winner": null
+   "winner": "LA"
   },
   {
    "logged_at": "2026-10-29T22:58:11Z",
@@ -22117,7 +22125,7 @@
    "confidence": "MEDIUM",
    "p_first": 0.6243,
    "ryan_pick": null,
-   "winner": null
+   "winner": "DEN"
   },
   {
    "logged_at": "2026-10-29T22:58:11Z",
@@ -22131,7 +22139,7 @@
    "confidence": "HIGH",
    "p_first": 0.6243,
    "ryan_pick": null,
-   "winner": null
+   "winner": "NE"
   },
   {
    "logged_at": "2026-10-29T22:58:11Z",
@@ -22145,7 +22153,7 @@
    "confidence": "HIGH",
    "p_first": 0.6243,
    "ryan_pick": null,
-   "winner": null
+   "winner": "WAS"
   },
   {
    "logged_at": "2026-10-29T22:58:11Z",
@@ -22299,7 +22307,7 @@
    "confidence": "HIGH",
    "p_first": 0.6252,
    "ryan_pick": null,
-   "winner": null
+   "winner": "LA"
   },
   {
    "logged_at": "2026-10-29T23:32:41Z",
@@ -22313,7 +22321,7 @@
    "confidence": "MEDIUM",
    "p_first": 0.6252,
    "ryan_pick": null,
-   "winner": null
+   "winner": "DEN"
   },
   {
    "logged_at": "2026-10-29T23:32:41Z",
@@ -22327,7 +22335,7 @@
    "confidence": "HIGH",
    "p_first": 0.6252,
    "ryan_pick": null,
-   "winner": null
+   "winner": "NE"
   },
   {
    "logged_at": "2026-10-29T23:32:41Z",
@@ -22341,7 +22349,7 @@
    "confidence": "HIGH",
    "p_first": 0.6252,
    "ryan_pick": null,
-   "winner": null
+   "winner": "WAS"
   },
   {
    "logged_at": "2026-10-29T23:32:41Z",
@@ -22495,7 +22503,7 @@
    "confidence": "HIGH",
    "p_first": 0.6229,
    "ryan_pick": null,
-   "winner": null
+   "winner": "LA"
   },
   {
    "logged_at": "2026-10-30T01:57:58Z",
@@ -22509,7 +22517,7 @@
    "confidence": "MEDIUM",
    "p_first": 0.6229,
    "ryan_pick": null,
-   "winner": null
+   "winner": "DEN"
   },
   {
    "logged_at": "2026-10-30T01:57:58Z",
@@ -22523,7 +22531,7 @@
    "confidence": "HIGH",
    "p_first": 0.6229,
    "ryan_pick": null,
-   "winner": null
+   "winner": "NE"
   },
   {
    "logged_at": "2026-10-30T01:57:58Z",
@@ -22537,7 +22545,7 @@
    "confidence": "HIGH",
    "p_first": 0.6229,
    "ryan_pick": null,
-   "winner": null
+   "winner": "WAS"
   },
   {
    "logged_at": "2026-10-30T01:57:58Z",
@@ -22691,7 +22699,7 @@
    "confidence": "HIGH",
    "p_first": 0.6229,
    "ryan_pick": null,
-   "winner": null
+   "winner": "LA"
   },
   {
    "logged_at": "2026-10-30T02:39:52Z",
@@ -22705,7 +22713,7 @@
    "confidence": "MEDIUM",
    "p_first": 0.6229,
    "ryan_pick": null,
-   "winner": null
+   "winner": "DEN"
   },
   {
    "logged_at": "2026-10-30T02:39:52Z",
@@ -22719,7 +22727,7 @@
    "confidence": "HIGH",
    "p_first": 0.6229,
    "ryan_pick": null,
-   "winner": null
+   "winner": "NE"
   },
   {
    "logged_at": "2026-10-30T02:39:52Z",
@@ -22733,7 +22741,7 @@
    "confidence": "HIGH",
    "p_first": 0.6229,
    "ryan_pick": null,
-   "winner": null
+   "winner": "WAS"
   },
   {
    "logged_at": "2026-10-30T02:39:52Z",
@@ -22873,7 +22881,7 @@
    "confidence": "HIGH",
    "p_first": 0.7072,
    "ryan_pick": null,
-   "winner": null
+   "winner": "LA"
   },
   {
    "logged_at": "2026-11-01T13:16:20Z",
@@ -22887,7 +22895,7 @@
    "confidence": "HIGH",
    "p_first": 0.7072,
    "ryan_pick": null,
-   "winner": null
+   "winner": "DEN"
   },
   {
    "logged_at": "2026-11-01T13:16:20Z",
@@ -22901,7 +22909,7 @@
    "confidence": "HIGH",
    "p_first": 0.7072,
    "ryan_pick": null,
-   "winner": null
+   "winner": "NE"
   },
   {
    "logged_at": "2026-11-01T13:16:20Z",
@@ -22915,7 +22923,7 @@
    "confidence": "HIGH",
    "p_first": 0.7072,
    "ryan_pick": null,
-   "winner": null
+   "winner": "WAS"
   },
   {
    "logged_at": "2026-11-01T13:16:20Z",
@@ -23055,7 +23063,7 @@
    "confidence": "HIGH",
    "p_first": 0.7072,
    "ryan_pick": null,
-   "winner": null
+   "winner": "LA"
   },
   {
    "logged_at": "2026-11-01T13:31:32Z",
@@ -23069,7 +23077,7 @@
    "confidence": "HIGH",
    "p_first": 0.7072,
    "ryan_pick": null,
-   "winner": null
+   "winner": "DEN"
   },
   {
    "logged_at": "2026-11-01T13:31:32Z",
@@ -23083,7 +23091,7 @@
    "confidence": "HIGH",
    "p_first": 0.7072,
    "ryan_pick": null,
-   "winner": null
+   "winner": "NE"
   },
   {
    "logged_at": "2026-11-01T13:31:32Z",
@@ -23097,7 +23105,7 @@
    "confidence": "HIGH",
    "p_first": 0.7072,
    "ryan_pick": null,
-   "winner": null
+   "winner": "WAS"
   },
   {
    "logged_at": "2026-11-01T13:31:32Z",
@@ -23237,7 +23245,7 @@
    "confidence": "HIGH",
    "p_first": 0.7076,
    "ryan_pick": null,
-   "winner": null
+   "winner": "LA"
   },
   {
    "logged_at": "2026-11-01T14:14:18Z",
@@ -23251,7 +23259,7 @@
    "confidence": "HIGH",
    "p_first": 0.7076,
    "ryan_pick": null,
-   "winner": null
+   "winner": "DEN"
   },
   {
    "logged_at": "2026-11-01T14:14:18Z",
@@ -23265,7 +23273,7 @@
    "confidence": "HIGH",
    "p_first": 0.7076,
    "ryan_pick": null,
-   "winner": null
+   "winner": "NE"
   },
   {
    "logged_at": "2026-11-01T14:14:18Z",
@@ -23279,7 +23287,7 @@
    "confidence": "HIGH",
    "p_first": 0.7076,
    "ryan_pick": null,
-   "winner": null
+   "winner": "WAS"
   },
   {
    "logged_at": "2026-11-01T14:14:18Z",
@@ -23419,7 +23427,7 @@
    "confidence": "HIGH",
    "p_first": 0.7066,
    "ryan_pick": null,
-   "winner": null
+   "winner": "LA"
   },
   {
    "logged_at": "2026-11-01T17:11:27Z",
@@ -23433,7 +23441,7 @@
    "confidence": "HIGH",
    "p_first": 0.7066,
    "ryan_pick": null,
-   "winner": null
+   "winner": "DEN"
   },
   {
    "logged_at": "2026-11-01T17:11:27Z",
@@ -23447,7 +23455,7 @@
    "confidence": "HIGH",
    "p_first": 0.7066,
    "ryan_pick": null,
-   "winner": null
+   "winner": "NE"
   },
   {
    "logged_at": "2026-11-01T17:11:27Z",
@@ -23461,7 +23469,7 @@
    "confidence": "HIGH",
    "p_first": 0.7066,
    "ryan_pick": null,
-   "winner": null
+   "winner": "WAS"
   },
   {
    "logged_at": "2026-11-01T17:11:27Z",
@@ -23601,7 +23609,7 @@
    "confidence": "HIGH",
    "p_first": 0.7066,
    "ryan_pick": null,
-   "winner": null
+   "winner": "LA"
   },
   {
    "logged_at": "2026-11-01T17:26:44Z",
@@ -23615,7 +23623,7 @@
    "confidence": "HIGH",
    "p_first": 0.7066,
    "ryan_pick": null,
-   "winner": null
+   "winner": "DEN"
   },
   {
    "logged_at": "2026-11-01T17:26:44Z",
@@ -23629,7 +23637,7 @@
    "confidence": "HIGH",
    "p_first": 0.7066,
    "ryan_pick": null,
-   "winner": null
+   "winner": "NE"
   },
   {
    "logged_at": "2026-11-01T17:26:44Z",
@@ -23643,7 +23651,7 @@
    "confidence": "HIGH",
    "p_first": 0.7066,
    "ryan_pick": null,
-   "winner": null
+   "winner": "WAS"
   },
   {
    "logged_at": "2026-11-01T17:26:44Z",
@@ -23783,7 +23791,7 @@
    "confidence": "LOCKED",
    "p_first": 0.7061,
    "ryan_pick": null,
-   "winner": null
+   "winner": "LA"
   },
   {
    "logged_at": "2026-11-01T18:03:52Z",
@@ -23797,7 +23805,7 @@
    "confidence": "LOCKED",
    "p_first": 0.7061,
    "ryan_pick": null,
-   "winner": null
+   "winner": "DEN"
   },
   {
    "logged_at": "2026-11-01T18:03:52Z",
@@ -23811,7 +23819,7 @@
    "confidence": "LOCKED",
    "p_first": 0.7061,
    "ryan_pick": null,
-   "winner": null
+   "winner": "NE"
   },
   {
    "logged_at": "2026-11-01T18:03:52Z",
@@ -23825,7 +23833,7 @@
    "confidence": "LOCKED",
    "p_first": 0.7061,
    "ryan_pick": null,
-   "winner": null
+   "winner": "WAS"
   },
   {
    "logged_at": "2026-11-01T18:03:52Z",
@@ -23965,7 +23973,7 @@
    "confidence": "LOCKED",
    "p_first": 0.6946,
    "ryan_pick": null,
-   "winner": null
+   "winner": "LA"
   },
   {
    "logged_at": "2026-11-01T18:30:35Z",
@@ -23979,7 +23987,7 @@
    "confidence": "LOCKED",
    "p_first": 0.6946,
    "ryan_pick": null,
-   "winner": null
+   "winner": "DEN"
   },
   {
    "logged_at": "2026-11-01T18:30:35Z",
@@ -23993,7 +24001,7 @@
    "confidence": "LOCKED",
    "p_first": 0.6946,
    "ryan_pick": null,
-   "winner": null
+   "winner": "NE"
   },
   {
    "logged_at": "2026-11-01T18:30:35Z",
@@ -24007,7 +24015,7 @@
    "confidence": "LOCKED",
    "p_first": 0.6946,
    "ryan_pick": null,
-   "winner": null
+   "winner": "WAS"
   },
   {
    "logged_at": "2026-11-01T18:30:35Z",
@@ -24035,7 +24043,7 @@
    "confidence": "LOCKED",
    "p_first": 0.9577,
    "ryan_pick": null,
-   "winner": null
+   "winner": "LA"
   },
   {
    "logged_at": "2026-11-01T23:34:02Z",
@@ -24049,7 +24057,7 @@
    "confidence": "LOCKED",
    "p_first": 0.9577,
    "ryan_pick": null,
-   "winner": null
+   "winner": "DEN"
   },
   {
    "logged_at": "2026-11-01T23:34:02Z",
@@ -24063,7 +24071,7 @@
    "confidence": "LOCKED",
    "p_first": 0.9577,
    "ryan_pick": null,
-   "winner": null
+   "winner": "NE"
   },
   {
    "logged_at": "2026-11-01T23:34:02Z",
@@ -24077,7 +24085,7 @@
    "confidence": "LOCKED",
    "p_first": 0.9577,
    "ryan_pick": null,
-   "winner": null
+   "winner": "WAS"
   },
   {
    "logged_at": "2026-11-01T23:34:02Z",
@@ -24090,6 +24098,20 @@
    "dP_dog": -0.0036,
    "confidence": "MEDIUM",
    "p_first": 0.9577,
+   "ryan_pick": null,
+   "winner": null
+  },
+  {
+   "logged_at": "2026-11-03T01:45:08Z",
+   "season": 2026,
+   "week": 8,
+   "game_id": "2026_08_CHI_SEA",
+   "fav": "SEA",
+   "p_fav": 0.5996,
+   "recommendation": "SEA",
+   "dP_dog": 0.0,
+   "confidence": "LOCKED",
+   "p_first": 0.9898,
    "ryan_pick": null,
    "winner": null
   }
