@@ -15,3 +15,4 @@ GitHub cron baseline (from the Actions history, 2026-09-10 to 2026-10-06): 19 of
 2026-11-01T13:30:47Z | Claude trigger (Sunday) | dispatched yes | 2026-11-01T13:31:32Z | +1.5 min after 7:30 CT | fresh build landed before 8:08 CT | week 8
 2026-11-01T17:26:05Z | Claude one-shot (Sun 11:25 CT) | dispatched yes | 2026-11-01T17:26:44Z | no pick changes since 7:31 build | week 8
 2026-11-05T23:20:55Z | Claude trigger (Thursday) | dispatched yes (third attempt; first two returned GitHub 502) | 2026-11-05T23:26:27Z | 5.5 | Week 9 build landed 25 min before Grok entry; JAX pick held at 80.8%
+2026-11-08T13:31:04Z | Claude trigger (Sunday) | dispatched yes | 2026-11-08T13:31:35Z | 1.5 | Week 9 build landed 36 min before Grok entry, 59 min before London lock; P(first) 69.7% with Thursday in the book
