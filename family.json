@@ -3,8 +3,8 @@
   "name": "Casey",
   "dog_rate": {
    "tossup": 0.421,
-   "close": 0.205,
-   "other": 0.088
+   "close": 0.191,
+   "other": 0.087
   },
   "bias_team": null,
   "bias_strength": 0.0,
@@ -19,12 +19,12 @@
     7
    ],
    "close": [
-    40,
+    43,
     8
    ],
    "other": [
-    64,
-    6
+    76,
+    7
    ]
   }
  },
@@ -32,11 +32,11 @@
   "name": "Sue",
   "dog_rate": {
    "tossup": 0.401,
-   "close": 0.128,
-   "other": 0.018
+   "close": 0.12,
+   "other": 0.039
   },
   "bias_team": "GB",
-  "bias_strength": 0.667,
+  "bias_strength": 0.684,
   "prior_dog_rate": {
    "tossup": 0.283,
    "close": 0.174,
@@ -48,29 +48,29 @@
     8
    ],
    "close": [
-    40,
+    43,
     5
    ],
    "other": [
-    64,
-    1
+    76,
+    3
    ]
   },
   "bias_observed": [
-   8,
-   8,
-   4.61
+   9,
+   9,
+   4.64
   ]
  },
  {
   "name": "Nolan",
   "dog_rate": {
    "tossup": 0.421,
-   "close": 0.21,
-   "other": 0.075
+   "close": 0.196,
+   "other": 0.065
   },
   "bias_team": "CHI",
-  "bias_strength": 0.667,
+  "bias_strength": 0.684,
   "prior_dog_rate": {
    "tossup": 0.437,
    "close": 0.269,
@@ -82,29 +82,29 @@
     7
    ],
    "close": [
-    39,
+    42,
     8
    ],
    "other": [
-    63,
+    75,
     5
    ]
   },
   "bias_observed": [
-   8,
-   8,
-   4.81
+   9,
+   9,
+   5.76
   ]
  },
  {
   "name": "Sheila",
   "dog_rate": {
    "tossup": 0.393,
-   "close": 0.206,
-   "other": 0.073
+   "close": 0.193,
+   "other": 0.098
   },
   "bias_team": "CHI",
-  "bias_strength": 0.369,
+  "bias_strength": 0.371,
   "prior_dog_rate": {
    "tossup": 0.361,
    "close": 0.222,
@@ -116,29 +116,29 @@
     7
    ],
    "close": [
-    39,
+    42,
     8
    ],
    "other": [
-    64,
-    5
+    76,
+    8
    ]
   },
   "bias_observed": [
-   8,
-   6,
-   5.01
+   9,
+   7,
+   5.97
   ]
  },
  {
   "name": "Kaleigh",
   "dog_rate": {
    "tossup": 0.487,
-   "close": 0.324,
-   "other": 0.159
+   "close": 0.325,
+   "other": 0.184
   },
   "bias_team": "GB",
-  "bias_strength": 0.667,
+  "bias_strength": 0.684,
   "prior_dog_rate": {
    "tossup": 0.516,
    "close": 0.318,
@@ -150,26 +150,26 @@
     8
    ],
    "close": [
-    37,
-    12
+    40,
+    13
    ],
    "other": [
-    63,
-    11
+    75,
+    15
    ]
   },
   "bias_observed": [
-   8,
-   8,
-   5.11
+   9,
+   9,
+   5.17
   ]
  },
  {
   "name": "Molly",
   "dog_rate": {
    "tossup": 0.667,
-   "close": 0.398,
-   "other": 0.114
+   "close": 0.372,
+   "other": 0.11
   },
   "bias_team": null,
   "bias_strength": 0.0,
@@ -184,12 +184,12 @@
     9
    ],
    "close": [
-    40,
+    43,
     15
    ],
    "other": [
-    63,
-    7
+    75,
+    8
    ]
   }
  }
