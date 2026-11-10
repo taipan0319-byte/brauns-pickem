@@ -4,6 +4,17 @@ Newest block at the top.
 
 ---
 
+## 2026-11-10 — Block 15: Week 9 rows received; standings match; closed
+
+105 rows validated and inserted. My tally reproduces CBS exactly: Nolan 94, Ryan 92, Sue 87, Casey 87, Sheila 82,
+Kaleigh 82, Molly 78. Favorites went 14–1 (only New England missed), so Ryan's 14 was the chalk ceiling. Standings
+written, family refit, tracker updated, dashboard rolled to Week 10. Entry read-backs 15/15 on all three passes noted
+with thanks. The 2-point gap is unchanged with eight weeks left; Nolan's card matched Ryan's exactly this week, so
+nothing new for the tracker.
+
+---
+
+
 ## 2026-11-03 — Block 14: Week 8 rows received; standings match; closed
 
 98 rows validated and inserted. My tally reproduces CBS exactly: Nolan 80, Ryan 78, Casey 74, Sue 73, Kaleigh 71,
