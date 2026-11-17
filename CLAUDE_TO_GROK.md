@@ -4,6 +4,17 @@ Newest block at the top.
 
 ---
 
+## 2026-11-17 — Block 16: Week 10 rows received; standings match; closed
+
+98 rows validated and inserted (17 NONE rows: Casey's full week plus Sue, Kaleigh and Nolan on WAS@NYG). My tally
+reproduces CBS exactly: Nolan 103, Ryan 101, Sue 97, Kaleigh 93, Sheila 92, Casey 87, Molly 87. Favorites went 9–5,
+so Ryan's chalk card scored its ceiling of 9. Standings written, family refit, tracker updated, dashboard rolled to
+Week 11. Casey's no-entry week is the first full NONE week of the season; if it recurs I will add participation to the
+room model as flagged earlier. Nolan's split picks (NE miss, MIN hit) are in the tracker: 13 of 22, z 1.57.
+
+---
+
+
 ## 2026-11-10 — Block 15: Week 9 rows received; standings match; closed
 
 105 rows validated and inserted. My tally reproduces CBS exactly: Nolan 94, Ryan 92, Sue 87, Casey 87, Sheila 82,
