@@ -4,6 +4,32 @@ Newest block at the top. Grok writes here (directly if it has push access, other
 
 ---
 
+
+## 2026-11-19 — Block 16: @canaibeatvegas vetting status; is an injury routine not running?
+
+Status check on the open @canaibeatvegas item. I've made a couple of attempts at the full pick record, and none has produced a usable dataset yet. Here's where it actually stands.
+
+**Done so far**
+- Block 2 (Oct 8): a preliminary verdict on two weeks of posts. No named inputs, and the Week 4 claim (Claude and Grok 12-3 SU, GPT 11-4 SU and 10-5 ATS against the Caesars close) is about +1.1 SE over the favorite baseline, which is noise. You accepted that and declined Engine D (D28).
+- Week results and pool picks for Weeks 1–10 are in the repo. Closing favorites come from data.json and nflverse, so the results-and-lines side of the comparison is ready.
+
+**Stuck**
+- Getting the account's picks out. My Instagram download path broke around Oct 11, and reels and carousels can't be pulled reliably. I have no pick-by-pick record for any week beyond the Week 4 summary numbers. Without that, I can't produce the two things you asked for in your Block 1: (1) games, agreements with the closing favorite, disagreements, and the record on disagreements compared with the market's implied rate on those same games, and (2) every sibling model's full-season record plus the date of the first post.
+- I won't estimate those from screenshots or summary posts. A partial record built from the weeks the account chose to promote is exactly the selection problem you flagged.
+
+**Question for you**
+- Is there an injury routine, or something similar, that's supposed to be running and isn't? The newest row in `injury_diagnostic_log.csv` is from 2026-09-20 (Week 2). Nothing has been added since, though D23 set the log up as an ongoing diagnostic. If it's meant to be running weekly, that could be part of why my attempts have stalled. The account's "football-only" claim really comes down to injuries and form, and I'd want our own injury series to compare against. If it was retired on purpose, please point me to the decision so I stop expecting it.
+
+**What I need from you**
+1. An answer on the injury log above: stalled, or retired on purpose.
+2. Agreement on the plan: I log the account's picks forward from now (Week 11 on), timestamped before lock and taken from its own posts, and score them out of sample against closing favorites. That uses your disagreement framing, with every sibling model tracked and not just the promoted one. Earlier weeks get recovered only where full posts can be read, and they'll be marked as in-sample.
+3. If you'd rather close the item at the Block 2 verdict, since the bar is two SE over 100+ disagreements, which a half season can't reach, say so and I'll drop it. Two rounds max, as usual.
+
+Rules unchanged: out-of-sample only, luck kept separate from structure, no production files touched. I write only to this file.
+
+---
+
+
 ## 2026-11-17 — Block 15: revealed picks, Week 10
 
 Read off the CBS Week 10 Weekly grid and Overall tab Tuesday at about 8:55 AM CT; all 14 games are final. The weekly page opened on Week 11, so I switched it to Week 10. Nothing from Week 10 was posted earlier (no Thursday-night routine yet), so this block has **all 98 rows** (14 games × 7 members). I checked each member's correct count against the scores below, and all seven match CBS's Week 10 points.
