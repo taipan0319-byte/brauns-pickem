@@ -1,13 +1,13 @@
 {
  "season": 2026,
  "week": 11,
- "built_at": "2026-11-22T18:35:23Z",
- "picks_final_at": "2026-11-22T18:35:23Z",
+ "built_at": "2026-11-22T19:56:00Z",
+ "picks_final_at": "2026-11-22T19:56:00Z",
  "pick_contract": "games[].pick is the team code Ryan should enter on CBS: Engine B's final call, LOW resolved to the favorite. Not renamed or restructured without notice in CLAUDE_TO_GROK.md.",
  "order_source": "kickoff time, then NFL schedule id (CBS within-slot order not recorded for this week)",
- "model_refreshed_at": "2026-11-22T18:35:23Z",
- "market_asof": "2026-11-22T18:35:22Z",
- "p_first": 0.6996,
+ "model_refreshed_at": "2026-11-22T19:56:00Z",
+ "market_asof": "2026-11-22T19:55:59Z",
+ "p_first": 0.7011,
  "games": [
   {
    "game_id": "2026_11_IND_HOU",
@@ -355,8 +355,8 @@
    "engine_a_pick": "JAX",
    "spread": "-6",
    "ml": [
-    "-266",
-    "219"
+    "-265",
+    "218"
    ],
    "p_fav_injury_adj": null,
    "watch": []
@@ -390,8 +390,8 @@
    "engine_a_pick": "DEN",
    "spread": "10.5",
    "ml": [
-    "444",
-    "-596"
+    "443",
+    "-594"
    ],
    "p_fav_injury_adj": null,
    "watch": []
@@ -425,8 +425,8 @@
    "engine_a_pick": "SF",
    "spread": "3.5",
    "ml": [
-    "148",
-    "-176"
+    "147",
+    "-175"
    ],
    "p_fav_injury_adj": null,
    "watch": []
@@ -453,9 +453,9 @@
    "dog_name": "Commanders",
    "confidence": "HIGH",
    "family_fav_rate": 0.904,
-   "dP_dog": -0.0378,
+   "dP_dog": -0.0377,
    "mc_noise": 0.0048,
-   "logged_at": "2026-11-22T18:35:23Z",
+   "logged_at": "2026-11-22T19:56:00Z",
    "rationale": "CIN is the market favorite at 71.8%. Taking WAS would lower P(finish first) by 3.8 points: with about 90% of the family expected on CIN, the dog buys little differentiation and costs 0.44 expected points.",
    "engine_a_pick": "CIN",
    "spread": "-6",
@@ -472,7 +472,7 @@
   "TB@DET: P(DET) 64.8% \u2192 66.0%",
   "PIT@PHI: P(PIT) 62.9% \u2192 64.1%"
  ],
- "previous_refresh": "2026-11-22T16:12:38Z",
+ "previous_refresh": "2026-11-22T18:35:23Z",
  "standings": {
   "Ryan": 101,
   "Casey": 87,
@@ -31595,6 +31595,174 @@
    "dP_dog": -0.0378,
    "confidence": "HIGH",
    "p_first": 0.6996,
+   "ryan_pick": null,
+   "winner": null
+  },
+  {
+   "logged_at": "2026-11-22T19:56:00Z",
+   "season": 2026,
+   "week": 11,
+   "game_id": "2026_11_MIA_BUF",
+   "fav": "BUF",
+   "p_fav": 0.911,
+   "recommendation": "BUF",
+   "dP_dog": 0.0,
+   "confidence": "LOCKED",
+   "p_first": 0.7011,
+   "ryan_pick": null,
+   "winner": null
+  },
+  {
+   "logged_at": "2026-11-22T19:56:00Z",
+   "season": 2026,
+   "week": 11,
+   "game_id": "2026_11_BAL_CAR",
+   "fav": "CAR",
+   "p_fav": 0.5617,
+   "recommendation": "CAR",
+   "dP_dog": 0.0,
+   "confidence": "LOCKED",
+   "p_first": 0.7011,
+   "ryan_pick": null,
+   "winner": null
+  },
+  {
+   "logged_at": "2026-11-22T19:56:00Z",
+   "season": 2026,
+   "week": 11,
+   "game_id": "2026_11_NO_CHI",
+   "fav": "CHI",
+   "p_fav": 0.8365,
+   "recommendation": "CHI",
+   "dP_dog": 0.0,
+   "confidence": "LOCKED",
+   "p_first": 0.7011,
+   "ryan_pick": null,
+   "winner": null
+  },
+  {
+   "logged_at": "2026-11-22T19:56:00Z",
+   "season": 2026,
+   "week": 11,
+   "game_id": "2026_11_TEN_DAL",
+   "fav": "DAL",
+   "p_fav": 0.7521,
+   "recommendation": "DAL",
+   "dP_dog": 0.0,
+   "confidence": "LOCKED",
+   "p_first": 0.7011,
+   "ryan_pick": null,
+   "winner": null
+  },
+  {
+   "logged_at": "2026-11-22T19:56:00Z",
+   "season": 2026,
+   "week": 11,
+   "game_id": "2026_11_TB_DET",
+   "fav": "DET",
+   "p_fav": 0.6616,
+   "recommendation": "DET",
+   "dP_dog": 0.0,
+   "confidence": "LOCKED",
+   "p_first": 0.7011,
+   "ryan_pick": null,
+   "winner": null
+  },
+  {
+   "logged_at": "2026-11-22T19:56:00Z",
+   "season": 2026,
+   "week": 11,
+   "game_id": "2026_11_ARI_KC",
+   "fav": "KC",
+   "p_fav": 0.8989,
+   "recommendation": "KC",
+   "dP_dog": 0.0,
+   "confidence": "LOCKED",
+   "p_first": 0.7011,
+   "ryan_pick": null,
+   "winner": null
+  },
+  {
+   "logged_at": "2026-11-22T19:56:00Z",
+   "season": 2026,
+   "week": 11,
+   "game_id": "2026_11_PIT_PHI",
+   "fav": "PIT",
+   "p_fav": 0.6361,
+   "recommendation": "PIT",
+   "dP_dog": 0.0,
+   "confidence": "LOCKED",
+   "p_first": 0.7011,
+   "ryan_pick": null,
+   "winner": null
+  },
+  {
+   "logged_at": "2026-11-22T19:56:00Z",
+   "season": 2026,
+   "week": 11,
+   "game_id": "2026_11_NYJ_LAC",
+   "fav": "LAC",
+   "p_fav": 0.6155,
+   "recommendation": "LAC",
+   "dP_dog": 0.0,
+   "confidence": "LOCKED",
+   "p_first": 0.7011,
+   "ryan_pick": null,
+   "winner": null
+  },
+  {
+   "logged_at": "2026-11-22T19:56:00Z",
+   "season": 2026,
+   "week": 11,
+   "game_id": "2026_11_LV_DEN",
+   "fav": "DEN",
+   "p_fav": 0.8229,
+   "recommendation": "DEN",
+   "dP_dog": 0.0,
+   "confidence": "LOCKED",
+   "p_first": 0.7011,
+   "ryan_pick": null,
+   "winner": null
+  },
+  {
+   "logged_at": "2026-11-22T19:56:00Z",
+   "season": 2026,
+   "week": 11,
+   "game_id": "2026_11_JAX_NYG",
+   "fav": "JAX",
+   "p_fav": 0.6978,
+   "recommendation": "JAX",
+   "dP_dog": 0.0,
+   "confidence": "LOCKED",
+   "p_first": 0.7011,
+   "ryan_pick": null,
+   "winner": null
+  },
+  {
+   "logged_at": "2026-11-22T19:56:00Z",
+   "season": 2026,
+   "week": 11,
+   "game_id": "2026_11_MIN_SF",
+   "fav": "SF",
+   "p_fav": 0.6112,
+   "recommendation": "SF",
+   "dP_dog": 0.0,
+   "confidence": "LOCKED",
+   "p_first": 0.7011,
+   "ryan_pick": null,
+   "winner": null
+  },
+  {
+   "logged_at": "2026-11-22T19:56:00Z",
+   "season": 2026,
+   "week": 11,
+   "game_id": "2026_11_CIN_WAS",
+   "fav": "CIN",
+   "p_fav": 0.7182,
+   "recommendation": "CIN",
+   "dP_dog": -0.0377,
+   "confidence": "HIGH",
+   "p_first": 0.7011,
    "ryan_pick": null,
    "winner": null
   }
