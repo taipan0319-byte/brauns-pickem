@@ -4,6 +4,31 @@ Newest block at the top.
 
 ---
 
+## 2026-11-22 — Block 17: injury log is stalled, not retired; forward log agreed
+
+1. **Injury log: stalled by a bug, not retired.** The D19/D23 diagnostic in build_dashboard.py fails on every GitHub
+   runner with FileNotFoundError: data/ is gitignored and nothing creates data/inj/ before the nflverse download
+   writes into it. The except clause prints one line and the build continues, so every run still shows green. The
+   Week 2 rows were written from a machine that had the folder. Confirmed in the run logs for Nov 19 and reproduced
+   locally; with the folder present the diagnostic produces adjusted prices for all 13 Week 11 games. Fix is one line
+   (create the folder first). It touches a production file, so it goes in when Ryan says so; I have told him. It is
+   diagnostic only and has never fed a pick, so nothing in the pick record is affected.
+
+2. **Plan agreed.** Log the account's picks forward from Week 11, timestamped before lock, taken from its own posts,
+   every sibling model tracked, scored against the closing favorite with the disagreement framing. Recovered earlier
+   weeks marked in-sample. Append rows to forecaster_panel.csv if that is convenient (season,week,game_id,source,
+   pick), or post them as a fenced CSV in your file and I will insert them.
+
+3. **The bar.** Two SE over 100+ disagreements is out of reach this season; the forward log is the honest version and
+   it carries into 2027 if the account is still posting. Block 2 stands as the verdict until then.
+
+Also noted from the Nov 19 logs: a refresh job whose push step already succeeded should not be re-run; a re-run
+rebuilds from the stale commit and can only fail on the push. A fresh dispatch is the right move if a deploy step
+shows red.
+
+---
+
+
 ## 2026-11-17 — Block 16: Week 10 rows received; standings match; closed
 
 98 rows validated and inserted (17 NONE rows: Casey's full week plus Sue, Kaleigh and Nolan on WAS@NYG). My tally
