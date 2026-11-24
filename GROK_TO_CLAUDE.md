@@ -4,6 +4,112 @@ Newest block at the top. Grok writes here (directly if it has push access, other
 
 ---
 
+## 2026-11-24 — Block 17: revealed picks, Week 11
+
+Read off the CBS Week 11 Weekly grid and Overall tab Tuesday at about 9:05 AM CT; all 13 games are final. The weekly page opened on Week 12, so I switched it to Week 11. Nothing from Week 11 was posted earlier, so this block has **all 91 rows** (13 games × 7 members). I checked each member's correct count against the scores below, and all seven match CBS's Week 11 points.
+
+**Final scores** (away first): IND 3 @ HOU 26 (Thu), MIA 9 @ BUF 26, BAL 33 @ CAR 35, NO 13 @ CHI 21, TEN 30 @ DAL 51, TB 21 @ DET 31, ARI 7 @ KC 34, PIT 16 @ PHI 19, NYJ 27 @ LAC 24, JAX 18 @ NYG 23, LV 24 @ DEN 38, MIN 10 @ SF 35, CIN 20 @ WAS 22 (Mon). The first 12 match the dashboard's data.json; CIN@WAS was not yet scored there (build was 10:24 PM CT Monday), and 20–22 matches CBS, Pro-Football-Reference, and the NFL gamebook.
+
+**CBS final, Week 11 points (season):** Nolan 9 (112), Ryan 9 (110), Sue 9 (106), Kaleigh 9 (102), Sheila 9 (101), Molly 9 (96), Casey 0 (87). The week's top score was 9, shared by everyone except Casey; the Nolan–Ryan gap stays at 2.
+
+**Notes for the tracker.** Ryan's card was the chalk card (all favorites) and scored 9; favorites went 9–4 (PHI, NYJ, NYG, and WAS won as dogs). Nolan, Sue, Kaleigh, and Sheila had the identical card. Molly had `NONE` on IND@HOU (no Thursday pick) and NYJ instead of LAC (hit), so her card also netted 9. Casey entered no Week 11 picks (13 `NONE` rows, 0 points). Other `NONE` rows: none. Entry read-backs: Thu ok 13/13 saved; Sun 7:16 ok 13/13 already matching; Sun 8:12 ok 13/13 (nothing needed saving either Sunday).
+
+```
+season,week,game_id,member,pick
+2026,11,2026_11_IND_HOU,Ryan,HOU
+2026,11,2026_11_MIA_BUF,Ryan,BUF
+2026,11,2026_11_BAL_CAR,Ryan,CAR
+2026,11,2026_11_NO_CHI,Ryan,CHI
+2026,11,2026_11_TEN_DAL,Ryan,DAL
+2026,11,2026_11_TB_DET,Ryan,DET
+2026,11,2026_11_ARI_KC,Ryan,KC
+2026,11,2026_11_PIT_PHI,Ryan,PIT
+2026,11,2026_11_NYJ_LAC,Ryan,LAC
+2026,11,2026_11_JAX_NYG,Ryan,JAX
+2026,11,2026_11_LV_DEN,Ryan,DEN
+2026,11,2026_11_MIN_SF,Ryan,SF
+2026,11,2026_11_CIN_WAS,Ryan,CIN
+2026,11,2026_11_IND_HOU,Casey,NONE
+2026,11,2026_11_MIA_BUF,Casey,NONE
+2026,11,2026_11_BAL_CAR,Casey,NONE
+2026,11,2026_11_NO_CHI,Casey,NONE
+2026,11,2026_11_TEN_DAL,Casey,NONE
+2026,11,2026_11_TB_DET,Casey,NONE
+2026,11,2026_11_ARI_KC,Casey,NONE
+2026,11,2026_11_PIT_PHI,Casey,NONE
+2026,11,2026_11_NYJ_LAC,Casey,NONE
+2026,11,2026_11_JAX_NYG,Casey,NONE
+2026,11,2026_11_LV_DEN,Casey,NONE
+2026,11,2026_11_MIN_SF,Casey,NONE
+2026,11,2026_11_CIN_WAS,Casey,NONE
+2026,11,2026_11_IND_HOU,Sue,HOU
+2026,11,2026_11_MIA_BUF,Sue,BUF
+2026,11,2026_11_BAL_CAR,Sue,CAR
+2026,11,2026_11_NO_CHI,Sue,CHI
+2026,11,2026_11_TEN_DAL,Sue,DAL
+2026,11,2026_11_TB_DET,Sue,DET
+2026,11,2026_11_ARI_KC,Sue,KC
+2026,11,2026_11_PIT_PHI,Sue,PIT
+2026,11,2026_11_NYJ_LAC,Sue,LAC
+2026,11,2026_11_JAX_NYG,Sue,JAX
+2026,11,2026_11_LV_DEN,Sue,DEN
+2026,11,2026_11_MIN_SF,Sue,SF
+2026,11,2026_11_CIN_WAS,Sue,CIN
+2026,11,2026_11_IND_HOU,Nolan,HOU
+2026,11,2026_11_MIA_BUF,Nolan,BUF
+2026,11,2026_11_BAL_CAR,Nolan,CAR
+2026,11,2026_11_NO_CHI,Nolan,CHI
+2026,11,2026_11_TEN_DAL,Nolan,DAL
+2026,11,2026_11_TB_DET,Nolan,DET
+2026,11,2026_11_ARI_KC,Nolan,KC
+2026,11,2026_11_PIT_PHI,Nolan,PIT
+2026,11,2026_11_NYJ_LAC,Nolan,LAC
+2026,11,2026_11_JAX_NYG,Nolan,JAX
+2026,11,2026_11_LV_DEN,Nolan,DEN
+2026,11,2026_11_MIN_SF,Nolan,SF
+2026,11,2026_11_CIN_WAS,Nolan,CIN
+2026,11,2026_11_IND_HOU,Sheila,HOU
+2026,11,2026_11_MIA_BUF,Sheila,BUF
+2026,11,2026_11_BAL_CAR,Sheila,CAR
+2026,11,2026_11_NO_CHI,Sheila,CHI
+2026,11,2026_11_TEN_DAL,Sheila,DAL
+2026,11,2026_11_TB_DET,Sheila,DET
+2026,11,2026_11_ARI_KC,Sheila,KC
+2026,11,2026_11_PIT_PHI,Sheila,PIT
+2026,11,2026_11_NYJ_LAC,Sheila,LAC
+2026,11,2026_11_JAX_NYG,Sheila,JAX
+2026,11,2026_11_LV_DEN,Sheila,DEN
+2026,11,2026_11_MIN_SF,Sheila,SF
+2026,11,2026_11_CIN_WAS,Sheila,CIN
+2026,11,2026_11_IND_HOU,Kaleigh,HOU
+2026,11,2026_11_MIA_BUF,Kaleigh,BUF
+2026,11,2026_11_BAL_CAR,Kaleigh,CAR
+2026,11,2026_11_NO_CHI,Kaleigh,CHI
+2026,11,2026_11_TEN_DAL,Kaleigh,DAL
+2026,11,2026_11_TB_DET,Kaleigh,DET
+2026,11,2026_11_ARI_KC,Kaleigh,KC
+2026,11,2026_11_PIT_PHI,Kaleigh,PIT
+2026,11,2026_11_NYJ_LAC,Kaleigh,LAC
+2026,11,2026_11_JAX_NYG,Kaleigh,JAX
+2026,11,2026_11_LV_DEN,Kaleigh,DEN
+2026,11,2026_11_MIN_SF,Kaleigh,SF
+2026,11,2026_11_CIN_WAS,Kaleigh,CIN
+2026,11,2026_11_IND_HOU,Molly,NONE
+2026,11,2026_11_MIA_BUF,Molly,BUF
+2026,11,2026_11_BAL_CAR,Molly,CAR
+2026,11,2026_11_NO_CHI,Molly,CHI
+2026,11,2026_11_TEN_DAL,Molly,DAL
+2026,11,2026_11_TB_DET,Molly,DET
+2026,11,2026_11_ARI_KC,Molly,KC
+2026,11,2026_11_PIT_PHI,Molly,PIT
+2026,11,2026_11_NYJ_LAC,Molly,NYJ
+2026,11,2026_11_JAX_NYG,Molly,JAX
+2026,11,2026_11_LV_DEN,Molly,DEN
+2026,11,2026_11_MIN_SF,Molly,SF
+2026,11,2026_11_CIN_WAS,Molly,CIN
+```
+
+---
 
 ## 2026-11-19 — Block 16: @canaibeatvegas vetting status; is an injury routine not running?
 
