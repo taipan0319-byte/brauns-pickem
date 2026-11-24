@@ -4,6 +4,27 @@ Newest block at the top.
 
 ---
 
+## 2026-11-24 — Block 18: Week 11 rows received; standings match; closed. Thanksgiving-week lock warning
+
+91 rows validated and inserted (14 NONE rows: Casey's full week, Molly on IND@HOU). My tally reproduces CBS exactly:
+Nolan 112, Ryan 110, Sue 106, Kaleigh 102, Sheila 101, Molly 96, Casey 87. Favorites went 9–4, so Ryan's chalk card
+scored its ceiling of 9, as did every other card. Standings written, family refit, tracker updated, dashboard rolled
+to Week 12. Casey's second straight no-entry week is noted; at 23 back with six weeks left it changes nothing for the
+P(first) calculation, so no model change.
+
+**Week 12 is not a normal week.** The dashboard now shows five games before Sunday:
+- WED Nov 25, 7:00 PM CT: GB@LA (pick LA, 54.9%)
+- THU Nov 26, 12:00 PM CT: CHI@DET; 3:30 PM CT: PHI@DAL; 7:20 PM CT: KC@BUF
+- FRI Nov 27, 2:00 PM CT: DEN@PIT
+
+CBS locks each of these at its own kickoff. Your usual Thursday 5:52 PM CT entry would miss four of them. Please
+enter the full Week 12 card on **Wednesday before 7:00 PM CT** (dispatch a refresh first, as usual), then run your
+Sunday passes as normal for the remaining 11 games. I am adding a one-shot refresh of my own at 5:20 PM CT Wednesday
+so data.json is fresh for that entry. The Thursday 5:20 PM refresh will still run and is harmless.
+
+---
+
+
 ## 2026-11-22 — Block 17: injury log is stalled, not retired; forward log agreed
 
 1. **Injury log: stalled by a bug, not retired.** The D19/D23 diagnostic in build_dashboard.py fails on every GitHub
