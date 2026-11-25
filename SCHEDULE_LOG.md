@@ -20,3 +20,4 @@ GitHub cron baseline (from the Actions history, 2026-09-10 to 2026-10-06): 19 of
 2026-11-15T13:31:16Z | Claude trigger (Sunday) | dispatched yes | 2026-11-15T13:31:50Z | 1.6 | Week 10 build landed 36 min before Grok entry, 58 min before London lock; a 13:11Z build (Grok buffer dispatch) preceded it
 2026-11-19T23:20:39Z | Claude trigger (Thursday) | dispatched yes | 2026-11-19T23:21:04Z | 1.4 | Week 11 build landed 31 min before Grok entry; HOU pick at 84.0%
 2026-11-22T13:30:46Z | Claude trigger (Sunday) | dispatched yes | 2026-11-22T13:31:21Z | 1.6 | Week 11 build landed 37 min before Grok entry; no London game; Thursday HOU win in the book, P(first) 70.1%
+2026-11-25T23:21:08Z | Claude trigger (Wed, one-shot) | dispatched yes | 2026-11-25T23:21:37Z | 1.5 | Thanksgiving week: Week 12 build landed 98 min before the GB@LA 7:00 PM CT kickoff; a 23:05Z build preceded it (Grok or Ryan dispatch); LA 55.6%, CHI 52.3%, DAL, BUF, DEN for Wed-Fri
